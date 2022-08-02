@@ -25,7 +25,12 @@
     "strictPropertyInitialization":false,
     "paths": {
       "@shared/components/*": [ "src/app/shared/components/*" ],
-      "@environments/*": [ "src/environments/*" ]
+      "@environments/*": [ "src/environments/*" ],
+      "@helpers/*": [ "src/app/shared/helpers/*" ],
+      "@shared/services/*": ["src/app/shared/services/*"],
+      "@shared/models/*": ["src/app/shared/models/*"],
+      "@core/*": ["src/app/core/*"]
+
   }
   },
   "angularCompilerOptions": {

@@ -25,5 +25,12 @@
             display: flex;
             flex-direction: column;
         }
+
+    }
+
+    &__error {
+        color: #BC1C1C;
+        font-weight: 600;
+        font-size: 14px;
     }
 }

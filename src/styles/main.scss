@@ -1,8 +1,24 @@
 @import './_variables.scss';
+
 body {
     background-color: $background-color;
+
     .mat-form-field {
         font-family: Nunito, Arial, Helvetica, sans-serif;
         color: $placeholder-color;
+    }
+
+    .snack-error {
+        background-color: $color-error;
+        color: $color-white;
+    }
+
+    .snack-success {
+        background-color: $color-success;
+        color: $color-white;
+    }
+
+    .mat-button-wrapper {
+        color: $color-white;
     }
 }
