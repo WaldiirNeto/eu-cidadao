@@ -1,0 +1,8 @@
+@import './_variables.scss';
+body {
+    background-color: $background-color;
+    .mat-form-field {
+        font-family: Nunito, Arial, Helvetica, sans-serif;
+        color: $placeholder-color;
+    }
+}

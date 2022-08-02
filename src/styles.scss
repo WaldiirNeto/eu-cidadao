@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/main.scss';
+
+@font-face {
+    font-family: "Nunito";
+    src: local("Nunito"), url(./assets/fonts/nunito-regular.ttf) format("truetype");
+}
+
+body {
+    margin: 0;
+    font-family: Nunito, Arial, Helvetica, sans-serif;
+}

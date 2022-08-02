@@ -1,0 +1,29 @@
+.pg-login {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+
+    img {
+        height: 367.79px;
+        margin-right: 100px;
+        width: 500px;
+    }
+
+    &__form {
+        margin-top: -40px;
+        width: 350px;
+
+        h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-top: -2px;
+        }
+
+        &__content {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

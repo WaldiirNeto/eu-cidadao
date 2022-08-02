@@ -1,0 +1,21 @@
+@import "~src/styles/_variables.scss";
+
+.redefinicao-senha {
+    &__title {
+        h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-top: -2px;
+        }
+        &__paragraph {
+            color: $placeholder-color;
+        }
+    }
+
+    &__paragraph-senha {
+        color: $primary;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 18px;
+    }
+}
