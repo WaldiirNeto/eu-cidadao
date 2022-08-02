@@ -19,6 +19,7 @@ steps:
     workingDir: '$(Build.SourcesDirectory)/'
 - script:
       npm install @angular/cli -g
+  workingDirectory: '$(Build.SourcesDirectory)/'
 - task: AngularCLI@1
   inputs:
     command: 'lint'
@@ -39,3 +40,4 @@ steps:
     npm install
     npm run build
   displayName: 'Eu Cidadão - Frontend - CI - Lint - Test - Build'
+  workingDirectory: '$(Build.SourcesDirectory)/'
