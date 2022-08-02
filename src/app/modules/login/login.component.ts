@@ -8,14 +8,14 @@ import { FormLoginModel } from './models/build-form';
 })
 export class LoginComponent extends FormLoginModel {
   public loading: boolean
-  public showForm: boolean = true
+  public hiddenForm: boolean = false
   constructor() {
     super()
   }
 
   public authentication(): void {}
 
-  public closeForm(): void {
-    this.showForm = false
+  public closeForm(isShow: boolean): void {
+    this.hiddenForm = isShow
   }
 }

@@ -1,4 +1,4 @@
-# Portal Logística - PWA
+# Eu cidadão - PWA
 
 Olá frontends, esse README tem o intuito de auxiliar vocês para alguns padrões e diretivas que devemos seguir no projeto.
 

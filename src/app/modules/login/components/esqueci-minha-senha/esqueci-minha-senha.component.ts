@@ -7,13 +7,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './esqueci-minha-senha.component.html',
   styleUrls: ['./esqueci-minha-senha.component.scss'],
   animations: [
-    trigger('fade', [ 
+    trigger('fade', [
       transition('void => *', [
-        style({ opacity: 0 }), 
-        animate(2000, style({opacity: 1}))
-      ]) 
-    ])
-  ]
+        style({ opacity: 0 }),
+        animate(2000, style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class EsqueciMinhaSenhaComponent implements OnInit {
   @Output() hiddenFormLogin: EventEmitter<boolean> = new EventEmitter();
@@ -28,8 +28,8 @@ export class EsqueciMinhaSenhaComponent implements OnInit {
     });
   }
 
-  public emitFormLogin(): void {
-    this.hiddenFormLogin.emit(true);
-    this.showForm = true;
+  public emitFormLogin(isShow: boolean): void {
+    this.hiddenFormLogin.emit(isShow);
+    this.showForm = isShow;
   }
 }

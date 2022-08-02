@@ -12,6 +12,9 @@
             </app-submit-button>
         </form>
     </ng-container>
-    <p *ngIf="!this.showForm" class="redefinicao-senha__paragraph-senha" (click)="this.emitFormLogin()">Esqueci minha
+    <p *ngIf="!this.showForm" class="redefinicao-senha__paragraph-senha" (click)="this.emitFormLogin(true)">Esqueci
+        minha
         senha</p>
+    <p *ngIf="this.showForm" class="redefinicao-senha__paragraph-senha" (click)="this.emitFormLogin(false)">Fazer login
+    </p>
 </section>
