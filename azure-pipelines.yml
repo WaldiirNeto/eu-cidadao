@@ -17,6 +17,8 @@ steps:
   inputs:
     command: 'install'
     workingDir: '$(Build.SourcesDirectory)/'
+- script:
+      npm install @angular/cli -g
 - task: AngularCLI@1
   inputs:
     command: 'lint'
