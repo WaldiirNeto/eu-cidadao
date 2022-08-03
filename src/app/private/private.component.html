@@ -4,7 +4,7 @@
             <img alt="logo" src="assets/images/logo-text.svg">
             <img class="sidenav-content__avatar" alt="logo" src="assets/images/avatar.svg">
             <section class="sidenav-content__user">
-                <p>Carlos José</p>
+                <p> {{(this.user$ | async)?.primeiroNome }}</p>
                 <p>Administrador</p>
             </section>
             <section class="sidenav-content__links">
@@ -33,7 +33,7 @@
     </mat-drawer>
     <mat-toolbar>
         <div class="mat-toolbar__content">
-            <h1><strong>Prefeitura de lorem</strong></h1>
+            <h1><strong>Prefeitura de {{(this.user$ | async)?.nomeCidade }}</strong></h1>
         </div>
     </mat-toolbar>
 </section>

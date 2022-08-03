@@ -31,7 +31,8 @@
       "@shared/models/*": ["src/app/shared/models/*"],
       "@core/*": ["src/app/core/*"]
 
-  }
+  },
+  "types": ["node"],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

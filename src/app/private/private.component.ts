@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { UserService } from '@core/user/user.service'
+import { UserModel } from '@shared/models/user.model'
+import { Observable, take } from 'rxjs'
 
 @Component({
   selector: 'app-private',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivateComponent implements OnInit {
 
-  constructor() { }
+  protected user$: Observable<UserModel>
+  constructor(private _userService: UserService) { }
 
   ngOnInit(): void {
+    this.user$ = this._userService.getUser().pipe(take(1))
   }
 
 }

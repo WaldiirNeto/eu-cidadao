@@ -18,7 +18,6 @@ import { PrivateComponent } from './private.component'
     MatToolbarModule,
     PrivateRoutingModule,
     MatSidenavModule
-
   ]
 })
 export class PrivateModule { }

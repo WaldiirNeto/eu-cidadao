@@ -15,15 +15,15 @@ import { Router } from '@angular/router'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent extends FormLoginModel {
-  public loading: boolean
-  public hiddenForm: boolean = false
-  public destroy$ = new Subject()
-  public isError: boolean
+  protected loading: boolean
+  protected hiddenForm: boolean = false
+  protected destroy$ = new Subject()
+  protected isError: boolean
   constructor(private _loginService: LoginService, private _toast: SnackBarService, private _router: Router) {
     super()
   }
 
-  public authentication(): void {
+  protected authentication(): void {
     this.loading = true
     const payloadLogin = this.form.value as AuthParamsModel
     this._loginService.auth(payloadLogin)
@@ -43,7 +43,7 @@ export class LoginComponent extends FormLoginModel {
       })
   }
 
-  public closeForm(isShow: boolean): void {
+  protected closeForm(isShow: boolean): void {
     this.hiddenForm = isShow
   }
 }
