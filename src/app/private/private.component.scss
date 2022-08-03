@@ -1,5 +1,6 @@
 @import "~src/styles/_variables.scss";
 
+$red-color: #FF0000;
 
 .private-modules {
     align-items: flex-start;
@@ -9,51 +10,86 @@
 
     mat-drawer {
         background: $color-white;
-        box-shadow: 0px 1px 1px rgba(21, 21, 24, 0.18), 0px 0px 1px rgba(25, 25, 28, 0.25);
+        box-shadow: 0px 1px 1px rgba(21, 21, 24, 0.18),
+            0px 0px 1px rgba(25, 25, 28, 0.25);
         border-radius: 4px;
         height: 100%;
         width: 240px;
 
-        .sidenav-content {
-            align-items: center;
+        .mat-drawer__content {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            padding: 45px 10px 10px 10px;
+            justify-content: space-between;
+            height: 100%;
 
-            &__avatar {
-                margin-top: 30px;
-            }
+            .sidenav-content {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 45px 10px 10px 10px;
 
-            &__user {
-                text-align: center;
-            }
 
-            &__links {
-                margin-top: 5rem;
-                width: 100%;
+                &__avatar {
+                    margin-top: 30px;
+                }
 
-                &__item {
-                    align-items: center;
-                    display: flex;
+                &__user {
+                    text-align: center;
+                }
 
-                    p {
-                        margin: 0;
+                &__links {
+                    margin-top: 5rem;
+                    width: 100%;
+
+                    &__item {
+                        align-items: center;
+                        display: flex;
+
+                        p {
+                            margin: 0;
+                        }
+
+                        mat-icon {
+                            color: $placeholder-color;
+                            font-size: 20px;
+                        }
                     }
+                }
 
-                    mat-icon {
-                        color: $placeholder-color;
-                        font-size: 20px;
-                    }
+                p {
+                    color: $placeholder-color;
+                    font-weight: 400;
+                    font-size: 14px;
                 }
             }
 
-            p {
-                color: $placeholder-color;
-                font-weight: 400;
-                font-size: 14px;
+            .group-bottom {
+                padding: 10px;
+
+                .sidenav-logoff {
+                    align-items: center;
+                    cursor: pointer;
+                    display: flex;
+                    height: 20px;
+                    justify-content: center;
+
+                    .logoff {
+                        color: $red-color;
+                        font-size: 20px;
+                        margin-top: 2px;
+                    }
+
+                    .text-logoff {
+                        color: $red-color;
+                        font-weight: 400;
+                        font-size: 20px;
+
+                    }
+                }
             }
         }
+
     }
 
     mat-toolbar {
@@ -63,12 +99,54 @@
         margin-left: 3px;
 
 
-        &__content {
+        .mat-toolbar__content {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
             padding: 5px;
+            width: 100%;
 
-            p {
-                color: #292929;
-                font-size: 26px;
+            &__icons {
+                align-items: center;
+                display: flex;
+
+                p {
+                    color: #292929;
+                    font-size: 26px;
+                }
+
+                mat-icon {
+                    color: $placeholder-color;
+                }
+
+                &__group1 {
+                    mat-icon {
+                        margin: 5px;
+                    }
+
+                    align-items: center;
+                    display: flex;
+                    margin-right: 15px;
+                }
+
+                &__group2 {
+                    mat-icon {
+                        margin: 5px;
+                    }
+
+                    align-items: center;
+                    display: flex;
+
+                    .logoff {
+                        color: $red-color;
+                    }
+
+                    .text-logoff {
+                        color: $red-color;
+                        font-weight: 400;
+                        font-size: 16px;
+                    }
+                }
             }
         }
     }

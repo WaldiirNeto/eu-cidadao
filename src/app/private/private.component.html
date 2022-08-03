@@ -1,39 +1,59 @@
 <section class="private-modules">
     <mat-drawer mode="side" opened>
-        <div class="sidenav-content">
-            <img alt="logo" src="assets/images/logo-text.svg">
-            <img class="sidenav-content__avatar" alt="logo" src="assets/images/avatar.svg">
-            <section class="sidenav-content__user">
-                <p> {{(this.user$ | async)?.primeiroNome }}</p>
-                <p>Administrador</p>
-            </section>
-            <section class="sidenav-content__links">
-                <div class="sidenav-content__links__item">
-                    <mat-icon>dashboard</mat-icon>
-                    <p>Dashboard</p>
+        <div class="mat-drawer__content">
+            <div class="sidenav-content">
+                <img alt="logo" src="assets/images/logo-text.svg">
+                <img class="sidenav-content__avatar" alt="logo" src="assets/images/avatar.svg">
+                <section class="sidenav-content__user">
+                    <p> {{(this.user$ | async)?.primeiroNome }}</p>
+                    <p>Administrador</p>
+                </section>
+                <section class="sidenav-content__links">
+                    <div class="sidenav-content__links__item">
+                        <mat-icon>dashboard</mat-icon>
+                        <p>Dashboard</p>
+                    </div>
+                    <hr>
+                    <div class="sidenav-content__links__item">
+                        <mat-icon>edit_document</mat-icon>
+                        <p>Ocorrências</p>
+                    </div>
+                    <hr>
+                    <div class="sidenav-content__links__item">
+                        <mat-icon>summarize</mat-icon>
+                        <p>Relatórios</p>
+                    </div>
+                    <hr>
+                    <div class="sidenav-content__links__item">
+                        <mat-icon>create</mat-icon>
+                        <p>Cadastro</p>
+                    </div>
+                    <hr>
+                </section>
+                <hr>
+            </div>
+            <div class="group-bottom">
+                <div class="sidenav-logoff">
+                    <mat-icon class="logoff">power_settings_new</mat-icon>
+                    <p class="text-logoff">Finalizar sessão</p>
                 </div>
                 <hr>
-                <div class="sidenav-content__links__item">
-                    <mat-icon>edit_document</mat-icon>
-                    <p>Ocorrências</p>
-                </div>
-                <hr>
-                <div class="sidenav-content__links__item">
-                    <mat-icon>summarize</mat-icon>
-                    <p>Relatórios</p>
-                </div>
-                <hr>
-                <div class="sidenav-content__links__item">
-                    <mat-icon>create</mat-icon>
-                    <p>Cadastro</p>
-                </div>
-                <hr>
-            </section>
+            </div>
         </div>
     </mat-drawer>
     <mat-toolbar>
         <div class="mat-toolbar__content">
-            <h1><strong>Prefeitura de {{(this.user$ | async)?.nomeCidade }}</strong></h1>
+            <p><strong>Prefeitura de {{(this.user$ | async)?.nomeCidade }}</strong></p>
+            <div class="mat-toolbar__content__icons">
+                <div class="mat-toolbar__content__icons__group1">
+                    <mat-icon>help_outline</mat-icon>
+                    <mat-icon class="material-icons-outlined">notifications</mat-icon>
+                </div>
+                <div class="mat-toolbar__content__icons__group2">
+                    <mat-icon class="logoff">power_settings_new</mat-icon>
+                    <p class="text-logoff">Finalizar sessão</p>
+                </div>
+            </div>
         </div>
     </mat-toolbar>
 </section>

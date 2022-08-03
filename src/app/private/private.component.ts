@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { UserService } from '@core/user/user.service'
 import { UserModel } from '@shared/models/user.model'
-import { Observable, take } from 'rxjs'
+import { Observable, shareReplay, take } from 'rxjs'
 
 @Component({
   selector: 'app-private',
@@ -14,7 +14,7 @@ export class PrivateComponent implements OnInit {
   constructor(private _userService: UserService) { }
 
   ngOnInit(): void {
-    this.user$ = this._userService.getUser().pipe(take(1))
+    this.user$ = this._userService.getUser().pipe(shareReplay())
   }
 
 }

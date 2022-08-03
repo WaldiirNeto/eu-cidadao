@@ -35,5 +35,8 @@ body {
 .mat-toolbar h5,
 .mat-toolbar h6 {
     font-family: Nunito, Arial, Helvetica, sans-serif;
+}
 
+.mat-drawer-inner-container {
+    height: 100% !important;
 }
