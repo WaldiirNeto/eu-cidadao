@@ -8,6 +8,15 @@ $red-color: #FF0000;
     flex-direction: row;
     height: 100%;
 
+
+    hr {
+        margin-top: 2px;
+    }
+
+    p {
+        margin: 0;
+    }
+
     mat-drawer {
         background: $color-white;
         box-shadow: 0px 1px 1px rgba(21, 21, 24, 0.18),
@@ -77,7 +86,6 @@ $red-color: #FF0000;
                     .logoff {
                         color: $red-color;
                         font-size: 20px;
-                        margin-top: 2px;
                     }
 
                     .text-logoff {
@@ -92,59 +100,66 @@ $red-color: #FF0000;
 
     }
 
-    mat-toolbar {
-        background: #FEFEFE;
-        box-shadow: 0px 1px 1px rgba(21, 21, 24, 0.18), 0px 0px 1px rgba(25, 25, 28, 0.25);
-        border-radius: 4px;
-        margin-left: 3px;
+    &__content {
+        width: 100%;
 
+        &__margin {
+            padding-left: 10px;
+            padding-top: 10px;
+        }
 
-        .mat-toolbar__content {
-            align-items: center;
-            display: flex;
-            justify-content: space-between;
-            padding: 5px;
-            width: 100%;
+        mat-toolbar {
+            background: $backgroud-toolbar;
+            box-shadow: 0px 1px 1px rgba(21, 21, 24, 0.18), 0px 0px 1px rgba(25, 25, 28, 0.25);
+            border-radius: 4px;
 
-            &__icons {
+            .mat-toolbar__content {
                 align-items: center;
                 display: flex;
+                justify-content: space-between;
+                padding: 5px;
+                width: 100%;
 
-                p {
-                    color: #292929;
-                    font-size: 26px;
-                }
-
-                mat-icon {
-                    color: $placeholder-color;
-                }
-
-                &__group1 {
-                    mat-icon {
-                        margin: 5px;
-                    }
-
-                    align-items: center;
-                    display: flex;
-                    margin-right: 15px;
-                }
-
-                &__group2 {
-                    mat-icon {
-                        margin: 5px;
-                    }
-
+                &__icons {
                     align-items: center;
                     display: flex;
 
-                    .logoff {
-                        color: $red-color;
+                    p {
+                        color: $mat-label-color;
+                        font-size: 26px;
                     }
 
-                    .text-logoff {
-                        color: $red-color;
-                        font-weight: 400;
-                        font-size: 16px;
+                    mat-icon {
+                        color: $placeholder-color;
+                    }
+
+                    &__group1 {
+                        mat-icon {
+                            margin: 5px;
+                        }
+
+                        align-items: center;
+                        display: flex;
+                        margin-right: 15px;
+                    }
+
+                    &__group2 {
+                        mat-icon {
+                            margin: 5px;
+                        }
+
+                        align-items: center;
+                        display: flex;
+
+                        .logoff {
+                            color: $red-color;
+                        }
+
+                        .text-logoff {
+                            color: $red-color;
+                            font-weight: 400;
+                            font-size: 16px;
+                        }
                     }
                 }
             }

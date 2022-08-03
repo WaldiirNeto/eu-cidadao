@@ -1,0 +1,41 @@
+<section class="container-fluid">
+    <app-category-list-box></app-category-list-box>
+    <div class="geral">
+        <h3 class="geral__title">Geral</h3>
+        <app-box>
+            <p class="geral__title d-flex justify-content-center">Controle de ocorrência mensal</p>
+            <div class="row col-12">
+                <div class="col-3">
+                    <div class="col">
+                        <p class="sub-title">Quantidade de ocorrências</p>
+                        <div class="qtd-ocorrencias d-flex justify-content-center"><span>240</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="sub-title">Quantidade resolvidas</p>
+                        <div class="qtd-ocorrencias-resolvidas d-flex justify-content-center"><span>240</span>
+                        </div>
+                    </div>
+                    <div class="col top-margin">
+                        <p class="sub-title">Percentual resolvidas</p>
+                        <div class="qtd-percentual-resolvidas d-flex justify-content-center"><span>100%</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <p class="sub-title">Percentual resolvidas</p>
+                        <div class="qtd-percentual-pendentes d-flex justify-content-center"><span>0%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <canvas baseChart [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins"
+                        [legend]="barChartLegend" [type]="'bar'">
+                    </canvas>
+
+                </div>
+
+            </div>
+        </app-box>
+    </div>
+</section>

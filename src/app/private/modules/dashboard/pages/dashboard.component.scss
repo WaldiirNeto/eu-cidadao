@@ -1,0 +1,58 @@
+// @import "~src/styles/_variables.scss";
+
+@mixin div-qtd($color, $font-color) {
+    width: 289px;
+    height: 48px;
+    left: 0px;
+    top: 27px;
+    background: $color;
+    border-radius: 8px;
+
+    span {
+        font-weight: 700;
+        font-size: 22px;
+        color: $font-color;
+        margin-top: 8px;
+    }
+}
+
+.geral {
+    .geral__title {
+        font-weight: 700;
+        font-size: 22px;
+    }
+
+    .sub-title {
+        font-weight: 700;
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .align-items {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .top-margin {
+        margin-top: 100px;
+    }
+
+    .qtd-ocorrencias {
+        @include div-qtd(#D6E7FF, #000)
+    }
+
+    .qtd-ocorrencias-resolvidas {
+        @include div-qtd(#00327A, #fff)
+    }
+
+    .qtd-percentual-resolvidas {
+        @include div-qtd(#1474FF, #000)
+    }
+
+    .qtd-percentual-pendentes {
+        @include div-qtd(#FDBF76, #000)
+    }
+}
