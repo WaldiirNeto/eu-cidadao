@@ -1,3 +1,5 @@
+@import "~src/styles/_variables.scss";
+
 .pg-login {
     align-items: center;
     display: flex;
@@ -29,7 +31,7 @@
     }
 
     &__error {
-        color: #BC1C1C;
+        color: $text-error;
         font-weight: 600;
         font-size: 14px;
     }

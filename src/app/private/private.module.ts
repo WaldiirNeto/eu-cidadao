@@ -1,8 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { MatIconModule } from '@angular/material/icon'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatSidenavModule } from '@angular/material/sidenav'
 
-import { PrivateRoutingModule } from './private-routing.module';
-import { PrivateComponent } from './private.component';
+import { PrivateRoutingModule } from './private-routing.module'
+import { PrivateComponent } from './private.component'
 
 
 @NgModule({
@@ -11,7 +14,11 @@ import { PrivateComponent } from './private.component';
   ],
   imports: [
     CommonModule,
-    PrivateRoutingModule
+    MatIconModule,
+    MatToolbarModule,
+    PrivateRoutingModule,
+    MatSidenavModule
+
   ]
 })
 export class PrivateModule { }
