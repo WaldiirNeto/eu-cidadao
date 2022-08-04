@@ -4,6 +4,7 @@ import { MatTableModule } from '@angular/material/table'
 import { MatIconModule } from '@angular/material/icon'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatDialogModule } from '@angular/material/dialog'
 
 import { BoxComponent } from '@shared/components/box/box.component'
 import { MatFormFieldComponent } from '@shared/components/input-form/mat-form-field.component'
@@ -26,7 +27,8 @@ import { EmployeesComponent } from './pages/employees.component'
     MatIconModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [EmployeesService]
 })
