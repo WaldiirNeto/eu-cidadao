@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { UserService } from '@core/user/user.service'
 import { UserModel } from '@shared/models/user.model'
-import { Observable, shareReplay, take } from 'rxjs'
+import { Observable, shareReplay } from 'rxjs'
 
 @Component({
   selector: 'app-private',
