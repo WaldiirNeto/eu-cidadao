@@ -6,12 +6,16 @@ import { DashboardRoutingModule } from './dashboard-routing.module'
 import { DashboardComponent } from './pages/dashboard.component'
 import { BoxComponent } from '@shared/components/box/box.component'
 import { CategoryListBoxComponent } from './components/category-list-box/category-list-box.component'
+import { LineChartComponent } from './components/line-chart/line-chart.component'
+import { BarChartComponent } from './components/bar-chart/bar-chart.component'
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CategoryListBoxComponent,
+    LineChartComponent,
+    BarChartComponent,
   ],
   imports: [
     CommonModule,

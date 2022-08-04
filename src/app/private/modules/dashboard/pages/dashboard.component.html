@@ -3,7 +3,6 @@
     <div class="geral">
         <h3 class="geral__title">Geral</h3>
         <app-box>
-            <p class="geral__title d-flex justify-content-center">Controle de ocorrência mensal</p>
             <div class="row col-12">
                 <div class="col-3">
                     <div class="col">
@@ -29,10 +28,8 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <canvas baseChart [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins"
-                        [legend]="barChartLegend" [type]="'bar'">
-                    </canvas>
-
+                    <app-bar-chart></app-bar-chart>
+                    <app-line-chart></app-line-chart>
                 </div>
 
             </div>
