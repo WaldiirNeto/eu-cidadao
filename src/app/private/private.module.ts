@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 import { MatIconModule } from '@angular/material/icon'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatSidenavModule } from '@angular/material/sidenav'
-
+import { MatExpansionModule } from '@angular/material/expansion'
 import { PrivateRoutingModule } from './private-routing.module'
 import { PrivateComponent } from './private.component'
 
@@ -17,7 +17,8 @@ import { PrivateComponent } from './private.component'
     MatIconModule,
     MatToolbarModule,
     PrivateRoutingModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatExpansionModule
   ]
 })
 export class PrivateModule { }

@@ -13,7 +13,7 @@ npm install -g @angular/cli@latest
 
 ## Instalando dependências do projeto
 
-Entre na pasta `pwa` e digite o seguinte comando
+Entre na pasta `EUCIDADAOFRONTEND` e digite o seguinte comando
 
 ```bash
 npm install
@@ -295,13 +295,13 @@ section
 :heavy_check_mark: BOM
 
 ```javascript
-console.log('test')
+console.log("test");
 ```
 
 :x: RUIM
 
 ```javascript
-console.log('test')
+console.log("test");
 ```
 
 ## 3.1 Sempre usar aspas simples
@@ -309,13 +309,13 @@ console.log('test')
 :heavy_check_mark: BOM
 
 ```javascript
-const project = 'ASUS'
+const project = "ASUS";
 ```
 
 :x: RUIM
 
 ```javascript
-const project = 'ASUS'
+const project = "ASUS";
 ```
 
 ## 3.2 Faça comparações rigorosas
@@ -323,16 +323,16 @@ const project = 'ASUS'
 :heavy_check_mark: BOM
 
 ```javascript
-if (string === 'string') {
-  statement
+if (string === "string") {
+  statement;
 }
 ```
 
 :x: RUIM
 
 ```javascript
-if (string == 'string') {
-  statement
+if (string == "string") {
+  statement;
 }
 ```
 
@@ -341,13 +341,13 @@ if (string == 'string') {
 :heavy_check_mark: BOM
 
 ```javascript
-const userList = ['user1', 'user2']
+const userList = ["user1", "user2"];
 ```
 
 :x: RUIM
 
 ```javascript
-const lista = ['user1', 'user2']
+const lista = ["user1", "user2"];
 ```
 
 ## 3.4 variáveis para validações
@@ -355,9 +355,9 @@ const lista = ['user1', 'user2']
 :heavy_check_mark: BOM
 
 ```javascript
-const checkUserActive = user.isActive && user.isLogged
+const checkUserActive = user.isActive && user.isLogged;
 if (checkUserActive) {
-  statement
+  statement;
 }
 ```
 
@@ -365,7 +365,7 @@ if (checkUserActive) {
 
 ```javascript
 if (user.isActive && user.isLogged) {
-  statement
+  statement;
 }
 ```
 

@@ -40,3 +40,14 @@ body {
 .mat-drawer-inner-container {
     height: 100% !important;
 }
+
+table {
+    width: 100%;
+
+    .mat-header-cell {
+        background-color: #F4F5F7;
+        color: $color-black;
+        font-weight: 700;
+        font-size: 14px;
+    }
+}

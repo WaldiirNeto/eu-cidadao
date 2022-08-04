@@ -1,0 +1,46 @@
+@import '~src/styles/_variables.scss';
+
+.container-fluid {
+    app-box {
+        h1 {
+            color: $mat-label-color;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .label-info {
+            align-items: center;
+            display: flex;
+
+            .remove-margin-p {
+                margin: 0;
+                margin-right: 100px;
+            }
+
+            mat-icon {
+                color: $placeholder-color;
+                margin-right: 5px;
+            }
+
+            .label-icon {
+                margin: 0;
+                margin-right: 5px;
+            }
+        }
+
+        .input-form {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+
+            .form {
+                width: 614px;
+            }
+
+            mat-icon {
+                color: $primary;
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -9,34 +9,49 @@
                     <p>Administrador</p>
                 </section>
                 <section class="sidenav-content__links">
-                    <div class="sidenav-content__links__item">
+                    <div class="sidenav-content__links__item link">
                         <mat-icon>dashboard</mat-icon>
                         <p>Dashboard</p>
                     </div>
                     <hr>
-                    <div class="sidenav-content__links__item">
-                        <mat-icon>edit_document</mat-icon>
-                        <p>Ocorrências</p>
-                    </div>
+                    <mat-accordion>
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title class="sidenav-content__links__item">
+                                    <mat-icon>edit_document</mat-icon>Ocorrências
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="sidenav-content__links__item__sub-links">Em tratamento</div>
+                            <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px;">
+                                <p>Pendentes</p>
+                            </div>
+                            <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px;">
+                                <p>Recusadas</p>
+                            </div>
+                            <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px;">
+                                <p>Resolvidas</p>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
                     <hr>
-                    <div class="sidenav-content__links__item">
+                    <div class="sidenav-content__links__item link">
                         <mat-icon>summarize</mat-icon>
                         <p>Relatórios</p>
                     </div>
                     <hr>
-                    <div class="sidenav-content__links__item">
-                        <mat-icon>create</mat-icon>
-                        <p>Cadastro</p>
-                    </div>
+                    <mat-accordion>
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title class="sidenav-content__links__item">
+                                    <mat-icon>account_circle</mat-icon>Usuários
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="sidenav-content__links__item__sub-links" [routerLink]="['/users']"
+                                routerLinkActive="router-link-active">Lista de Usuários</div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
                     <hr>
                 </section>
-                <hr>
-            </div>
-            <div class="group-bottom">
-                <div class="sidenav-logoff">
-                    <mat-icon class="logoff">power_settings_new</mat-icon>
-                    <p class="text-logoff">Finalizar sessão</p>
-                </div>
                 <hr>
             </div>
         </div>

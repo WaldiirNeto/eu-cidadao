@@ -1,0 +1,26 @@
+<section class="container-fluid">
+    <app-box>
+        <h1>Usuários</h1>
+
+        <div class="col-12">
+            <div class="d-flex flex-row-reverse">
+                <div class="label-info">
+                    <p class="remove-margin-p">0 itens selecionados</p>
+                    <mat-icon>picture_as_pdf</mat-icon>
+                    <p class="label-icon">Gerar PDF</p>
+                    <mat-icon>description</mat-icon>
+                    <p class="label-icon">Gerar Relatório</p>
+                </div>
+            </div>
+            <div class="input-form">
+                <form [formGroup]="this.formFilter" class="form">
+                    <app-input-form controlName="user" placeholder="Pesquise por usuário" label="Pesquisar usuário"
+                        icon="search">
+                    </app-input-form>
+                </form>
+                <mat-icon>person_add</mat-icon>
+            </div>
+            <app-table-users></app-table-users>
+        </div>
+    </app-box>
+</section>

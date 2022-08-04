@@ -1,7 +1,6 @@
 import { Route, Routes } from '@angular/router'
 import { AuthGuard } from '@core/auth/auth.guard'
 import { PrivateComponent } from 'src/app/private/private.component'
-import { ShellComponent } from '../../shell/shell.component'
 
 export class Shell {
 

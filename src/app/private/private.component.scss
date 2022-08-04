@@ -1,7 +1,5 @@
 @import "~src/styles/_variables.scss";
 
-$red-color: #FF0000;
-
 .private-modules {
     align-items: flex-start;
     display: flex;
@@ -53,6 +51,11 @@ $red-color: #FF0000;
                     margin-top: 5rem;
                     width: 100%;
 
+                    .link {
+                        margin-left: 24px;
+                        margin-bottom: 18px;
+                    }
+
                     &__item {
                         align-items: center;
                         display: flex;
@@ -65,13 +68,22 @@ $red-color: #FF0000;
                             color: $placeholder-color;
                             font-size: 20px;
                         }
+
+                        &__sub-links {
+                            background: #E0E0E0;
+                            border-radius: 8px;
+                            height: 42px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                        }
                     }
                 }
 
                 p {
                     color: $placeholder-color;
                     font-weight: 400;
-                    font-size: 14px;
                 }
             }
 
@@ -170,4 +182,8 @@ $red-color: #FF0000;
         }
     }
 
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none !important;
 }
