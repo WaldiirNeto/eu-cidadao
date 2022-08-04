@@ -1,38 +1,24 @@
 <section class="container-fluid">
     <app-category-list-box></app-category-list-box>
     <div class="geral">
-        <h3 class="geral__title">Geral</h3>
+        <p class="geral__title">Geral</p>
         <app-box>
             <div class="row col-12">
                 <div class="col-3">
-                    <div class="col">
-                        <p class="sub-title">Quantidade de ocorrências</p>
-                        <div class="qtd-ocorrencias d-flex justify-content-center"><span>240</span>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <p class="sub-title">Quantidade resolvidas</p>
-                        <div class="qtd-ocorrencias-resolvidas d-flex justify-content-center"><span>240</span>
-                        </div>
-                    </div>
-                    <div class="col top-margin">
-                        <p class="sub-title">Percentual resolvidas</p>
-                        <div class="qtd-percentual-resolvidas d-flex justify-content-center"><span>100%</span>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <p class="sub-title">Percentual resolvidas</p>
-                        <div class="qtd-percentual-pendentes d-flex justify-content-center"><span>0%</span>
-                        </div>
-                    </div>
+                    <app-statics-ocorrencias></app-statics-ocorrencias>
                 </div>
                 <div class="col-6">
                     <app-bar-chart></app-bar-chart>
                     <app-line-chart></app-line-chart>
                 </div>
-
             </div>
         </app-box>
+    </div>
+
+    <div class="ocorrencias-recentes">
+        <p class="ocorrencias-recentes__title">Ocorrências recentes</p>
+        <div class="box-margin">
+            <app-box-ocorrencias-recentes></app-box-ocorrencias-recentes>
+        </div>
     </div>
 </section>

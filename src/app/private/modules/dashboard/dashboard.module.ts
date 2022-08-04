@@ -7,7 +7,9 @@ import { DashboardComponent } from './pages/dashboard.component'
 import { BoxComponent } from '@shared/components/box/box.component'
 import { CategoryListBoxComponent } from './components/category-list-box/category-list-box.component'
 import { LineChartComponent } from './components/line-chart/line-chart.component'
-import { BarChartComponent } from './components/bar-chart/bar-chart.component'
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { StaticsOcorrenciasComponent } from './components/statics-ocorrencias/statics-ocorrencias.component';
+import { BoxOcorrenciasRecentesComponent } from './components/box-ocorrencias-recentes/box-ocorrencias-recentes.component'
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component'
     CategoryListBoxComponent,
     LineChartComponent,
     BarChartComponent,
+    StaticsOcorrenciasComponent,
+    BoxOcorrenciasRecentesComponent,
   ],
   imports: [
     CommonModule,
