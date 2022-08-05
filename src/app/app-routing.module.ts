@@ -19,7 +19,8 @@ const routes: Routes = [
       path: '',
       loadChildren: () => import('./private/private.module').then(m => m.PrivateModule)
     }
-  ])
+  ]),
+  { path: '**', loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundModule) }
 ]
 
 @NgModule({
