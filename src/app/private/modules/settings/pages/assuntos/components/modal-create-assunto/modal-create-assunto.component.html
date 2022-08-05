@@ -42,15 +42,18 @@
                                 </div>
                                 <mat-icon (click)="this.populateListLeft()">add</mat-icon>
                             </div>
-                            <div class="flex" cdkDropList [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)">
-                                <div class="combo-categoria" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                            <div class="flex" cdkDropList [cdkDropListData]="this.listLeft"
+                                (cdkDropListDropped)="drop($event)">
+                                <div class="combo-categoria" *ngFor="let item of this.listLeft" cdkDrag>
+                                    {{item}}<mat-icon (click)="this.removeItemList(item, 'left')">cancel</mat-icon>
+                                </div>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="dropped flex" cdkDropList [cdkDropListData]="done"
+                            <div class="dropped flex" cdkDropList [cdkDropListData]="this.listRight"
                                 (cdkDropListDropped)="drop($event)">
-                                <div class="combo-categoria-left" *ngFor="let item of done" cdkDrag>{{item}}
-                                    <mat-icon (click)="this.removeItemListRight(item)">cancel</mat-icon>
+                                <div class="combo-categoria" *ngFor="let item of this.listRight" cdkDrag>{{item}}
+                                    <mat-icon (click)="this.removeItemList(item, 'right')">cancel</mat-icon>
                                 </div>
                             </div>
                         </div>

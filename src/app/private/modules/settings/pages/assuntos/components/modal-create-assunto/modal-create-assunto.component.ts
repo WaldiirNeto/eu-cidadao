@@ -11,9 +11,9 @@ import { FormAssuntoModel } from '../../model/form-assunto.model'
 })
 export class ModalCreateAssuntoComponent extends FormAssuntoModel implements OnInit {
   protected loading: boolean
-  todo: Array<string> = []
+  listLeft: Array<string> = []
 
-  done: Array<string> = ['teste'];
+  listRight: Array<string> = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) public assunto: Assunto) {
     super()
@@ -25,13 +25,18 @@ export class ModalCreateAssuntoComponent extends FormAssuntoModel implements OnI
 
   public populateListLeft(): void {
     const categoria = this.form.controls.categorias.value as string
-    this.todo.push(categoria)
+    this.listLeft.push(categoria)
   }
 
-  public removeItemListRight(item: string): void {
-    this.todo.push(item)
-    this.done = this.done.filter(categoria => categoria !== item)
+  public removeItemList(item: string, type: string): void {
+    if (type === 'right') {
+      this.listLeft.push(item)
+      this.listRight = this.listRight.filter(categoria => categoria !== item)
+    } else {
+      this.listLeft = this.listLeft.filter(categoria => categoria !== item)
+    }
   }
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)

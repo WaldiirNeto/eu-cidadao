@@ -46,16 +46,30 @@
 
 
             .combo-categoria {
+                align-items: center;
+                display: flex;
                 background: #FFFFFF;
                 border-width: 1px 1px 1px 6px;
                 border-style: solid;
                 border-color: #1653FD;
                 border-radius: 4px;
+                cursor: grab;
+                flex-direction: row;
                 height: 31px;
+                justify-content: center;
                 margin-right: 5px;
                 padding: 4px;
                 width: 101px;
-                cursor: grab;
+
+
+                mat-icon {
+                    color: $primary;
+                    cursor: pointer;
+                    transform: translateY(-50%);
+                    position: absolute;
+                    margin-left: 90px;
+                    margin-top: -3px;
+                }
 
             }
 

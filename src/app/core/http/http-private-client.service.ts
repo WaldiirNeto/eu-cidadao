@@ -12,7 +12,7 @@ export class HttpPrivateClientService {
   }
 
   public get<T>(url: string): Observable<T> {
-
+    console.log(this.token)
     return this._http.get<T>(url, { headers: { 'Authorization': `Bearer ${this.token}` } })
   }
 }
