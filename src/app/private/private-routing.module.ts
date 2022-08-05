@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'users', loadChildren: () => import('./modules/employees/employees.module').then(m => m.EmployeesModule) },
   {
     path: 'settings', loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule)
-  }
+  },
+  { path: 'relatorios', loadChildren: () => import('./modules/relatorios/relatorios.module').then(m => m.RelatoriosModule) }
 ]
 @NgModule({
   imports: [RouterModule.forChild(routes)],
