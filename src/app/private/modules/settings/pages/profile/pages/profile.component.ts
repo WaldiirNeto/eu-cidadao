@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { UserService } from '@core/user/user.service'
 import { UserModel } from '@shared/models/user.model'
 import { Subject, takeUntil } from 'rxjs'
-import { FormProfileModel } from '../../models/profile-form.model'
+import { FormProfileModel } from '../models/profile-form.model'
 
 @Component({
   selector: 'app-profile',
