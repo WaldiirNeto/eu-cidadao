@@ -10,4 +10,8 @@ export class TokenService {
   get token(): string {
     return this._token
   }
+
+  getUserLocal() {
+    console.log(jwt_decode(this._token))
+  }
 }

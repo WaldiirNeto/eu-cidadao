@@ -1,1 +1,65 @@
-<p>profile works!</p>
+<section class="container-fluid">
+    <app-box>
+        <h1>Meu Perfil</h1>
+        <div class="profile-photo">
+            <img src="assets/images/avatar.svg">
+            <div class="profile-photo__action">
+                <p class="margin-p">Escolha uma foto para seu perfil</p>
+                <p class="large-info">Tamanho máximo 1MB</p>
+                <button class="button-upload">Escolher uma foto</button>
+            </div>
+        </div>
+        <form [formGroup]="this.form">
+            <div class="d-flex">
+                <div style="margin-right: 10px; width: 300px;">
+                    <app-input-form controlName="nomeCompleto" placeholder="Digite o nome completo"
+                        label="Nome completo">
+                    </app-input-form>
+                </div>
+                <div style="width: 300px;">
+                    <app-input-form controlName="cpf" placeholder="CPF" label="CPF"></app-input-form>
+                </div>
+            </div>
+
+            <div class="d-flex">
+                <div style="margin-right: 10px; width: 300px;">
+                    <app-input-form class="margin: 10px" controlName="dataNascimento" placeholder="Data de nascimento"
+                        label="Data de nascimento">
+                    </app-input-form>
+                </div>
+                <div style="width: 300px;">
+                    <app-input-form controlName="email" placeholder="Digite seu E-mail" label="E-mail"></app-input-form>
+                </div>
+            </div>
+            <div class="col-2" style="width: 300px;">
+                <app-input-form controlName="celular" placeholder="(00) 00000-0000" label="Digite seu celular">
+                </app-input-form>
+            </div>
+            <div class="col-2">
+                <h1>Configurações da senha</h1>
+                <app-input-form controlName="senhaAtual" placeholder="digite sua senha" label="Senha atual">
+                </app-input-form>
+                <app-input-form controlName="novaSenha" placeholder="digite a nova senha" label="Nova senha">
+                </app-input-form>
+            </div>
+            <div class="info-senha">
+                <p class="senha-label-info">A senha deve conter, no mínimo:</p>
+                <p class="senha-label-info">1 letra minúscula</p>
+                <p class="senha-label-info">8 caracteres</p>
+                <p class="senha-letra-maiuscula">
+                    <mat-icon>check</mat-icon><span>1 maiúscula</span>
+                </p>
+                <p class="senha-erro">
+                    <mat-icon>close</mat-icon>1 número
+                </p>
+                <p class="senha-erro">
+                    <mat-icon>close</mat-icon>1 caractere especial (ex:#!*_&)
+                </p>
+            </div>
+            <div class="d-flex" style=" margin-top: 20px;">
+                <app-submit-button [disabled]="this.form.invalid">Salvar Alterações</app-submit-button>
+            </div>
+
+        </form>
+    </app-box>
+</section>
