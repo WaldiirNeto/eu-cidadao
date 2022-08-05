@@ -12,12 +12,15 @@ import { TableEmployeesComponent } from './components/table-users/table-employee
 import { EmployeesService } from './services/employees.service'
 import { EmployeesRoutingModule } from './employees.routing.module'
 import { EmployeesComponent } from './pages/employees.component'
+import { ModalCreateEmployeesComponent } from './components/modal-create-employees/modal-create-employees.component'
+import { SubmitButtonComponent } from '@shared/components/submit-button/submit-button.component'
 
 
 @NgModule({
   declarations: [
     EmployeesComponent,
-    TableEmployeesComponent
+    TableEmployeesComponent,
+    ModalCreateEmployeesComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,8 @@ import { EmployeesComponent } from './pages/employees.component'
     ReactiveFormsModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    SubmitButtonComponent
   ],
   providers: [EmployeesService]
 })

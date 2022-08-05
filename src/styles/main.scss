@@ -25,29 +25,39 @@ body {
     .mat-button-wrapper {
         color: $color-white;
     }
-}
 
-.mat-toolbar,
-.mat-toolbar h1,
-.mat-toolbar h2,
-.mat-toolbar h3,
-.mat-toolbar h4,
-.mat-toolbar h5,
-.mat-toolbar h6 {
-    font-family: Nunito, Arial, Helvetica, sans-serif;
-}
 
-.mat-drawer-inner-container {
-    height: 100% !important;
-}
+    .mat-toolbar,
+    .mat-toolbar h1,
+    .mat-toolbar h2,
+    .mat-toolbar h3,
+    .mat-toolbar h4,
+    .mat-toolbar h5,
+    .mat-toolbar h6 {
+        font-family: Nunito, Arial, Helvetica, sans-serif;
+    }
 
-table {
-    width: 100%;
+    .mat-drawer-inner-container {
+        height: 100% !important;
+    }
 
-    .mat-header-cell {
-        background-color: #F4F5F7;
-        color: $color-black;
-        font-weight: 700;
-        font-size: 14px;
+    table {
+        width: 100%;
+
+        .mat-header-cell {
+            background-color: #F4F5F7;
+            color: $color-black;
+            font-weight: 700;
+            font-size: 14px;
+        }
+    }
+
+    .button-cancel {
+        background: #FFFFFF;
+        border: 1px solid #000000;
+        border-radius: 8px;
+        width: 150px;
+        height: 44px;
+        margin-right: 10px;
     }
 }

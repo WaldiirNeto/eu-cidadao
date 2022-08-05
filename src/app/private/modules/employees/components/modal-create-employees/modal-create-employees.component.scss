@@ -1,7 +1,16 @@
 @import '~src/styles/_variables.scss';
 
-h1 {
-    font-weight: 700;
-    font-size: 22px;
-    color: $mat-label-color;
+.modal-create-employees {
+    h1 {
+        font-weight: 700;
+        font-size: 22px;
+        color: $mat-label-color;
+    }
+
+    form {
+        .input-margin {
+            margin-right: 10px;
+            width: 310px;
+        }
+    }
 }

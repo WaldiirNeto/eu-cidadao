@@ -10,7 +10,8 @@ import { ModalCreateEmployeesComponent } from '../components/modal-create-employ
 })
 export class EmployeesComponent implements OnInit {
 
-  constructor(public _dialog: MatDialog) { }
+  constructor(public _dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
   }
@@ -22,7 +23,6 @@ export class EmployeesComponent implements OnInit {
 
   openDialog(): void {
     this._dialog.open(ModalCreateEmployeesComponent, {
-      width: '250px',
       enterAnimationDuration: `1000ms`,
       exitAnimationDuration: `500ms`
     })
