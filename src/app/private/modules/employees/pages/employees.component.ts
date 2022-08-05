@@ -10,7 +10,7 @@ import { ModalCreateEmployeesComponent } from '../components/modal-create-employ
 })
 export class EmployeesComponent implements OnInit {
 
-  constructor(public _dialog: MatDialog) {
+  constructor(private _dialog: MatDialog) {
   }
 
   ngOnInit(): void {

@@ -8,19 +8,21 @@ import { MatDialogModule } from '@angular/material/dialog'
 
 import { BoxComponent } from '@shared/components/box/box.component'
 import { MatFormFieldComponent } from '@shared/components/input-form/mat-form-field.component'
-import { TableEmployeesComponent } from './components/table-users/table-employees.component'
+import { TableEmployeesComponent } from './components/table-employees/table-employees.component'
 import { EmployeesService } from './services/employees.service'
 import { EmployeesRoutingModule } from './employees.routing.module'
 import { EmployeesComponent } from './pages/employees.component'
 import { ModalCreateEmployeesComponent } from './components/modal-create-employees/modal-create-employees.component'
 import { SubmitButtonComponent } from '@shared/components/submit-button/submit-button.component'
+import { ModalDeleteEmployeeComponent } from './components/modal-delete-employee/modal-delete-employee.component'
 
 
 @NgModule({
   declarations: [
     EmployeesComponent,
     TableEmployeesComponent,
-    ModalCreateEmployeesComponent
+    ModalCreateEmployeesComponent,
+    ModalDeleteEmployeeComponent
   ],
   imports: [
     CommonModule,

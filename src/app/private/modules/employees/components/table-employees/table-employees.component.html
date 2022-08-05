@@ -31,8 +31,8 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>Ações </th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-icon class="icon-edit">edit</mat-icon>
-                    <mat-icon class="icon-delete">delete_forever</mat-icon>
+                    <mat-icon class="icon-edit" (click)="this.openModalEdit(element)">edit</mat-icon>
+                    <mat-icon class="icon-delete" (click)="this.openModalDelete(element)">delete_forever</mat-icon>
 
                 </td>
             </ng-container>

@@ -1,0 +1,9 @@
+@import '~src/styles/_variables.scss';
+
+.modal-delete-employees {
+    h1 {
+        font-weight: 700;
+        font-size: 22px;
+        color: $mat-label-color;
+    }
+}

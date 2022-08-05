@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Inject, OnInit } from '@angular/core'
+import { MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { EmployeesModel } from '../../models/employees.model'
 import { FormEmployeesModel } from '../../models/form-employees.model'
 
 @Component({
@@ -9,11 +11,12 @@ import { FormEmployeesModel } from '../../models/form-employees.model'
 export class ModalCreateEmployeesComponent extends FormEmployeesModel implements OnInit {
 
   protected loading: boolean
-  constructor() {
+  constructor(@Inject(MAT_DIALOG_DATA) public employee: EmployeesModel) {
     super()
   }
-
   ngOnInit(): void {
+    this.form.patchValue(this.employee)
   }
+
 
 }
