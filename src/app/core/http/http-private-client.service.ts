@@ -7,13 +7,12 @@ import { Observable } from 'rxjs'
   providedIn: 'root'
 })
 export class HttpPrivateClientService {
-  private token: string
+  private token = localStorage.getItem('token')
   constructor(private _http: HttpClient, private _tokenService: TokenService) {
-    this.token = this._tokenService.token
   }
 
   public get<T>(url: string): Observable<T> {
-    console.log(this.token)
+
     return this._http.get<T>(url, { headers: { 'Authorization': `Bearer ${this.token}` } })
   }
 }

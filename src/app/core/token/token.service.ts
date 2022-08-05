@@ -6,11 +6,6 @@ import jwt_decode from 'jwt-decode'
 export class TokenService {
 
   private _token = localStorage.getItem('token') as string
-
-  get token(): string {
-    return this._token
-  }
-
   getUserLocal() {
     console.log(jwt_decode(this._token))
   }
