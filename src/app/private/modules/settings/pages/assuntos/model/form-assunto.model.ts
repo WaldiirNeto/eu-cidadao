@@ -22,7 +22,7 @@ export class FormAssuntoModel {
             email: new FormControl('', [Validators.required, Validators.email]),
             telefone: new FormControl('', [Validators.required]),
             imagem: new FormControl('', [Validators.required]),
-            categorias: new FormControl('', [Validators.required]),
+            categorias: new FormControl('', []),
 
         })
     }

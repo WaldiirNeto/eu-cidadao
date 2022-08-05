@@ -14,7 +14,7 @@ import { ModalDeleteAssuntoComponent } from './components/modal-delete-assunto/m
 import { MatTableModule } from '@angular/material/table'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatDialogModule } from '@angular/material/dialog'
-
+import { DragDropModule } from '@angular/cdk/drag-drop'
 
 @NgModule({
   declarations: [
@@ -33,7 +33,9 @@ import { MatDialogModule } from '@angular/material/dialog'
     ReactiveFormsModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    DragDropModule
+
   ]
 })
 export class AssuntosModule { }
