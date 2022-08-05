@@ -76,19 +76,19 @@ export class TableAssuntosComponent implements OnInit {
     ]
   }
 
-  public openModalEdit(employee: Assunto): void {
+  public openModalEdit(assunto: Assunto): void {
     this._dialog.open(ModalCreateAssuntoComponent, {
       enterAnimationDuration: `1000ms`,
       exitAnimationDuration: `500ms`,
-      data: employee
+      data: assunto
     })
   }
 
-  public openModalDelete(employee: Assunto): void {
+  public openModalDelete(assunto: Assunto): void {
     this._dialog.open(ModalDeleteAssuntoComponent, {
       enterAnimationDuration: `1000ms`,
       exitAnimationDuration: `500ms`,
-      data: employee
+      data: assunto
     })
   }
 }

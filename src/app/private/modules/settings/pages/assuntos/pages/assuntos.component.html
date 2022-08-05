@@ -14,11 +14,11 @@
             </div>
             <div class="input-form">
                 <form [formGroup]="this.formFilter" class="form">
-                    <app-input-form controlName="assunto" placeholder="Pesquise por assunto" label="Pesquisar usuário"
+                    <app-input-form controlName="assunto" placeholder="Pesquise por assunto" label="Pesquisar assunto"
                         icon="search">
                     </app-input-form>
                 </form>
-                <mat-icon (click)="this.openDialog()">person_add</mat-icon>
+                <mat-icon (click)="this.openDialog()">add_circle_outline</mat-icon>
             </div>
             <app-table-assuntos></app-table-assuntos>
         </div>

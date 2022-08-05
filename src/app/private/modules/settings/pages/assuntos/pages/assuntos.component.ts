@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { ModalCreateAssuntoComponent } from '../components/modal-create-assunto/modal-create-assunto.component'
+import { Assunto } from '../model/assunto.model'
 
 @Component({
   selector: 'app-assuntos',

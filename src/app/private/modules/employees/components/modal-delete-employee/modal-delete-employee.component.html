@@ -1,8 +1,12 @@
 <section class="modal-delete-employees">
     <h1 mat-dialog-title>Desativar usuário</h1>
-    <div mat-dialog-content>
+    <div mat-dialog-content style="height: 100px; overflow: hidden;">
         <p>Deseja realmente remover o usuário <strong>{{this.employee.nome}}</strong> ?</p>
-        <app-submit-button [loading]="this.loading">Desativar Usuário
-        </app-submit-button>
+
+        <mat-dialog-actions align="end">
+            <button mat-dialog-close class="button-cancel">Cancelar</button>
+            <app-submit-button [loading]="this.loading">Desativar Usuário
+            </app-submit-button>
+        </mat-dialog-actions>
     </div>
 </section>

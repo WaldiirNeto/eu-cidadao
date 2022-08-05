@@ -1,1 +1,47 @@
-<p>modal-create-assunto works!</p>
+<section class="modal-create-assunto">
+    <h1 mat-dialog-title>Adicionar Usuário</h1>
+    <form [formGroup]="this.form">
+        <div mat-dialog-content>
+            <div class="col-12">
+                <div class="d-flex">
+                    <div class="input-margin">
+                        <app-input-form controlName="assunto" placeholder="Novo assunto" label="Título do Assunto">
+                        </app-input-form>
+                    </div>
+                    <app-input-form controlName="responsavel_area" placeholder="Digite o nome do responsável"
+                        label="Responsável pela área">
+                    </app-input-form>
+                </div>
+                <div class="d-flex">
+                    <div class="input-margin">
+                        <app-input-form controlName="email" placeholder="Digite o E-mail do responsável" label="E-mail">
+                        </app-input-form>
+                    </div>
+                    <div style="width: 343px">
+                        <app-input-form controlName="telefone" placeholder="Digite o telefone do responsável"
+                            label="Telefone"></app-input-form>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="input-margin">
+                        <app-input-form controlName="imagem"
+                            placeholder="Clique aqui para adicionar ilustração para este assunto"
+                            label="Adicionar imagem" icon="insert_photo">
+                        </app-input-form>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="input-margin">
+                        <app-input-form controlName="categorias" placeholder="Adicione as categorias" label="Categoria">
+                        </app-input-form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <mat-dialog-actions align="end">
+            <button class="button-cancel" mat-button mat-dialog-close>Cancelar</button>
+            <app-submit-button [disabled]="this.form.invalid" [loading]="this.loading">Salvar Assunto
+            </app-submit-button>
+        </mat-dialog-actions>
+    </form>
+</section>
