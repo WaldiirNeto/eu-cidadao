@@ -10,6 +10,7 @@ import { Assunto } from '../model/assunto.model'
   styleUrls: ['./assuntos.component.scss']
 })
 export class AssuntosComponent implements OnInit {
+  public showIcon: boolean
 
   constructor(private _dialog: MatDialog) { }
 
@@ -22,10 +23,18 @@ export class AssuntosComponent implements OnInit {
     })
   }
 
-  openDialog(): void {
+  public openDialog(): void {
     this._dialog.open(ModalCreateAssuntoComponent, {
       enterAnimationDuration: `1000ms`,
       exitAnimationDuration: `500ms`
     })
+  }
+
+  public showIconDelete(listSelectedCategories: Array<number>): void {
+    if (listSelectedCategories.length > 1) {
+      this.showIcon = true
+    } else {
+      this.showIcon = false
+    }
   }
 }

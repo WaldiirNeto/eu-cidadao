@@ -58,6 +58,7 @@
                 height: 31px;
                 justify-content: center;
                 margin-right: 5px;
+                margin-bottom: 10px;
                 padding: 4px;
                 width: 101px;
 
@@ -71,23 +72,6 @@
                     margin-top: -3px;
                 }
 
-            }
-
-            .combo-categoria-left {
-                @extend .combo-categoria;
-                align-items: center;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-
-                mat-icon {
-                    color: $primary;
-                    cursor: pointer;
-                    transform: translateY(-50%);
-                    position: absolute;
-                    margin-left: 90px;
-                    margin-top: -3px;
-                }
             }
 
             .dropped {

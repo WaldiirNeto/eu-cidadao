@@ -34,12 +34,36 @@
             justify-content: space-between;
 
             .form {
+                align-items: center;
+                display: flex;
                 width: 614px;
+
+                .icon-delete {
+                    color: $red-color;
+                    font-size: 30px;
+                    height: 30px;
+                    margin-left: 20px;
+                }
             }
 
             mat-icon {
                 color: $primary;
                 cursor: pointer;
+            }
+        }
+
+        .cadastrar-assunto {
+            align-items: center;
+            background: #1474FF;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            display: flex;
+            height: 48px;
+            padding: 13px 16px;
+
+            mat-icon {
+                color: white
             }
         }
     }

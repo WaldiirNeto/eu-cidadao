@@ -17,10 +17,13 @@
                     <app-input-form controlName="assunto" placeholder="Pesquise por assunto" label="Pesquisar assunto"
                         icon="search">
                     </app-input-form>
+                    <mat-icon class="icon-delete" *ngIf="this.showIcon">delete_forever</mat-icon>
                 </form>
-                <mat-icon (click)="this.openDialog()">add_circle_outline</mat-icon>
+                <button class="cadastrar-assunto" (click)="this.openDialog()">
+                    <mat-icon>add</mat-icon><span>Cadastrar Assunto</span>
+                </button>
             </div>
-            <app-table-assuntos></app-table-assuntos>
+            <app-table-assuntos (tableEmit)="this.showIconDelete($event)"></app-table-assuntos>
         </div>
     </app-box>
 </section>

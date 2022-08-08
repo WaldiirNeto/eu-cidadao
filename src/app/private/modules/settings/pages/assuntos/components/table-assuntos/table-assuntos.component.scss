@@ -8,6 +8,12 @@
     }
 
     table {
+        th {
+            mat-icon {
+                padding-top: 4px;
+            }
+        }
+
         mat-icon {
             cursor: pointer;
         }
