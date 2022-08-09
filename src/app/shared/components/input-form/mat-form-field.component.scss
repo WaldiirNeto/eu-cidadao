@@ -1,31 +1,33 @@
 @import "~src/styles/_variables.scss";
 
-mat-form-field {
-    width: 100%;
-}
+section {
+    mat-form-field {
+        width: 100%;
+    }
 
-mat-label {
-    color: $mat-label-color;
-    font-size: 16px;
-    font-weight: 400;
-}
+    mat-label {
+        color: $mat-label-color;
+        font-size: 16px;
+        font-weight: 400;
+    }
 
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid $placeholder-color;
-    border-radius: 8px;
-}
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid $placeholder-color;
+        border-radius: 8px;
+    }
 
-::ng-deep .mat-form-field {
-    font-size: 14px; // example
-    margin: 0;
-}
+    ::ng-deep .mat-form-field {
+        font-size: 14px; // example
+        margin: 0;
+    }
 
-.icon-date {
-    color: $mat-label-color;
-}
+    .icon-date {
+        color: $mat-label-color;
+    }
 
-::ng-deep .mat-button-wrapper {
-    color: black !important;
+    ::ng-deep .mat-button-wrapper {
+        color: black !important;
+    }
 }

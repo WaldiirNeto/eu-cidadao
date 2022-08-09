@@ -16,6 +16,7 @@ import { MatFormFieldComponent } from '@shared/components/input-form/mat-form-fi
 import { ModalCreateAssuntoComponent } from './components/modal-create-assunto/modal-create-assunto.component'
 import { TableAssuntosComponent } from './components/table-assuntos/table-assuntos.component'
 import { ModalDeleteAssuntoComponent } from './components/modal-delete-assunto/modal-delete-assunto.component'
+import { PaginationComponent } from '@shared/components/pagination/pagination.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ModalDeleteAssuntoComponent } from './components/modal-delete-assunto/m
     MatProgressSpinnerModule,
     MatDialogModule,
     DragDropModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    PaginationComponent
   ]
 })
 export class AssuntosModule { }

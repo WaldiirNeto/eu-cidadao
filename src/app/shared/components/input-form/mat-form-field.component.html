@@ -1,22 +1,24 @@
-<ng-container [formGroup]="this.form">
-    <mat-label>{{this.label}}</mat-label>
+<section>
+    <ng-container [formGroup]="this.form">
+        <mat-label>{{this.label}}</mat-label>
 
-    <ng-container *ngIf="type === 'date'; else inputText">
-        <mat-form-field appearance="outline" floatLabel="always">
-            <input matInput [matDatepicker]="picker" [mask]="this.mask">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker">
-                <mat-icon class="icon-date" matDatepickerToggleIcon>calendar_month</mat-icon>
-            </mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+        <ng-container *ngIf="type === 'date'; else inputText">
+            <mat-form-field appearance="outline" floatLabel="always">
+                <input matInput [matDatepicker]="picker" [formControlName]="this.controlName">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon class="icon-date" matDatepickerToggleIcon>calendar_month</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </ng-container>
+        <ng-template #inputText>
+            <mat-form-field appearance="outline" floatLabel="always">
+                <input [type]="this.type" [mask]="this.mask" matInput [formControlName]="this.controlName"
+                    [placeholder]="this.placeholder">
+                <mat-icon *ngIf="this.icon" matSuffix>{{this.icon}}</mat-icon>
+                <mat-error *ngIf="this.form.controls[this.controlName].invalid">{{this.textError}}</mat-error>
+            </mat-form-field>
+        </ng-template>
     </ng-container>
-    <ng-template #inputText>
-        <mat-form-field appearance="outline" floatLabel="always">
-            <input [type]="this.type" [mask]="this.mask" matInput [formControlName]="this.controlName"
-                [placeholder]="this.placeholder">
-            <mat-icon *ngIf="this.icon" matSuffix>{{this.icon}}</mat-icon>
-            <mat-error *ngIf="this.form.controls[this.controlName].invalid">{{this.textError}}</mat-error>
-        </mat-form-field>
-    </ng-template>
-</ng-container>
+</section>

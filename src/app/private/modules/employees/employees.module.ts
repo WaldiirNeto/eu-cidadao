@@ -17,7 +17,8 @@ import { SubmitButtonComponent } from '@shared/components/submit-button/submit-b
 import { ModalDeleteEmployeeComponent } from './components/modal-delete-employee/modal-delete-employee.component'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { PaginationComponent } from '@shared/components/pagination/pagination.component'
-
+import { SnackBarService } from '@shared/services/snackbar.service'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { PaginationComponent } from '@shared/components/pagination/pagination.co
     MatDialogModule,
     SubmitButtonComponent,
     MatCheckboxModule,
+    MatSnackBarModule
   ],
-  providers: [EmployeesService]
+  providers: [EmployeesService, SnackBarService]
 })
 export class EmployeesModule { }

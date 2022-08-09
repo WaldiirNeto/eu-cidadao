@@ -1,4 +1,6 @@
-<button mat-raised-button color="primary" type="submit" [disabled]="this.disabled || this.loading">
-    <mat-spinner *ngIf="this.loading" diameter="25"></mat-spinner>
-    <ng-content *ngIf="!this.loading"></ng-content>
-</button>
+<section>
+    <button mat-raised-button color="primary" type="submit" [disabled]="this.disabled || this.loading">
+        <mat-spinner *ngIf="this.loading" diameter="25"></mat-spinner>
+        <ng-content *ngIf="!this.loading"></ng-content>
+    </button>
+</section>

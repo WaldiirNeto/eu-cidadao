@@ -8,6 +8,7 @@ export interface EmployeesModel {
 }
 
 export interface UpdateEmployeesModel {
+    id: string,
     firstName: string,
     lastName: string,
     email: string,

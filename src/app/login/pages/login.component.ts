@@ -33,7 +33,6 @@ export class LoginComponent extends FormLoginModel {
         }))
       .subscribe({
         next: (response: ResponseAuthParamsModel) => {
-          console.log(response.access_token)
           localStorage.setItem('token', response.access_token)
           this._router.navigate(['dashboard'])
         },

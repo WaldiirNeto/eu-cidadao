@@ -52,6 +52,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <app-pagination></app-pagination>
     <!-- </ng-container> -->
     <ng-template #loading>
         <div class="loading">

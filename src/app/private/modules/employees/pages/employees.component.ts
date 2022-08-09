@@ -42,6 +42,7 @@ export class EmployeesComponent implements OnInit {
     this._dialog.open(ModalDeleteEmployeeComponent, {
       enterAnimationDuration: `1000ms`,
       exitAnimationDuration: `500ms`,
+      hasBackdrop: false,
       data: {
         employee: null,
         isDeleteAll: true
