@@ -20,6 +20,10 @@ export class ModalCreateAssuntoComponent extends FormAssuntoModel implements OnI
     this.form.patchValue(this.assunto)
   }
 
+  public populateFileInForm(event: any): void {
+    console.log(event.files)
+  }
+
   public populateListCategorias(): void {
     const categoria = this.form.controls.categorias.value as string
     const checkIfRepeatCategoria = this.listCategoria.some((categoriaArray) => categoriaArray === categoria)
@@ -30,7 +34,6 @@ export class ModalCreateAssuntoComponent extends FormAssuntoModel implements OnI
   }
 
   public removeItemList(item: string): void {
-
     this.listCategoria = this.listCategoria.filter(categoria => categoria !== item)
   }
 }

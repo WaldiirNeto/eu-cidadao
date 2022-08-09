@@ -16,6 +16,7 @@ import { ModalCreateEmployeesComponent } from './components/modal-create-employe
 import { SubmitButtonComponent } from '@shared/components/submit-button/submit-button.component'
 import { ModalDeleteEmployeeComponent } from './components/modal-delete-employee/modal-delete-employee.component'
 import { MatCheckboxModule } from '@angular/material/checkbox'
+import { PaginationComponent } from '@shared/components/pagination/pagination.component'
 
 
 @NgModule({
@@ -30,13 +31,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
     EmployeesRoutingModule,
     BoxComponent,
     MatFormFieldComponent,
+    PaginationComponent,
     MatIconModule,
     ReactiveFormsModule,
     MatTableModule,
     MatProgressSpinnerModule,
     MatDialogModule,
     SubmitButtonComponent,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
   providers: [EmployeesService]
 })

@@ -26,9 +26,8 @@ export class ModalCreateEmployeesComponent extends FormEmployeesModel implements
       return `CPF obrigatório`
     }
   }
-  public populateFileInForm(change: any): void {
-    console.log(change.files)
-
+  public populateFileInForm(event: any): void {
+    console.log(event.files)
   }
 
   public onSubmit(): void {
