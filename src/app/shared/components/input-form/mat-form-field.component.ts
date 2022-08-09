@@ -9,7 +9,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms'
 import { MatInputModule } from '@angular/material/input'
-import { DateAdapter, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core'
+import { DateAdapter, MatNativeDateModule } from '@angular/material/core'
+import { SharedModule } from '../../module/shared.module'
 
 @Component({
   selector: 'app-input-form',
@@ -22,7 +23,8 @@ import { DateAdapter, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/mate
     MatInputModule,
     MatIconModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    SharedModule
   ],
   providers: [MatDatepickerModule],
   styleUrls: ['mat-form-field.component.scss'],
@@ -33,6 +35,7 @@ export class MatFormFieldComponent implements OnInit {
   @Input() label: string
   @Input() icon: string
   @Input() controlName: string
+  @Input() mask: string
   @Input() textError: string
 
   protected form: FormGroup

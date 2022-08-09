@@ -1,4 +1,5 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { isValidCPF } from '@helpers/cpf-validator'
 
 interface FormEmployeesInterface {
     nome: FormControl<string | null>
@@ -22,14 +23,12 @@ export class FormEmployeesModel {
         this.form = new FormGroup<FormEmployeesInterface>({
             nome: new FormControl('', [Validators.required]),
             data_nascimento: new FormControl('', [Validators.required]),
-            cpf: new FormControl('', [Validators.required]),
+            cpf: new FormControl('', [Validators.required, isValidCPF]),
             email: new FormControl('', [Validators.required, Validators.email]),
             telefone: new FormControl('', [Validators.required]),
             endereco: new FormControl('', [Validators.required]),
             senha: new FormControl('', [Validators.required]),
             foto: new FormControl(null, [Validators.required]),
-
-
         })
     }
 }

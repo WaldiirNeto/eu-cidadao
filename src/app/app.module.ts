@@ -8,6 +8,7 @@ import { CoreModule } from '@core/core.module'
 import { SnackBarService } from '@shared/services/snackbar.service'
 
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, CoreModule],

@@ -18,7 +18,20 @@ export class ModalCreateEmployeesComponent extends FormEmployeesModel implements
     this.form.patchValue(this.employee)
   }
 
-  public onUpdate(): void {
+  public get getTextError(): string {
+    const checkCpf = (this.form.controls.cpf.touched || this.form.controls.cpf.dirty) && this.form.controls.cpf.invalid
+    if (checkCpf) {
+      return `CPF inválido`
+    } else {
+      return `CPF obrigatório`
+    }
+  }
+  public populateFileInForm(change: any): void {
+    console.log(change.files)
+
+  }
+
+  public onSubmit(): void {
     console.log(this.form.value)
   }
 
