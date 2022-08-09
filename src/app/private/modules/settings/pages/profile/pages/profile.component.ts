@@ -16,13 +16,34 @@ export class ProfileComponent extends FormProfileModel implements OnInit, OnDest
     super()
   }
 
-
   ngOnInit(): void {
     this._userService.getUser()
       .pipe(takeUntil(this._destroy$))
       .subscribe((userData: UserModel) => {
         console.log(userData)
+        this.form.controls.id.setValue(userData.id)
       })
+  }
+
+  public get getTextError(): string {
+    const checkCpf = (this.form.controls.cpf.touched || this.form.controls.cpf.dirty) && this.form.controls.cpf.invalid
+    if (checkCpf) {
+      return `CPF inválido`
+    } else {
+      return `CPF obrigatório`
+    }
+  }
+
+  public populateFileInForm(event: any): void {
+    const file = event.files[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => {
+        const base64 = reader.result as string
+        this.form.controls.foto.setValue(base64)
+      }
+    }
   }
 
   ngOnDestroy(): void {

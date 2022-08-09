@@ -39,7 +39,21 @@
                 font-weight: 700;
                 font-size: 18px;
                 height: 48px;
+                margin-right: 20px;
                 width: 183px;
+
+                label {
+                    width: 100%;
+                    text-align: center;
+                    display: block;
+                    margin-top: 10px;
+                    height: 100%;
+                    cursor: pointer;
+                }
+
+                input[type="file"] {
+                    display: none;
+                }
 
             }
         }
