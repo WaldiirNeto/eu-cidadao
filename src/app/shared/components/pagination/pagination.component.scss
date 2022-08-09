@@ -1,0 +1,35 @@
+@import '~/src/styles/_variables.scss';
+
+@mixin page-helper($background, $color) {
+    background: $background;
+    border-radius: 8px;
+    text-align: center;
+    margin-right: 5px;
+    height: 24px;
+    width: 24px;
+    color: $color;
+    cursor: pointer;
+}
+
+section {
+    margin-top: 40px;
+
+    mat-icon {
+        color: $mat-label-color
+    }
+
+    .pagination-custom {
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
+
+        .page {
+            @include page-helper(#D6E7FF, black);
+        }
+
+        .page-first {
+            @include page-helper(#00327A, white);
+        }
+    }
+
+}
