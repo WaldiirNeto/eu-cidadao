@@ -34,7 +34,16 @@
             justify-content: space-between;
 
             .form {
+                align-items: center;
+                display: flex;
                 width: 614px;
+
+                .icon-delete {
+                    color: $red-color;
+                    font-size: 30px;
+                    height: 30px;
+                    margin-left: 20px;
+                }
             }
 
             mat-icon {

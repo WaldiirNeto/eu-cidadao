@@ -17,10 +17,13 @@
                     <app-input-form controlName="user" placeholder="Pesquise por usuário" label="Pesquisar usuário"
                         icon="search">
                     </app-input-form>
+                    <mat-icon class="icon-delete" *ngIf="this.showIcon" (click)="this.deleteAllCategories()">
+                        delete_forever
+                    </mat-icon>
                 </form>
                 <mat-icon (click)="this.openDialog()">person_add</mat-icon>
             </div>
-            <app-table-users></app-table-users>
+            <app-table-users (tableEmit)="this.showIconDelete($event)"></app-table-users>
         </div>
     </app-box>
 </section>

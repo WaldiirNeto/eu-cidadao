@@ -10,6 +10,6 @@ export class UserService {
   constructor(private _http: HttpPrivateClientService) { }
 
   getUser(): Observable<UserModel> {
-    return this._http.get<UserModel>(API_URL.GET_USER)
+    return this._http.get<UserModel>(API_URL.USER)
   }
 }

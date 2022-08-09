@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core'
 import { MAT_DIALOG_DATA } from '@angular/material/dialog'
-import { EmployeesModel } from '../../models/employees.model'
+import { DeleteAll, EmployeesModel } from '../../models/employees.model'
 
 @Component({
   selector: 'app-modal-delete-employee',
@@ -10,6 +10,8 @@ import { EmployeesModel } from '../../models/employees.model'
 export class ModalDeleteEmployeeComponent {
 
   protected loading: boolean
-  constructor(@Inject(MAT_DIALOG_DATA) public employee: EmployeesModel) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    console.log(data.employee)
+  }
 
 }

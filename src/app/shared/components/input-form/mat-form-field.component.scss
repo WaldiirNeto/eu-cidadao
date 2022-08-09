@@ -21,3 +21,11 @@ mat-label {
     font-size: 14px; // example
     margin: 0;
 }
+
+.icon-date {
+    color: $mat-label-color;
+}
+
+::ng-deep .mat-button-wrapper {
+    color: black !important;
+}

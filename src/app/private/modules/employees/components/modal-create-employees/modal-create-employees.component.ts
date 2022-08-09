@@ -18,5 +18,9 @@ export class ModalCreateEmployeesComponent extends FormEmployeesModel implements
     this.form.patchValue(this.employee)
   }
 
+  public onUpdate(): void {
+    console.log(this.form.value)
+  }
+
 
 }

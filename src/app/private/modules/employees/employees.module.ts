@@ -15,6 +15,7 @@ import { EmployeesComponent } from './pages/employees.component'
 import { ModalCreateEmployeesComponent } from './components/modal-create-employees/modal-create-employees.component'
 import { SubmitButtonComponent } from '@shared/components/submit-button/submit-button.component'
 import { ModalDeleteEmployeeComponent } from './components/modal-delete-employee/modal-delete-employee.component'
+import { MatCheckboxModule } from '@angular/material/checkbox'
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ModalDeleteEmployeeComponent } from './components/modal-delete-employee
     MatTableModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    SubmitButtonComponent
+    SubmitButtonComponent,
+    MatCheckboxModule
   ],
   providers: [EmployeesService]
 })

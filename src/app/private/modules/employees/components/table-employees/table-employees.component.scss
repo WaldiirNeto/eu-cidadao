@@ -2,12 +2,22 @@
 
 .table-employees {
     .loading {
-        display: flex;
         align-items: center;
+        display: flex;
         justify-content: center;
     }
 
     table {
+        th {
+            mat-icon {
+                padding-top: 4px;
+            }
+        }
+
+        mat-checkbox {
+            margin-right: 8px;
+        }
+
         mat-icon {
             cursor: pointer;
         }

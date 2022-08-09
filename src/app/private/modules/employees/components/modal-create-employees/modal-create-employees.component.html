@@ -1,6 +1,6 @@
 <section class="modal-create-employees">
     <h1 mat-dialog-title>Adicionar Usuário</h1>
-    <form [formGroup]="this.form">
+    <form [formGroup]="this.form" (submit)="this.onUpdate()">
         <div mat-dialog-content>
             <div class="col-12">
                 <div class="d-flex">
@@ -8,7 +8,7 @@
                         <app-input-form controlName="nome" placeholder="Nome completo" label="Nome completo">
                         </app-input-form>
                     </div>
-                    <app-input-form controlName="data_nascimento" placeholder="Data de nascimento"
+                    <app-input-form type="date" controlName="data_nascimento" placeholder="Data de nascimento"
                         label="Data de nascimento">
                     </app-input-form>
                 </div>
