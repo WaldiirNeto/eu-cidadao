@@ -1,0 +1,27 @@
+@import '~src/styles/_variables.scss';
+
+section {
+    table {
+        th {
+            mat-icon {
+                padding-top: 4px;
+            }
+        }
+
+        mat-checkbox {
+            margin-right: 8px;
+        }
+
+        mat-icon {
+            cursor: pointer;
+        }
+
+        .icon-edit {
+            color: $primary
+        }
+
+        .icon-delete {
+            color: $red-color
+        }
+    }
+}

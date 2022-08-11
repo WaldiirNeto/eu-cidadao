@@ -1,0 +1,25 @@
+<section>
+    <div class="col-12">
+        <form [formGroup]="this.form">
+            <div style="display: flex;
+            align-items: center;
+            justify-content: space-between;">
+                <div style="display: flex;">
+                    <div style="margin-right: 12px;">
+                        <app-input-form controlName="date_inicial" label="Período de" type="date"
+                            placeholder="Digite a data inicial"></app-input-form>
+                    </div>
+                    <app-input-form controlName="date_final" label="Período até" type="date"
+                        placeholder="Digite a data final"></app-input-form>
+                </div>
+                <div>
+                    <div class="col-2">
+                        <button class="button-cancel">Nova pesquisa</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <app-relatorios-table></app-relatorios-table>
+    </div>
+</section>
