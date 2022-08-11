@@ -1,6 +1,19 @@
 @import '~src/styles/_variables.scss';
 
-section {
+@mixin status-base($color) {
+    background: $color;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    width: 84px;
+}
+
+.table-employees {
+    mat-icon {
+        color: $placeholder-color;
+    }
+
     table {
         th {
             mat-icon {
@@ -22,6 +35,22 @@ section {
 
         .icon-delete {
             color: $red-color
+        }
+
+        .status-recusadas {
+            @include status-base($red-color)
+        }
+
+        .status-resolvidas {
+            @include status-base($color-paragraph)
+        }
+
+        .status-pendente {
+            @include status-base($orange-color)
+        }
+
+        .status-tratamento {
+            @include status-base($green-color)
         }
     }
 }

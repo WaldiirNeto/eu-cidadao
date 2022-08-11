@@ -115,7 +115,7 @@ export class RelatoriosTableComponent implements OnInit {
       responsavel: `mussum ipsum`,
       bairro: `mussum ipsum`,
       data_criacao: `01/01/2022`,
-      status: `pendentes`
+      status: `pendente`
     },
     {
       id: `11`,
