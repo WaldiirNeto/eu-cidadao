@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialog } from '@angular/material/dialog'
@@ -14,6 +14,8 @@ import { EmployeesModel } from '../../../employees/models/employees.model'
 })
 export class OcorrenciasTableComponent implements OnInit {
   @Output() public tableEmit: EventEmitter<Array<string>> = new EventEmitter()
+  @Output() public filterEmit: EventEmitter<{ status: string, ocorrencias: any }> = new EventEmitter()
+
 
   protected displayedColumns: string[] = ['protocolo', 'assunto', 'categoria', 'responsavel', 'bairro', 'data_criacao', 'status']
   protected dataSource = [
@@ -25,7 +27,7 @@ export class OcorrenciasTableComponent implements OnInit {
       responsavel: `mussum ipsum`,
       bairro: `mussum ipsum`,
       data_criacao: `01/01/2022`,
-      status: `recusadas`
+      status: `tratamento`
     },
     {
       id: `2`,
@@ -75,7 +77,7 @@ export class OcorrenciasTableComponent implements OnInit {
       responsavel: `mussum ipsum`,
       bairro: `mussum ipsum`,
       data_criacao: `01/01/2022`,
-      status: `pendente`
+      status: `pendentes`
     },
     {
       id: `7`,
@@ -115,7 +117,7 @@ export class OcorrenciasTableComponent implements OnInit {
       responsavel: `mussum ipsum`,
       bairro: `mussum ipsum`,
       data_criacao: `01/01/2022`,
-      status: `pendente`
+      status: `pendentes`
     },
     {
       id: `11`,
@@ -129,6 +131,7 @@ export class OcorrenciasTableComponent implements OnInit {
     }
   ]
 
+  protected listOcorrencias = this.dataSource
   protected form: FormGroup
   protected listStatus = [
     {
@@ -183,11 +186,17 @@ export class OcorrenciasTableComponent implements OnInit {
       status: new FormControl(''),
       filtro: new FormControl('')
     })
-    // this._employeesService.getEmployess()
-    //   .pipe()
-    //   .subscribe((list) => {
-    //     this.dataSource = list
-    //   })
+  }
+
+  public filterListEmit(): void {
+    const status: string = this.form.controls['status'].value
+    console.log(status)
+    this.listOcorrencias = this.dataSource.filter((ocorrencia => ocorrencia.status === status))
+    const event = {
+      status,
+      ocorrencias: this.dataSource
+    }
+    this.filterEmit.emit(event)
   }
 
   public openModalEdit(employee: EmployeesModel): void {

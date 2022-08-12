@@ -7,8 +7,6 @@
     border-radius: 50%;
 }
 
-
-
 .ocorrencias {
     h1 {
         color: $mat-label-color;
@@ -16,14 +14,12 @@
         font-size: 20px;
     }
 
-
-
     .relative {
         position: relative;
     }
 
     .absolute-center {
-        left: 18%;
+        left: 50%;
         position: absolute;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -38,8 +34,5 @@
         font-size: 16px;
         margin: 0;
     }
-
-
-
 
 }

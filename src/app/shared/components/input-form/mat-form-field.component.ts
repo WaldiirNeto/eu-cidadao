@@ -48,7 +48,6 @@ export class MatFormFieldComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.type)
     this.form = this._controlContainer.control as FormGroup
   }
 }

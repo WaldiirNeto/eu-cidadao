@@ -15,13 +15,16 @@ import { PaginationComponent } from '@shared/components/pagination/pagination.co
 import { BoxComponent } from '@shared/components/box/box.component'
 import { StaticDataComponent } from './components/static-data/static-data.component'
 import { OcorrenciasTableComponent } from './components/ocorrencias-table/ocorrencias-table.component'
+import { SubmitButtonComponent } from '@shared/components/submit-button/submit-button.component'
+import { InfosInitialChartsComponent } from './components/infos-initial-charts/infos-initial-charts.component'
 
 
 @NgModule({
   declarations: [
     OcorrenciasComponent,
     StaticDataComponent,
-    OcorrenciasTableComponent
+    OcorrenciasTableComponent,
+    InfosInitialChartsComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,8 @@ import { OcorrenciasTableComponent } from './components/ocorrencias-table/ocorre
     MatIconModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SubmitButtonComponent
   ]
 })
 export class OcorrenciasModule { }

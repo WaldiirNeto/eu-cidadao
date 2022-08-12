@@ -15,7 +15,6 @@ import { MatIconModule } from '@angular/material/icon'
 import { PaginationComponent } from '@shared/components/pagination/pagination.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatTableModule } from '@angular/material/table'
-import { EmployeesService } from '../employees/services/employees.service'
 import { MatDialogModule } from '@angular/material/dialog'
 
 

@@ -135,11 +135,6 @@ export class RelatoriosTableComponent implements OnInit {
   constructor(private _dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // this._employeesService.getEmployess()
-    //   .pipe()
-    //   .subscribe((list) => {
-    //     this.dataSource = list
-    //   })
   }
 
   public openModalEdit(employee: EmployeesModel): void {

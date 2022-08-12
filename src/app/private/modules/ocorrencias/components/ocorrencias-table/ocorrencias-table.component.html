@@ -1,19 +1,23 @@
 <section class="table-employees">
-    <form [formGroup]="this.form">
-        <div class="row col-12">
+    <form [formGroup]="this.form" (submit)="this.filterListEmit()">
+        <div class="row col-12 align-items-center">
             <div class="col-4">
-                <!-- [listSelect]="this.listStatus" -->
-                <app-input-form controlName="status" placeholder="Pesquisar por Status" type="text"
-                    label="pesquisar por" icon="search"></app-input-form>
+                <app-input-form [listSelect]="this.listStatus" controlName="status" placeholder="Pesquisar por Status"
+                    type="select" label="pesquisar por" icon="search"></app-input-form>
             </div>
             <div class="col-4">
-                <app-input-form [listSelect]="this.listSelects" controlName="filtro"
-                    placeholder="Pesquisar por  Assunto" type="select" label="pesquisar por" icon="search">
+                <app-input-form [listSelect]="this.listSelects" controlName="filtro" placeholder="Pesquisar por labels"
+                    type="select" label="pesquisar por" icon="search">
                 </app-input-form>
+            </div>
+            <div class="col-2">
+                <app-submit-button>
+                    <mat-icon style="color: white" class="material-icons-outlined">filter_alt</mat-icon> Filtrar
+                </app-submit-button>
             </div>
         </div>
     </form>
-    <ng-container *ngIf="this.dataSource?.length; else loading">
+    <ng-container *ngIf="this.listOcorrencias?.length; else loading">
         <div class="d-flex justify-content-end mb-3">
             <div class="d-flex align-items-center" style="margin-right: 5px;">0 item(s) selecionado(s)</div>
             <div class="d-flex align-items-center" style="margin-right: 5px;">
@@ -23,7 +27,7 @@
                 <mat-icon style="margin-right: 5px;">summarize</mat-icon><span>Gerar Relatório</span>
             </div>
         </div>
-        <table mat-table [dataSource]="this.dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="this.listOcorrencias" class="mat-elevation-z8">
 
             <ng-container matColumnDef="protocolo">
                 <th mat-header-cell *matHeaderCellDef>
@@ -78,7 +82,12 @@
                     Status <mat-icon>filter_list</mat-icon>
                 </th>
                 <td mat-cell *matCellDef="let element">
-                    <div [class]="'status-' + element.status">{{element.status}} </div>
+                    <div class="d-flex">
+                        <div [class]="'me-2 status-' + element.status">{{element.status}}
+                        </div>
+                        <mat-icon>search</mat-icon>
+                        <mat-icon>edit</mat-icon>
+                    </div>
                 </td>
             </ng-container>
 

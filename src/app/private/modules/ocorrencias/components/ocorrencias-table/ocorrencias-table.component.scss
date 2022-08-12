@@ -20,6 +20,10 @@ table {
         }
     }
 
+    .align-itens {
+        display: flex;
+    }
+
     mat-checkbox {
         margin-right: 8px;
     }
@@ -44,7 +48,7 @@ table {
         @include status-base($color-paragraph)
     }
 
-    .status-pendente {
+    .status-pendentes {
         @include status-base($orange-color)
     }
 
