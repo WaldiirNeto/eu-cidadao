@@ -195,7 +195,7 @@ export class OcorrenciasTableComponent implements OnInit {
     this.listOcorrencias = this.dataSource.filter((ocorrencia => ocorrencia.status === status))
     const event = {
       status,
-      ocorrencias: this.dataSource
+      ocorrencias: this.listOcorrencias
     }
     this.filterEmit.emit(event)
   }

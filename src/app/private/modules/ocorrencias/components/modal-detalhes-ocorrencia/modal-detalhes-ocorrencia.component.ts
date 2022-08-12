@@ -16,6 +16,7 @@ export class ModalDetalhesOcorrenciaComponent implements OnInit {
   }
 
   protected showModalPerson: boolean
+  protected showRecusaOcorrencia: boolean
   constructor() { }
 
   ngOnInit(): void {
