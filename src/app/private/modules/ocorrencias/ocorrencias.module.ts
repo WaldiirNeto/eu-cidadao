@@ -17,6 +17,8 @@ import { StaticDataComponent } from './components/static-data/static-data.compon
 import { OcorrenciasTableComponent } from './components/ocorrencias-table/ocorrencias-table.component'
 import { SubmitButtonComponent } from '@shared/components/submit-button/submit-button.component'
 import { InfosInitialChartsComponent } from './components/infos-initial-charts/infos-initial-charts.component'
+import { ModalDetalhesOcorrenciaComponent } from './components/modal-detalhes-ocorrencia/modal-detalhes-ocorrencia.component'
+import { MatSelectModule } from '@angular/material/select'
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { InfosInitialChartsComponent } from './components/infos-initial-charts/i
     OcorrenciasComponent,
     StaticDataComponent,
     OcorrenciasTableComponent,
-    InfosInitialChartsComponent
+    InfosInitialChartsComponent,
+    ModalDetalhesOcorrenciaComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +42,8 @@ import { InfosInitialChartsComponent } from './components/infos-initial-charts/i
     MatProgressSpinnerModule,
     MatDialogModule,
     ReactiveFormsModule,
-    SubmitButtonComponent
+    SubmitButtonComponent,
+    MatSelectModule
   ]
 })
 export class OcorrenciasModule { }

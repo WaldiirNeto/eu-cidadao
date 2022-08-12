@@ -6,6 +6,7 @@ import { Subject } from 'rxjs'
 import { ModalCreateEmployeesComponent } from '../../../employees/components/modal-create-employees/modal-create-employees.component'
 import { ModalDeleteEmployeeComponent } from '../../../employees/components/modal-delete-employee/modal-delete-employee.component'
 import { EmployeesModel } from '../../../employees/models/employees.model'
+import { ModalDetalhesOcorrenciaComponent } from '../modal-detalhes-ocorrencia/modal-detalhes-ocorrencia.component'
 
 @Component({
   selector: 'app-ocorrencias-table',
@@ -207,14 +208,10 @@ export class OcorrenciasTableComponent implements OnInit {
     })
   }
 
-  public openModalDelete(employee: EmployeesModel): void {
-    this._dialog.open(ModalDeleteEmployeeComponent, {
+  public openModalDetails(): void {
+    this._dialog.open(ModalDetalhesOcorrenciaComponent, {
       enterAnimationDuration: `1000ms`,
-      exitAnimationDuration: `500ms`,
-      data: {
-        employee: employee,
-        isDeleteAll: false
-      }
+      exitAnimationDuration: `500ms`
     })
   }
 
