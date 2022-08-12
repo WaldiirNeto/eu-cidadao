@@ -9,7 +9,8 @@ const routes: Routes = [
   {
     path: 'settings', loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule)
   },
-  { path: 'relatorios', loadChildren: () => import('./modules/relatorios/relatorios.module').then(m => m.RelatoriosModule) }
+  { path: 'relatorios', loadChildren: () => import('./modules/relatorios/relatorios.module').then(m => m.RelatoriosModule) },
+  { path: 'ocorrencias', loadChildren: () => import('./modules/ocorrencias/ocorrencias.module').then(m => m.OcorrenciasModule) }
 ]
 @NgModule({
   imports: [RouterModule.forChild(routes)],

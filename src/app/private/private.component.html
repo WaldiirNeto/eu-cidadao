@@ -21,16 +21,8 @@
                                     <mat-icon>edit_document</mat-icon>Ocorrências
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
-                            <div class="sidenav-content__links__item__sub-links">Em tratamento</div>
-                            <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px;">
-                                <p>Pendentes</p>
-                            </div>
-                            <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px;">
-                                <p>Recusadas</p>
-                            </div>
-                            <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px;">
-                                <p>Resolvidas</p>
-                            </div>
+                            <div class="sidenav-content__links__item__sub-links" [routerLink]="'ocorrencias'">Central de
+                                ocorrências</div>
                         </mat-expansion-panel>
                     </mat-accordion>
                     <hr>

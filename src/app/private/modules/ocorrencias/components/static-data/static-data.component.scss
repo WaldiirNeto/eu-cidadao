@@ -1,0 +1,35 @@
+@import '~src/styles/_variables.scss';
+
+@mixin status-color($color) {
+    width: 20px;
+    height: 20px;
+    background: $color;
+    border-radius: 50%;
+}
+
+
+.status-color-pendentes {
+    @include status-color($orange-color)
+}
+
+.status-color-tratamento {
+    @include status-color($green-color)
+}
+
+.status-color-recusadas {
+    @include status-color($red-color)
+}
+
+.status-color-resolvidas {
+    @include status-color($color-paragraph)
+}
+
+.font-styles {
+    font-weight: 400;
+    font-size: 13px;
+}
+
+hr {
+    margin: 5px 0 0 0;
+    width: 223px;
+}

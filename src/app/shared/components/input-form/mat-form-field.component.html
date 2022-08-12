@@ -2,24 +2,35 @@
     <ng-container [formGroup]="this.form">
         <mat-label>{{this.label}}</mat-label>
 
-        <ng-container *ngIf="type === 'date'; else inputText">
+        <ng-container *ngIf="this.type === 'date'">
             <mat-form-field appearance="outline" floatLabel="always">
                 <input [id]="this.controlName" [name]="this.controlName" [title]="this.controlName" matInput
                     [matDatepicker]="picker" [formControlName]="this.controlName">
-                <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="picker">
                     <mat-icon class="icon-date" matDatepickerToggleIcon>calendar_month</mat-icon>
                 </mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </ng-container>
-        <ng-template #inputText>
+
+        <ng-container *ngIf="this.type === 'select'">
+            <mat-form-field appearance="outline" floatLabel="always">
+                <mat-select [formControlName]="this.controlName" [placeholder]="this.placeholder">
+                    <mat-option *ngFor="let item of this.listSelect" [value]="item.id">
+                        {{item.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </ng-container>
+
+
+        <ng-container *ngIf="this.type !=='select' && this.type !=='date'">
             <mat-form-field appearance="outline" floatLabel="always">
                 <input [id]="this.controlName" [name]="this.controlName" [title]="this.controlName" [type]="this.type"
                     [mask]="this.mask" matInput [formControlName]="this.controlName" [placeholder]="this.placeholder">
                 <mat-icon *ngIf="this.icon" matSuffix>{{this.icon}}</mat-icon>
                 <mat-error *ngIf="this.form.controls[this.controlName].invalid">{{this.textError}}</mat-error>
             </mat-form-field>
-        </ng-template>
+        </ng-container>
     </ng-container>
 </section>

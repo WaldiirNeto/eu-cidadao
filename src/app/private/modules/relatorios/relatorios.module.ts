@@ -40,6 +40,6 @@ import { MatDialogModule } from '@angular/material/dialog'
     MatTableModule,
     MatDialogModule
   ],
-  providers: [EmployeesService]
+  providers: []
 })
 export class RelatoriosModule { }

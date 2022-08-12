@@ -1,4 +1,18 @@
 <section class="table-employees">
+    <form [formGroup]="this.form">
+        <div class="row col-12">
+            <div class="col-4">
+                <!-- [listSelect]="this.listStatus" -->
+                <app-input-form controlName="status" placeholder="Pesquisar por Status" type="text"
+                    label="pesquisar por" icon="search"></app-input-form>
+            </div>
+            <div class="col-4">
+                <app-input-form [listSelect]="this.listSelects" controlName="filtro"
+                    placeholder="Pesquisar por  Assunto" type="select" label="pesquisar por" icon="search">
+                </app-input-form>
+            </div>
+        </div>
+    </form>
     <ng-container *ngIf="this.dataSource?.length; else loading">
         <div class="d-flex justify-content-end mb-3">
             <div class="d-flex align-items-center" style="margin-right: 5px;">0 item(s) selecionado(s)</div>

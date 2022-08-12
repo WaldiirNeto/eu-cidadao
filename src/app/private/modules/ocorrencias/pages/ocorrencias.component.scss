@@ -1,0 +1,45 @@
+@import '~src/styles/_variables.scss';
+
+@mixin status-color($color) {
+    width: 20px;
+    height: 20px;
+    background: $color;
+    border-radius: 50%;
+}
+
+
+
+.ocorrencias {
+    h1 {
+        color: $mat-label-color;
+        font-weight: 700;
+        font-size: 20px;
+    }
+
+
+
+    .relative {
+        position: relative;
+    }
+
+    .absolute-center {
+        left: 18%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 16px;
+        margin: 0;
+    }
+
+
+
+
+}

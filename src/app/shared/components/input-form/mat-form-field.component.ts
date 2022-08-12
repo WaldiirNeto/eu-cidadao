@@ -11,6 +11,7 @@ import {
 import { MatInputModule } from '@angular/material/input'
 import { DateAdapter, MatNativeDateModule } from '@angular/material/core'
 import { SharedModule } from '../../module/shared.module'
+import { MatSelectModule } from '@angular/material/select'
 
 @Component({
   selector: 'app-input-form',
@@ -24,7 +25,8 @@ import { SharedModule } from '../../module/shared.module'
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    SharedModule
+    SharedModule,
+    MatSelectModule
   ],
   providers: [MatDatepickerModule],
   styleUrls: ['mat-form-field.component.scss'],
@@ -37,6 +39,7 @@ export class MatFormFieldComponent implements OnInit {
   @Input() controlName: string
   @Input() mask: string
   @Input() textError: string
+  @Input() listSelect: Array<{ id: any, value: any }>
 
   protected form: FormGroup
 
@@ -45,6 +48,7 @@ export class MatFormFieldComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.type)
     this.form = this._controlContainer.control as FormGroup
   }
 }

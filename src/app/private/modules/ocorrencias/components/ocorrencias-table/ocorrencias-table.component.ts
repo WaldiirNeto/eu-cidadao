@@ -1,18 +1,18 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { FormControl, FormGroup } from '@angular/forms'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialog } from '@angular/material/dialog'
 import { Subject } from 'rxjs'
 import { ModalCreateEmployeesComponent } from '../../../employees/components/modal-create-employees/modal-create-employees.component'
 import { ModalDeleteEmployeeComponent } from '../../../employees/components/modal-delete-employee/modal-delete-employee.component'
 import { EmployeesModel } from '../../../employees/models/employees.model'
-import { EmployeesService } from '../../../employees/services/employees.service'
 
 @Component({
-  selector: 'app-relatorios-table',
-  templateUrl: './relatorios-table.component.html',
-  styleUrls: ['./relatorios-table.component.scss']
+  selector: 'app-ocorrencias-table',
+  templateUrl: './ocorrencias-table.component.html',
+  styleUrls: ['./ocorrencias-table.component.scss']
 })
-export class RelatoriosTableComponent implements OnInit {
+export class OcorrenciasTableComponent implements OnInit {
   @Output() public tableEmit: EventEmitter<Array<string>> = new EventEmitter()
 
   protected displayedColumns: string[] = ['protocolo', 'assunto', 'categoria', 'responsavel', 'bairro', 'data_criacao', 'status']
@@ -129,12 +129,60 @@ export class RelatoriosTableComponent implements OnInit {
     }
   ]
 
+  protected form: FormGroup
+  protected listStatus = [
+    {
+      id: 'resolvidas',
+      value: 'Resolvidas'
+    },
+    {
+      id: 'tratamento',
+      value: 'Tratamento'
+    }, {
+      id: 'recusadas',
+      value: 'Recusadas'
+    }, {
+      id: 'pendentes',
+      value: 'Pendentes'
+    }
+  ]
+  protected listSelects = [
+    {
+      id: 'protocolo',
+      value: 'Protocolo'
+    },
+
+    {
+      id: 'assunto',
+      value: 'Assunto'
+    },
+    {
+      id: 'categoria',
+      value: 'Categoria'
+    },
+    {
+      id: 'responsavel',
+      value: 'Responsável'
+    },
+    {
+      id: 'bairro',
+      value: 'Bairro'
+    },
+    {
+      id: 'data_criacao',
+      value: 'Data criação'
+    },
+  ]
   private selectedCategories: Array<string> = []
   private _destroy$ = new Subject()
 
   constructor(private _dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      status: new FormControl(''),
+      filtro: new FormControl('')
+    })
     // this._employeesService.getEmployess()
     //   .pipe()
     //   .subscribe((list) => {
