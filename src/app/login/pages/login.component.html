@@ -1,0 +1,24 @@
+<section class="pg-login">
+    <img src="assets/images/login-bg.svg">
+    <div class="pg-login__form">
+        <section class="pg-login__form__content">
+            <ng-container *ngIf="!this.hiddenForm">
+                <h1>Entre com seu login e senha</h1>
+                <form class="section-card__form" [formGroup]="this.form" (submit)="this.authentication()">
+                    <app-input-form label="E-mail" type="email" controlName="username" placeholder="E-mail cadastrado"
+                        textError="E-mail inválido"></app-input-form>
+                    <app-input-form label="Senha" type="password" controlName="password" placeholder="Digite sua senha"
+                        textError="Senha obrigatória" icon="lock_open">
+                    </app-input-form>
+                    <p class="pg-login__error" *ngIf="this.isError">Sua conta ou senha está incorreta.
+                        Não se
+                        lembra da sua senha? Clique em
+                        “Esqueci minha senha”.</p>
+                    <app-submit-button class="wn-button" [loading]="this.loading" [disabled]="this.form.invalid">Entrar
+                    </app-submit-button>
+                </form>
+            </ng-container>
+            <app-esqueci-minha-senha (hiddenFormLogin)="this.closeForm($event)"></app-esqueci-minha-senha>
+        </section>
+    </div>
+</section>

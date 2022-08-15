@@ -1,0 +1,18 @@
+<div class="row col-12 d-flex justify-content-start">
+    <div class="margin-box" *ngFor="let static of this.statics">
+        <app-box>
+            <h1>{{static.categoria}}</h1>
+            <div class="box-align">
+                <div>
+                    <p class="sub-text">Ocorrências abertas</p>
+                    <p class="sub-statics">{{static.ocorrencias_abertas}}</p>
+                    <p class="sub-text">Ocorrências tratadas</p>
+                    <p class="sub-statics">{{static.ocorrencias_tratadas}}</p>
+                </div>
+                <div>
+                    <img [src]="static.img">
+                </div>
+            </div>
+        </app-box>
+    </div>
+</div>

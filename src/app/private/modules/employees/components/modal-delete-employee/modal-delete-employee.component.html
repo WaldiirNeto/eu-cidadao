@@ -1,0 +1,15 @@
+<section class="modal-delete-employees">
+    <h1 mat-dialog-title>Desativar usuário</h1>
+    <div mat-dialog-content style="height: 100px; overflow: hidden;">
+        <p *ngIf="!this.data.isDeleteAll">Deseja realmente desativar o usuário <strong>{{
+                this.data.employee.nome}}</strong> selecionado?</p>
+
+        <p *ngIf="this.data.isDeleteAll">Deseja realmente desativar todos os úsuarios <strong>selecionados?</strong></p>
+
+        <mat-dialog-actions align="end">
+            <button mat-dialog-close class="button-cancel">Cancelar</button>
+            <app-submit-button [loading]="this.loading">Desativar Usuário
+            </app-submit-button>
+        </mat-dialog-actions>
+    </div>
+</section>

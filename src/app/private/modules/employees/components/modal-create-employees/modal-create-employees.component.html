@@ -1,0 +1,60 @@
+<section class="modal-create-employees">
+    <h1 mat-dialog-title>Adicionar Usuário</h1>
+    <form [formGroup]="this.form" (submit)="this.onSubmit()">
+        <div mat-dialog-content>
+            <div class="col-12">
+                <div class="d-flex">
+                    <div class="input-margin">
+                        <app-input-form controlName="nome" placeholder="Nome completo" label="Nome completo">
+                        </app-input-form>
+                    </div>
+                    <div style="width: 343px">
+                        <app-input-form type="date" controlName="data_nascimento" placeholder="Data de nascimento"
+                            label="Data de nascimento">
+                        </app-input-form>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="input-margin">
+                        <app-input-form controlName="cpf" mask="000.000.000-00" placeholder="CPF" label="CPF"
+                            [textError]="this.getTextError">
+                        </app-input-form>
+                    </div>
+                    <div style="width: 343px">
+                        <app-input-form controlName="email" placeholder="E-mail" label="E-mail"></app-input-form>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="input-margin">
+                        <app-input-form controlName="telefone" mask="(00)00000-0000" placeholder="(00)00000-0000"
+                            label="Telefone">
+                        </app-input-form>
+                    </div>
+                    <div style="width: 343px">
+                        <app-input-form controlName="endereco" placeholder="Digite o endereço do usuário"
+                            label="Endereço residencial">
+                        </app-input-form>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="input-margin">
+                        <app-input-form type="password" controlName="senha" placeholder="Digite a senha"
+                            label="Senha provisória">
+                        </app-input-form>
+                    </div>
+                    <div class="content-image">
+                        <img style="margin-right: 5px" width="40px" height="40px" src="/assets/images/avatar.svg">
+                        <input controlName="foto" type="file" name="foto"
+                            (change)="this.populateFileInForm($event.target)">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <mat-dialog-actions align="end">
+            <button class="button-cancel" mat-button mat-dialog-close>Cancelar</button>
+            <app-submit-button [disabled]="this.form.invalid" [loading]="this.loading">Adicionar Usuário
+            </app-submit-button>
+        </mat-dialog-actions>
+    </form>
+</section>

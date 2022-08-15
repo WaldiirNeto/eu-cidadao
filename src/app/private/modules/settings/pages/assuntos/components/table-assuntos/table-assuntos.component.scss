@@ -1,0 +1,29 @@
+@import '~/src/styles/_variables.scss';
+
+.table-assuntos {
+    .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    table {
+        th {
+            mat-icon {
+                padding-top: 4px;
+            }
+        }
+
+        mat-icon {
+            cursor: pointer;
+        }
+
+        .icon-edit {
+            color: $primary
+        }
+
+        .icon-delete {
+            color: $red-color
+        }
+    }
+}

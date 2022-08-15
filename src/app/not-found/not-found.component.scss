@@ -1,0 +1,24 @@
+@import "~src/styles/_variables.scss";
+
+.not-found {
+    align-items: center;
+    background-color: $color-white;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+
+    &__info {
+        width: 30%;
+
+        h1 {
+            font-weight: 700;
+            font-size: 48px;
+        }
+
+        p {
+            font-weight: 400;
+            font-size: 40px;
+            color: $placeholder-color;
+        }
+    }
+}

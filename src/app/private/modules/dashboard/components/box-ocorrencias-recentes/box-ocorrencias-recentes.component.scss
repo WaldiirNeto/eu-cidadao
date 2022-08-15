@@ -1,0 +1,79 @@
+@import "~src/styles/_variables.scss";
+
+.box-ocorrencias-recentes {
+    width: 350px;
+
+    app-box {
+        .content-up-ocorrencia-recentes {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+
+            .title {
+                color: $mat-label-color;
+                font-weight: 700;
+                font-size: 18px;
+            }
+        }
+
+        .content-down-ocorrencia-recentes {
+            display: flex;
+            flex-direction: column;
+
+
+            .group-1 {
+                display: flex;
+                margin-top: 10px;
+
+                img {
+                    margin-right: 5px;
+                }
+
+                .user {
+                    color: $placeholder-color;
+                    font-weight: 400;
+                    font-size: 14px;
+                    margin-top: 3px;
+                }
+
+                .type {
+                    font-size: 14px;
+
+                }
+
+                .small {
+                    font-size: 10px;
+
+                }
+
+                .endereco {
+                    color: $primary;
+                }
+            }
+
+            .group-2 {
+                display: flex;
+                flex-direction: column;
+
+                .type {
+                    font-size: 14px;
+                    margin-bottom: 0;
+
+                }
+
+                .small {
+                    font-size: 10px;
+                    margin: 0;
+
+                }
+
+                .small-color {
+                    color: $primary;
+                }
+            }
+
+
+        }
+
+    }
+}

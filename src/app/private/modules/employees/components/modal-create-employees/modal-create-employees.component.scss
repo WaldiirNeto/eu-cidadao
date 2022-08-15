@@ -1,0 +1,22 @@
+@import '~src/styles/_variables.scss';
+
+.modal-create-employees {
+    h1 {
+        font-weight: 700;
+        font-size: 22px;
+        color: $mat-label-color;
+    }
+
+    form {
+        .input-margin {
+            margin-right: 10px;
+            width: 310px;
+        }
+
+        .content-image {
+            align-items: center;
+            display: flex;
+            width: 343px;
+        }
+    }
+}

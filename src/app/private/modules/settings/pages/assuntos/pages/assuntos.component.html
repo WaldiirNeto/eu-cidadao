@@ -1,0 +1,29 @@
+<section class="container-fluid">
+    <app-box>
+        <h1>Gerenciar assuntos</h1>
+
+        <div class="col-12">
+            <div class="d-flex flex-row-reverse">
+                <div class="label-info">
+                    <p class="remove-margin-p">0 itens selecionados</p>
+                    <mat-icon>picture_as_pdf</mat-icon>
+                    <p class="label-icon">Gerar PDF</p>
+                    <mat-icon>description</mat-icon>
+                    <p class="label-icon">Gerar Relatório</p>
+                </div>
+            </div>
+            <div class="input-form">
+                <form [formGroup]="this.formFilter" class="form">
+                    <app-input-form controlName="assunto" placeholder="Pesquise por assunto" label="Pesquisar assunto"
+                        icon="search">
+                    </app-input-form>
+                    <mat-icon class="icon-delete" *ngIf="this.showIcon">delete_forever</mat-icon>
+                </form>
+                <button class="cadastrar-assunto" (click)="this.openDialog()">
+                    <mat-icon>add</mat-icon><span>Cadastrar Assunto</span>
+                </button>
+            </div>
+            <app-table-assuntos (tableEmit)="this.showIconDelete($event)"></app-table-assuntos>
+        </div>
+    </app-box>
+</section>

@@ -1,0 +1,21 @@
+@import "~src/styles/_variables.scss";
+
+.geral {
+    &__title {
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+}
+
+.ocorrencias-recentes {
+    &__title {
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+    .box-margin {
+        margin-bottom: 9px;
+    }
+}

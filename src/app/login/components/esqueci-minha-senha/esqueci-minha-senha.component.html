@@ -1,0 +1,20 @@
+<section class="redefinicao-senha">
+    <ng-container *ngIf="this.showForm">
+        <form [formGroup]="this.form"  @fade>
+            <section class="redefinicao-senha__title">
+                <h1>Redefinir senha</h1>
+                <p class="redefinicao-senha__title__paragraph">Vamos enviar um link em seu e-mail para que vocë redefina
+                    sua senha</p>
+                <app-input-form label="Email" type="email" controlName="email" placeholder="Digite seu e-mail"
+                    textError="E-mail inválido"></app-input-form>
+            </section>
+            <app-submit-button class="wn-button" [loading]="this.loading" [disabled]="this.form.invalid">Enviar
+            </app-submit-button>
+        </form>
+    </ng-container>
+    <p *ngIf="!this.showForm" class="redefinicao-senha__paragraph-senha" (click)="this.emitFormLogin(true)">Esqueci
+        minha
+        senha</p>
+    <p *ngIf="this.showForm" class="redefinicao-senha__paragraph-senha" (click)="this.emitFormLogin(false)">Fazer login
+    </p>
+</section>

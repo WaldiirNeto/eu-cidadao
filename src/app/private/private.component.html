@@ -1,0 +1,89 @@
+<section class="private-modules">
+    <mat-drawer mode="side" opened>
+        <div class="mat-drawer__content">
+            <div class="sidenav-content">
+                <img alt="logo" src="assets/images/logo-text.svg">
+                <img class="sidenav-content__avatar" alt="logo" src="assets/images/avatar.svg">
+                <section class="sidenav-content__user">
+                    <p> {{(this.user$ | async)?.primeiroNome }}</p>
+                    <p>Administrador</p>
+                </section>
+                <section class="sidenav-content__links">
+                    <div class="sidenav-content__links__item link" [routerLink]="''">
+                        <mat-icon>dashboard</mat-icon>
+                        <p>Dashboard</p>
+                    </div>
+                    <hr>
+                    <mat-accordion>
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title class="sidenav-content__links__item">
+                                    <mat-icon>edit_document</mat-icon>Ocorrências
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="sidenav-content__links__item__sub-links" [routerLink]="'ocorrencias'">Central de
+                                ocorrências</div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                    <hr>
+                    <div class="sidenav-content__links__item link" [routerLink]="'/relatorios'">
+                        <mat-icon>summarize</mat-icon>
+                        <p>Relatórios</p>
+                    </div>
+                    <hr>
+                    <mat-accordion>
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title class="sidenav-content__links__item">
+                                    <mat-icon>account_circle</mat-icon>Usuários
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="sidenav-content__links__item__sub-links" [routerLink]="['/users']"
+                                routerLinkActive="router-link-active">Lista de Usuários</div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                    <hr>
+
+                    <mat-accordion>
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title class="sidenav-content__links__item">
+                                    <mat-icon>settings</mat-icon>Configurações
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="sidenav-content__links__item__sub-links" [routerLink]="['/settings/profile']"
+                                routerLinkActive="router-link-active">Meu perfil
+                            </div>
+                            <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px"
+                                [routerLink]="['/settings/assuntos']" routerLinkActive="router-link-active">Gerenciar
+                                Assunto
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                    <hr>
+                </section>
+                <hr>
+            </div>
+        </div>
+    </mat-drawer>
+    <div class="private-modules__content">
+        <mat-toolbar>
+            <div class="mat-toolbar__content">
+                <p class="prefeitura"><strong>Prefeitura de {{(this.user$ | async)?.nomeCidade }}</strong></p>
+                <div class="mat-toolbar__content__icons">
+                    <div class="mat-toolbar__content__icons__group1">
+                        <mat-icon>help_outline</mat-icon>
+                        <mat-icon class="material-icons-outlined">notifications</mat-icon>
+                    </div>
+                    <div class="mat-toolbar__content__icons__group2">
+                        <mat-icon class="logoff">power_settings_new</mat-icon>
+                        <p class="text-logoff">Finalizar sessão</p>
+                    </div>
+                </div>
+            </div>
+        </mat-toolbar>
+        <div class="private-modules__content__margin">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</section>

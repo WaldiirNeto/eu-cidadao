@@ -1,0 +1,91 @@
+@import '~src/styles/_variables.scss';
+$color-box: #1653FD;
+
+.modal-create-assunto {
+    h1 {
+        font-weight: 700;
+        font-size: 22px;
+        color: $mat-label-color;
+    }
+
+    form {
+        .input-margin {
+            margin-right: 10px;
+        }
+
+        .content-image {
+            align-items: center;
+            display: flex;
+            width: 343px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .box-categorias {
+        width: 1290px;
+
+        .categoria-lista {
+            border: 1px solid $placeholder-color;
+            filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.25));
+            border-radius: 8px;
+            height: 100%;
+            padding: 10px;
+
+            &__align {
+                align-items: center;
+                display: flex;
+
+                &__lista-right {
+                    margin-right: 5px;
+                    width: 150px;
+                }
+
+                mat-icon {
+                    cursor: pointer;
+                }
+            }
+
+            .flex {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+
+
+            .combo-categoria {
+                align-items: center;
+                display: flex;
+                background: white;
+                border-width: 1px 1px 1px 6px;
+                border-style: solid;
+                border-color: $color-box;
+                border-radius: 4px;
+                cursor: grab;
+                flex-direction: row;
+                height: 31px;
+                justify-content: center;
+                margin-right: 5px;
+                margin-bottom: 10px;
+                padding: 4px;
+                width: 101px;
+
+
+                mat-icon {
+                    color: $primary;
+                    cursor: pointer;
+                    transform: translateY(-50%);
+                    position: absolute;
+                    margin-left: 90px;
+                    margin-top: -3px;
+                }
+
+            }
+
+            .dropped {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+    }
+}

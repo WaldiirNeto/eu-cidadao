@@ -1,0 +1,45 @@
+<section>
+    <p>Pesquisar por</p>
+    <form [formGroup]="this.form" class="col-12" (submit)="this.navigateToManager()">
+        <div class="row col-8">
+            <div class="col-4">
+                <app-input-form controlName="data_inicial" label="Período de" type="date"
+                    placeholder="Digite a data inicial"></app-input-form>
+            </div>
+            <div class="col-4">
+                <app-input-form controlName="data_final" label="Período até" type="date"
+                    placeholder="Digite a data final"></app-input-form>
+            </div>
+        </div>
+        <div class="row col-8">
+            <div class="col-4">
+                <app-input-form controlName="assunto" label="Assunto" placeholder="Filtrar por">
+                </app-input-form>
+            </div>
+            <div class="col-4">
+                <app-input-form controlName="categoria" label="Categoria" placeholder="Filtrar por">
+                </app-input-form>
+            </div>
+        </div>
+        <div class="row col-8">
+            <div class="col-4">
+                <app-input-form controlName="bairro" label="Bairro" placeholder="Filtrar por">
+                </app-input-form>
+            </div>
+            <div class="col-4">
+                <app-input-form controlName="status_ocorrencia" label="Status da ocorrência" placeholder="Filtrar por">
+                </app-input-form>
+            </div>
+        </div>
+        <div class="row col-8">
+            <div class="col-4">
+                <app-input-form controlName="responsavel" label="Responsável" placeholder="Filtrar por">
+                </app-input-form>
+            </div>
+        </div>
+        <div class="col-1">
+            <app-submit-button [loading]="this.form.invalid" [loading]="this.loading">Gerar Relatório
+            </app-submit-button>
+        </div>
+    </form>
+</section>

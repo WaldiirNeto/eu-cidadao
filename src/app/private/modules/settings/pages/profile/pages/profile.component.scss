@@ -1,0 +1,102 @@
+@import '~src/styles/_variables.scss';
+
+.container-fluid {
+    app-box {
+        h1 {
+            color: $mat-label-color;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .profile-photo {
+            align-items: center;
+            display: flex;
+
+            img {
+                margin-right: 40px;
+            }
+
+            &__action {
+                display: flex;
+                flex-direction: column;
+
+                .margin-p {
+                    font-weight: 600;
+                    font-size: 16px;
+                    margin-bottom: 0;
+                }
+
+                .large-info {
+                    font-size: 10px;
+                }
+            }
+
+            .button-upload {
+                background-color: transparent;
+                border: 2px solid $primary;
+                border-radius: 30px;
+                color: $primary;
+                font-weight: 700;
+                font-size: 18px;
+                height: 48px;
+                margin-right: 20px;
+                width: 183px;
+
+                label {
+                    width: 100%;
+                    text-align: center;
+                    display: block;
+                    margin-top: 10px;
+                    height: 100%;
+                    cursor: pointer;
+                }
+
+                input[type="file"] {
+                    display: none;
+                }
+
+            }
+        }
+
+        form {
+            margin-top: 50px;
+
+            .info-senha {
+                align-items: start;
+                display: flex;
+                flex-direction: column;
+
+                p {
+                    font-size: 12px;
+                    margin: 0;
+                }
+
+                .senha-label-info {
+                    color: $placeholder-color;
+                }
+
+                .senha-letra-maiuscula {
+                    align-items: center;
+                    display: flex;
+                    color: $primary;
+
+                    mat-icon {
+                        color: $primary;
+                        font-size: 20px
+                    }
+                }
+
+                .senha-erro {
+                    align-items: center;
+                    display: flex;
+                    color: $red-color;
+
+                    mat-icon {
+                        color: $red-color;
+                        font-size: 20px
+                    }
+                }
+            }
+        }
+    }
+}
