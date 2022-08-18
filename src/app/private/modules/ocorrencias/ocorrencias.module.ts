@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatTableModule } from '@angular/material/table'
 import { NgChartsModule } from 'ng2-charts'
+import { MatTooltipModule } from '@angular/material/tooltip'
 
 import { OcorrenciasRoutingModule } from './ocorrencias-routing.module'
 import { OcorrenciasComponent } from './pages/ocorrencias.component'
@@ -19,7 +20,6 @@ import { SubmitButtonComponent } from '@shared/components/submit-button/submit-b
 import { InfosInitialChartsComponent } from './components/infos-initial-charts/infos-initial-charts.component'
 import { ModalDetalhesOcorrenciaComponent } from './components/modal-detalhes-ocorrencia/modal-detalhes-ocorrencia.component'
 import { MatSelectModule } from '@angular/material/select'
-
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { MatSelectModule } from '@angular/material/select'
     MatDialogModule,
     ReactiveFormsModule,
     SubmitButtonComponent,
-    MatSelectModule
+    MatSelectModule,
+    MatTooltipModule
   ]
 })
 export class OcorrenciasModule { }

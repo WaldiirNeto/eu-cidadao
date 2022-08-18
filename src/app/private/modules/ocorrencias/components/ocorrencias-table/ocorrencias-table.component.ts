@@ -211,7 +211,8 @@ export class OcorrenciasTableComponent implements OnInit {
   public openModalDetails(): void {
     this._dialog.open(ModalDetalhesOcorrenciaComponent, {
       enterAnimationDuration: `1000ms`,
-      exitAnimationDuration: `500ms`
+      exitAnimationDuration: `500ms`,
+      panelClass: 'padding-modal'
     })
   }
 

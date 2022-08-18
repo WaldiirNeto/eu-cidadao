@@ -10,6 +10,16 @@
                     type="select" label="pesquisar por" icon="search">
                 </app-input-form>
             </div>
+            <div class="col-4">
+                <app-input-form [listSelect]="this.listSelects" controlName="filtro" placeholder="Pesquisar por labels"
+                    type="select" label="pesquisar por" icon="search">
+                </app-input-form>
+            </div>
+            <div class="col-4">
+                <app-input-form [listSelect]="this.listSelects" controlName="filtro" placeholder="Pesquisar por labels"
+                    type="select" label="pesquisar por" icon="search">
+                </app-input-form>
+            </div>
             <div class="col-2">
                 <app-submit-button>
                     <mat-icon style="color: white" class="material-icons-outlined">filter_alt</mat-icon> Filtrar
@@ -85,8 +95,8 @@
                     <div class="d-flex">
                         <div [class]="'me-2 status-' + element.status">{{element.status}}
                         </div>
-                        <mat-icon (click)="this.openModalDetails()">search</mat-icon>
-                        <mat-icon>edit</mat-icon>
+                        <mat-icon>search</mat-icon>
+                        <mat-icon (click)="this.openModalDetails()">edit</mat-icon>
                     </div>
                 </td>
             </ng-container>

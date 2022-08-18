@@ -1,145 +1,148 @@
-<div mat-dialog-title class="header">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-        <div class="me-1">
-            <p>Protocolo</p>
-            <p>{{this.details.ocorrencia}}</p>
-        </div>
-        <div class="me-1">
-            <p>Cidadão</p>
-            <p>{{this.details.cidadao}}</p>
-        </div>
-        <div class="me-1">
-            <p>Assunto</p>
-            <p>{{this.details.assunto}}</p>
-        </div>
-        <div class="me-1">
-            <p>Categoria</p>
-            <p>{{this.details.categoria}}</p>
-        </div>
-        <div class="me-1">
-            <p>Data de criação</p>
-            <p>{{this.details.data_criacao | date: 'dd/MM/yyyy'}}</p>
-        </div>
-        <button class="button-transferencia" (click)="this.showModalPerson = true">
-            <mat-icon>swap_vertic</mat-icon><span>Transferir ocorrência</span>
-        </button>
-        <mat-icon style="color: white; height: 30px;
-            color: white;
-            font-size: 30px;
-            width: 30px; cursor: pointer;" mat-dialog-close>cancel</mat-icon>
-    </div>
-</div>
-<mat-dialog-content class="mat-typography">
-    <div class="container-fluid">
-        <h1>Detalhes da ocorrência</h1>
-        <div class="container-fluid__container d-flex justify-content-center">
-            <div class="ms-3 col-4 mt-2 mb-2 me-4" style="border-style: solid;
-            border: 1px solid #1474FF;
-            border-radius: 8px; padding: 10px;">
-                <p class="ms-2 mt-2" style="text-align: justify;">Reclamação é o ato de protestar, o que nor malmente é
-                    feito por meio de palavras,
-                    de modo oral ou por
-                    escrito.
-                    O ato de reclamar na modalidade escrita confere maior formalidade ao ato, inclusive possibilitando a
-                    comprovação posterior de que is so foi feito.
-                    Reclamação é o ato de protestar, o que normalmente.
-                </p>
+<section class="modal-detalhes-ocorrencia">
+    <div mat-dialog-title class="header">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="me-3 mt-2">
+                <p>Protocolo</p>
+                <p>{{this.details.ocorrencia}}</p>
             </div>
-            <div class="ms-3 col-6 mt-2 mb-2">
-                <img src="/assets/images/mocks/bueiro.svg">
+            <div class="me-1 mt-2">
+                <p>Cidadão</p>
+                <p>{{this.details.cidadao}}</p>
             </div>
-        </div>
-        <dialog open *ngIf="this.showModalPerson" style="
-            /* box-sizing: border-box; */
-    position: absolute;
-    width: 506px;
-    height: 262px;
-    /* left: 282px; */
-    /* top: 0; */
-    background: #FEFEFE;
-    border: 1px solid #1474FF;
-    box-shadow: 0px 1px 1px rgb(21 21 24 / 18%), 0px 0px 1px rgb(25 25 28 / 25%);
-    border-radius: 8px;
-    margin-top: -130px;
-        ">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-between mb-4">
-                    <span></span>
-                    <p style="font-weight: 700;
-                    font-size: 20px;">Selecione o responsável</p>
-                    <mat-icon style="color: #1474FF; width: 33px; height: 33px; font-size: 33px; cursor: pointer;"
-                        (click)="this.showModalPerson = false">cancel</mat-icon>
-                </div>
-                <div style="width: 100%">
-                    <mat-form-field appearance="outline" floatLabel="always" style="    width: 100%;" class="mb-4">
-                        <mat-select>
-                            <mat-option value="">Selecione</mat-option>
-                            <mat-option value="Carlos R">Carlos R</mat-option>
-                            <mat-option value="João">João</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button class="button-cancel" mat-button (click)="this.showModalPerson = false">Cancelar</button>
-                    <button class="button-salvar-responsavel" mat-button>Salvar</button>
-
-                </div>
+            <div class="me-1 mt-2">
+                <p>Assunto</p>
+                <p>{{this.details.assunto}}</p>
             </div>
-        </dialog>
-
-        <dialog open *ngIf="this.showRecusaOcorrencia" style="
-                /* box-sizing: border-box; */
-        position: absolute;
-        width: 506px;
-        height: 150px;
-        /* left: 282px; */
-        /* top: 0; */
-        background: #FEFEFE;
-        border: 1px solid #1474FF;
-        box-shadow: 0px 1px 1px rgb(21 21 24 / 18%), 0px 0px 1px rgb(25 25 28 / 25%);
-        border-radius: 8px;
-        margin-top: -130px;
-    ">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-between mb-4 mt-2">
-                    <span></span>
-                    <p style="font-weight: 700;
-                font-size: 20px;">Confirmar recusa da ocorrência</p>
-                    <span></span>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button class="button-cancel" mat-button
-                        (click)="this.showRecusaOcorrencia = false">Cancelar</button>
-                    <button class="button-salvar-responsavel" mat-button>Salvar</button>
-                </div>
+            <div class="me-1 mt-2">
+                <p>Categoria</p>
+                <p>{{this.details.categoria}}</p>
             </div>
-        </dialog>
-        <div class="mt-3">
-            <mat-checkbox></mat-checkbox> Essa ocorrência já foi tratada?
-        </div>
-
-        <div class="mt-3">
-            <p style="font-weight: 700;
-            font-size: 15px;">Resposta</p>
-            <textarea style="/* Background/Default */
-
-            background: #FEFEFE;
-            /* Brand colors/Secondary pure */
-            
-            border: 1px solid #1474FF;
-            /* Shadow/Level-4 */
-            
-            box-shadow: 0px 14px 32px rgba(24, 24, 27, 0.04), 0px 16px 24px rgba(24, 24, 27, 0.04), 0px 4px 8px rgba(24, 24, 27, 0.06), 0px 0px 1px rgba(24, 24, 27, 0.04);
-            border-radius: 8px; width: 100%;" rows="10"></textarea>
+            <div class="me-1 mt-2">
+                <p>Data de criação</p>
+                <p>{{this.details.data_criacao | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <mat-icon class="icon-close" mat-dialog-close>cancel</mat-icon>
         </div>
     </div>
+    <mat-dialog-content class="mat-typography">
+        <div class="container-fluid">
+            <h1>Detalhes da ocorrência</h1>
+            <div class="container-fluid__container d-flex justify-content-start">
+                <div class="ms-4 col-5 mt-2 mb-2 me-4 container-description">
+                    <p class="ms-2 mt-2" style="text-align: justify;">Reclamação é o ato de protestar, o que nor
+                        malmente é
+                        feito por meio de palavras,
+                        de modo oral ou por
+                        escrito.
+                        O ato de reclamar na modalidade escrita confere maior formalidade ao ato, inclusive
+                        possibilitando a
+                        comprovação posterior de que is so foi feito.
+                        Reclamação é o ato de protestar, o que normalmente.
+                    </p>
+                </div>
+                <div class="ms-3 col-6 mt-2 mb-2">
+                    <img src="/assets/images/mocks/bueiro.svg" width="100%">
+                </div>
+            </div>
+            <dialog style="z-index: 2000" open *ngIf="this.showRecusaOcorrencia" class="recusar-ocorrencia">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between mb-4">
+                        <span></span>
+                        <p style="font-weight: 700;
+                    font-size: 20px;">Selecionar motivo da recusa</p>
+                        <mat-icon class="cancel-dialog-intern" (click)="this.showRecusaOcorrencia = false">cancel
+                        </mat-icon>
+                    </div>
+                    <div style="width: 100%">
+                        <mat-form-field appearance="outline" floatLabel="always" style="width: 100%;" class="mb-4">
+                            <mat-select>
+                                <mat-option value="">Selecione</mat-option>
+                                <mat-option value="Recusa1">Recusa 1</mat-option>
+                                <mat-option value="Recusa2">Recusa 2</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button class="button-cancel" mat-button
+                            (click)="this.showRecusaOcorrencia = false">Cancelar</button>
+                        <button class="button-salvar-responsavel" mat-button>Salvar</button>
 
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <div class="container-fluid">
-        <button class="button-cancel" mat-button mat-dialog-close>Cancelar</button>
-        <button class="button-recusar-ocorrencia" mat-button (click)="this.showRecusaOcorrencia = true">Recusar
-            ocorrência</button>
-        <button class="button-despachar-ocorrencia" mat-button>Despachar ocorrência</button>
-    </div>
-</mat-dialog-actions>
+                    </div>
+                </div>
+            </dialog>
+
+            <dialog style="z-index: 2000" open *ngIf="this.showDespachoOcorrencia" class="dialog-despachar-ocorrencia">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between mb-4 mt-2">
+                        <span></span>
+                        <p style="font-weight: 700;
+                font-size: 20px;">Confirmar Despacho da ocorrência?</p>
+                        <span></span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button class="button-cancel" mat-button
+                            (click)="this.showDespachoOcorrencia = false">Cancelar</button>
+                        <button class="button-salvar-responsavel" mat-button>Salvar</button>
+                    </div>
+                </div>
+            </dialog>
+
+            <form [formGroup]="this.form">
+                <div class="mt-3">
+                    <mat-checkbox></mat-checkbox> Essa ocorrência já foi tratada?
+                </div>
+                <div class="mt-3  d-flex">
+                    <div class="p-2">
+                        <app-input-form style="font-size: 12px;" [listSelect]="this.ListAssuntos" type="select"
+                            placeholder="Selecione" label="Assunto" controlName="assunto"></app-input-form>
+                    </div>
+                    <div class="p-2">
+                        <app-input-form [listSelect]="this.Listcategorias" type="select" placeholder="Selecione"
+                            label="Categoria" controlName="categoria"></app-input-form>
+                    </div>
+                </div>
+
+
+                <div class="d-flex">
+                    <div class="p-2">
+                        <app-input-form controlName="comentario" placeholder="Adicionar um comentário...">
+                        </app-input-form>
+                    </div>
+                    <div class="p-2" style="margin-top: 10px;">
+                        <mat-icon style="cursor: pointer; color: #1474FF" matTooltip="Adicionar comentário"
+                            matTooltipPosition="right" aria-label="ícone para adicionar comentário"
+                            (click)="this.adicionarComentario()">
+                            add_comment</mat-icon>
+                    </div>
+                </div>
+                <section>
+                    <ng-container *ngFor="let comment of this.comentarios">
+                        <article class="row col-8">
+                            <div class="col-3 align-items-center">
+                                <img width="25" height="25" src="/assets/images/avatar.svg"> <span
+                                    class="ms-2">{{comment.user}}</span>
+                            </div>
+                            <p class="col-6" style="font-size: 10px; color: #666; margin-left: 2px;">8 de
+                                agosto de
+                                {{comment.date}}</p>
+                        </article>
+                        <div class="col-12" style="margin-left: 33px;">
+                            <p class="col-12" style=" margin-top: -9px;">{{comment.comentario}}</p>
+                        </div>
+                    </ng-container>
+                </section>
+            </form>
+        </div>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <div class="container-fluid">
+            <button class="button-cancel" mat-button mat-dialog-close>Cancelar</button>
+            <button class="button-recusar-ocorrencia" mat-button (click)="this.showRecusaOcorrencia = true">Recusar
+                ocorrência</button>
+            <button class="button-despachar-ocorrencia" mat-button
+                (click)="this.showDespachoOcorrencia = true">Despachar
+                ocorrência</button>
+        </div>
+    </mat-dialog-actions>
+</section>

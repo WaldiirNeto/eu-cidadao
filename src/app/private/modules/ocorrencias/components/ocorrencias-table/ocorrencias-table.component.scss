@@ -56,3 +56,21 @@ table {
         @include status-base($green-color)
     }
 }
+
+::ng-deep .padding-modal {
+
+    ::ng-deep .mat-dialog-container {
+        padding: 0 0 24px 0 !important;
+        border-radius: 10px !important;
+        width: 70%;
+        overflow-x: hidden;
+
+    }
+
+
+}
+
+::ng-deep .cdk-overlay-pane {
+    display: flex !important;
+    justify-content: center !important;
+}

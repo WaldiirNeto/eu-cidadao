@@ -1,74 +1,126 @@
 @import '~src/styles/_variables.scss';
 
-::ng-deep .mat-dialog-container {
-    padding: 0 0 24px 0 !important;
-    // overflow-x: hidden;
+@mixin dialog-intern($height) {
+    background: $backgroud-toolbar;
+    border: 1px solid $primary;
+    border-radius: 8px;
+    box-shadow: 0px 1px 1px rgb(21 21 24 / 18%), 0px 0px 1px rgb(25 25 28 / 25%);
+    height: $height;
+    margin-top: -130px;
+    position: absolute;
+    width: 506px;
 }
 
-.header {
-    background-color: #0079CB;
+.modal-detalhes-ocorrencia {
+    .header {
+        background-color: #0079CB;
 
-    p {
-        color: white;
+        p {
+            color: white;
+            font-weight: 400;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+    }
+
+    .button-transferencia {
+        background: white;
+        border: 1px solid black;
+        border-radius: 8px;
+        border: 1px solid $red-color;
         font-weight: 400;
         font-size: 14px;
-        margin-bottom: 0;
-    }
-}
-
-.button-transferencia {
-    background: white;
-    border: 1px solid black;
-    border-radius: 8px;
-    border: 1px solid $red-color;
-    font-weight: 400;
-    font-size: 14px;
-}
-
-.button-recusar-ocorrencia {
-    background: white;
-    border: 1px solid black;
-    border-radius: 8px;
-    border: 1px solid $red-color;
-    border-radius: 8px;
-    width: 150px;
-    height: 48px;
-    margin-right: 10px;
-}
-
-.button-despachar-ocorrencia {
-    background: $primary;
-    border: 1px solid $primary;
-    border-radius: 8px;
-    border: 1px solid $primary;
-    border-radius: 8px;
-    color: white;
-    height: 48px;
-    margin-right: 10px;
-    width: 190px;
-}
-
-.button-salvar-responsavel {
-    background: $color-paragraph;
-    border: 1px solid $color-paragraph;
-    border-radius: 8px;
-    border: 1px solid $color-paragraph;
-    border-radius: 8px;
-    color: white;
-    height: 48px;
-    margin-right: 10px;
-    width: 190px;
-}
-
-.container-fluid {
-    h1 {
-        font-weight: 700;
-        font-size: 16px;
     }
 
-    &__container {
-        background: rgba(224, 224, 224, 0.5);
+    .button-recusar-ocorrencia {
+        background: white;
+        border: 1px solid black;
         border-radius: 8px;
-        opacity: 0.7;
+        border: 1px solid $red-color;
+        border-radius: 8px;
+        width: 150px;
+        height: 48px;
+        margin-right: 10px;
     }
+
+    .button-despachar-ocorrencia {
+        background: $primary;
+        border: 1px solid $primary;
+        border-radius: 8px;
+        border: 1px solid $primary;
+        border-radius: 8px;
+        color: white;
+        height: 48px;
+        margin-right: 10px;
+        width: 190px;
+    }
+
+    .button-salvar-responsavel {
+        background: $color-paragraph;
+        border: 1px solid $color-paragraph;
+        border-radius: 8px;
+        border: 1px solid $color-paragraph;
+        border-radius: 8px;
+        color: white;
+        height: 48px;
+        margin-right: 10px;
+        width: 190px;
+    }
+
+    .container-fluid {
+        h1 {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        &__container {
+            background: rgba(224, 224, 224, 0.5);
+            border-radius: 8px;
+            opacity: 0.7;
+        }
+    }
+
+    .icon-close {
+        color: white;
+        cursor: pointer;
+        font-size: 30px;
+        height: 30px;
+        width: 30px;
+    }
+
+    .container-description {
+        border-style: solid;
+        border: 1px solid $primary;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .recusar-ocorrencia {
+        @include dialog-intern(262px)
+    }
+
+    .dialog-despachar-ocorrencia {
+        @include dialog-intern(150px);
+    }
+
+    .cancel-dialog-intern {
+        color: #1474FF;
+        cursor: pointer;
+        font-size: 33px;
+        height: 33px;
+        width: 33px;
+    }
+
+    ::ng-deep .mat-form-field-flex>.mat-form-field-infix {
+        padding: 0.4em 0px !important;
+    }
+
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-label {
+        margin-top: -15px;
+    }
+
+    ::ng-deep label.ng-star-inserted {
+        transform: translateY(-0.59375em) scale(.75) !important;
+    }
+
 }

@@ -1,0 +1,27 @@
+<section>
+    <h1>Criar notificação</h1>
+    <form class="row col-12" [formGroup]="this.form">
+        <app-input-form type="text" label="Título da notificação" controlName="titulo"
+            placeholder="Interrupção no abastecimento de água">
+        </app-input-form>
+        <div class="col-6">
+            <app-input-form type="text" label="Assunto" controlName="assunto" placeholder="Água e Esgoto">
+            </app-input-form>
+            <app-input-form type="text" label="Categoria" controlName="categoria" placeholder="Falta de água">
+            </app-input-form>
+        </div>
+        <div class="col-6">
+            <app-input-form type="text" label="Criticidade" controlName="criticidade" placeholder="Selecione">
+            </app-input-form>
+            <app-input-form type="text" controlName="cidade" placeholder="Selecione"></app-input-form>
+        </div>
+        <app-input-form type="text" label="Link para compartilhar site ou alguma página da prefeitura"
+            controlName="link"
+            placeholder="URL para o site que desejea compartilhar, Lembre de testar se o site é compátibel com o smartphone">
+        </app-input-form>
+        <div class="col-6">
+            <app-input-form type="text" label="Posição da notificação" controlName="posicao_notificacao"
+                placeholder="Selecione"></app-input-form>
+        </div>
+    </form>
+</section>

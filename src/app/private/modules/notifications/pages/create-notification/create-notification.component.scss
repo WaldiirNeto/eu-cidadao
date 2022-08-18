@@ -1,0 +1,8 @@
+@import '~src/styles/_variables.scss';
+
+h1 {
+    color: $mat-label-color;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 20px;
+}

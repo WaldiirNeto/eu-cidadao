@@ -1,0 +1,12 @@
+@import '~src/styles/_variables.scss';
+
+@mixin dialog-intern($height) {
+    background: $backgroud-toolbar;
+    border: 1px solid $primary;
+    border-radius: 8px;
+    box-shadow: 0px 1px 1px rgb(21 21 24 / 18%), 0px 0px 1px rgb(25 25 28 / 25%);
+    height: $height;
+    margin-top: -130px;
+    position: absolute;
+    width: 506px;
+}
