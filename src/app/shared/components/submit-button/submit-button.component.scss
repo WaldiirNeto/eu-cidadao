@@ -1,6 +1,11 @@
 @import "~src/styles/_variables.scss";
 
 section {
+    @media (max-width: 90px) {
+        button {
+            display: none;
+        }
+    }
 
     button {
         width: 100%;

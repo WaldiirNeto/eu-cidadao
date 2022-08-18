@@ -19,7 +19,8 @@ import { OcorrenciasTableComponent } from './components/ocorrencias-table/ocorre
 import { SubmitButtonComponent } from '@shared/components/submit-button/submit-button.component'
 import { InfosInitialChartsComponent } from './components/infos-initial-charts/infos-initial-charts.component'
 import { ModalDetalhesOcorrenciaComponent } from './components/modal-detalhes-ocorrencia/modal-detalhes-ocorrencia.component'
-import { MatSelectModule } from '@angular/material/select'
+import { MatSelectModule } from '@angular/material/select';
+import { FilterTableOcorrenciasComponent } from './components/filter-table-ocorrencias/filter-table-ocorrencias.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatSelectModule } from '@angular/material/select'
     StaticDataComponent,
     OcorrenciasTableComponent,
     InfosInitialChartsComponent,
-    ModalDetalhesOcorrenciaComponent
+    ModalDetalhesOcorrenciaComponent,
+    FilterTableOcorrenciasComponent
   ],
   imports: [
     CommonModule,

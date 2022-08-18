@@ -1,10 +1,22 @@
 <section class="ocorrencias">
     <app-box>
         <h1>Central de ocorrências</h1>
-        <ng-container *ngIf="!this.renderChartStatus; else renderChartPerTypeStatus">
-            <app-infos-initial-charts></app-infos-initial-charts>
-        </ng-container>
-        <ng-template #renderChartPerTypeStatus>
+
+        <div class="row">
+            <div class="col-md-5">
+                <app-infos-initial-charts></app-infos-initial-charts>
+            </div>
+            <div class="col-md-6">
+                <app-filter-table-ocorrencias></app-filter-table-ocorrencias>
+            </div>
+        </div>
+
+        <div class="col-12 mt-4">
+            <app-ocorrencias-table (filterEmit)="this.renderChartPerStatus($event)"></app-ocorrencias-table>
+        </div>
+        <!-- <ng-container *ngIf="!this.renderChartStatus; else renderChartPerTypeStatus"> -->
+        <!-- </ng-container> -->
+        <!-- <ng-template #renderChartPerTypeStatus>
             <div class="d-flex justify-content-end">
                 <div class="relative mt-5">
                     <canvas height="150px" width="150px" baseChart [labels]="doughnutChartLabels"
@@ -17,9 +29,6 @@
                     </div>
                 </div>
             </div>
-        </ng-template>
-        <div class="col-12 mt-4">
-            <app-ocorrencias-table (filterEmit)="this.renderChartPerStatus($event)"></app-ocorrencias-table>
-        </div>
+        </ng-template> -->
     </app-box>
 </section>

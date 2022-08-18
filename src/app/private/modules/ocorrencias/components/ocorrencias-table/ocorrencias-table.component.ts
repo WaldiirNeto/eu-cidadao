@@ -133,72 +133,15 @@ export class OcorrenciasTableComponent implements OnInit {
   ]
 
   protected listOcorrencias = this.dataSource
-  protected form: FormGroup
-  protected listStatus = [
-    {
-      id: 'resolvidas',
-      value: 'Resolvidas'
-    },
-    {
-      id: 'tratamento',
-      value: 'Tratamento'
-    }, {
-      id: 'recusadas',
-      value: 'Recusadas'
-    }, {
-      id: 'pendentes',
-      value: 'Pendentes'
-    }
-  ]
-  protected listSelects = [
-    {
-      id: 'protocolo',
-      value: 'Protocolo'
-    },
-
-    {
-      id: 'assunto',
-      value: 'Assunto'
-    },
-    {
-      id: 'categoria',
-      value: 'Categoria'
-    },
-    {
-      id: 'responsavel',
-      value: 'Responsável'
-    },
-    {
-      id: 'bairro',
-      value: 'Bairro'
-    },
-    {
-      id: 'data_criacao',
-      value: 'Data criação'
-    },
-  ]
   private selectedCategories: Array<string> = []
   private _destroy$ = new Subject()
 
   constructor(private _dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      status: new FormControl(''),
-      filtro: new FormControl('')
-    })
+
   }
 
-  public filterListEmit(): void {
-    const status: string = this.form.controls['status'].value
-    console.log(status)
-    this.listOcorrencias = this.dataSource.filter((ocorrencia => ocorrencia.status === status))
-    const event = {
-      status,
-      ocorrencias: this.listOcorrencias
-    }
-    this.filterEmit.emit(event)
-  }
 
   public openModalEdit(employee: EmployeesModel): void {
     this._dialog.open(ModalCreateEmployeesComponent, {

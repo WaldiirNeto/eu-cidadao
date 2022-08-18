@@ -1,0 +1,45 @@
+<form [formGroup]="this.form" (submit)="this.filterListEmit()">
+    <div class="row col-12 align-items-center">
+        <div class="col-4">
+            <app-input-form controlName="protocolo" type="text" placeholder="selecione o protocolo" icon="search">
+            </app-input-form>
+        </div>
+        <div class="col-4">
+            <app-input-form [listSelect]="this.listSelects" controlName="assunto" type="select"
+                placeholder="selecione o assunto" icon="search">
+            </app-input-form>
+        </div>
+        <div class="col-4">
+            <app-input-form [listSelect]="this.listSelects" controlName="categoria" type="select"
+                placeholder="selecione a categoria" icon="search">
+            </app-input-form>
+        </div>
+        <div class="col-4">
+            <app-input-form [listSelect]="this.listSelects" controlName="status" type="select"
+                placeholder="digite o status" icon="search">
+            </app-input-form>
+        </div>
+        <div class="col-4">
+            <app-input-form controlName="responsavel" type="text" placeholder="digite o responsável" icon="search">
+            </app-input-form>
+        </div>
+        <div class="col-4">
+            <app-input-form controlName="bairro" type="text" placeholder="digite o bairro" icon="search">
+            </app-input-form>
+        </div>
+        <div class="col-4">
+            <app-input-form controlName="data_criacao" placeholder="selecione a data" type="date">
+            </app-input-form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 mb-3">
+            <app-submit-button>
+                <mat-icon style="color: white" class="material-icons-outlined">filter_alt</mat-icon> Filtrar
+            </app-submit-button>
+        </div>
+        <div class="col-2 mb-3">
+            <button class="button-cancel" style="width: 100%">Limpar</button>
+        </div>
+    </div>
+</form>
