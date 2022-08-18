@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
+import { FormFilterOcorrenciasInterface, FormFilterOcorrenciasModel } from '../../models/form-filter-ocorrencias.model'
 
 @Component({
   selector: 'app-filter-table-ocorrencias',
   templateUrl: './filter-table-ocorrencias.component.html',
   styleUrls: ['./filter-table-ocorrencias.component.scss']
 })
-export class FilterTableOcorrenciasComponent implements OnInit {
-  protected form: FormGroup
+export class FilterTableOcorrenciasComponent extends FormFilterOcorrenciasModel {
+
+  @Output() public filterEmit: EventEmitter<FormFilterOcorrenciasInterface> = new EventEmitter()
   protected listStatus = [
     {
       id: 'resolvidas',
@@ -51,22 +53,13 @@ export class FilterTableOcorrenciasComponent implements OnInit {
       value: 'Data criação'
     },
   ]
-  constructor() { }
-
-  ngOnInit(): void {
-    this.form = new FormGroup({
-      protocolo: new FormControl(''),
-      assunto: new FormControl(''),
-      categoria: new FormControl(''),
-      responsavel: new FormControl(''),
-      bairro: new FormControl(''),
-      data_criacao: new FormControl(''),
-      status: new FormControl('')
-    })
+  constructor() {
+    super()
   }
 
-  public filterListEmit(): void {
 
+  public filterListEmit(): void {
+    this.filterEmit.emit(this.form.controls)
   }
 
 }

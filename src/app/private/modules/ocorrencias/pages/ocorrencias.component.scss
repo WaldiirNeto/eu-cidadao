@@ -14,6 +14,16 @@
         font-size: 20px;
     }
 
+    .example-action-buttons {
+        padding-bottom: 20px;
+    }
+
+    .example-headers-align .mat-expansion-panel-header-description {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
     .relative {
         position: relative;
     }

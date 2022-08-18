@@ -15,8 +15,6 @@ import { ModalDetalhesOcorrenciaComponent } from '../modal-detalhes-ocorrencia/m
 })
 export class OcorrenciasTableComponent implements OnInit {
   @Output() public tableEmit: EventEmitter<Array<string>> = new EventEmitter()
-  @Output() public filterEmit: EventEmitter<{ status: string, ocorrencias: any }> = new EventEmitter()
-
 
   protected displayedColumns: string[] = ['protocolo', 'assunto', 'categoria', 'responsavel', 'bairro', 'data_criacao', 'status']
   protected dataSource = [
