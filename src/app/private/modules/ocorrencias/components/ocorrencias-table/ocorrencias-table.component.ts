@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { FormControl, FormGroup } from '@angular/forms'
+import { Component, OnInit } from '@angular/core'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialog } from '@angular/material/dialog'
-import { Subject } from 'rxjs'
+import { NotifyComponentsService } from '@shared/services/notify-components.service'
+import { filter, Subject, takeUntil } from 'rxjs'
+import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
 import { ModalCreateEmployeesComponent } from '../../../employees/components/modal-create-employees/modal-create-employees.component'
-import { ModalDeleteEmployeeComponent } from '../../../employees/components/modal-delete-employee/modal-delete-employee.component'
 import { EmployeesModel } from '../../../employees/models/employees.model'
+import { OcorrenciaModel } from '../../models/ocorrencia.model'
 import { ModalDetalhesOcorrenciaComponent } from '../modal-detalhes-ocorrencia/modal-detalhes-ocorrencia.component'
 
 @Component({
@@ -14,7 +15,6 @@ import { ModalDetalhesOcorrenciaComponent } from '../modal-detalhes-ocorrencia/m
   styleUrls: ['./ocorrencias-table.component.scss']
 })
 export class OcorrenciasTableComponent implements OnInit {
-  @Output() public tableEmit: EventEmitter<Array<string>> = new EventEmitter()
 
   protected displayedColumns: string[] = ['protocolo', 'assunto', 'categoria', 'responsavel', 'bairro', 'data_criacao', 'status']
   protected dataSource = [
@@ -134,11 +134,12 @@ export class OcorrenciasTableComponent implements OnInit {
   private selectedCategories: Array<string> = []
   private _destroy$ = new Subject()
 
-  constructor(private _dialog: MatDialog) { }
+  constructor(private _dialog: MatDialog, private _notifyComponentsService: NotifyComponentsService) { }
 
   ngOnInit(): void {
-
+    this._observeNotification()
   }
+
 
 
   public openModalEdit(employee: EmployeesModel): void {
@@ -164,7 +165,6 @@ export class OcorrenciasTableComponent implements OnInit {
     } else {
       this.selectedCategories = this.selectedCategories.filter((categoryId) => categoryId !== event.source.id)
     }
-    this.tableEmit.emit(this.selectedCategories)
   }
 
   public populateFullArraySelected(event: MatCheckboxChange): void {
@@ -174,12 +174,35 @@ export class OcorrenciasTableComponent implements OnInit {
     } else {
       this.selectedCategories = []
     }
-    this.tableEmit.emit(this.selectedCategories)
   }
 
   public checkDinamically(id: string): boolean {
     const check = this.selectedCategories.some(employeeId => employeeId === id)
     return check
+  }
+
+  private _observeNotification(): void {
+    this._notifyComponentsService
+      .observeNotification()
+      .pipe(
+        takeUntil(this._destroy$),
+        filter(checkFilter => checkFilter
+          &&
+          (
+            checkFilter.type === NotificationEnum.formFilterOcorrencia
+            || checkFilter.type === NotificationEnum.formFilterOcorrenciaClear
+          ))
+      )
+      .subscribe((notification) => {
+        const filter: OcorrenciaModel = notification.values
+        console.log(notification)
+        if (notification.values !== null) {
+          this.listOcorrencias = this.listOcorrencias.filter((occurrences) => occurrences.status === filter.status)
+          this._notifyComponentsService.setNotification(NotificationEnum.tableUpdateOcorrencia, this.listOcorrencias)
+        } else {
+          this.listOcorrencias = this.dataSource
+        }
+      })
   }
 
   ngOnDestroy(): void {

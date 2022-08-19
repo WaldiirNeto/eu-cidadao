@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
-import { FormControl, FormGroup } from '@angular/forms'
-import { FormFilterOcorrenciasInterface, FormFilterOcorrenciasModel } from '../../models/form-filter-ocorrencias.model'
+import { Component } from '@angular/core'
+import { NotifyComponentsService } from '@shared/services/notify-components.service'
+import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
+import { FormFilterOcorrenciasModel } from '../../models/form-filter-ocorrencias.model'
 
 @Component({
   selector: 'app-filter-table-ocorrencias',
@@ -8,8 +9,6 @@ import { FormFilterOcorrenciasInterface, FormFilterOcorrenciasModel } from '../.
   styleUrls: ['./filter-table-ocorrencias.component.scss']
 })
 export class FilterTableOcorrenciasComponent extends FormFilterOcorrenciasModel {
-
-  @Output() public filterEmit: EventEmitter<FormFilterOcorrenciasInterface> = new EventEmitter()
   protected listStatus = [
     {
       id: 'resolvidas',
@@ -53,13 +52,19 @@ export class FilterTableOcorrenciasComponent extends FormFilterOcorrenciasModel 
       value: 'Data criação'
     },
   ]
-  constructor() {
+  constructor(private readonly _notifyComponentsService: NotifyComponentsService) {
     super()
   }
 
 
   public filterListEmit(): void {
-    this.filterEmit.emit(this.form.controls)
+    this._notifyComponentsService.setNotification(NotificationEnum.formFilterOcorrencia, this.form.value)
+  }
+
+  public resetForm(): void {
+    this.form.reset()
+    this._notifyComponentsService.setNotification(NotificationEnum.formFilterOcorrenciaClear, null)
+
   }
 
 }

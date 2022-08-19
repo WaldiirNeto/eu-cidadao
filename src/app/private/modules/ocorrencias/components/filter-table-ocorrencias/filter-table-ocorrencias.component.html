@@ -15,8 +15,8 @@
             </app-input-form>
         </div>
         <div class="col-4">
-            <app-input-form [listSelect]="this.listSelects" controlName="status" type="select"
-                placeholder="digite o status">
+            <app-input-form [listSelect]="this.listStatus" controlName="status" type="select"
+                placeholder="selecione o status">
             </app-input-form>
         </div>
         <div class="col-4">
@@ -39,7 +39,7 @@
             </app-submit-button>
         </div>
         <div class="col-2 mb-3">
-            <button class="button-cancel" style="width: 100%" (click)="this.form.reset()">Limpar</button>
+            <button type="button" class="button-cancel" style="width: 100%" (click)="this.resetForm()">Limpar</button>
         </div>
     </div>
 </form>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core'
+import { NotifyComponentsService } from '@shared/services/notify-components.service'
 import { ChartConfiguration } from 'chart.js'
+import { filter, Subject, takeUntil } from 'rxjs'
+import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
 
 @Component({
   selector: 'app-infos-initial-charts',
@@ -31,10 +34,24 @@ export class InfosInitialChartsComponent implements OnInit {
   protected doughnutChartOptions: ChartConfiguration<'doughnut'>['options'] = {
     responsive: false
   };
+  private _destroy$ = new Subject()
 
-  constructor() { }
+  constructor(private _notifyComponentsService: NotifyComponentsService) { }
 
   ngOnInit(): void {
+    this._observeNotification()
   }
+  private _observeNotification(): void {
+    this._notifyComponentsService
+      .observeNotification()
+      .pipe(
+        takeUntil(this._destroy$),
+        filter(checkFilter => checkFilter && checkFilter.type === NotificationEnum.tableUpdateOcorrencia)
+      )
+      .subscribe((notification) => {
+        // console.log(notification)
+      })
+  }
+
 
 }
