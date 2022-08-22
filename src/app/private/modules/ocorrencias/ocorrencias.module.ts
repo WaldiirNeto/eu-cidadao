@@ -22,6 +22,8 @@ import { SubmitButtonComponent } from '@shared/components/submit-button/submit-b
 import { InfosInitialChartsComponent } from './components/infos-initial-charts/infos-initial-charts.component'
 import { ModalDetalhesOcorrenciaComponent } from './components/modal-detalhes-ocorrencia/modal-detalhes-ocorrencia.component'
 import { FilterTableOcorrenciasComponent } from './components/filter-table-ocorrencias/filter-table-ocorrencias.component'
+import { SnackBarService } from '@shared/services/snackbar.service'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { FilterTableOcorrenciasComponent } from './components/filter-table-ocorr
     SubmitButtonComponent,
     MatSelectModule,
     MatTooltipModule,
-    MatExpansionModule
-  ]
+    MatExpansionModule,
+    MatSnackBarModule
+  ],
+  providers: [SnackBarService]
 })
 export class OcorrenciasModule { }

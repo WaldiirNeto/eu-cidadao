@@ -1,85 +1,83 @@
 <section class="table-employees">
-    <ng-container *ngIf="this.listOcorrencias?.length; else loading">
-        <div class="d-flex justify-content-end mb-3">
-            <div class="d-flex align-items-center" style="margin-right: 5px;">0 item(s) selecionado(s)</div>
-            <div class="d-flex align-items-center" style="margin-right: 5px;">
-                <mat-icon style="margin-right: 5px;">picture_as_pdf</mat-icon><span>Gerar PDF</span>
+    <ng-container *ngIf="!this.loadingList; else loading">
+        <ng-container *ngIf="this.listOcurrences?.lista?.length; else nodata">
+            <div class="d-flex justify-content-end mb-3">
+                <div class="d-flex align-items-center" style="margin-right: 5px;">0 item(s) selecionado(s)</div>
+                <div class="d-flex align-items-center" style="margin-right: 5px;">
+                    <mat-icon style="margin-right: 5px;">picture_as_pdf</mat-icon><span>Gerar PDF</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <mat-icon style="margin-right: 5px;">summarize</mat-icon><span>Gerar Relatório</span>
+                </div>
             </div>
-            <div class="d-flex align-items-center">
-                <mat-icon style="margin-right: 5px;">summarize</mat-icon><span>Gerar Relatório</span>
-            </div>
-        </div>
-        <table mat-table [dataSource]="this.listOcorrencias" class="mat-elevation-z8">
+            <table mat-table [dataSource]="this.listOcurrences.lista" class="mat-elevation-z8">
 
-            <ng-container matColumnDef="protocolo">
-                <th mat-header-cell *matHeaderCellDef>
-                    <mat-checkbox (change)="this.populateFullArraySelected($event)"></mat-checkbox> Protocolo
-                    <mat-icon>filter_list</mat-icon>
-                </th>
-                <td mat-cell *matCellDef="let element">
-                    <mat-checkbox [checked]="this.checkDinamically(element.id)" (change)="this.seletedCategoria($event)"
-                        [id]="element.id" [name]="'check' + element.id">
-                    </mat-checkbox>{{element.protocolo}}
-                </td>
-            </ng-container>
+                <ng-container matColumnDef="protocolo">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox (change)="this.populateFullArraySelected($event)"></mat-checkbox> Protocolo
+                        <mat-icon>filter_list</mat-icon>
+                    </th>
+                    <td mat-cell *matCellDef="let ocorrencia">
+                        <mat-checkbox [checked]="this.checkDinamically(ocorrencia.id)"
+                            (change)="this.seletedCategoria($event)" [id]="ocorrencia.id"
+                            [name]="'check' + ocorrencia.id">
+                        </mat-checkbox>{{ocorrencia.id}}
+                    </td>
+                </ng-container>
 
-            <ng-container matColumnDef="assunto">
-                <th mat-header-cell *matHeaderCellDef>
-                    Assunto <mat-icon>filter_list</mat-icon>
-                </th>
-                <td mat-cell *matCellDef="let element"> {{element.assunto}} </td>
-            </ng-container>
+                <ng-container matColumnDef="assunto">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Assunto <mat-icon>filter_list</mat-icon>
+                    </th>
+                    <td mat-cell *matCellDef="let ocorrencia"> {{ocorrencia.categoriaOcorrencia.nome}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="categoria">
-                <th mat-header-cell *matHeaderCellDef>
-                    <mat-icon>filter_list</mat-icon> Categoria
-                </th>
-                <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
-            </ng-container>
+                <ng-container matColumnDef="categoria">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <mat-icon>filter_list</mat-icon> Categoria
+                    </th>
+                    <td mat-cell *matCellDef="let ocorrencia"> {{ocorrencia.subCategoriaOcorrencia.nome}} </td>
+                </ng-container>
 
+                <ng-container matColumnDef="bairro">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Bairro <mat-icon>filter_list</mat-icon>
+                    </th>
+                    <td mat-cell *matCellDef="let ocorrencia"> {{ocorrencia.endereco.bairro}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="responsavel">
-                <th mat-header-cell *matHeaderCellDef>
-                    Responsável <mat-icon>filter_list</mat-icon>
-                </th>
-                <td mat-cell *matCellDef="let element"> {{element.responsavel}} </td>
-            </ng-container>
+                <ng-container matColumnDef="data_criacao">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Data de criação <mat-icon>filter_list</mat-icon>
+                    </th>
+                    <td mat-cell *matCellDef="let ocorrencia"> {{ocorrencia.dataCriacao | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="bairro">
-                <th mat-header-cell *matHeaderCellDef>
-                    Bairro <mat-icon>filter_list</mat-icon>
-                </th>
-                <td mat-cell *matCellDef="let element"> {{element.bairro}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="data_criacao">
-                <th mat-header-cell *matHeaderCellDef>
-                    Data de criação <mat-icon>filter_list</mat-icon>
-                </th>
-                <td mat-cell *matCellDef="let element"> {{element.data_criacao | date: 'dd/MM/yyyy'}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef>
-                    Status <mat-icon>filter_list</mat-icon>
-                </th>
-                <td mat-cell *matCellDef="let element">
-                    <div class="d-flex">
-                        <div [class]="'me-2 status-' + element.status">{{element.status}}
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Status <mat-icon>filter_list</mat-icon>
+                    </th>
+                    <td mat-cell *matCellDef="let ocorrencia">
+                        <div class="d-flex">
+                            <div [class]="'me-2 status-' + ocorrencia.status">{{ocorrencia.situacao.nome}}
+                            </div>
+                            <mat-icon>search</mat-icon>
+                            <mat-icon (click)="this.openModalDetails()">edit</mat-icon>
                         </div>
-                        <mat-icon>search</mat-icon>
-                        <mat-icon (click)="this.openModalDetails()">edit</mat-icon>
-                    </div>
-                </td>
-            </ng-container>
+                    </td>
+                </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-        <app-pagination></app-pagination>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <app-pagination></app-pagination>
+        </ng-container>
+        <ng-template #nodata>
+            NÃO FORAM ENCONTRADAS OCORRÊNCIAS
+        </ng-template>
     </ng-container>
     <ng-template #loading>
-        <div class="loading">
+        <div class="loading d-flex justify-content-center">
             <mat-spinner diameter="30"></mat-spinner>
         </div>
     </ng-template>
