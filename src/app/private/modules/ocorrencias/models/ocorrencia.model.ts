@@ -80,5 +80,12 @@ export interface CategoriaOcorrenciaModel {
     caminhoImagemMenu: string,
     caminhoImagemTela: string,
     subCategoriasOcorrencias: Array<SubCategoriaOcorrenciaModel>
+}
 
+export interface FilterOcorrenciaModel {
+    protocolo: string
+    CategoriaId: number
+    SubCategoriaId: number
+    UsuarioDespachanteId: number
+    SituacaoId: number
 }

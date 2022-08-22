@@ -4,7 +4,7 @@ import API_URL from '@helpers/api-router.helper'
 import { Observable } from 'rxjs'
 import { EmployeesModel, UpdateEmployeesModel } from '../models/employees.model'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class EmployeesService {
 
   constructor(private _http: HttpPrivateClientService) { }

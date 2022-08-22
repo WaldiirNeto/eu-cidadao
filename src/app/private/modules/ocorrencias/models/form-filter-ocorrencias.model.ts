@@ -3,12 +3,10 @@ import { FormControl, FormGroup } from '@angular/forms'
 export interface FormFilterOcorrenciasInterface {
 
     protocolo: FormControl<string | null>,
-    assunto: FormControl<string | null>,
-    categoria: FormControl<string | null>,
-    responsavel: FormControl<string | null>,
-    bairro: FormControl<string | null>,
-    data_criacao: FormControl<string | null>,
-    status: FormControl<string | null>
+    CategoriaId: FormControl<string | null>,
+    SubCategoriaId: FormControl<string | null>,
+    UsuarioDespachanteId: FormControl<string | null>,
+    SituacaoId: FormControl<string | null>
 }
 
 export class FormFilterOcorrenciasModel {
@@ -21,12 +19,10 @@ export class FormFilterOcorrenciasModel {
     private formBuilder(): void {
         this.form = new FormGroup<FormFilterOcorrenciasInterface>({
             protocolo: new FormControl(''),
-            assunto: new FormControl(''),
-            categoria: new FormControl(''),
-            responsavel: new FormControl(''),
-            bairro: new FormControl(''),
-            data_criacao: new FormControl(''),
-            status: new FormControl('')
+            SubCategoriaId: new FormControl(''),
+            CategoriaId: new FormControl(''),
+            UsuarioDespachanteId: new FormControl(''),
+            SituacaoId: new FormControl('')
         })
     }
 }

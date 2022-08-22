@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialog } from '@angular/material/dialog'
 import { NotifyComponentsService } from '@shared/services/notify-components.service'
@@ -7,8 +7,7 @@ import { filter, finalize, Subject, takeUntil } from 'rxjs'
 import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
 import { ModalCreateEmployeesComponent } from '../../../employees/components/modal-create-employees/modal-create-employees.component'
 import { EmployeesModel } from '../../../employees/models/employees.model'
-import { ListCategoriaModel } from '../../../settings/pages/assuntos/model/assunto.model'
-import { OcorrenciaListModel, OcorrenciaModel } from '../../models/ocorrencia.model'
+import { FilterOcorrenciaModel, OcorrenciaListModel } from '../../models/ocorrencia.model'
 import { OcorrenciasService } from '../../services/ocorrencias.service'
 import { ModalDetalhesOcorrenciaComponent } from '../modal-detalhes-ocorrencia/modal-detalhes-ocorrencia.component'
 
@@ -21,8 +20,9 @@ export class OcorrenciasTableComponent implements OnInit {
 
   protected displayedColumns: string[] = ['protocolo', 'assunto', 'categoria', 'bairro', 'data_criacao', 'status']
   protected listOcurrences: OcorrenciaListModel
-  private selectedCategories: Array<string> = []
   protected loadingList: boolean
+  private selectedCategories: Array<string> = []
+  private _filter: FilterOcorrenciaModel
   private _destroy$ = new Subject()
 
   constructor(
@@ -32,14 +32,14 @@ export class OcorrenciasTableComponent implements OnInit {
     private readonly _snackBarService: SnackBarService) { }
 
   ngOnInit(): void {
-    // this._observeNotification()
+    this._observeNotification()
     this._getListOccurrences()
   }
 
   private _getListOccurrences(): void {
     this.loadingList = true
     console.log(this.loadingList)
-    this._ocorrenciaService.buscarOcorrencias()
+    this._ocorrenciaService.buscarOcorrencias(this._filter)
       .pipe(
         takeUntil(this._destroy$),
         finalize(() => this.loadingList = false)
@@ -97,27 +97,21 @@ export class OcorrenciasTableComponent implements OnInit {
   }
 
   private _observeNotification(): void {
-    // this._notifyComponentsService
-    //   .observeNotification()
-    //   .pipe(
-    //     takeUntil(this._destroy$),
-    //     filter(checkFilter => checkFilter
-    //       &&
-    //       (
-    //         checkFilter.type === NotificationEnum.formFilterOcorrencia
-    //         || checkFilter.type === NotificationEnum.formFilterOcorrenciaClear
-    //       ))
-    //   )
-    //   .subscribe((notification) => {
-    //     const filter: OcorrenciaModel = notification.values
-    //     console.log(notification)
-    //     if (notification.values !== null) {
-    //       this.listOcorrencias = this.listOcorrencias.filter((occurrences) => occurrences.status === filter.status)
-    //       this._notifyComponentsService.setNotification(NotificationEnum.tableUpdateOcorrencia, this.listOcorrencias)
-    //     } else {
-    //       this.listOcorrencias = this.dataSource
-    //     }
-    //   })
+    this._notifyComponentsService
+      .observeNotification()
+      .pipe(
+        takeUntil(this._destroy$),
+        filter(checkFilter => checkFilter
+          &&
+          (
+            checkFilter.type === NotificationEnum.formFilterOcorrencia
+            || checkFilter.type === NotificationEnum.formFilterOcorrenciaClear
+          ))
+      )
+      .subscribe((notification) => {
+        this._filter = notification.values
+        this._getListOccurrences()
+      })
   }
 
   ngOnDestroy(): void {

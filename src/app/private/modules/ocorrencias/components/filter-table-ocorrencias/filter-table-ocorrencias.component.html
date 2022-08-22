@@ -1,45 +1,61 @@
-<form [formGroup]="this.form" (submit)="this.filterListEmit()">
-    <div class="row col-12 align-items-center">
-        <div class="col-4">
-            <app-input-form controlName="protocolo" type="text" placeholder="selecione o protocolo">
-            </app-input-form>
+<section class="section-filter-ocorrencias">
+    <form [formGroup]="this.form" (submit)="this.filterListEmit()">
+        <div class="row col-12 align-items-center">
+            <div class="col-4">
+                <app-input-form controlName="protocolo" type="text" placeholder="digite o protocolo">
+                </app-input-form>
+            </div>
+            <div class="col-4">
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-select formControlName="CategoriaId" placeholder="Selecione o assunto"
+                        (selectionChange)="this.filtraSubCategoria($event)">
+                        <mat-option *ngFor="let categoria of this.listCategorias" [value]="categoria.id">
+                            <img class="example-option-img" aria-hidden [src]="categoria.caminhoImagemMenu" height="25">
+                            <span> {{categoria.nome}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-select formControlName="SubCategoriaId" placeholder="Selecione a categoria">
+                        <mat-option *ngFor="let subCategoria of this.listSubCategorias" [value]="subCategoria.id">
+                            <span> {{subCategoria.nome}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-4">
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-select formControlName="SituacaoId" placeholder="Selecione a situação">
+                        <mat-option *ngFor="let situacao of this.listSituacao" [value]="situacao.id">
+                            <span> {{situacao.nome}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-select formControlName="UsuarioDespachanteId" placeholder="Selecione o Despachante">
+                        <mat-option *ngFor="let employee of this.listEmployees" [value]="employee.cidadaoId">
+                            <span> {{employee.nome}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </div>
-        <div class="col-4">
-            <app-input-form [listSelect]="this.listSelects" controlName="assunto" type="select"
-                placeholder="selecione o assunto">
-            </app-input-form>
+        <div class="row">
+            <div class="col-2 mb-3">
+                <app-submit-button>
+                    <mat-icon style="color: white" class="material-icons-outlined">filter_alt</mat-icon> Filtrar
+                </app-submit-button>
+            </div>
+            <div class="col-2 mb-3">
+                <button type="button" class="button-cancel" style="width: 100%"
+                    (click)="this.resetForm()">Limpar</button>
+            </div>
         </div>
-        <div class="col-4">
-            <app-input-form [listSelect]="this.listSelects" controlName="categoria" type="select"
-                placeholder="selecione a categoria">
-            </app-input-form>
-        </div>
-        <div class="col-4">
-            <app-input-form [listSelect]="this.listStatus" controlName="status" type="select"
-                placeholder="selecione o status">
-            </app-input-form>
-        </div>
-        <div class="col-4">
-            <app-input-form controlName="responsavel" type="text" placeholder="digite o responsável">
-            </app-input-form>
-        </div>
-        <div class="col-4">
-            <app-input-form controlName="bairro" type="text" placeholder="digite o bairro">
-            </app-input-form>
-        </div>
-        <div class="col-4">
-            <app-input-form controlName="data_criacao" placeholder="selecione a data" type="date">
-            </app-input-form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2 mb-3">
-            <app-submit-button>
-                <mat-icon style="color: white" class="material-icons-outlined">filter_alt</mat-icon> Filtrar
-            </app-submit-button>
-        </div>
-        <div class="col-2 mb-3">
-            <button type="button" class="button-cancel" style="width: 100%" (click)="this.resetForm()">Limpar</button>
-        </div>
-    </div>
-</form>
+    </form>
+</section>

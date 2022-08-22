@@ -42,6 +42,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
     MatCheckboxModule,
     MatSnackBarModule
   ],
-  providers: [EmployeesService, SnackBarService]
+  providers: [SnackBarService]
 })
 export class EmployeesModule { }

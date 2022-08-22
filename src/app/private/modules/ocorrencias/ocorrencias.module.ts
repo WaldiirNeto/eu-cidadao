@@ -10,6 +10,7 @@ import { NgChartsModule } from 'ng2-charts'
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatSelectModule } from '@angular/material/select'
 import { MatExpansionModule } from '@angular/material/expansion'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
 
 import { OcorrenciasRoutingModule } from './ocorrencias-routing.module'
 import { OcorrenciasComponent } from './pages/ocorrencias.component'
@@ -24,6 +25,8 @@ import { ModalDetalhesOcorrenciaComponent } from './components/modal-detalhes-oc
 import { FilterTableOcorrenciasComponent } from './components/filter-table-ocorrencias/filter-table-ocorrencias.component'
 import { SnackBarService } from '@shared/services/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
     MatSelectModule,
     MatTooltipModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [SnackBarService]
 })

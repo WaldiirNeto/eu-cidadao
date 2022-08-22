@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core'
 import { HttpPrivateClientService } from '@core/http/http-private-client.service'
 import API_URL from '@helpers/api-router.helper'
+import { ListCategoriaModel } from '@shared/models/categoria.model'
 import { Observable } from 'rxjs'
-import { ListCategoriaModel } from '../model/assunto.model'
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,6 @@
 export interface EmployeesModel {
     id: string,
+    cidadaoId: string,
     nome: string,
     email: string,
     celular: string,
