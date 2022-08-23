@@ -4,7 +4,7 @@ export interface OcorrenciaListModel {
 }
 
 export interface OcorrenciaModel {
-    id: number,
+    id: string,
     enderecoId: number,
     situacaoId: number,
     titulo: string,

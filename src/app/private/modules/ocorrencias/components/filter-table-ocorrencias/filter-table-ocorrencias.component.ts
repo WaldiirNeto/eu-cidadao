@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { MatSelectChange } from '@angular/material/select'
 import { CategoriaModel, ListCategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
 import { ListSituacaoModel, SituacaoModel } from '@shared/models/situacao.model'
@@ -16,7 +16,7 @@ import { FormFilterOcorrenciasModel } from '../../models/form-filter-ocorrencias
   templateUrl: './filter-table-ocorrencias.component.html',
   styleUrls: ['./filter-table-ocorrencias.component.scss']
 })
-export class FilterTableOcorrenciasComponent extends FormFilterOcorrenciasModel implements OnInit {
+export class FilterTableOcorrenciasComponent extends FormFilterOcorrenciasModel implements OnInit, OnDestroy {
 
   protected listCategorias: CategoriaModel[]
   protected listSubCategorias: SubCategoriaOcorrenciaModel[]
@@ -30,6 +30,7 @@ export class FilterTableOcorrenciasComponent extends FormFilterOcorrenciasModel 
     private readonly _employeesService: EmployeesService) {
     super()
   }
+
   ngOnInit(): void {
     forkJoin([
       this._categoriaService.ListCategorias(),
@@ -59,5 +60,10 @@ export class FilterTableOcorrenciasComponent extends FormFilterOcorrenciasModel 
   public resetForm(): void {
     this.form.reset()
     this._notifyComponentsService.setNotification(NotificationEnum.formFilterOcorrenciaClear, null)
+  }
+
+  ngOnDestroy(): void {
+    this._destroy$.next(null)
+    this._destroy$.complete()
   }
 }

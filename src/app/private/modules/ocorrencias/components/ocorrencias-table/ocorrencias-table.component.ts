@@ -38,7 +38,6 @@ export class OcorrenciasTableComponent implements OnInit {
 
   private _getListOccurrences(): void {
     this.loadingList = true
-    console.log(this.loadingList)
     this._ocorrenciaService.buscarOcorrencias(this._filter)
       .pipe(
         takeUntil(this._destroy$),
@@ -47,15 +46,12 @@ export class OcorrenciasTableComponent implements OnInit {
       .subscribe({
         next: (listOccurrences: OcorrenciaListModel) => {
           this.listOcurrences = listOccurrences
-          console.log(this.listOcurrences)
         },
         error: (_) => {
           this._snackBarService.open(`Não foi possível buscar a lista de ocorrências`, 'error')
         }
       })
   }
-
-
 
   public openModalEdit(employee: EmployeesModel): void {
     this._dialog.open(ModalCreateEmployeesComponent, {
@@ -83,12 +79,12 @@ export class OcorrenciasTableComponent implements OnInit {
   }
 
   public populateFullArraySelected(event: MatCheckboxChange): void {
-    // if (event.checked) {
-    //   this.selectedCategories = []
-    //   this.selectedCategories.push(...this.dataSource.map(relatorio => relatorio.id))
-    // } else {
-    //   this.selectedCategories = []
-    // }
+    if (event.checked) {
+      this.selectedCategories = []
+      this.selectedCategories.push(...this.listOcurrences.lista.map(ocurrrence => ocurrrence.id))
+    } else {
+      this.selectedCategories = []
+    }
   }
 
   public checkDinamically(id: string): boolean {
