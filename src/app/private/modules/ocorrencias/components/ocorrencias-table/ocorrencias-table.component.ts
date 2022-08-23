@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialog } from '@angular/material/dialog'
+import { CategoriaModel } from '@shared/models/categoria.model'
 import { NotifyComponentsService } from '@shared/services/notify-components.service'
 import { SnackBarService } from '@shared/services/snackbar.service'
 import { filter, finalize, Subject, takeUntil } from 'rxjs'
@@ -46,6 +47,7 @@ export class OcorrenciasTableComponent implements OnInit {
       .subscribe({
         next: (listOccurrences: OcorrenciaListModel) => {
           this.listOcurrences = listOccurrences
+          console.log(this.listOcurrences.lista)
         },
         error: (_) => {
           this._snackBarService.open(`Não foi possível buscar a lista de ocorrências`, 'error')
@@ -61,11 +63,13 @@ export class OcorrenciasTableComponent implements OnInit {
     })
   }
 
-  public openModalDetails(): void {
+  public openModalDetails(ocurrence: CategoriaModel): void {
     this._dialog.open(ModalDetalhesOcorrenciaComponent, {
+      data: ocurrence,
       enterAnimationDuration: `1000ms`,
       exitAnimationDuration: `500ms`,
-      panelClass: 'padding-modal'
+      panelClass: 'padding-modal',
+      width: `80%`
     })
   }
 

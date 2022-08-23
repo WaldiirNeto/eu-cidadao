@@ -111,6 +111,18 @@
         width: 33px;
     }
 
+    .chat-content {
+        background-color: aliceblue;
+        padding: 2px;
+    }
+
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid $placeholder-color;
+        border-radius: 8px;
+    }
+
     ::ng-deep .mat-form-field-flex>.mat-form-field-infix {
         padding: 0.4em 0px !important;
     }
@@ -122,5 +134,4 @@
     ::ng-deep label.ng-star-inserted {
         transform: translateY(-0.59375em) scale(.75) !important;
     }
-
 }

@@ -38,7 +38,6 @@ export interface CategoriaOcorrenciaModel {
     caminhoImagemMenu: string,
     caminhoImagemTela: string,
     subCategoriasOcorrencias: Array<SubCategoriaOcorrenciaModel>
-
 }
 
 

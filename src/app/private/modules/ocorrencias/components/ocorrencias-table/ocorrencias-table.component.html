@@ -62,7 +62,7 @@
                             <div [class]="'me-2 status-' + ocorrencia.status">{{ocorrencia.situacao.nome}}
                             </div>
                             <mat-icon>search</mat-icon>
-                            <mat-icon (click)="this.openModalDetails()">edit</mat-icon>
+                            <mat-icon (click)="this.openModalDetails(ocorrencia)">edit</mat-icon>
                         </div>
                     </td>
                 </ng-container>

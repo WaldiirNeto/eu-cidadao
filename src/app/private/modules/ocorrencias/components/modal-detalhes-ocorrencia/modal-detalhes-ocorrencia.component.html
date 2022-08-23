@@ -3,7 +3,7 @@
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="me-3 mt-2">
                 <p>Protocolo</p>
-                <p>{{this.details.ocorrencia}}</p>
+                <p>{{this.ocorrencia.id}}</p>
             </div>
             <div class="me-1 mt-2">
                 <p>Cidadão</p>
@@ -11,15 +11,15 @@
             </div>
             <div class="me-1 mt-2">
                 <p>Assunto</p>
-                <p>{{this.details.assunto}}</p>
+                <p>{{this.ocorrencia.categoriaOcorrencia.nome}}</p>
             </div>
             <div class="me-1 mt-2">
                 <p>Categoria</p>
-                <p>{{this.details.categoria}}</p>
+                <p>{{this.ocorrencia.subCategoriaOcorrencia.nome}}</p>
             </div>
             <div class="me-1 mt-2">
                 <p>Data de criação</p>
-                <p>{{this.details.data_criacao | date: 'dd/MM/yyyy'}}</p>
+                <p>{{this.ocorrencia.dataCriacao | date: 'dd/MM/yyyy'}}</p>
             </div>
             <mat-icon class="icon-close" mat-dialog-close>cancel</mat-icon>
         </div>
@@ -28,16 +28,9 @@
         <div class="container-fluid">
             <h1>Detalhes da ocorrência</h1>
             <div class="container-fluid__container d-flex justify-content-start">
-                <div class="ms-4 col-5 mt-2 mb-2 me-4 container-description">
-                    <p class="ms-2 mt-2" style="text-align: justify;">Reclamação é o ato de protestar, o que nor
-                        malmente é
-                        feito por meio de palavras,
-                        de modo oral ou por
-                        escrito.
-                        O ato de reclamar na modalidade escrita confere maior formalidade ao ato, inclusive
-                        possibilitando a
-                        comprovação posterior de que is so foi feito.
-                        Reclamação é o ato de protestar, o que normalmente.
+                <div class="ms-2 col-5 mt-2 mb-2 me-4 container-description">
+                    <p class="ms-2 mt-2" style="text-align: justify;">
+                        {{this.ocorrencia.comentarioCidadao}}
                     </p>
                 </div>
                 <div class="ms-3 col-6 mt-2 mb-2">
@@ -93,12 +86,28 @@
                 </div>
                 <div class="mt-3  d-flex">
                     <div class="p-2">
-                        <app-input-form style="font-size: 12px;" [listSelect]="this.ListAssuntos" type="select"
-                            placeholder="Selecione" label="Assunto" controlName="assunto"></app-input-form>
+                        <mat-form-field appearance="outline" floatLabel="always">
+                            <mat-select formControlName="CategoriaId" placeholder="Selecione a categoria"
+                                (selectionChange)="this.filtraSubCategoria($event)">
+                                <mat-option *ngFor="let categoria of this.listCategorias" [value]="categoria.id">
+                                    <img class="example-option-img" aria-hidden [src]="categoria.caminhoImagemMenu"
+                                        height="25">
+                                    <span> {{categoria.nome}}</span>
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
                     </div>
                     <div class="p-2">
-                        <app-input-form [listSelect]="this.Listcategorias" type="select" placeholder="Selecione"
-                            label="Categoria" controlName="categoria"></app-input-form>
+                        <mat-form-field appearance="outline" floatLabel="always">
+                            <mat-select formControlName="SubCategoriaId" placeholder="Selecione a sub categoria"
+                                (selectionChange)="this.filtraSubCategoria($event)">
+                                <mat-option *ngFor="let categoria of this.listSubCategorias" [value]="categoria.id">
+                                    <span> {{categoria.nome}}</span>
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <!-- <app-input-form [listSelect]="this.Listcategorias" type="select" placeholder="Selecione"
+                            label="Categoria" controlName="categoria"></app-input-form> -->
                     </div>
                 </div>
 
@@ -115,7 +124,7 @@
                             add_comment</mat-icon>
                     </div>
                 </div>
-                <section>
+                <section class="chat-content">
                     <ng-container *ngFor="let comment of this.comentarios">
                         <article class="row col-8">
                             <div class="col-3 align-items-center">
