@@ -18,6 +18,8 @@ import { MatTableModule } from '@angular/material/table'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
+import { RelatoriosBarComponent } from './pages/relatorios-bar/relatorios-bar.component'
+import { NgChartsModule } from 'ng2-charts'
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { MatSelectModule } from '@angular/material/select'
     RelatoriosComponent,
     RelatoriosManagerComponent,
     FilterRelatoriosComponent,
-    RelatoriosTableComponent
+    RelatoriosTableComponent,
+    RelatoriosBarComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +44,8 @@ import { MatSelectModule } from '@angular/material/select'
     MatTableModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    NgChartsModule
   ],
   providers: []
 })

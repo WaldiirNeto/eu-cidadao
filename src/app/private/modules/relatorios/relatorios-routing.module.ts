@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { FilterRelatoriosComponent } from './pages/filter-relatorios/filter-relatorios.component'
+import { RelatoriosBarComponent } from './pages/relatorios-bar/relatorios-bar.component'
 import { RelatoriosManagerComponent } from './pages/relatorios-manager/relatorios-manager.component'
 import { RelatoriosComponent } from './pages/relatorios.component'
 
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'manager',
         component: RelatoriosManagerComponent
+      },
+      {
+        path: 'bar',
+        component: RelatoriosBarComponent
       }
     ],
   },

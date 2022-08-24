@@ -1,0 +1,56 @@
+<section class="relatorios-bar">
+    <div class="row col-12 mb-3">
+        <app-box>
+            <div class="d-flex align-items-center">
+                <h1 style="margin: 0;
+                padding: 5px;">Prefeitura de lorem, <span style="color: #797979">20 de maio de 2022</span></h1>
+            </div>
+        </app-box>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-2" *ngFor="let user of this.listUsers">
+            <app-box>
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="p-2">
+                        <mat-icon style="font-size: 35px;
+                    width: 35px;
+                    height: 35px;">{{user.icon}}</mat-icon>
+                    </div>
+                    <div class="p-2 ms-3">
+                        <p style="font-weight: 700;
+                    font-size: 30px;
+                    line-height: 120%;">{{user.qtd}}</p>
+                        <p style="font-weight: 700;
+                    font-size: 14px; color: #1474FF;">{{user.content}}</p>
+                    </div>
+                </div>
+            </app-box>
+        </div>
+    </div>
+
+    <div class="row  col-12 mb-3">
+        <app-box>
+            <canvas baseChart width="400" height="100" [data]="this.barChartData" [options]="this.barChartOptions"
+                [plugins]="this.barChartPlugins" [legend]="this.barChartLegend" [type]="'bar'">
+            </canvas>
+        </app-box>
+    </div>
+
+    <div class="row col-12 mb-3">
+        <app-box>
+            <canvas baseChart width="400" height="100" [data]="this.barChartDataOcorrencia"
+                [options]="this.barChartOptionsOcorrencia" [plugins]="this.barChartPluginsOcorrencia"
+                [legend]="this.barChartLegendOcorrencia" [type]="'bar'">
+            </canvas>
+        </app-box>
+    </div>
+
+    <div class="row col-12">
+        <app-box>
+            <canvas baseChart width="400" height="100" [data]="this.barChartDataOcorrenciaResolvida"
+                [options]="this.barChartOptionsOcorrenciaResolvida" [plugins]="this.barChartPluginsOcorrenciaResolvida"
+                [legend]="this.barChartLegendOcorrenciaResolvida" [type]="'bar'">
+            </canvas>
+        </app-box>
+    </div>
+</section>

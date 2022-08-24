@@ -1,0 +1,31 @@
+@import "~src/styles/_variables.scss";
+
+.relatorios-bar {
+    app-box {
+        h1 {
+            color: $mat-label-color;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .sub-text {
+            color: $color-paragraph;
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 0;
+        }
+
+        .sub-statics {
+            color: $placeholder-color;
+            font-weight: 400;
+            font-size: 12px;
+            margin-top: 0;
+        }
+
+        .box-align {
+            align-items: flex-end;
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}

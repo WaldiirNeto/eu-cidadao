@@ -47,7 +47,12 @@ export class FilterRelatoriosComponent extends FormRelatoriosModel implements On
   }
 
   public navigateToManager(): void {
-    this._router.navigate(['relatorios/manager'])
+    const typeReport = this.form.controls.tipoRelatorio.value as string
+    const checkType = {
+      'TABELA': 'relatorios/manager',
+      'BAR': 'relatorios/bar'
+    }[typeReport]
+    this._router.navigate([checkType])
   }
 
   public filtraSubCategoria(event: MatSelectChange): void {
