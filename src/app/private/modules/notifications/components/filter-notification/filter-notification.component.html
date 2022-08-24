@@ -1,0 +1,60 @@
+<section class="notification-filter">
+    <div class="row">
+        <form [formGroup]="this.form">
+            <div class="row">
+                <div class="col-md-4">
+                    <app-input-form label="Título" controlName="Titulo" type="text" placeholder="digite o título">
+                    </app-input-form>
+                </div>
+                <div class="col-md-4">
+                    <mat-label>Cidade</mat-label>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-select formControlName="CidadeId" placeholder="Selecione a cidade">
+                            <ng-container *ngIf="(this.listSelects$ | async) as listCity">
+                                <mat-option *ngFor="let city of listCity[0].lista" [value]="city.id">
+                                    <span> {{city.nome}}</span>
+                                </mat-option>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-label>Categoria</mat-label>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-select formControlName="CategoriaId" placeholder="Selecione a categoria">
+                            <ng-container *ngIf="(this.listSelects$ | async) as listCategory">
+                                <mat-option *ngFor="let category of listCategory[1].lista" [value]="category.id">
+                                    <img class="example-option-img" aria-hidden [src]="category.caminhoImagemMenu"
+                                        height="25">
+                                    <span> {{category.nome}}</span>
+                                </mat-option>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <app-input-form label="Nome" controlName="Nome" type="text" placeholder="selecione o nome">
+                    </app-input-form>
+                </div>
+                <div class="col-md-4">
+                    <app-input-form label="Descrição" controlName="Descricao" type="text"
+                        placeholder="Digite a descrição"></app-input-form>
+                </div>
+                <div class="col-md-4">
+                    <app-input-form label="Situação" controlName="Situacao" type="text"
+                        placeholder="Selecione a situação"></app-input-form>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-2 mb-3">
+            <app-submit-button>
+                <mat-icon style="color: white" class="material-icons-outlined">filter_alt</mat-icon> Filtrar
+            </app-submit-button>
+        </div>
+        <div class="col-2 mb-3">
+            <button type="button" class="button-cancel" style="width: 100%" (click)="this.resetForm()">Limpar</button>
+        </div>
+    </div>
+</section>

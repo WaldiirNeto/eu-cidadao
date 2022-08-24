@@ -1,0 +1,64 @@
+<section class="table-notifications mt-2">
+    <ng-container *ngIf="!this.loadingList; else loading">
+        <ng-container *ngIf="this.notificationsList?.length; else nodata">
+            <table mat-table [dataSource]="this.notificationsList" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="title_notification">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Título <mat-icon>filter_list</mat-icon>
+                    </th>
+                    <td mat-cell *matCellDef="let notification"> {{notification.titulo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="subject">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Assunto <mat-icon>filter_list</mat-icon>
+                    </th>
+                    <td mat-cell *matCellDef="let notification"> {{notification.categoriaId}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="category">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Categoria <mat-icon>filter_list</mat-icon>
+                    </th>
+                    <td mat-cell *matCellDef="let notification"> {{notification.categoriaId}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="city">
+                    <th mat-header-cell *matHeaderCellDef>
+                        cidade <mat-icon>filter_list</mat-icon>
+                    </th>
+                    <td mat-cell *matCellDef="let notification"> {{notification.cidadeId}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="criticality">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Criticidade <mat-icon>filter_list</mat-icon>
+                    </th>
+                    <td mat-cell *matCellDef="let notification">
+                        <!-- <div class="d-flex">
+                            <div [class]="'me-2 status-' + notification.status">{{notification.situacao.nome}}
+                            </div>
+                            <mat-icon>search</mat-icon>
+                            <mat-icon (click)="this.openModalDetails(notification)">search</mat-icon>
+                        </div> -->
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <app-pagination></app-pagination>
+        </ng-container>
+        <ng-template #nodata>
+            <div class="d-flex justify-content-center" style="border: 1px solid #ccc;">
+                <p style="margin: 0">NENHUMA NOTIFICAÇÃO ENCONTRADA</p>
+            </div>
+        </ng-template>
+    </ng-container>
+    <ng-template #loading>
+        <div class="loading d-flex justify-content-center">
+            <mat-spinner diameter="30"></mat-spinner>
+        </div>
+    </ng-template>
+</section>
