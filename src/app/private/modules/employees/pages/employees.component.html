@@ -21,7 +21,9 @@
                         delete_forever
                     </mat-icon>
                 </form>
-                <mat-icon (click)="this.openDialog()">person_add</mat-icon>
+                <button class="button-primary" (click)="this.openDialog()">
+                    <mat-icon>add</mat-icon><span>Cadastrar notificação</span>
+                </button>
             </div>
             <app-table-users (tableEmit)="this.showIconDelete($event)"></app-table-users>
         </div>

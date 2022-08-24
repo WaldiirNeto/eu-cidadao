@@ -10,7 +10,6 @@ import { BoxComponent } from '@shared/components/box/box.component'
 import { SubmitButtonComponent } from '@shared/components/submit-button/submit-button.component'
 import { MatFormFieldComponent } from '@shared/components/input-form/mat-form-field.component'
 import { NotificationsComponent } from './pages/notifications.component'
-import { CreateNotificationComponent } from './pages/create-notification/create-notification.component'
 import { NotificationsTableComponent } from './components/notifications-table/notifications-table.component'
 import { ModalNotificationsComponent } from './components/modal-notifications/modal-notifications.component'
 import { FilterNotificationComponent } from './components/filter-notification/filter-notification.component'
@@ -27,7 +26,6 @@ import { MatDialogModule } from '@angular/material/dialog'
 @NgModule({
   declarations: [
     NotificationsComponent,
-    CreateNotificationComponent,
     NotificationsTableComponent,
     ModalNotificationsComponent,
     FilterNotificationComponent
