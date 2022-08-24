@@ -1,0 +1,19 @@
+@import '~src/styles/_variables.scss';
+
+.filter-relatorios {
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid $placeholder-color;
+        border-radius: 8px;
+    }
+
+    ::ng-deep .mat-form-field {
+        font-size: 14px; // example
+        margin: 0;
+    }
+
+    mat-form-field {
+        width: 100%;
+    }
+}

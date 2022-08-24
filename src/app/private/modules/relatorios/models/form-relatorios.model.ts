@@ -3,11 +3,12 @@ import { FormControl, FormGroup } from '@angular/forms'
 interface FormRelatoriosInterface {
     data_inicial: FormControl<string | null>
     data_final: FormControl<string | null>
-    assunto: FormControl<string | null>
-    categoria: FormControl<string | null>,
+    CategoriaId: FormControl<string | null>
+    SubCategoriaId: FormControl<string | null>,
     bairro: FormControl<string | null>
-    status_ocorrencia: FormControl<string | null>
-    responsavel: FormControl<string | null>
+    SituacaoId: FormControl<string | null>
+    UsuarioDespachanteId: FormControl<string | null>,
+    tipoRelatorio: FormControl<string | null>
 }
 
 export class FormRelatoriosModel {
@@ -21,11 +22,12 @@ export class FormRelatoriosModel {
         this.form = new FormGroup<FormRelatoriosInterface>({
             data_inicial: new FormControl('', []),
             data_final: new FormControl('', []),
-            assunto: new FormControl('', []),
-            categoria: new FormControl('', []),
+            CategoriaId: new FormControl('', []),
+            SubCategoriaId: new FormControl('', []),
             bairro: new FormControl('', []),
-            status_ocorrencia: new FormControl('', []),
-            responsavel: new FormControl('', []),
+            SituacaoId: new FormControl('', []),
+            UsuarioDespachanteId: new FormControl('', []),
+            tipoRelatorio: new FormControl('', []),
         })
     }
 }

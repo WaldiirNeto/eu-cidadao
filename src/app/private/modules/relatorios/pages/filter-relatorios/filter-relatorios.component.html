@@ -1,4 +1,4 @@
-<section>
+<section class="filter-relatorios">
     <p>Pesquisar por</p>
     <form [formGroup]="this.form" class="col-12" (submit)="this.navigateToManager()">
         <div class="row col-8">
@@ -13,12 +13,26 @@
         </div>
         <div class="row col-8">
             <div class="col-4">
-                <app-input-form controlName="assunto" label="Assunto" placeholder="Filtrar por">
-                </app-input-form>
+                <mat-label>Assunto</mat-label>
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-select formControlName="CategoriaId" placeholder="Selecione o assunto"
+                        (selectionChange)="this.filtraSubCategoria($event)">
+                        <mat-option *ngFor="let categoria of this.listCategorias" [value]="categoria.id">
+                            <img class="example-option-img" aria-hidden [src]="categoria.caminhoImagemMenu" height="25">
+                            <span> {{categoria.nome}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
             <div class="col-4">
-                <app-input-form controlName="categoria" label="Categoria" placeholder="Filtrar por">
-                </app-input-form>
+                <mat-label>Categoria</mat-label>
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-select formControlName="SubCategoriaId" placeholder="Selecione a categoria">
+                        <mat-option *ngFor="let subCategoria of this.listSubCategorias" [value]="subCategoria.id">
+                            <span> {{subCategoria.nome}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </div>
         <div class="row col-8">
@@ -27,14 +41,36 @@
                 </app-input-form>
             </div>
             <div class="col-4">
-                <app-input-form controlName="status_ocorrencia" label="Status da ocorrência" placeholder="Filtrar por">
-                </app-input-form>
+                <mat-label>Situação</mat-label>
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-select formControlName="SituacaoId" placeholder="Selecione a situação">
+                        <mat-option *ngFor="let situacao of this.listSituacao" [value]="situacao.id">
+                            <span> {{situacao.nome}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </div>
         <div class="row col-8">
             <div class="col-4">
-                <app-input-form controlName="responsavel" label="Responsável" placeholder="Filtrar por">
-                </app-input-form>
+                <mat-label>Responsável</mat-label>
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-select formControlName="UsuarioDespachanteId" placeholder="Selecione o Despachante">
+                        <mat-option *ngFor="let employee of this.listEmployees" [value]="employee.cidadaoId">
+                            <span> {{employee.nome}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-label>Tipo do relatório</mat-label>
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-select formControlName="tipoRelatorio" placeholder="Selecione o tipo do relatório">
+                        <mat-option *ngFor="let type of this.typeReport" [value]="type">
+                            {{type}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </div>
         <div class="col-1">

@@ -16,6 +16,8 @@ import { PaginationComponent } from '@shared/components/pagination/pagination.co
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatTableModule } from '@angular/material/table'
 import { MatDialogModule } from '@angular/material/dialog'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatSelectModule } from '@angular/material/select'
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { MatDialogModule } from '@angular/material/dialog'
     PaginationComponent,
     MatProgressSpinnerModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: []
 })
