@@ -2,12 +2,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 interface FormCreateNotificationInterface {
     titulo: FormControl<string | null>
-    assunto: FormControl<string | null>
-    categoria: FormControl<string | null>
+    categoriaId: FormControl<string | null>
     criticidade: FormControl<string | null>,
-    cidade: FormControl<string | null>
-    link: FormControl<string | null>
-    posicao_notificacao: FormControl<string | null>
+    cidadeId: FormControl<string | null>
+    link: FormControl<string | null>,
+    corBackground: FormControl<string | null>,
+    descricao: FormControl<string | null>,
+    corTexto: FormControl<string | null>,
+
 }
 
 export class FormCreateNotificationModel {
@@ -20,12 +22,13 @@ export class FormCreateNotificationModel {
     private formBuilder(): void {
         this.form = new FormGroup<FormCreateNotificationInterface>({
             titulo: new FormControl('', [Validators.required]),
-            assunto: new FormControl('', [Validators.required]),
-            categoria: new FormControl('', [Validators.required]),
+            categoriaId: new FormControl('', [Validators.required]),
             criticidade: new FormControl('', [Validators.required]),
-            cidade: new FormControl('', [Validators.required, Validators.email]),
+            cidadeId: new FormControl('', [Validators.required]),
             link: new FormControl('', [Validators.required]),
-            posicao_notificacao: new FormControl('', [Validators.required])
+            corBackground: new FormControl('', [Validators.required]),
+            descricao: new FormControl('', [Validators.required]),
+            corTexto: new FormControl('', [Validators.required])
         })
     }
 }

@@ -8,11 +8,11 @@ export interface NotificationModel {
     id: number
     descricao: string
     titulo: string
-    categoriaId: number
+    categoriaId: string
     corBackground: string
     corTexto: string
-    criticidade: number
-    cidadeId: number
+    criticidade: string
+    cidadeId: string
     link: string
 }
 

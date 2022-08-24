@@ -1,6 +1,6 @@
 <section class="notification-filter">
-    <div class="row">
-        <form [formGroup]="this.form">
+    <form [formGroup]="this.form" (submit)="this.submitFilter()">
+        <div class="row">
             <div class="row">
                 <div class="col-md-4">
                     <app-input-form label="Título" controlName="Titulo" type="text" placeholder="digite o título">
@@ -45,16 +45,17 @@
                         placeholder="Selecione a situação"></app-input-form>
                 </div>
             </div>
-        </form>
-    </div>
-    <div class="row">
-        <div class="col-2 mb-3">
-            <app-submit-button>
-                <mat-icon style="color: white" class="material-icons-outlined">filter_alt</mat-icon> Filtrar
-            </app-submit-button>
         </div>
-        <div class="col-2 mb-3">
-            <button type="button" class="button-cancel" style="width: 100%" (click)="this.resetForm()">Limpar</button>
+        <div class="row">
+            <div class="col-2 mb-3">
+                <app-submit-button>
+                    <mat-icon style="color: white" class="material-icons-outlined">filter_alt</mat-icon> Filtrar
+                </app-submit-button>
+            </div>
+            <div class="col-2 mb-3">
+                <button type="button" class="button-cancel" style="width: 100%"
+                    (click)="this.resetForm()">Limpar</button>
+            </div>
         </div>
-    </div>
+    </form>
 </section>

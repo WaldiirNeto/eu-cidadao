@@ -1,0 +1,31 @@
+@import '~src/styles/_variables.scss';
+
+.modal-detalhes-notificacao {
+    .button-despachar-ocorrencia {
+        background: $primary;
+        border: 1px solid $primary;
+        border-radius: 8px;
+        border: 1px solid $primary;
+        border-radius: 8px;
+        color: white;
+        height: 48px;
+        margin-right: 10px;
+        width: 190px;
+    }
+
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid $placeholder-color;
+        border-radius: 8px;
+    }
+
+    ::ng-deep .mat-form-field {
+        font-size: 14px; // example
+        margin: 0;
+    }
+
+    mat-form-field {
+        width: 100%;
+    }
+}
