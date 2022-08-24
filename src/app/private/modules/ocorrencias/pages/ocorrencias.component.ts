@@ -40,33 +40,32 @@ export class OcorrenciasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public renderChartPerStatus(event: { status: string, ocorrencias: [] }): void {
+  // public renderChartPerStatus(event: { status: string, ocorrencias: [] }): void {
 
-    let color = ''
-    if (event.status === 'pendentes') {
-      color = '#FF8A00'
-    }
-    if (event.status === 'tratamento') {
-      color = '#6AD003'
-    }
+  //   let color = ''
+  //   if (event.status === 'pendentes') {
+  //     color = '#FF8A00'
+  //   }
+  //   if (event.status === 'tratamento') {
+  //     color = '#6AD003'
+  //   }
 
-    if (event.status === 'recusadas') {
-      color = '#FF0000'
-    }
-    if (event.status === 'resolvidas') {
-      color = '#00327A'
-    }
-    this.doughnutChartLabels = [event.status]
-    this.doughnutChartDatasets = [
-      {
-        data: [event.ocorrencias.length],
-        backgroundColor: [color],
-        hoverBackgroundColor: [color],
-        borderColor: [color]
-      }
-    ]
-    this.renderChartStatus = true
-    this.total = event.ocorrencias.length
-  }
-
+  //   if (event.status === 'recusadas') {
+  //     color = '#FF0000'
+  //   }
+  //   if (event.status === 'resolvidas') {
+  //     color = '#00327A'
+  //   }
+  //   this.doughnutChartLabels = [event.status]
+  //   this.doughnutChartDatasets = [
+  //     {
+  //       data: [event.ocorrencias.length],
+  //       backgroundColor: [color],
+  //       hoverBackgroundColor: [color],
+  //       borderColor: [color]
+  //     }
+  //   ]
+  //   this.renderChartStatus = true
+  //   this.total = event.ocorrencias.length
+  // }
 }

@@ -9,68 +9,70 @@
     width: 84px;
 }
 
-mat-icon {
-    color: $placeholder-color;
-}
+.table-ocurrences {
+    mat-icon {
+        color: $placeholder-color;
+    }
 
-table {
-    th {
+    table {
+        th {
+            mat-icon {
+                padding-top: 4px;
+            }
+        }
+
+        .align-itens {
+            display: flex;
+        }
+
+        mat-checkbox {
+            margin-right: 8px;
+        }
+
         mat-icon {
-            padding-top: 4px;
+            cursor: pointer;
+        }
+
+        .icon-edit {
+            color: $primary
+        }
+
+        .icon-delete {
+            color: $red-color
+        }
+
+        .status-recusadas {
+            @include status-base($red-color)
+        }
+
+        .status-resolvidas {
+            @include status-base($color-paragraph)
+        }
+
+        .status-pendentes {
+            @include status-base($orange-color)
+        }
+
+        .status-tratamento {
+            @include status-base($green-color)
         }
     }
 
-    .align-itens {
-        display: flex;
-    }
+    ::ng-deep .padding-modal {
 
-    mat-checkbox {
-        margin-right: 8px;
-    }
+        ::ng-deep .mat-dialog-container {
+            padding: 0 0 24px 0 !important;
+            border-radius: 10px !important;
+            width: 70%;
+            overflow-x: hidden;
 
-    mat-icon {
-        cursor: pointer;
-    }
+        }
 
-    .icon-edit {
-        color: $primary
-    }
-
-    .icon-delete {
-        color: $red-color
-    }
-
-    .status-recusadas {
-        @include status-base($red-color)
-    }
-
-    .status-resolvidas {
-        @include status-base($color-paragraph)
-    }
-
-    .status-pendentes {
-        @include status-base($orange-color)
-    }
-
-    .status-tratamento {
-        @include status-base($green-color)
-    }
-}
-
-::ng-deep .padding-modal {
-
-    ::ng-deep .mat-dialog-container {
-        padding: 0 0 24px 0 !important;
-        border-radius: 10px !important;
-        width: 70%;
-        overflow-x: hidden;
 
     }
 
-
-}
-
-::ng-deep .cdk-overlay-pane {
-    display: flex !important;
-    justify-content: center !important;
+    ::ng-deep .cdk-overlay-pane {
+        display: flex !important;
+        justify-content: center !important;
+    }
 }

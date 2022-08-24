@@ -43,25 +43,10 @@
                         </mat-expansion-panel>
                     </mat-accordion>
                     <hr>
-                    <mat-accordion>
-                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title class="sidenav-content__links__item">
-                                    <mat-icon>notifications</mat-icon>Notificações
-                                </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <div class="sidenav-content__links__item__sub-links"
-                                [routerLink]="['/notifications-actives']" routerLinkActive="router-link-active">
-                                Ativas</div>
-                            <div class="sidenav-content__links__item__sub-links"
-                                [routerLink]="['/notifications-inactives']" routerLinkActive="router-link-active"
-                                style="margin-top: 5px">
-                                Inativas</div>
-                            <div class="sidenav-content__links__item__sub-links"
-                                [routerLink]="['/notifications/create-notification']"
-                                routerLinkActive="router-link-active" style="margin-top: 5px">Criar Notificação</div>
-                        </mat-expansion-panel>
-                    </mat-accordion>
+                    <div class="sidenav-content__links__item link" [routerLink]="'/notifications'">
+                        <mat-icon>notifications_active</mat-icon>
+                        <p>Notificações</p>
+                    </div>
                     <hr>
                     <mat-accordion>
                         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">

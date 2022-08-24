@@ -1,4 +1,4 @@
-<section class="table-employees">
+<section class="table-ocurrences">
     <ng-container *ngIf="!this.loadingList; else loading">
         <ng-container *ngIf="this.listOcurrences?.lista?.length; else nodata">
             <div class="d-flex justify-content-end mb-3">
@@ -73,7 +73,10 @@
             <app-pagination></app-pagination>
         </ng-container>
         <ng-template #nodata>
-            NÃO FORAM ENCONTRADAS OCORRÊNCIAS
+            <div class="d-flex justify-content-center" style="border: 1px solid #ccc;">
+                <p style="margin: 0"> NÃO FORAM ENCONTRADAS OCORRÊNCIAS</p>
+            </div>
+
         </ng-template>
     </ng-container>
     <ng-template #loading>

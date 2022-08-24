@@ -7,4 +7,8 @@ export default class API_URL {
   static readonly GET_CATEGORIAS = `${environment.apiUrl}/CategoriaOcorrencia`;
   static readonly GET_OCORRENCIAS = `${`${environment.apiUrl}/ocorrencia/Consultar`}`
   static readonly GET_SITUACAO = `${environment.apiUrl}/Situacao`
+  static readonly GET_CITYS = `${environment.apiUrl}/Cidade`
+  static readonly NOTIFICATIONS = `${environment.apiUrl}/Notificacao`
+
+
 }
