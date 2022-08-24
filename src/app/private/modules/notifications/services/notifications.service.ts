@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpPrivateClientService } from '@core/http/http-private-client.service'
 import API_URL from '@helpers/api-router.helper'
+import { UrlParams } from '@helpers/url-search-params.helper'
 import { Observable } from 'rxjs'
 import { NotificationListModel, NotificationModel } from '../models/notification.model'
 
@@ -9,8 +10,9 @@ export class NotificationsService {
 
   constructor(private readonly _http: HttpPrivateClientService) { }
 
-  public getListNotifications(): Observable<NotificationListModel> {
-    return this._http.get<NotificationListModel>(API_URL.NOTIFICATIONS)
+  public getListNotifications(filter?: any): Observable<NotificationListModel> {
+    const params = UrlParams(filter)
+    return this._http.get<NotificationListModel>(API_URL.NOTIFICATIONS + params)
   }
 
   public publishNotification(payload: NotificationModel): Observable<boolean> {

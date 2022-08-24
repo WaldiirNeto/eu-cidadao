@@ -18,6 +18,8 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
   protected displayedColumns: string[] = ['title_notification', 'subject', 'category', 'city', 'criticality']
   protected loadingList: boolean
   protected notificationsList: Array<NotificationModel>
+  private _filter: NotificationModel
+
   private _destroy$ = new Subject()
   constructor(
     private readonly _notificationsService: NotificationsService,
@@ -32,7 +34,7 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
 
   private _getNotifications(): void {
     this.loadingList = true
-    this._notificationsService.getListNotifications()
+    this._notificationsService.getListNotifications(this._filter)
       .pipe(
         takeUntil(this._destroy$),
         finalize(() => { this.loadingList = false })
@@ -54,7 +56,8 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
         filter((checkFilter) => checkFilter &&
           (checkFilter.type === NotificationEnum.tableUpdateNotificacao || checkFilter.type === NotificationEnum.formFilterNotificacao))
       )
-      .subscribe((_) => {
+      .subscribe((resultFilter) => {
+        this._filter = resultFilter.values
         this._getNotifications()
       })
   }
