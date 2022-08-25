@@ -50,7 +50,8 @@ export class FilterRelatoriosComponent extends FormRelatoriosModel implements On
     const typeReport = this.form.controls.tipoRelatorio.value as string
     const checkType = {
       'TABELA': 'relatorios/manager',
-      'BAR': 'relatorios/bar'
+      'BAR': 'relatorios/bar',
+      'COMPLETO': 'relatorios/mapa'
     }[typeReport]
     this._router.navigate([checkType])
   }

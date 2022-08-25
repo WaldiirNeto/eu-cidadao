@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { FilterRelatoriosComponent } from './pages/filter-relatorios/filter-relatorios.component'
 import { RelatoriosBarComponent } from './pages/relatorios-bar/relatorios-bar.component'
 import { RelatoriosManagerComponent } from './pages/relatorios-manager/relatorios-manager.component'
+import { RelatoriosMapaComponent } from './pages/relatorios-mapa/relatorios-mapa.component'
 import { RelatoriosComponent } from './pages/relatorios.component'
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'bar',
         component: RelatoriosBarComponent
+      },
+      {
+        path: 'mapa',
+        component: RelatoriosMapaComponent
       }
     ],
   },

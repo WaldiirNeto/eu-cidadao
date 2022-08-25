@@ -1,0 +1,43 @@
+<section class="relatorios-mapa">
+    <div class="row col-12 mb-3">
+        <app-box>
+            <div class="title-category">
+                <h1>Água e Esgoto</h1>
+            </div>
+        </app-box>
+    </div>
+    <div class="row col-12">
+        <div class="col-4">
+            <div class="mb-2">
+                <app-box>
+                    <div class="container">
+                        <p>200</p>
+                        <p>Ocorrências</p>
+                    </div>
+                </app-box>
+            </div>
+            <div>
+                <app-box>
+                    <div class="container">
+                        <div class="row justify-content-center" style="text-align: center">
+                            <div>Status das ocorrências</div>
+                            <canvas height="150px" width="150px" baseChart [labels]="doughnutChartLabels"
+                                [datasets]="doughnutChartDatasets" [options]="doughnutChartOptions" [legend]="true"
+                                [type]="'doughnut'" [legend]="false">
+                            </canvas>
+
+                        </div>
+
+                    </div>
+                </app-box>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="mb-2">
+                <app-box>
+
+                </app-box>
+            </div>
+        </div>
+    </div>
+</section>
