@@ -1,14 +1,5 @@
 @import '~src/styles/_variables.scss';
 
-@mixin status-base($color) {
-    background: $color;
-    border-radius: 8px;
-    color: white;
-    font-size: 14px;
-    text-align: center;
-    width: 84px;
-}
-
 .table-notifications {
 
     table {

@@ -1,14 +1,5 @@
 @import '~src/styles/_variables.scss';
 
-@mixin status-base($color) {
-    background: $color;
-    border-radius: 8px;
-    color: white;
-    font-size: 14px;
-    text-align: center;
-    width: 84px;
-}
-
 .table-ocurrences {
     mat-icon {
         color: $placeholder-color;
@@ -39,22 +30,6 @@
 
         .icon-delete {
             color: $red-color
-        }
-
-        .status-recusadas {
-            @include status-base($red-color)
-        }
-
-        .status-resolvidas {
-            @include status-base($color-paragraph)
-        }
-
-        .status-pendentes {
-            @include status-base($orange-color)
-        }
-
-        .status-tratamento {
-            @include status-base($green-color)
         }
     }
 

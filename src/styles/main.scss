@@ -1,4 +1,5 @@
 @import './_variables.scss';
+@import './mixins';
 
 
 body {
@@ -123,6 +124,22 @@ body {
             margin-bottom: 20px;
         }
 
+    }
+
+    .status-recusadas {
+        @include status-base($red-color)
+    }
+
+    .status-resolvidas {
+        @include status-base($color-paragraph)
+    }
+
+    .status-pendente {
+        @include status-base($orange-color)
+    }
+
+    .status-tratamento {
+        @include status-base($green-color)
     }
 
 }

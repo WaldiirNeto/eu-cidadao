@@ -1,6 +1,6 @@
 <section class="table-assuntos">
-    <ng-container *ngIf="this.listOcurrences?.length; else loading">
-        <table mat-table [dataSource]="this.listOcurrences" class="mat-elevation-z8">
+    <ng-container *ngIf="this.listOcurrences?.lista?.length; else loading">
+        <table mat-table [dataSource]="this.listOcurrences.lista" class="mat-elevation-z8">
 
             <ng-container matColumnDef="assunto">
                 <th mat-header-cell *matHeaderCellDef>
@@ -53,7 +53,8 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <app-pagination></app-pagination>
+        <app-pagination [total]="this.listOcurrences.total" [paginaAtual]="this.filter.Pagina"
+            [totalPorPagina]="this.filter.TamanhoDaPagina" (changePage)="this.pageUpdate($event)"></app-pagination>
     </ng-container>
     <ng-template #loading>
         <div class="loading">

@@ -17,22 +17,14 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
 
   @Output() public tableEmit: EventEmitter<Array<number>> = new EventEmitter()
   protected displayedColumns: string[] = ['assunto', 'categorias', 'actions']
-  protected listOcurrences: CategoriaModel[]
+  protected listOcurrences: ListCategoriaModel
   private selectedCategories: Array<any> = []
+  protected filter = { Pagina: 1, TamanhoDaPagina: 1 }
   private _destroy$ = new Subject()
   constructor(private readonly _dialog: MatDialog, private readonly _ocurrenceService: CategoriasService) { }
 
   ngOnInit(): void {
     this.getListOcorrences()
-  }
-
-  private getListOcorrences(): void {
-    this._ocurrenceService.ListCategorias()
-      .pipe(takeUntil(this._destroy$))
-      .subscribe((categorias: ListCategoriaModel) => {
-        this.listOcurrences = categorias.lista
-        console.log(this.listOcurrences)
-      })
   }
 
   public openModalEdit(assunto: Assunto): void {
@@ -97,6 +89,18 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
   //       }
   //     })
   // }
+  public pageUpdate(event: number): void {
+    this.filter['Pagina'] = event
+    this.getListOcorrences()
+  }
+
+  private getListOcorrences(): void {
+    this._ocurrenceService.ListCategorias(this.filter)
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((categorias: ListCategoriaModel) => {
+        this.listOcurrences = categorias
+      })
+  }
   ngOnDestroy(): void {
     this._destroy$.next(null)
     this._destroy$.complete()

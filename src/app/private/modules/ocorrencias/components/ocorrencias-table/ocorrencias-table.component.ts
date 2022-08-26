@@ -97,7 +97,6 @@ export class OcorrenciasTableComponent implements OnInit {
 
   public pageUpdate(event: number): void {
     this.filter['Pagina'] = event
-    console.log(this.filter)
     this._getListOccurrences()
   }
 

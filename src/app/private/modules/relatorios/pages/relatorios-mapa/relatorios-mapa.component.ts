@@ -32,6 +32,92 @@ export class RelatoriosMapaComponent implements OnInit {
   protected doughnutChartOptions: ChartConfiguration<'doughnut'>['options'] = {
     responsive: false
   };
+  protected displayedColumns: string[] = ['protocolo', 'categoria', 'data_criacao', 'dia_abertura', 'responsavel', 'status']
+
+
+  protected dataSource = [
+    {
+      id: `1`,
+      protocolo: `mussum ipsum`,
+      categoria: `mussum ipsum`,
+      data_criacao: `01/01/2022`,
+      responsavel: `mussum ipsum`,
+      status: `recusadas`,
+      dias_abertura: 10
+    },
+    {
+      id: `2`,
+      protocolo: `mussum ipsum`,
+      categoria: `mussum ipsum`,
+      data_criacao: `01/01/2022`,
+      responsavel: `mussum ipsum`,
+      status: `recusadas`,
+      dias_abertura: 10
+    },
+    {
+      id: `3`,
+      protocolo: `mussum ipsum`,
+      categoria: `mussum ipsum`,
+      data_criacao: `01/01/2022`,
+      responsavel: `mussum ipsum`,
+      status: `recusadas`,
+      dias_abertura: 10
+    },
+    {
+      id: `4`,
+      protocolo: `mussum ipsum`,
+      categoria: `mussum ipsum`,
+      data_criacao: `01/01/2022`,
+      responsavel: `mussum ipsum`,
+      status: `recusadas`,
+      dias_abertura: 10
+    },
+    {
+      id: `5`,
+      protocolo: `mussum ipsum`,
+      categoria: `mussum ipsum`,
+      data_criacao: `01/01/2022`,
+      responsavel: `mussum ipsum`,
+      status: `recusadas`,
+      dias_abertura: 10
+    },
+    {
+      id: `6`,
+      protocolo: `mussum ipsum`,
+      categoria: `mussum ipsum`,
+      data_criacao: `01/01/2022`,
+      responsavel: `mussum ipsum`,
+      status: `pendente`,
+      dias_abertura: 10
+    },
+    {
+      id: `7`,
+      protocolo: `mussum ipsum`,
+      categoria: `mussum ipsum`,
+      data_criacao: `01/01/2022`,
+      responsavel: `mussum ipsum`,
+      status: `resolvidas`,
+      dias_abertura: 10
+    },
+    {
+      id: `8`,
+      protocolo: `mussum ipsum`,
+      categoria: `mussum ipsum`,
+      data_criacao: `01/01/2022`,
+      responsavel: `mussum ipsum`,
+      status: `recusadas`,
+      dias_abertura: 10
+    },
+    {
+      id: `9`,
+      protocolo: `mussum ipsum`,
+      categoria: `mussum ipsum`,
+      data_criacao: `01/01/2022`,
+      responsavel: `mussum ipsum`,
+      status: `recusadas`,
+      dias_abertura: 10
+    }
+  ]
   constructor() { }
 
   ngOnInit(): void {
