@@ -1,3 +1,5 @@
+import { PaginacaoModel } from '@shared/models/paginacao.model'
+
 export interface OcorrenciaListModel {
     total: number,
     lista: Array<OcorrenciaModel>
@@ -82,12 +84,12 @@ export interface CategoriaOcorrenciaModel {
     subCategoriasOcorrencias: Array<SubCategoriaOcorrenciaModel>
 }
 
-export interface FilterOcorrenciaModel {
-    protocolo: string
-    CategoriaId: number
-    SubCategoriaId: number
-    UsuarioDespachanteId: number
-    SituacaoId: number
+export interface FilterOcorrenciaModel extends PaginacaoModel {
+    protocolo?: string
+    CategoriaId?: number
+    SubCategoriaId?: number
+    UsuarioDespachanteId?: number
+    SituacaoId?: number
 }
 
 export interface RecusarOcorrencia {

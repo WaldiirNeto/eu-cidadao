@@ -31,9 +31,10 @@ export class FilterNotificationComponent extends NotificationFormFilterModel imp
   public submitFilter(): void {
     this._notifyComponentService.setNotification(NotificationEnum.formFilterNotificacao, this.form.value)
   }
+
   public resetForm(): void {
     this.form.reset()
-    this._notifyComponentService.setNotification(NotificationEnum.formFilterNotificacao, null)
+    this._notifyComponentService.setNotification(NotificationEnum.formFilterClearNotificacao)
 
   }
 }

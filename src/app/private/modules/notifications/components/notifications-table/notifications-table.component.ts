@@ -5,7 +5,7 @@ import { NotifyComponentsService } from '@shared/services/notify-components.serv
 import { SnackBarService } from '@shared/services/snackbar.service'
 import { filter, finalize, Subject, takeUntil } from 'rxjs'
 import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
-import { NotificationListModel, NotificationModel } from '../../models/notification.model'
+import { FilterNotificationModel, NotificationListModel, NotificationModel } from '../../models/notification.model'
 import { NotificationsService } from '../../services/notifications.service'
 import { ModalNotificationsComponent } from '../modal-notifications/modal-notifications.component'
 
@@ -17,8 +17,8 @@ import { ModalNotificationsComponent } from '../modal-notifications/modal-notifi
 export class NotificationsTableComponent implements OnInit, OnDestroy {
   protected displayedColumns: string[] = ['title_notification', 'subject', 'category', 'city', 'criticality']
   protected loadingList: boolean
-  protected notificationsList: Array<NotificationModel>
-  private _filter: NotificationModel
+  protected notificationsList: NotificationListModel
+  protected filter: FilterNotificationModel = { Pagina: 1, TamanhoDaPagina: 10 }
 
   private _destroy$ = new Subject()
   constructor(
@@ -32,16 +32,23 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
     this._getNotificationComponent()
   }
 
+
+  public pageUpdate(event: number): void {
+    this.filter['Pagina'] = event
+    console.log(this.filter)
+    this._getNotifications()
+  }
+
   private _getNotifications(): void {
     this.loadingList = true
-    this._notificationsService.getListNotifications(this._filter)
+    this._notificationsService.getListNotifications(this.filter)
       .pipe(
         takeUntil(this._destroy$),
         finalize(() => { this.loadingList = false })
       )
       .subscribe({
         next: (notifications: NotificationListModel) => {
-          this.notificationsList = notifications.lista
+          this.notificationsList = notifications
         },
         error: (error: HttpErrorResponse) => {
           this._snackBarService.open(`Não foi possível buscar a lista de notificaçãoes, motivo: ${error.message}`, `error`)
@@ -54,10 +61,17 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this._destroy$),
         filter((checkFilter) => checkFilter &&
-          (checkFilter.type === NotificationEnum.tableUpdateNotificacao || checkFilter.type === NotificationEnum.formFilterNotificacao))
+          (
+            checkFilter.type === NotificationEnum.tableUpdateNotificacao
+            || checkFilter.type === NotificationEnum.formFilterNotificacao
+            || checkFilter.type === NotificationEnum.formFilterClearNotificacao))
       )
       .subscribe((resultFilter) => {
-        this._filter = resultFilter.values
+        if (resultFilter.type === NotificationEnum.formFilterClearNotificacao) {
+          this.filter = { Pagina: 1, TamanhoDaPagina: 10 }
+        } else {
+          this.filter = resultFilter.values
+        }
         this._getNotifications()
       })
   }

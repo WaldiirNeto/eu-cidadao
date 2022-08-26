@@ -13,6 +13,7 @@ export class OcorrenciasService {
 
   public buscarOcorrencias(filter?: any): Observable<OcorrenciaListModel> {
     const params = UrlParams(filter)
+    console.log(params)
     return this._http.get(`${API_URL.GET_OCORRENCIAS + params}`)
   }
 

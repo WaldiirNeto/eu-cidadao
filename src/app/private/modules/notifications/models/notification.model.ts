@@ -1,3 +1,5 @@
+import { PaginacaoModel } from '@shared/models/paginacao.model'
+
 export interface NotificationListModel {
 
     total: number,
@@ -16,11 +18,11 @@ export interface NotificationModel {
     link: string
 }
 
-export interface FilterNotificationModel {
-    Titulo: string
-    CidadeId: number
-    CategoriaId: number
-    Nome: string
-    Descricao: string
-    Situacao: string
+export interface FilterNotificationModel extends PaginacaoModel {
+    Titulo?: string
+    CidadeId?: number
+    CategoriaId?: number
+    Nome?: string
+    Descricao?: string
+    Situacao?: string
 }

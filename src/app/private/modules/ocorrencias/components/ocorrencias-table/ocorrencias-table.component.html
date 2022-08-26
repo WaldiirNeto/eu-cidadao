@@ -70,7 +70,8 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-            <app-pagination></app-pagination>
+            <app-pagination [total]="this.listOcurrences.total" [paginaAtual]="this.filter.Pagina"
+                [totalPorPagina]="this.filter.TamanhoDaPagina" (changePage)="this.pageUpdate($event)"></app-pagination>
         </ng-container>
         <ng-template #nodata>
             <div class="d-flex justify-content-center" style="border: 1px solid #ccc;">

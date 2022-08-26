@@ -22,8 +22,8 @@ export class OcorrenciasTableComponent implements OnInit {
   protected displayedColumns: string[] = ['protocolo', 'assunto', 'categoria', 'bairro', 'data_criacao', 'status']
   protected listOcurrences: OcorrenciaListModel
   protected loadingList: boolean
+  protected filter: FilterOcorrenciaModel = { Pagina: 1, TamanhoDaPagina: 10 }
   private selectedCategories: Array<string> = []
-  private _filter: FilterOcorrenciaModel
   private _destroy$ = new Subject()
 
   constructor(
@@ -39,7 +39,7 @@ export class OcorrenciasTableComponent implements OnInit {
 
   private _getListOccurrences(): void {
     this.loadingList = true
-    this._ocorrenciaService.buscarOcorrencias(this._filter)
+    this._ocorrenciaService.buscarOcorrencias(this.filter)
       .pipe(
         takeUntil(this._destroy$),
         finalize(() => this.loadingList = false)
@@ -67,7 +67,7 @@ export class OcorrenciasTableComponent implements OnInit {
       data: { ocurrence, type },
       enterAnimationDuration: `1000ms`,
       exitAnimationDuration: `500ms`,
-      panelClass: 'padding-modal',
+      panelClass: 'padding-modal-ocorrencia',
       width: `80%`
     })
   }
@@ -95,6 +95,12 @@ export class OcorrenciasTableComponent implements OnInit {
     return check
   }
 
+  public pageUpdate(event: number): void {
+    this.filter['Pagina'] = event
+    console.log(this.filter)
+    this._getListOccurrences()
+  }
+
   private _observeNotification(): void {
     this._notifyComponentsService
       .observeNotification()
@@ -108,7 +114,11 @@ export class OcorrenciasTableComponent implements OnInit {
           ))
       )
       .subscribe((notification) => {
-        this._filter = notification.values
+        if (notification.type === NotificationEnum.formFilterOcorrenciaClear) {
+          this.filter = { Pagina: 1, TamanhoDaPagina: 10 }
+        } else {
+          this.filter = notification.values
+        }
         this._getListOccurrences()
       })
   }
