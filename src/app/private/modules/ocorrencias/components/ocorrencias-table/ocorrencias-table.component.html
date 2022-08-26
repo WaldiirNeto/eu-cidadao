@@ -59,10 +59,10 @@
                     </th>
                     <td mat-cell *matCellDef="let ocorrencia">
                         <div class="d-flex">
-                            <div [class]="'me-2 status-' + ocorrencia.status">{{ocorrencia.situacao.nome}}
+                            <div style="width: 60px;">{{ocorrencia.situacao.nome}}
                             </div>
-                            <mat-icon>search</mat-icon>
-                            <mat-icon (click)="this.openModalDetails(ocorrencia)">edit</mat-icon>
+                            <mat-icon (click)="this.openModalDetails(ocorrencia, 'view')">search</mat-icon>
+                            <mat-icon (click)="this.openModalDetails(ocorrencia, 'edit')">edit</mat-icon>
                         </div>
                     </td>
                 </ng-container>

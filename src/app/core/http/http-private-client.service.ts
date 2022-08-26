@@ -22,6 +22,6 @@ export class HttpPrivateClientService {
 
   public post<T>(url: string, payload: {}): Observable<T> {
     const token = localStorage.getItem('token')
-    return this._http.put<T>(url, payload, { headers: { 'Authorization': `Bearer ${token}` } })
+    return this._http.post<T>(url, payload, { headers: { 'Authorization': `Bearer ${token}` } })
   }
 }

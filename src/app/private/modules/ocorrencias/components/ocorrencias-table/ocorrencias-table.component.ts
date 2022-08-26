@@ -47,7 +47,6 @@ export class OcorrenciasTableComponent implements OnInit {
       .subscribe({
         next: (listOccurrences: OcorrenciaListModel) => {
           this.listOcurrences = listOccurrences
-          console.log(this.listOcurrences.lista)
         },
         error: (_) => {
           this._snackBarService.open(`Não foi possível buscar a lista de ocorrências`, 'error')
@@ -63,9 +62,9 @@ export class OcorrenciasTableComponent implements OnInit {
     })
   }
 
-  public openModalDetails(ocurrence: CategoriaModel): void {
+  public openModalDetails(ocurrence: CategoriaModel, type: string): void {
     this._dialog.open(ModalDetalhesOcorrenciaComponent, {
-      data: ocurrence,
+      data: { ocurrence, type },
       enterAnimationDuration: `1000ms`,
       exitAnimationDuration: `500ms`,
       panelClass: 'padding-modal',

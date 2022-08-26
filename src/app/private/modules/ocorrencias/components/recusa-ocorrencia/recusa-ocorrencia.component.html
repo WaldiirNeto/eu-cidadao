@@ -1,0 +1,26 @@
+<dialog style="z-index: 2000" open class="recusar-ocorrencia">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between mb-4">
+            <span></span>
+            <p style="font-weight: 700;
+        font-size: 20px;">Selecionar motivo da recusa</p>
+            <mat-icon (click)="this.close()" class="cancel-dialog-intern">cancel
+            </mat-icon>
+        </div>
+        <div style="width: 100%">
+            <mat-form-field appearance="outline" floatLabel="always" style="width: 100%;" class="mb-4">
+                <mat-select placeholder="Selecione o motivo" (selectionChange)="this.checkMotivo($event)">
+                    <mat-option *ngFor="let situacao of this.listSituacao" [value]="situacao.id">
+                        <span> {{situacao.nome}}</span>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button (click)="this.close()" class="button-cancel" mat-button>Cancelar</button>
+            <button (click)="this.recusarOcorrencia()" [disabled]="!this.situacaoId" class="button-salvar-responsavel"
+                mat-button>Salvar</button>
+
+        </div>
+    </div>
+</dialog>

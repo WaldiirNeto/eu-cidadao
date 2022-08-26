@@ -1,68 +1,50 @@
 <section class="modal-detalhes-ocorrencia">
-    <div mat-dialog-title class="header">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <div class="me-3 mt-2">
+    <header mat-dialog-title class="header">
+        <section class="container-fluid d-flex justify-content-between align-items-center">
+            <article class="me-3 mt-2">
                 <p>Protocolo</p>
-                <p>{{this.ocorrencia.id}}</p>
-            </div>
-            <div class="me-1 mt-2">
+                <p>{{this.data.ocurrence.id}}</p>
+            </article>
+            <article class="me-1 mt-2">
                 <p>Cidadão</p>
                 <p>{{this.details.cidadao}}</p>
-            </div>
-            <div class="me-1 mt-2">
+            </article>
+            <article class="me-1 mt-2">
                 <p>Assunto</p>
-                <p>{{this.ocorrencia.categoriaOcorrencia.nome}}</p>
-            </div>
-            <div class="me-1 mt-2">
+                <p>{{this.data.ocurrence.categoriaOcorrencia.nome}}</p>
+            </article>
+            <article class="me-1 mt-2">
                 <p>Categoria</p>
-                <p>{{this.ocorrencia.subCategoriaOcorrencia.nome}}</p>
-            </div>
-            <div class="me-1 mt-2">
+                <p>{{this.data.ocurrence.subCategoriaOcorrencia.nome}}</p>
+            </article>
+            <article class="me-1 mt-2">
                 <p>Data de criação</p>
-                <p>{{this.ocorrencia.dataCriacao | date: 'dd/MM/yyyy'}}</p>
-            </div>
+                <p>{{this.data.ocurrence.dataCriacao | date: 'dd/MM/yyyy'}}</p>
+            </article>
             <mat-icon class="icon-close" mat-dialog-close>cancel</mat-icon>
-        </div>
-    </div>
+        </section>
+    </header>
     <mat-dialog-content class="mat-typography">
         <div class="container-fluid">
             <h1>Detalhes da ocorrência</h1>
             <div class="container-fluid__container d-flex justify-content-start">
                 <div class="ms-2 col-5 mt-2 mb-2 me-4 container-description">
                     <p class="ms-2 mt-2" style="text-align: justify;">
-                        {{this.ocorrencia.comentarioCidadao}}
+                        {{this.data.ocurrence.comentarioCidadao}}
                     </p>
                 </div>
                 <div class="ms-3 col-6 mt-2 mb-2">
-                    <img src="/assets/images/mocks/bueiro.svg" width="100%">
+                    <carousel>
+                        <slide *ngFor="let image of this.data.ocurrence.documentos">
+                            <img [src]="'data:image/'+image.extensao +';base64,'+image.arquivo" alt="slide de imagens"
+                                style="display: block; width: 100%; height: 300px;">
+                        </slide>
+                    </carousel>
                 </div>
             </div>
-            <dialog style="z-index: 2000" open *ngIf="this.showRecusaOcorrencia" class="recusar-ocorrencia">
-                <div class="container-fluid">
-                    <div class="d-flex justify-content-between mb-4">
-                        <span></span>
-                        <p style="font-weight: 700;
-                    font-size: 20px;">Selecionar motivo da recusa</p>
-                        <mat-icon class="cancel-dialog-intern" (click)="this.showRecusaOcorrencia = false">cancel
-                        </mat-icon>
-                    </div>
-                    <div style="width: 100%">
-                        <mat-form-field appearance="outline" floatLabel="always" style="width: 100%;" class="mb-4">
-                            <mat-select>
-                                <mat-option value="">Selecione</mat-option>
-                                <mat-option value="Recusa1">Recusa 1</mat-option>
-                                <mat-option value="Recusa2">Recusa 2</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button class="button-cancel" mat-button
-                            (click)="this.showRecusaOcorrencia = false">Cancelar</button>
-                        <button class="button-salvar-responsavel" mat-button>Salvar</button>
-
-                    </div>
-                </div>
-            </dialog>
+            <app-recusa-ocorrencia *ngIf="this.showRecusaOcorrencia" [ocorrenciaId]="this.data.ocurrence.id"
+                (closeDialog)="this.closeModalRecusaOcorrencia()">
+            </app-recusa-ocorrencia>
 
             <dialog style="z-index: 2000" open *ngIf="this.showDespachoOcorrencia" class="dialog-despachar-ocorrencia">
                 <div class="container-fluid">
@@ -106,13 +88,11 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <!-- <app-input-form [listSelect]="this.Listcategorias" type="select" placeholder="Selecione"
-                            label="Categoria" controlName="categoria"></app-input-form> -->
                     </div>
                 </div>
 
 
-                <div class="d-flex">
+                <!--  <div class="d-flex">
                     <div class="p-2">
                         <app-input-form controlName="comentario" placeholder="Adicionar um comentário...">
                         </app-input-form>
@@ -139,7 +119,7 @@
                             <p class="col-12" style=" margin-top: -9px;">{{comment.comentario}}</p>
                         </div>
                     </ng-container>
-                </section>
+                </section> -->
             </form>
         </div>
 
@@ -147,9 +127,11 @@
     <mat-dialog-actions align="end">
         <div class="container-fluid">
             <button class="button-cancel" mat-button mat-dialog-close>Cancelar</button>
-            <button class="button-recusar-ocorrencia" mat-button (click)="this.showRecusaOcorrencia = true">Recusar
+            <button *ngIf="this.data.type === 'edit'" class="button-recusar-ocorrencia" mat-button
+                (click)="this.showRecusaOcorrencia = true">Recusar
                 ocorrência</button>
-            <button class="button-despachar-ocorrencia" mat-button (click)="this.showDespachoOcorrencia = true">
+            <button *ngIf="this.data.type === 'edit'" class="button-despachar-ocorrencia" mat-button
+                (click)="this.showDespachoOcorrencia = true">
                 Salvar</button>
         </div>
     </mat-dialog-actions>

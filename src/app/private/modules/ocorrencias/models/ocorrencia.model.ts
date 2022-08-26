@@ -89,3 +89,8 @@ export interface FilterOcorrenciaModel {
     UsuarioDespachanteId: number
     SituacaoId: number
 }
+
+export interface RecusarOcorrencia {
+    ocorrenciaId: string,
+    situacaoId: number
+}

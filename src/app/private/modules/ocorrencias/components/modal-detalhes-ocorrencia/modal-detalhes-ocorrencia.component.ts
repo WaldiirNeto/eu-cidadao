@@ -2,7 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core'
 import { MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { MatSelectChange } from '@angular/material/select'
 import { CategoriaModel, ListCategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
+import { SituacaoModel } from '@shared/models/situacao.model'
 import { CategoriasService } from '@shared/services/categorias.service'
+import { SituacaoService } from '@shared/services/situacao.service'
 import { Subject, takeUntil } from 'rxjs'
 import { FormModalDetalhesModel } from '../../models/form-modal-detalhes-ocorrencia.model'
 import { OcorrenciaModel } from '../../models/ocorrencia.model'
@@ -31,20 +33,19 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
 
   protected showDespachoOcorrencia: boolean
   protected showRecusaOcorrencia: boolean
-  protected listCategorias: CategoriaModel[]
-  protected listSubCategorias: SubCategoriaOcorrenciaModel[]
+  protected listCategorias: Array<CategoriaModel>
+  protected listSubCategorias: Array<SubCategoriaOcorrenciaModel>
+  protected listSituacao: Array<SituacaoModel>
   private _destroy$ = new Subject()
   constructor(
-    @Inject(MAT_DIALOG_DATA) public ocorrencia: OcorrenciaModel,
+    @Inject(MAT_DIALOG_DATA) public data: { ocurrence: OcorrenciaModel, type: string },
     private readonly _categoriaService: CategoriasService) {
     super()
   }
 
   ngOnInit(): void {
-    console.log(this.ocorrencia)
+    console.log(this.data.ocurrence)
     this._buscarCategorias()
-    this.form.controls.CategoriaId.setValue(this.ocorrencia.categoriaOcorrencia.id)
-    this.form.controls.SubCategoriaId.setValue(this.ocorrencia.subCategoriaOcorrenciaId)
   }
 
 
@@ -66,6 +67,11 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
     this.comentarios.push(obj)
   }
 
+  public closeModalRecusaOcorrencia(): void {
+    console.log(`ok`)
+    this.showRecusaOcorrencia = false
+  }
+
 
   private _buscarCategorias(): void {
     this._categoriaService.ListCategorias()
@@ -74,9 +80,12 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
         this.listCategorias = categorias.lista
         const getListCategorias = this.listCategorias
         const filterOcorrencias = getListCategorias
-          .find((categoria) => categoria.id === this.ocorrencia.categoriaOcorrencia.id) as CategoriaModel
+          .find((categoria) => categoria.id === this.data.ocurrence.categoriaOcorrencia.id) as CategoriaModel
         this.listSubCategorias = filterOcorrencias.subCategoriasOcorrencias
+        this.form.controls.CategoriaId.setValue(this.data.ocurrence.categoriaOcorrencia.id)
+        this.form.controls.SubCategoriaId.setValue(this.data.ocurrence.subCategoriaOcorrenciaId)
       })
   }
+
 
 }
