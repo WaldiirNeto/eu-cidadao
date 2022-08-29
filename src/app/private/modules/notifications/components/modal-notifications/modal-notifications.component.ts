@@ -22,6 +22,11 @@ export class ModalNotificationsComponent extends FormCreateNotificationModel imp
 
   protected listSelects$: Observable<[ListCityModel, ListCategoriaModel]>
   protected loading: boolean
+  protected listCriticidade = [
+    { id: 1, description: `Baixo` },
+    { id: 2, description: `Média` },
+    { id: 3, description: `Alta` },
+    { id: 4, description: `Urgente` }]
   private _destroy$ = new Subject()
 
   constructor(
@@ -36,7 +41,6 @@ export class ModalNotificationsComponent extends FormCreateNotificationModel imp
   }
 
   ngOnInit(): void {
-    console.log(this.notification)
     this.listSelects$ = forkJoin([this._cityService.getCitys(), this._categoryService.ListCategorias()])
     if (this.notification) {
       this.form.patchValue(this.notification)
@@ -46,7 +50,6 @@ export class ModalNotificationsComponent extends FormCreateNotificationModel imp
   public publishNotification(): void {
     this.loading = true
     const payload = this.form.value as NotificationModel
-
     this._notificationService.publishNotification(payload)
       .pipe(takeUntil(this._destroy$),
         finalize(() => this.loading = false))

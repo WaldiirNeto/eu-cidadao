@@ -20,7 +20,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { NotificationsService } from './services/notifications.service'
 import { SnackBarService } from '@shared/services/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog';
+import { CriticidadePipe } from './pipes/criticidade.pipe'
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatDialogModule } from '@angular/material/dialog'
     NotificationsComponent,
     NotificationsTableComponent,
     ModalNotificationsComponent,
-    FilterNotificationComponent
+    FilterNotificationComponent,
+    CriticidadePipe
   ],
   imports: [
     CommonModule,

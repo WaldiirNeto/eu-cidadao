@@ -26,8 +26,15 @@
 
                 </div>
                 <div class="col-md-4">
-                    <app-input-form label="Criticidade" controlName="criticidade" placeholder="selecione a criticidade"
-                        type="text"></app-input-form>
+                    <mat-label>Criticidade</mat-label>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-select formControlName="criticidade" placeholder="Selecione a criticidade">
+
+                            <mat-option *ngFor="let criticidade of this.listCriticidade" [value]="criticidade.id">
+                                <span> {{criticidade.description}}</span>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
                 <div class="col-md-4">
                     <mat-label>Cidade</mat-label>

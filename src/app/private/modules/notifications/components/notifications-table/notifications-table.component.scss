@@ -1,22 +1,41 @@
 @import '~src/styles/_variables.scss';
 
+$criticidade-baixa-color: #00821A;
+$criticidade-media-color: #FFF200;
+$criticidade-alta-color: #FF9900;
+$criticidade-urgente-color: #ED0C00;
+
+
+@mixin criticidade-base($background-color, $color: white) {
+    align-items: center;
+    background: $background-color;
+    border-radius: 8px;
+    color: $color;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+    padding: 0px 4px;
+    width: 84px;
+}
+
 .table-notifications {
 
     table {
-        // .criticidade- {
-        //     @include status-base($red-color)
-        // }
+        .criticidade-1 {
+            @include criticidade-base($criticidade-baixa-color)
+        }
 
-        // .criticidade {
-        //     @include status-base($color-paragraph)
-        // }
+        .criticidade-2 {
+            @include criticidade-base($criticidade-media-color, black)
+        }
 
-        // .criticidade {
-        //     @include status-base($orange-color)
-        // }
+        .criticidade-3 {
+            @include criticidade-base($criticidade-alta-color, black)
+        }
 
-        // .criticidade{
-        //     @include status-base($green-color)
-        // }
+        .criticidade-4 {
+            @include criticidade-base($criticidade-urgente-color)
+        }
     }
 }

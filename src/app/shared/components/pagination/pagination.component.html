@@ -1,24 +1,12 @@
-<section *ngIf="this.total > this.totalPorPagina ">
+<section *ngIf="this.total > this.totalPorPagina">
     <div class="pagination-custom">
+        <!-- <mat-icon>chevron_left</mat-icon> -->
         <ng-container *ngFor="let page of this.fakeArray; let myIndex = index">
             <div class="page" [ngClass]="{'page-first': (myIndex + 1) === this.paginaAtual}"
                 (click)="this.updatePage(myIndex + 1)">
                 {{myIndex + 1}}
             </div>
         </ng-container>
-        <!-- <mat-icon>chevron_left</mat-icon>
-        <div class="page-first">1</div>
-        <div class="page">2</div>
-        <div class="page">3</div>
-        <div class="page">4</div>
-        <div class="page">5</div>
-        <mat-icon>chevron_right</mat-icon> -->
+        <!-- <mat-icon>chevron_right</mat-icon> -->
     </div>
-    <!-- <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <mat-icon>chevron_right</mat-icon>
-    </ul> -->
 </section>

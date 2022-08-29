@@ -28,7 +28,8 @@ import { SnackBarService } from '@shared/services/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
-import { RecusaOcorrenciaComponent } from './components/recusa-ocorrencia/recusa-ocorrencia.component'
+import { RecusaOcorrenciaComponent } from './components/recusa-ocorrencia/recusa-ocorrencia.component';
+import { DespacharOcorrenciaComponent } from './components/despachar-ocorrencia/despachar-ocorrencia.component'
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RecusaOcorrenciaComponent } from './components/recusa-ocorrencia/recusa
     InfosInitialChartsComponent,
     ModalDetalhesOcorrenciaComponent,
     FilterTableOcorrenciasComponent,
-    RecusaOcorrenciaComponent
+    RecusaOcorrenciaComponent,
+    DespacharOcorrenciaComponent
   ],
   imports: [
     CommonModule,

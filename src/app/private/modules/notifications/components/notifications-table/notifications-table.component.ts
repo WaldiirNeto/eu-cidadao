@@ -67,7 +67,8 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
             || checkFilter.type === NotificationEnum.formFilterClearNotificacao))
       )
       .subscribe((resultFilter) => {
-        if (resultFilter.type === NotificationEnum.formFilterClearNotificacao) {
+        if (resultFilter.type === NotificationEnum.formFilterClearNotificacao
+          || resultFilter.type === NotificationEnum.tableUpdateNotificacao) {
           this.filter = { Pagina: 1, TamanhoDaPagina: 10 }
         } else {
           this.filter = resultFilter.values
