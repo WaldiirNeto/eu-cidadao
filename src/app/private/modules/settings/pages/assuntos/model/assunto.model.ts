@@ -21,3 +21,20 @@ export interface CategoriaModel {
     caminhoImagemTela: string
 }
 
+export interface CreateAssuntoFormModel {
+
+    id: number,
+    nome: string,
+    descricao: string,
+    ativo: true,
+    caminhoImagemMenu: string,
+    caminhoImagemTela: string,
+    subCategoriasOcorrencias: Array<SubCategoriaCreateModel>
+}
+
+export interface SubCategoriaCreateModel {
+    nome: string,
+    descricao: string
+}
+
+

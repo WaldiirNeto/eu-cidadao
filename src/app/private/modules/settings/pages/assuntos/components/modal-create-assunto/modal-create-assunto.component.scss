@@ -19,10 +19,18 @@ $color-box: #1653FD;
             width: 343px;
             margin-bottom: 20px;
         }
+
+        .content-files {
+            border: solid #f7f7f9;
+            border-width: .2rem;
+            margin-right: 0;
+            margin-left: 0;
+            padding: 1.5rem;
+        }
     }
 
     .box-categorias {
-        width: 1290px;
+        width: 1000px;
 
         .categoria-lista {
             border: 1px solid $placeholder-color;
@@ -30,6 +38,8 @@ $color-box: #1653FD;
             border-radius: 8px;
             height: 100%;
             padding: 10px;
+            display: flex;
+
 
             &__align {
                 align-items: center;
@@ -38,6 +48,10 @@ $color-box: #1653FD;
                 &__lista-right {
                     margin-right: 5px;
                     width: 150px;
+
+                    input {
+                        width: 100%;
+                    }
                 }
 
                 mat-icon {
@@ -67,7 +81,8 @@ $color-box: #1653FD;
                 margin-right: 5px;
                 margin-bottom: 10px;
                 padding: 4px;
-                width: 101px;
+                position: relative;
+                // width: 101px;
 
 
                 mat-icon {
@@ -75,8 +90,11 @@ $color-box: #1653FD;
                     cursor: pointer;
                     transform: translateY(-50%);
                     position: absolute;
-                    margin-left: 90px;
-                    margin-top: -3px;
+                    // margin-left: 90px;
+                    // margin-top: -3px;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
                 }
 
             }

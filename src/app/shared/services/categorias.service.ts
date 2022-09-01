@@ -14,6 +14,6 @@ export class CategoriasService {
 
   ListCategorias(filter?: any): Observable<ListCategoriaModel> {
     const params = UrlParams(filter)
-    return this.http.get<ListCategoriaModel>(API_URL.GET_CATEGORIAS + params)
+    return this.http.get<ListCategoriaModel>(API_URL.CATEGORIAS + params)
   }
 }

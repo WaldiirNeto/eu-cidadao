@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialog } from '@angular/material/dialog'
-import { CategoriaModel, ListCategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
+import { ListCategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
 import { CategoriasService } from '@shared/services/categorias.service'
-import { Subject, takeUntil } from 'rxjs'
+import { NotifyComponentsService } from '@shared/services/notify-components.service'
+import { filter, Subject, takeUntil } from 'rxjs'
+import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
 import { Assunto } from '../../model/assunto.model'
 import { ModalCreateAssuntoComponent } from '../modal-create-assunto/modal-create-assunto.component'
 import { ModalDeleteAssuntoComponent } from '../modal-delete-assunto/modal-delete-assunto.component'
@@ -19,12 +21,27 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
   protected displayedColumns: string[] = ['assunto', 'categorias', 'actions']
   protected listOcurrences: ListCategoriaModel
   private selectedCategories: Array<any> = []
-  protected filter = { Pagina: 1, TamanhoDaPagina: 1 }
+  protected filter = { Pagina: 1, TamanhoDaPagina: 10 }
   private _destroy$ = new Subject()
-  constructor(private readonly _dialog: MatDialog, private readonly _ocurrenceService: CategoriasService) { }
+  constructor(
+    private readonly _dialog: MatDialog,
+    private readonly _ocurrenceService: CategoriasService,
+    private readonly _notifyComponent: NotifyComponentsService) { }
 
   ngOnInit(): void {
-    this.getListOcorrences()
+    this.getListAssuntos()
+    this.getNotify()
+  }
+
+  private getNotify(): void {
+    this._notifyComponent.observeNotification()
+      .pipe(
+        takeUntil(this._destroy$),
+        filter(checkFilter => checkFilter && checkFilter.type === NotificationEnum.updateTableAssunto))
+      .subscribe((_) => {
+        this.filter = { Pagina: 1, TamanhoDaPagina: 10 }
+        this.getListAssuntos()
+      })
   }
 
   public openModalEdit(assunto: Assunto): void {
@@ -91,10 +108,11 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
   // }
   public pageUpdate(event: number): void {
     this.filter['Pagina'] = event
-    this.getListOcorrences()
+    this.getListAssuntos()
   }
 
-  private getListOcorrences(): void {
+  private getListAssuntos(): void {
+    this.filter = { Pagina: 1, TamanhoDaPagina: 10 }
     this._ocurrenceService.ListCategorias(this.filter)
       .pipe(takeUntil(this._destroy$))
       .subscribe((categorias: ListCategoriaModel) => {

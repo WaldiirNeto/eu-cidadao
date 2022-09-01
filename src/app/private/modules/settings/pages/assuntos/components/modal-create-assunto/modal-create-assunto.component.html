@@ -1,53 +1,51 @@
 <section class="modal-create-assunto">
     <h1 mat-dialog-title>Adicionar Assunto</h1>
-    <form [formGroup]="this.form">
-        <div mat-dialog-content>
-            <div class="col-12">
-                <div class="d-flex form-group">
-                    <div class="col-6 input-margin">
-                        <app-input-form controlName="assunto" placeholder="Novo assunto" label="Título do Assunto">
-                        </app-input-form>
-                    </div>
-                    <div class="col-6">
-                        <app-input-form controlName="responsavel_area" placeholder="Digite o nome do responsável"
-                            label="Responsável pela área">
-                        </app-input-form>
-                    </div>
+    <form [formGroup]="this.form" (submit)="this.createAssunto()">
+        <div class="col-12">
+            <div mat-dialog-content>
+                <div class="form-group">
+                    <app-input-form controlName="nome" placeholder="Novo assunto" label="Nome do Assunto">
+                    </app-input-form>
                 </div>
-                <div class="d-flex form-group">
-                    <div class="col-6 input-margin">
-                        <app-input-form controlName="email" placeholder="Digite o E-mail do responsável" label="E-mail">
-                        </app-input-form>
-                    </div>
-                    <div class="col-6">
-                        <app-input-form controlName="telefone" placeholder="Digite o telefone do responsável"
-                            label="Telefone"></app-input-form>
-                    </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Descrição</label>
+                    <textarea class="form-control" id="textAreaDescription" aria-describedby="textAreaDescription"
+                        placeholder=" Digite a descrição" formControlName="descricao">
+                </textarea>
                 </div>
-                <div class="d-flex form-group">
-                    <div class="col-6">
-                        <div class="content-image">
-                            <img style="margin-right: 5px" width="40px" height="40px" src="/assets/images/avatar.svg">
-                            <input type="file" name="file" (change)="this.populateFileInForm($event.target)">
-                        </div>
+
+                <div class="mt-4 content-files">
+                    <div class="custom-file mb-4">
+                        <label>Imagem Menu</label>
+                        <input (change)="this.manipulateFileImageMenu($event)"
+                            placeholder="selecione uma imagem de Menu" type="file" class="form-control"
+                            id="validatedCustomFile">
+                    </div>
+
+                    <div class="custom-file">
+                        <label>Imagem Tela</label>
+                        <input (change)="this.manipulateFileImageTela($event)"
+                            placeholder="selecione uma imagem de Menu" type="file" class="form-control"
+                            id="validatedCustomFile">
                     </div>
                 </div>
                 <div class="box-categorias">
                     <h1>Adicionar Categorias</h1>
-                    <div cdkDropListGroup class="row  categoria-lista">
-                        <div class="col-2 border-end">
+                    <div cdkDropListGroup class="categoria-lista">
+                        <div class="col-3 border-end">
                             <div class="categoria-lista__align">
                                 <div class="categoria-lista__align__lista-right">
                                     <input id="categorias" name="categorias" formControlName="categorias"
                                         placeholder="Adicionar nova tag">
                                 </div>
-                                <mat-icon (click)="this.populateListCategorias()">add</mat-icon>
+                                <mat-icon (click)="this.populateListSubCategorias()">add</mat-icon>
                             </div>
                         </div>
-                        <div class="col-10">
+                        <div class="col-9">
                             <div class="dropped flex">
-                                <div class="combo-categoria" *ngFor="let item of this.listCategoria">{{item}}
-                                    <mat-icon (click)="this.removeItemList(item)">cancel</mat-icon>
+                                <div class="combo-categoria" *ngFor="let item of this.listCategoria">
+                                    <span class="mt-2">{{item.nome}}</span>
+                                    <mat-icon (click)="this.removeItemList(item.nome)">cancel</mat-icon>
                                 </div>
                             </div>
                         </div>

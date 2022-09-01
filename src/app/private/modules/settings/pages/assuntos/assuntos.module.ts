@@ -17,6 +17,7 @@ import { ModalCreateAssuntoComponent } from './components/modal-create-assunto/m
 import { TableAssuntosComponent } from './components/table-assuntos/table-assuntos.component'
 import { ModalDeleteAssuntoComponent } from './components/modal-delete-assunto/modal-delete-assunto.component'
 import { PaginationComponent } from '@shared/components/pagination/pagination.component'
+import { MatFormFieldModule } from '@angular/material/form-field'
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PaginationComponent } from '@shared/components/pagination/pagination.co
     MatDialogModule,
     DragDropModule,
     MatCheckboxModule,
-    PaginationComponent
+    PaginationComponent,
+    MatFormFieldModule
   ]
 })
 export class AssuntosModule { }

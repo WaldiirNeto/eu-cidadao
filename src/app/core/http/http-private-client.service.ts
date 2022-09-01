@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { TokenService } from '@core/token/token.service'
 import { Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpPrivateClientService {
-  constructor(private _http: HttpClient, private _tokenService: TokenService) {
+  constructor(private _http: HttpClient) {
   }
 
   public get<T>(url: string): Observable<T> {
