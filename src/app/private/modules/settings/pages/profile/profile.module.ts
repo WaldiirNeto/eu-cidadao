@@ -8,6 +8,8 @@ import { SubmitButtonComponent } from '@shared/components/submit-button/submit-b
 import { ProfileRoutingModule } from './profile-routing.module'
 
 import { ProfileComponent } from './pages/profile.component'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatSelectModule } from '@angular/material/select'
 
 @NgModule({
     imports: [
@@ -18,7 +20,10 @@ import { ProfileComponent } from './pages/profile.component'
         ReactiveFormsModule,
         MatFormFieldComponent,
         SubmitButtonComponent,
-        MatIconModule],
+        MatIconModule,
+        MatFormFieldModule,
+        MatSelectModule
+    ],
     exports: [],
     declarations: [ProfileComponent],
     providers: [],

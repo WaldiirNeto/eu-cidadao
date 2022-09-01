@@ -3,11 +3,15 @@ import { isValidCPF } from '@helpers/cpf-validator'
 
 interface FormProfileInterface {
     id: FormControl<string | null>
-    celular: FormControl<string | null>
-    cpf: FormControl<string | null>
+    firstName: FormControl<string | null>
+    lastName: FormControl<string | null>
     email: FormControl<string | null>
-    dataNascimento: FormControl<string | null>
-    nomeCompleto: FormControl<string | null>,
+    cpf: FormControl<string | null>
+    dataDeNascimento: FormControl<string | null>
+    cidadeId: FormControl<number | null>
+    senha: FormControl<string | null>
+    celular: FormControl<string | null>
+    cidadaoId: FormControl<string | null>
     senhaAtual: FormControl<string | null>,
     novaSenha: FormControl<string | null>,
     foto: FormControl<string | null>
@@ -23,14 +27,18 @@ export class FormProfileModel {
     private formBuilder(): void {
         this.form = new FormGroup<FormProfileInterface>({
             id: new FormControl('', [Validators.required]),
-            celular: new FormControl('', [Validators.required]),
-            cpf: new FormControl('', [Validators.required, isValidCPF]),
+            firstName: new FormControl('', [Validators.required]),
+            lastName: new FormControl('', [Validators.required]),
             email: new FormControl('', [Validators.required, Validators.email]),
-            dataNascimento: new FormControl('', [Validators.required]),
-            nomeCompleto: new FormControl('', [Validators.required]),
-            senhaAtual: new FormControl('', []),
-            novaSenha: new FormControl('', []),
-            foto: new FormControl('', [])
+            cpf: new FormControl('', [Validators.required, isValidCPF]),
+            dataDeNascimento: new FormControl('', [Validators.required]),
+            cidadeId: new FormControl(null, [Validators.required]),
+            senha: new FormControl(''),
+            celular: new FormControl('', [Validators.required]),
+            cidadaoId: new FormControl('', [Validators.required]),
+            senhaAtual: new FormControl(''),
+            novaSenha: new FormControl(''),
+            foto: new FormControl('')
         })
     }
 }

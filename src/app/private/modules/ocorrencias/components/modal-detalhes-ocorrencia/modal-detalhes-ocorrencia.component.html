@@ -67,7 +67,8 @@
                     </div>
                     <div class="p-2">
                         <mat-form-field appearance="outline" floatLabel="always">
-                            <mat-select formControlName="SubCategoriaId" placeholder="Selecione a sub categoria"
+                            <mat-select formControlName="subCategoriaOcorrenciaId"
+                                placeholder="Selecione a sub categoria"
                                 (selectionChange)="this.filtraSubCategoria($event)">
                                 <mat-option *ngFor="let categoria of this.listSubCategorias" [value]="categoria.id">
                                     <span> {{categoria.nome}}</span>
@@ -76,36 +77,6 @@
                         </mat-form-field>
                     </div>
                 </div>
-
-
-                <!--  <div class="d-flex">
-                    <div class="p-2">
-                        <app-input-form controlName="comentario" placeholder="Adicionar um comentário...">
-                        </app-input-form>
-                    </div>
-                    <div class="p-2" style="margin-top: 10px;">
-                        <mat-icon style="cursor: pointer; color: #1474FF" matTooltip="Adicionar comentário"
-                            matTooltipPosition="right" aria-label="ícone para adicionar comentário"
-                            (click)="this.adicionarComentario()">
-                            add_comment</mat-icon>
-                    </div>
-                </div>
-                <section class="chat-content">
-                    <ng-container *ngFor="let comment of this.comentarios">
-                        <article class="row col-8">
-                            <div class="col-3 align-items-center">
-                                <img width="25" height="25" src="/assets/images/avatar.svg"> <span
-                                    class="ms-2">{{comment.user}}</span>
-                            </div>
-                            <p class="col-6" style="font-size: 10px; color: #666; margin-left: 2px;">8 de
-                                agosto de
-                                {{comment.date}}</p>
-                        </article>
-                        <div class="col-12" style="margin-left: 33px;">
-                            <p class="col-12" style=" margin-top: -9px;">{{comment.comentario}}</p>
-                        </div>
-                    </ng-container>
-                </section> -->
             </form>
         </div>
 
@@ -117,7 +88,7 @@
                 (click)="this.showRecusaOcorrencia = true">Recusar
                 ocorrência</button>
             <button *ngIf="this.data.type === 'edit'" class="button-despachar-ocorrencia" mat-button
-                (click)="this.showDespachoOcorrencia = true">
+                (click)="this.salvarOcorrencia()">
                 Salvar</button>
         </div>
     </mat-dialog-actions>

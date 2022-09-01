@@ -69,7 +69,11 @@ export class OcorrenciasTableComponent implements OnInit {
       exitAnimationDuration: `500ms`,
       panelClass: 'padding-modal-ocorrencia',
       width: `80%`
-    })
+    }).afterClosed()
+      .pipe(filter((result) => result === true))
+      .subscribe((_) => {
+        this._getListOccurrences()
+      })
   }
 
   public seletedCategoria(event: MatCheckboxChange): void {

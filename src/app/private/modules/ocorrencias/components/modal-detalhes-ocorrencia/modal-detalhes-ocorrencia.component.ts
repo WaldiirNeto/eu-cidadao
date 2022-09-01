@@ -1,13 +1,15 @@
+import { HttpErrorResponse } from '@angular/common/http'
 import { Component, Inject, OnInit } from '@angular/core'
-import { MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { MatSelectChange } from '@angular/material/select'
 import { CategoriaModel, ListCategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
 import { SituacaoModel } from '@shared/models/situacao.model'
 import { CategoriasService } from '@shared/services/categorias.service'
-import { SituacaoService } from '@shared/services/situacao.service'
+import { SnackBarService } from '@shared/services/snackbar.service'
 import { Subject, takeUntil } from 'rxjs'
 import { FormModalDetalhesModel } from '../../models/form-modal-detalhes-ocorrencia.model'
 import { OcorrenciaModel } from '../../models/ocorrencia.model'
+import { OcorrenciasService } from '../../services/ocorrencias.service'
 
 @Component({
   selector: 'app-modal-detalhes-ocorrencia',
@@ -39,7 +41,10 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
   private _destroy$ = new Subject()
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { ocurrence: OcorrenciaModel, type: string },
-    private readonly _categoriaService: CategoriasService) {
+    private readonly _categoriaService: CategoriasService,
+    private readonly _dialogRef: MatDialogRef<ModalDetalhesOcorrenciaComponent>,
+    private readonly _snackBarService: SnackBarService,
+    private readonly _ocorrenciaService: OcorrenciasService) {
     super()
   }
 
@@ -68,8 +73,23 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
   }
 
   public closeModalRecusaOcorrencia(): void {
-    console.log(`ok`)
     this.showRecusaOcorrencia = false
+  }
+
+  public salvarOcorrencia(): void {
+    console.log(this.form.value)
+    console.log(this.data.ocurrence)
+    // this._ocorrenciaService.atualizarOCorrencia(this.form.value)
+    //   .subscribe({
+    //     next: (_) => {
+    //       this._snackBarService.open(`Ocorrência atualizada com sucesso`, 'success')
+    //       this._dialogRef.close(true)
+    //     },
+    //     error: (error: HttpErrorResponse) => {
+    //       this._snackBarService.open(`Não foi possível atualizar a ocorrência, motivo: ${error.message}`, 'error')
+    //       this._dialogRef.close(true)
+    //     }
+    //   })
   }
 
 
@@ -83,7 +103,7 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
           .find((categoria) => categoria.id === this.data.ocurrence.categoriaOcorrencia.id) as CategoriaModel
         this.listSubCategorias = filterOcorrencias.subCategoriasOcorrencias
         this.form.controls.CategoriaId.setValue(this.data.ocurrence.categoriaOcorrencia.id)
-        this.form.controls.SubCategoriaId.setValue(this.data.ocurrence.subCategoriaOcorrenciaId)
+        this.form.controls.subCategoriaOcorrenciaId.setValue(this.data.ocurrence.subCategoriaOcorrenciaId)
       })
   }
 

@@ -162,12 +162,13 @@
                     }
 
                     &__group2 {
+                        align-items: center;
+                        display: flex;
+                        cursor: pointer;
+
                         mat-icon {
                             margin: 5px;
                         }
-
-                        align-items: center;
-                        display: flex;
 
                         .logoff {
                             color: $red-color;

@@ -15,7 +15,11 @@ export class PrivateComponent implements OnInit {
   protected user$: Observable<UserModel>
   protected panelOpenState = false
 
-  constructor(private _userService: UserService, private _router: Router, private _route: ActivatedRoute, @Inject(PLATFORM_ID) private _platformId: object) { }
+  constructor(
+    private readonly _userService: UserService,
+    private readonly _router: Router,
+    private readonly _route: ActivatedRoute, @Inject(PLATFORM_ID)
+    private readonly _platformId: object) { }
 
   ngOnInit(): void {
     const { redirectAfterRender = '' } = this._route.snapshot.data
@@ -23,6 +27,11 @@ export class PrivateComponent implements OnInit {
       this._router.navigate([redirectAfterRender])
     }
     this.user$ = this._userService.getUser().pipe(shareReplay())
+  }
+
+  public logOut(): void {
+    this._userService.logOutUser()
+    this._router.navigate(['login'])
   }
 
 }

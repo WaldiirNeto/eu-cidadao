@@ -20,4 +20,8 @@ export class OcorrenciasService {
   public recusarOcorrencia(payload: RecusarOcorrencia): Observable<void> {
     return this._http.post(API_URL.ALTERAR_OCORRENCIA, payload)
   }
+
+  public atualizarOCorrencia(payload: any): Observable<void> {
+    return this._http.put(API_URL.ALTERAR_OCORRENCIA, payload)
+  }
 }

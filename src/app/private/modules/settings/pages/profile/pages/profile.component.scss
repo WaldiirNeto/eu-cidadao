@@ -1,7 +1,15 @@
 @import '~src/styles/_variables.scss';
 
+
+::ng-deep .mat-button-wrapper {
+    color: black !important
+}
+
+
 .container-fluid {
+
     app-box {
+
         h1 {
             color: $mat-label-color;
             font-weight: 700;
@@ -86,7 +94,7 @@
                     }
                 }
 
-                .senha-erro {
+                .senha-erro-true {
                     align-items: center;
                     display: flex;
                     color: $red-color;
@@ -96,7 +104,34 @@
                         font-size: 20px
                     }
                 }
+
+                .senha-erro-false {
+                    align-items: center;
+                    display: flex;
+                    color: $green-color;
+
+                    mat-icon {
+                        color: $green-color;
+                        font-size: 20px
+                    }
+                }
             }
         }
+    }
+
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid $placeholder-color;
+        border-radius: 8px;
+    }
+
+    ::ng-deep .mat-form-field {
+        font-size: 14px; // example
+        margin: 0;
+    }
+
+    mat-form-field {
+        width: 100%;
     }
 }
