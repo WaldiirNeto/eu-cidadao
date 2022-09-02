@@ -5,7 +5,7 @@
     </div>
     <form [formGroup]="this.form" (submit)="this.publishNotification()">
         <mat-dialog-content class="mat-typography">
-            <div class="row">
+            <div class="row col-12">
                 <div class="col-md-4">
                     <app-input-form label="Título" controlName="titulo" placeholder="digite o título" type="text">
                     </app-input-form>
@@ -54,19 +54,18 @@
                 </div>
                 <div class="col-md-4">
                     <app-input-form label="Cor de fundo" controlName="corBackground" placeholder="adicione uma cor"
-                        type="text">
+                        type="color">
                     </app-input-form>
                 </div>
                 <div class="col-md-4">
                     <app-input-form label="Cor do texto" controlName="corTexto" placeholder="adicione uma cor"
-                        type="text">
+                        type="color">
                     </app-input-form>
                 </div>
             </div>
             <div class="row">
-                <app-input-form label="Descrição" controlName="descricao" placeholder="digite a descrição"
-                    type="textarea">
-                </app-input-form>
+                <textarea class="form-control" id="textAreaDescription" aria-describedby="textAreaDescription"
+                    placeholder=" Digite a descrição" formControlName="descricao"></textarea>
             </div>
         </mat-dialog-content>
         <mat-dialog-actions align="end">
@@ -74,8 +73,6 @@
                 <button class="button-cancel" mat-button mat-dialog-close>Cancelar</button>
                 <app-submit-button [disabled]="this.form.invalid || this.loading" [loading]="this.loading">Publicar
                     notificação</app-submit-button>
-                <!-- <button type="submit" [disabled]="this.form.invalid" class="button-despachar-ocorrencia" mat-button>
-                        Publicar notificação</button> -->
             </div>
         </mat-dialog-actions>
     </form>
