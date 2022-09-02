@@ -1,11 +1,13 @@
 <section class="modal-delete-assunto">
     <h1 mat-dialog-title>Excluir assunto</h1>
     <div mat-dialog-content class="content-dialog">
-        <p>Deseja realmente deletar o assunto <strong>{{this.assunto.nome}}</strong> ?</p>
+        <p>Deseja realmente {{this.assunto.ativo === true ? 'deletar': 'ativar'}} o assunto
+            <strong>{{this.assunto.nome}}</strong> ?
+        </p>
 
         <mat-dialog-actions align="end">
             <button mat-dialog-close class="button-cancel">Cancelar</button>
-            <app-submit-button [loading]="this.loading">Desativar Usuário
+            <app-submit-button [loading]="this.loading" (click)="this.deleteAssunto()">Salvar
             </app-submit-button>
         </mat-dialog-actions>
     </div>

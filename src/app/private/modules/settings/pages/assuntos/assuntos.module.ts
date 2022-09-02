@@ -18,6 +18,7 @@ import { TableAssuntosComponent } from './components/table-assuntos/table-assunt
 import { ModalDeleteAssuntoComponent } from './components/modal-delete-assunto/modal-delete-assunto.component'
 import { PaginationComponent } from '@shared/components/pagination/pagination.component'
 import { MatFormFieldModule } from '@angular/material/form-field'
+import { SnackBarService } from '@shared/services/snackbar.service'
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
     MatCheckboxModule,
     PaginationComponent,
     MatFormFieldModule
-  ]
+  ],
+  providers: [SnackBarService]
 })
 export class AssuntosModule { }

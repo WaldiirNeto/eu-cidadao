@@ -18,7 +18,7 @@ import { ModalDeleteAssuntoComponent } from '../modal-delete-assunto/modal-delet
 export class TableAssuntosComponent implements OnInit, OnDestroy {
 
   @Output() public tableEmit: EventEmitter<Array<number>> = new EventEmitter()
-  protected displayedColumns: string[] = ['assunto', 'categorias', 'actions']
+  protected displayedColumns: string[] = ['assunto', 'categorias', 'status', 'actions']
   protected listOcurrences: ListCategoriaModel
   private selectedCategories: Array<any> = []
   protected filter = { Pagina: 1, TamanhoDaPagina: 10 }
@@ -58,7 +58,13 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
       exitAnimationDuration: `500ms`,
       data: assunto,
       autoFocus: false
-    })
+    }).afterClosed()
+      .pipe(
+        takeUntil(this._destroy$),
+        filter((result) => result === true))
+      .subscribe((_) => {
+        this.getListAssuntos()
+      })
   }
 
   public seletedCategoria(event: MatCheckboxChange): void {
