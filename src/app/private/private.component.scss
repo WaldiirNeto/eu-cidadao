@@ -166,6 +166,12 @@
                         display: flex;
                         cursor: pointer;
 
+                        .margin {
+                            height: 50px;
+                            width: 50px;
+                            color: $primary;
+                        }
+
                         mat-icon {
                             margin: 5px;
                         }

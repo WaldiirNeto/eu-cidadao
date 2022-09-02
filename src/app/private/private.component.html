@@ -55,9 +55,6 @@
                                     <mat-icon>settings</mat-icon>Configurações
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
-                            <div class="sidenav-content__links__item__sub-links" [routerLink]="['/settings/profile']"
-                                routerLinkActive="router-link-active">Meu perfil
-                            </div>
                             <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px"
                                 [routerLink]="['/settings/assuntos']" routerLinkActive="router-link-active">Gerenciar
                                 Assunto
@@ -75,20 +72,21 @@
             <div class="mat-toolbar__content">
                 <p class="prefeitura"><strong>Prefeitura de {{(this.user$ | async)?.nomeCidade }}</strong></p>
                 <div class="mat-toolbar__content__icons">
-                    <div class="mat-toolbar__content__icons__group1">
-                        <mat-icon>help_outline</mat-icon>
-                        <mat-icon class="material-icons-outlined">notifications</mat-icon>
-                    </div>
-
-
                     <div class="mat-toolbar__content__icons__group2">
-                        <button [matMenuTriggerFor]="menu">Menu</button>
-                        <mat-menu #menu="matMenu">
-                            <button mat-menu-item>Meu perfil</button>
-                            <button mat-menu-item (click)="this.logOut()">Sair</button>
-                        </mat-menu>
-                        <mat-icon class="logoff">power_settings_new</mat-icon>
-                        <p class="text-logoff">Finalizar sessão</p>
+                        <div class="btn-group" dropdown>
+                            <div dropdownToggle
+                                class="rounded-circle border d-flex justify-content-center align-items-center margin">
+                                {{(this.user$ | async)?.primeiroNome?.charAt(0) }}
+                            </div>
+                            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu"
+                                aria-labelledby="button-basic">
+                                <li role="menuitem" [routerLink]="['/settings/profile']"><a class="dropdown-item">Meu
+                                        Perfil</a></li>
+                                <li class="divider dropdown-divider"></li>
+                                <li role="menuitem" (click)="this.logOut()"><a class="dropdown-item">Sair</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

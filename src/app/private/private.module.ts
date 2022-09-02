@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatExpansionModule } from '@angular/material/expansion'
-import { MatMenuModule } from '@angular/material/menu'
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { PrivateRoutingModule } from './private-routing.module'
 import { PrivateComponent } from './private.component'
 
@@ -20,7 +20,7 @@ import { PrivateComponent } from './private.component'
     PrivateRoutingModule,
     MatSidenavModule,
     MatExpansionModule,
-    MatMenuModule
+    BsDropdownModule.forRoot()
   ]
 })
 export class PrivateModule { }
