@@ -6,7 +6,6 @@ import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CoreModule } from '@core/core.module'
 import { SnackBarService } from '@shared/services/snackbar.service'
-import { OverlayModule } from '@angular/cdk/overlay'
 
 
 
