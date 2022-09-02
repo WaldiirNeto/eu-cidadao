@@ -21,6 +21,6 @@ export class OcorrenciasService {
   }
 
   public atualizarOCorrencia(payload: any): Observable<void> {
-    return this._http.put(API_URL.ALTERAR_OCORRENCIA, payload)
+    return this._http.put(API_URL.OCORRENCIA, payload)
   }
 }

@@ -7,7 +7,7 @@
             </article>
             <article class="me-1 mt-2">
                 <p>Cidadão</p>
-                <p>{{this.details.cidadao}}</p>
+                <p>mock user</p>
             </article>
             <article class="me-1 mt-2">
                 <p>Assunto</p>
@@ -34,7 +34,7 @@
                     </p>
                 </div>
                 <div class="ms-3 col-6 mt-2 mb-2">
-                    <carousel>
+                    <carousel [interval]="0">
                         <slide *ngFor="let image of this.data.ocurrence.documentos">
                             <img [src]="'data:image/'+image.extensao +';base64,'+image.arquivo" alt="slide de imagens"
                                 style="display: block; width: 100%; height: 300px;">
@@ -68,8 +68,7 @@
                     <div class="p-2">
                         <mat-form-field appearance="outline" floatLabel="always">
                             <mat-select formControlName="subCategoriaOcorrenciaId"
-                                placeholder="Selecione a sub categoria"
-                                (selectionChange)="this.filtraSubCategoria($event)">
+                                placeholder="Selecione a sub categoria">
                                 <mat-option *ngFor="let categoria of this.listSubCategorias" [value]="categoria.id">
                                     <span> {{categoria.nome}}</span>
                                 </mat-option>
@@ -87,9 +86,9 @@
             <button *ngIf="this.data.type === 'edit'" class="button-recusar-ocorrencia" mat-button
                 (click)="this.showRecusaOcorrencia = true">Recusar
                 ocorrência</button>
-            <button *ngIf="this.data.type === 'edit'" class="button-despachar-ocorrencia" mat-button
-                (click)="this.salvarOcorrencia()">
-                Salvar</button>
+            <button [disabled]="this.loading" *ngIf="this.data.type === 'edit'" class="button-despachar-ocorrencia"
+                mat-button (click)="this.salvarOcorrencia()">Salvar
+            </button>
         </div>
     </mat-dialog-actions>
 </section>

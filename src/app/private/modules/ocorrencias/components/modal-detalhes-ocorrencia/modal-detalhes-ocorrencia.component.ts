@@ -6,7 +6,7 @@ import { CategoriaModel, ListCategoriaModel, SubCategoriaOcorrenciaModel } from 
 import { SituacaoModel } from '@shared/models/situacao.model'
 import { CategoriasService } from '@shared/services/categorias.service'
 import { SnackBarService } from '@shared/services/snackbar.service'
-import { Subject, takeUntil } from 'rxjs'
+import { finalize, Subject, takeUntil } from 'rxjs'
 import { FormModalDetalhesModel } from '../../models/form-modal-detalhes-ocorrencia.model'
 import { OcorrenciaModel } from '../../models/ocorrencia.model'
 import { OcorrenciasService } from '../../services/ocorrencias.service'
@@ -18,26 +18,12 @@ import { OcorrenciasService } from '../../services/ocorrencias.service'
 })
 export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel implements OnInit {
 
-  protected details = {
-    ocorrencia: `0000000001`,
-    cidadao: `Alison Ferreira do Santos`,
-    assunto: `Água e Esgoto`,
-    categoria: `Bueiro entupido`,
-    data_criacao: `2022-08-12`
-  }
-
-  protected comentarios = [{
-    id: 1,
-    user: `Usuário`,
-    date: `8 de agosto de 2022 ás 11:44`,
-    comentario: `Bueiro entupido faz 1 semana`
-  }]
-
   protected showDespachoOcorrencia: boolean
   protected showRecusaOcorrencia: boolean
   protected listCategorias: Array<CategoriaModel>
   protected listSubCategorias: Array<SubCategoriaOcorrenciaModel>
   protected listSituacao: Array<SituacaoModel>
+  protected loading: boolean
   private _destroy$ = new Subject()
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { ocurrence: OcorrenciaModel, type: string },
@@ -50,6 +36,9 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
 
   ngOnInit(): void {
     console.log(this.data.ocurrence)
+    if (this.data.ocurrence) {
+      this.form.controls.usuarioDespachanteId.setValue(this.data.ocurrence.usuarioDespachanteId)
+    }
     this._buscarCategorias()
   }
 
@@ -60,36 +49,38 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
     const filterOcorrencias = getListCategorias.find((categoria) => categoria.id === categoriaId) as CategoriaModel
     this.listSubCategorias = filterOcorrencias.subCategoriasOcorrencias
   }
-
-  public adicionarComentario(): void {
-    const comentario = this.form.controls['comentario'].value as string
-    const obj = {
-      id: 4,
-      user: `Waldir`,
-      date: `16 de agosto de 2022 ás 21:44`,
-      comentario: comentario
-    }
-    this.comentarios.push(obj)
-  }
+  //@TODO: usar esse método quando tiver a funcionalidade de comentarios
+  // public adicionarComentario(): void {
+  //   const comentario = this.form.controls['comentario'].value as string
+  //   const obj = {
+  //     id: 4,
+  //     user: `Waldir`,
+  //     date: `16 de agosto de 2022 ás 21:44`,
+  //     comentario: comentario
+  //   }
+  //   this.comentarios.push(obj)
+  // }
 
   public closeModalRecusaOcorrencia(): void {
     this.showRecusaOcorrencia = false
   }
 
   public salvarOcorrencia(): void {
-    console.log(this.form.value)
-    console.log(this.data.ocurrence)
-    // this._ocorrenciaService.atualizarOCorrencia(this.form.value)
-    //   .subscribe({
-    //     next: (_) => {
-    //       this._snackBarService.open(`Ocorrência atualizada com sucesso`, 'success')
-    //       this._dialogRef.close(true)
-    //     },
-    //     error: (error: HttpErrorResponse) => {
-    //       this._snackBarService.open(`Não foi possível atualizar a ocorrência, motivo: ${error.message}`, 'error')
-    //       this._dialogRef.close(true)
-    //     }
-    //   })
+    this.loading = true
+    this._ocorrenciaService.atualizarOCorrencia(this.form.value)
+      .pipe(
+        takeUntil(this._destroy$),
+        finalize(() => this.loading = false)
+      )
+      .subscribe({
+        next: (_) => {
+          this._snackBarService.open(`Ocorrência atualizada com sucesso`, 'success')
+          this._dialogRef.close(true)
+        },
+        error: (error: HttpErrorResponse) => {
+          this._snackBarService.open(`Não foi possível atualizar a ocorrência, motivo: ${error.message}`, 'error')
+        }
+      })
   }
 
 

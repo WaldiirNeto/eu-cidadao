@@ -4,7 +4,8 @@ export interface FormModalDetalhesInterface {
 
     CategoriaId: FormControl<number | null>,
     subCategoriaOcorrenciaId: FormControl<number | null>,
-    comentario: FormControl<string | null>
+    comentario: FormControl<string | null>,
+    usuarioDespachanteId: FormControl<string | null>
 }
 
 export class FormModalDetalhesModel {
@@ -18,7 +19,8 @@ export class FormModalDetalhesModel {
         this.form = new FormGroup<FormModalDetalhesInterface>({
             CategoriaId: new FormControl(),
             subCategoriaOcorrenciaId: new FormControl(),
-            comentario: new FormControl('')
+            comentario: new FormControl(''),
+            usuarioDespachanteId: new FormControl('')
         })
     }
 }

@@ -9,7 +9,8 @@ export class SnackBarService {
     this._snackBar.open(message, 'X', {
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      panelClass: `snack-${type}`
+      panelClass: `snack-${type}`,
+      duration: 5000
     })
   }
 }
