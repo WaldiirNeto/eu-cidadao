@@ -90,29 +90,12 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
     return subCategoriasOcorrencias.map(subCategoria => subCategoria.nome).join(',')
   }
 
-  // private listCategoria(): void {
-  //   this._categoriaService.ListCategorias()
-  //     .pipe(
-  //       takeUntil(this._destroy$),
-  //       finalize(() => this.loading = true)
-  //     )
-  //     .subscribe({
-  //       next: (list) => {
-  //         this.dataSource = list
-  //       },
-  //       error: (error: HttpErrorResponse) => {
-  //         this._snackBarService
-  //           .open(`Não foi possível buscar a lista de categorias, motivo: ${error.message}`, 'error')
-  //       }
-  //     })
-  // }
   public pageUpdate(event: number): void {
     this.filter['Pagina'] = event
     this.getListAssuntos()
   }
 
   private getListAssuntos(): void {
-    this.filter = { Pagina: 1, TamanhoDaPagina: 10 }
     this._ocurrenceService.ListCategorias(this.filter)
       .pipe(takeUntil(this._destroy$))
       .subscribe((categorias: ListCategoriaModel) => {

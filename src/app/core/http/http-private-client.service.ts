@@ -23,4 +23,9 @@ export class HttpPrivateClientService {
     const token = localStorage.getItem('token')
     return this._http.post<T>(url, payload, { headers: { 'Authorization': `Bearer ${token}` } })
   }
+
+  public delete<T>(url: string): Observable<T> {
+    const token = localStorage.getItem('token')
+    return this._http.delete<T>(url, { headers: { 'Authorization': `Bearer ${token}` } })
+  }
 }

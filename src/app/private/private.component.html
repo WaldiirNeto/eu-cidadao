@@ -79,7 +79,14 @@
                         <mat-icon>help_outline</mat-icon>
                         <mat-icon class="material-icons-outlined">notifications</mat-icon>
                     </div>
-                    <div class="mat-toolbar__content__icons__group2" (click)="this.logOut()">
+
+
+                    <div class="mat-toolbar__content__icons__group2">
+                        <!-- <button [matMenuTriggerFor]="menu">Menu</button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>Meu perfil</button>
+                            <button mat-menu-item (click)="this.logOut()">Sair</button>
+                        </mat-menu> -->
                         <mat-icon class="logoff">power_settings_new</mat-icon>
                         <p class="text-logoff">Finalizar sessão</p>
                     </div>
