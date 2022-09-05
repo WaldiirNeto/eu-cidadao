@@ -37,5 +37,10 @@ $criticidade-urgente-color: #ED0C00;
         .criticidade-4 {
             @include criticidade-base($criticidade-urgente-color)
         }
+
+        .delete-item {
+            color: $red-color;
+            cursor: pointer;
+        }
     }
 }

@@ -42,6 +42,9 @@
                             </div>
                             <mat-icon style="cursor: pointer" (click)="this.openModalDetails(notification)">search
                             </mat-icon>
+                            <mat-icon class="delete-item" (click)="this.openModalDelete(notification)">
+                                delete_forever
+                            </mat-icon>
                         </div>
                     </td>
                 </ng-container>
@@ -49,8 +52,10 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-            <app-pagination [total]="this.notificationsList.total" [paginaAtual]="this.filter.Pagina"
-                [totalPorPagina]="this.filter.TamanhoDaPagina" (changePage)="this.pageUpdate($event)"></app-pagination>
+            <mat-paginator [pageIndex]="this.filter.Pagina - 1" [length]="this.notificationsList.total"
+                [pageSize]="this.filter.TamanhoDaPagina" [pageSizeOptions]="[5, 10, 25, 100]"
+                (page)="this.pageUpdate($event)" aria-label="Select page">
+            </mat-paginator>
         </ng-container>
         <ng-template #nodata>
             <div class="d-flex justify-content-center" style="border: 1px solid #ccc;">

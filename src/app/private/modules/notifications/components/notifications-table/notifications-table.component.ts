@@ -7,6 +7,7 @@ import { filter, finalize, Subject, takeUntil } from 'rxjs'
 import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
 import { FilterNotificationModel, NotificationListModel, NotificationModel } from '../../models/notification.model'
 import { NotificationsService } from '../../services/notifications.service'
+import { ModalDeleteNotificationComponent } from '../modal-delete-notification/modal-delete-notification.component'
 import { ModalNotificationsComponent } from '../modal-notifications/modal-notifications.component'
 
 @Component({
@@ -33,9 +34,9 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
   }
 
 
-  public pageUpdate(event: number): void {
-    this.filter['Pagina'] = event
-    console.log(this.filter)
+  public pageUpdate(event: { pageIndex: number, pageSize: number }): void {
+    this.filter['Pagina'] = event.pageIndex + 1
+    this.filter['TamanhoDaPagina'] = event.pageSize
     this._getNotifications()
   }
 
@@ -85,6 +86,22 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
       panelClass: 'padding-modal',
       width: `80%`
     })
+  }
+
+
+  public openModalDelete(notification: NotificationModel): void {
+    this._dialog.open(ModalDeleteNotificationComponent, {
+      data: notification,
+      enterAnimationDuration: `1000ms`,
+      exitAnimationDuration: `500ms`,
+      panelClass: 'padding-modal'
+    }).afterClosed()
+      .pipe(takeUntil(this._destroy$),
+        filter((result) => result === true))
+      .subscribe((_) => {
+        this.filter = { Pagina: 1, TamanhoDaPagina: 10 }
+        this._getNotifications()
+      })
   }
 
   ngOnDestroy(): void {

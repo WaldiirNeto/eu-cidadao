@@ -1,0 +1,14 @@
+<section class="modal-delete-notification">
+    <h1 mat-dialog-title>Excluir assunto</h1>
+    <div mat-dialog-content class="content-dialog">
+        <p>Deseja realmente deletar a notificação
+            <strong>{{this.notification.titulo}}</strong> ?
+        </p>
+
+        <mat-dialog-actions align="end">
+            <button mat-dialog-close class="button-cancel">Cancelar</button>
+            <app-submit-button [loading]="this.loading" (click)="this.deleteNotification()">Deletar
+            </app-submit-button>
+        </mat-dialog-actions>
+    </div>
+</section>

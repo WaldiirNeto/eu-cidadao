@@ -41,9 +41,11 @@ export class ModalNotificationsComponent extends FormCreateNotificationModel imp
   }
 
   ngOnInit(): void {
+    console.log(this.notification)
     this.listSelects$ = forkJoin([this._cityService.getCitys(), this._categoryService.ListCategorias()])
     if (this.notification) {
       this.form.patchValue(this.notification)
+      console.log(this.form.value)
     }
   }
 
