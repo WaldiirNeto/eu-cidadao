@@ -7,6 +7,6 @@ export class TokenService {
 
   private _token = localStorage.getItem('token') as string
   getUserLocal() {
-    console.log(jwt_decode(this._token))
+    return jwt_decode(this._token)
   }
 }

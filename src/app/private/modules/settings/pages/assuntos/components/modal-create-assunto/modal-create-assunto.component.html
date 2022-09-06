@@ -1,7 +1,7 @@
 <section class="modal-create-assunto container col-12">
-    <h1 mat-dialog-title>Adicionar Assunto</h1>
-    <form [formGroup]="this.form" (submit)="this.createAssunto()">
-        <div class="col-12">
+    <div class="col-12">
+        <h1 mat-dialog-title>Adicionar Assunto</h1>
+        <form [formGroup]="this.form" (submit)="this.createAssunto()">
             <div mat-dialog-content>
                 <div class="form-group">
                     <app-input-form controlName="nome" placeholder="Novo assunto" label="Nome do Assunto">
@@ -14,21 +14,34 @@
                 </textarea>
                 </div>
 
-                <div class="mt-4 content-files">
-                    <div class="custom-file mb-4">
+                <div class="d-flex col-6 justify-content-between align-items-center mt-4 content-files">
+                    <div class=" custom-file mb-4">
                         <label>Imagem Menu</label>
                         <input (change)="this.manipulateFileImageMenu($event)"
                             placeholder="selecione uma imagem de Menu" type="file" class="form-control"
                             id="validatedCustomFile">
                     </div>
+                    <div *ngIf="this.form.controls.caminhoImagemMenu.value">
+                        <img [src]="this.form.controls.caminhoImagemMenu.value" width="30" height="30"
+                            alt="image menu" />
+                    </div>
 
-                    <div class="custom-file">
+                </div>
+
+                <div class="d-flex col-6 justify-content-between align-items-center mt-4 content-files">
+                    <div class=" custom-file mb-4">
                         <label>Imagem Tela</label>
                         <input (change)="this.manipulateFileImageTela($event)"
                             placeholder="selecione uma imagem de Menu" type="file" class="form-control"
                             id="validatedCustomFile">
                     </div>
+                    <div *ngIf="this.form.controls.caminhoImagemTela.value">
+                        <img [src]="this.form.controls.caminhoImagemTela.value" width="30" height="30"
+                            alt="image menu" />
+                    </div>
+
                 </div>
+
                 <div class="box-categorias">
                     <h1>Adicionar Categorias</h1>
                     <div cdkDropListGroup class="categoria-lista">
@@ -52,11 +65,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <mat-dialog-actions align="end">
-            <button class="button-cancel" mat-button mat-dialog-close>Cancelar</button>
-            <app-submit-button [disabled]="this.form.invalid" [loading]="this.loading">Salvar Assunto
-            </app-submit-button>
-        </mat-dialog-actions>
-    </form>
+            <mat-dialog-actions align="end">
+                <button class="button-cancel" mat-button mat-dialog-close>Cancelar</button>
+                <app-submit-button [disabled]="this.form.invalid" [loading]="this.loading">Salvar Assunto
+                </app-submit-button>
+            </mat-dialog-actions>
+        </form>
+    </div>
 </section>

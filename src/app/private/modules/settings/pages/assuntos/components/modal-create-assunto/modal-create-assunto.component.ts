@@ -1,11 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http'
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core'
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { NotifyComponentsService } from '@shared/services/notify-components.service'
 import { SnackBarService } from '@shared/services/snackbar.service'
 import { finalize, Subject, takeUntil } from 'rxjs'
 import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
-import { Assunto, CreateAssuntoFormModel } from '../../model/assunto.model'
+import { CreateAssuntoFormModel } from '../../model/assunto.model'
 import { FormAssuntoModel } from '../../model/form-assunto.model'
 import { AssuntoService } from '../../services/assunto.service'
 

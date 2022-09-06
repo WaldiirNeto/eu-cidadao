@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http'
 import { Component, Inject, OnInit } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { MatSelectChange } from '@angular/material/select'
+import { TokenService } from '@core/token/token.service'
 import { CategoriaModel, ListCategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
 import { SituacaoModel } from '@shared/models/situacao.model'
 import { CategoriasService } from '@shared/services/categorias.service'
@@ -31,12 +32,14 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
     private readonly _categoriaService: CategoriasService,
     private readonly _dialogRef: MatDialogRef<ModalDetalhesOcorrenciaComponent>,
     private readonly _snackBarService: SnackBarService,
-    private readonly _ocorrenciaService: OcorrenciasService) {
+    private readonly _ocorrenciaService: OcorrenciasService,
+    private readonly _tokenService: TokenService) {
     super()
   }
 
   ngOnInit(): void {
     console.log(this.data.ocurrence)
+    console.log(this._tokenService.getUserLocal())
     if (this.data.ocurrence) {
       this.form.controls.usuarioDespachanteId.setValue(this.data.ocurrence.usuarioDespachanteId)
     }
