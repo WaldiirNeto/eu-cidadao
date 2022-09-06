@@ -96,3 +96,33 @@ export interface RecusarOcorrencia {
     ocorrenciaId: string,
     situacaoId: number
 }
+
+
+export interface OcorrenciaUpdateModel {
+    id: number
+    enderecoId: number
+    titulo: string
+    comentarioCidadao: string
+    comentarioGestor: string
+    despachado: boolean
+    cidadaoId: string
+    ativo: boolean
+    usuarioDespachanteId: string
+    subCategoriaOcorrenciaId: number
+    documentos: Array<DocumentosModel>
+    localizacao: Array<EnderecoModel>
+    situacaoId: number
+    CategoriaId?: number
+}
+
+export interface DocumentosModel {
+    id: number
+    arquivo: string
+    extensao: string
+    ativo: boolean
+}
+export interface EnderecoModel {
+    enderecoId: number
+    placeId: string
+    referencia: string
+}

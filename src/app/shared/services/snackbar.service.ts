@@ -10,7 +10,8 @@ export class SnackBarService {
       horizontalPosition: 'center',
       verticalPosition: 'top',
       panelClass: `snack-${type}`,
-      duration: 5000
+      duration: 5000,
+
     })
   }
 }

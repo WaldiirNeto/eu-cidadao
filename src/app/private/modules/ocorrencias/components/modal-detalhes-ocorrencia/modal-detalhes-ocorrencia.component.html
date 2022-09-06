@@ -50,7 +50,8 @@
 
             <form [formGroup]="this.form">
                 <div class="mt-3">
-                    <mat-checkbox></mat-checkbox> Essa ocorrência já foi tratada?
+                    <mat-checkbox (change)="this.mudarSituacaoOcorrencia($event)"></mat-checkbox> Essa ocorrência já foi
+                    tratada?
                 </div>
                 <div class="mt-3  d-flex">
                     <div class="p-2">
@@ -81,13 +82,19 @@
 
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-        <div class="container-fluid">
+        <div class="row justify-content-end me-4">
             <button class="button-cancel" mat-button mat-dialog-close>Cancelar</button>
             <button *ngIf="this.data.type === 'edit'" class="button-recusar-ocorrencia" mat-button
                 (click)="this.showRecusaOcorrencia = true">Recusar
                 ocorrência</button>
             <button [disabled]="this.loading" *ngIf="this.data.type === 'edit'" class="button-despachar-ocorrencia"
-                mat-button (click)="this.salvarOcorrencia()">Salvar
+                mat-button (click)="this.salvarOcorrencia()">
+                <span class="d-flex align-items-center justify-content-center" *ngIf="this.loading; else labelButton">
+                    <mat-spinner diameter="25"></mat-spinner><span>Salvar</span>
+                </span>
+                <ng-template #labelButton>
+                    Salvar
+                </ng-template>
             </button>
         </div>
     </mat-dialog-actions>

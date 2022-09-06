@@ -1,8 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http'
-import { Component, Inject, OnInit } from '@angular/core'
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core'
+import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { MatSelectChange } from '@angular/material/select'
-import { TokenService } from '@core/token/token.service'
+import { throwToolbarMixedModesError } from '@angular/material/toolbar'
+import { UserService } from '@core/user/user.service'
 import { CategoriaModel, ListCategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
 import { SituacaoModel } from '@shared/models/situacao.model'
 import { CategoriasService } from '@shared/services/categorias.service'
@@ -17,7 +19,7 @@ import { OcorrenciasService } from '../../services/ocorrencias.service'
   templateUrl: './modal-detalhes-ocorrencia.component.html',
   styleUrls: ['./modal-detalhes-ocorrencia.component.scss']
 })
-export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel implements OnInit {
+export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel implements OnInit, OnDestroy {
 
   protected showDespachoOcorrencia: boolean
   protected showRecusaOcorrencia: boolean
@@ -26,24 +28,30 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
   protected listSituacao: Array<SituacaoModel>
   protected loading: boolean
   private _destroy$ = new Subject()
-  // usuarioDespachanteId usuario logado
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { ocurrence: OcorrenciaModel, type: string },
+    @Inject(MAT_DIALOG_DATA) public data: { ocurrence: any, type: string },
     private readonly _categoriaService: CategoriasService,
     private readonly _dialogRef: MatDialogRef<ModalDetalhesOcorrenciaComponent>,
     private readonly _snackBarService: SnackBarService,
     private readonly _ocorrenciaService: OcorrenciasService,
-    private readonly _tokenService: TokenService) {
+    private readonly _userService: UserService) {
     super()
   }
 
+
   ngOnInit(): void {
-    console.log(this.data.ocurrence)
-    console.log(this._tokenService.getUserLocal())
     if (this.data.ocurrence) {
-      this.form.controls.usuarioDespachanteId.setValue(this.data.ocurrence.usuarioDespachanteId)
+      this.form.patchValue(this.data.ocurrence)
+      const localizacao = {
+        enderecoId: this.data.ocurrence.enderecoId,
+        placeId: this.data.ocurrence.endereco.placeId,
+        referencia: this.data.ocurrence.endereco.pontoDeReferencia
+      }
+      this.form.controls.localizacao.setValue(localizacao)
     }
     this._buscarCategorias()
+    this._getUserLocal()
   }
 
 
@@ -71,6 +79,7 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
   }
 
   public salvarOcorrencia(): void {
+
     this.loading = true
     this._ocorrenciaService.atualizarOCorrencia(this.form.value)
       .pipe(
@@ -88,6 +97,23 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
       })
   }
 
+  public mudarSituacaoOcorrencia(event: MatCheckboxChange): void {
+    if (event.checked) {
+      // ID da ocorrencia tratada
+      this.form.controls.situacaoId.setValue(4)
+    } else {
+      this.form.controls.situacaoId.setValue(this.data.ocurrence.situacaoId)
+
+    }
+  }
+
+  private _getUserLocal(): void {
+    this._userService.getUser()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((user) => {
+        this.form.controls.usuarioDespachanteId.setValue(user.id)
+      })
+  }
 
   private _buscarCategorias(): void {
     this._categoriaService.ListCategorias()
@@ -103,5 +129,9 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
       })
   }
 
+  ngOnDestroy(): void {
+    this._destroy$.next(null)
+    this._destroy$.complete()
+  }
 
 }

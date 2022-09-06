@@ -19,3 +19,9 @@
     text-align: center;
     width: 84px;
 }
+
+@mixin changeColorIconCloseSnackBar {
+    .mat-button-wrapper {
+        color: $color-white;
+    }
+}

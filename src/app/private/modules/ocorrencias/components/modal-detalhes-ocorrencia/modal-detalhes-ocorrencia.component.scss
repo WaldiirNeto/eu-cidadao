@@ -124,4 +124,13 @@
     ::ng-deep label.ng-star-inserted {
         transform: translateY(-0.59375em) scale(.75) !important;
     }
+
+
+    button:disabled,
+    button[disabled] {
+        text-align: center;
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+    }
 }
