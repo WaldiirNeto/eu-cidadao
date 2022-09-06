@@ -20,6 +20,7 @@ import { PaginationComponent } from '@shared/components/pagination/pagination.co
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { SnackBarService } from '@shared/services/snackbar.service'
 import { MatPaginatorModule } from '@angular/material/paginator'
+import { SortTableComponent } from '@shared/components/sort-table/sort-table.component'
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MatPaginatorModule } from '@angular/material/paginator'
     MatCheckboxModule,
     PaginationComponent,
     MatFormFieldModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    SortTableComponent
   ],
   providers: [SnackBarService]
 })

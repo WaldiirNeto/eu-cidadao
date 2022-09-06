@@ -23,6 +23,7 @@ export class OcorrenciasTableComponent implements OnInit {
   protected listOcurrences: OcorrenciaListModel
   protected loadingList: boolean
   protected filter: FilterOcorrenciaModel = { Pagina: 1, TamanhoDaPagina: 10 }
+  protected ordenacaoInicial = { filtro: this.filter['OrdenarPor'], ordem: this.filter['Ordem'] }
   private selectedCategories: Array<string> = []
   private _destroy$ = new Subject()
 
@@ -35,23 +36,6 @@ export class OcorrenciasTableComponent implements OnInit {
   ngOnInit(): void {
     this._observeNotification()
     this._getListOccurrences()
-  }
-
-  private _getListOccurrences(): void {
-    this.loadingList = true
-    this._ocorrenciaService.buscarOcorrencias(this.filter)
-      .pipe(
-        takeUntil(this._destroy$),
-        finalize(() => this.loadingList = false)
-      )
-      .subscribe({
-        next: (listOccurrences: OcorrenciaListModel) => {
-          this.listOcurrences = listOccurrences
-        },
-        error: (_) => {
-          this._snackBarService.open(`Não foi possível buscar a lista de ocorrências`, 'error')
-        }
-      })
   }
 
   public openModalEdit(employee: EmployeesModel): void {
@@ -103,6 +87,30 @@ export class OcorrenciasTableComponent implements OnInit {
     this.filter['Pagina'] = event.pageIndex + 1
     this.filter['TamanhoDaPagina'] = event.pageSize
     this._getListOccurrences()
+  }
+
+  public ordenarLista(ordenacao: { ordenarPor: string, ordem: string }): void {
+    this.filter['OrdenarPor'] = ordenacao.ordenarPor
+    this.filter['Ordem'] = ordenacao.ordem
+    this.ordenacaoInicial = { filtro: this.filter['OrdenarPor'], ordem: this.filter['Ordem'] }
+    this._getListOccurrences()
+  }
+
+  private _getListOccurrences(): void {
+    this.loadingList = true
+    this._ocorrenciaService.buscarOcorrencias(this.filter)
+      .pipe(
+        takeUntil(this._destroy$),
+        finalize(() => this.loadingList = false)
+      )
+      .subscribe({
+        next: (listOccurrences: OcorrenciaListModel) => {
+          this.listOcurrences = listOccurrences
+        },
+        error: (_) => {
+          this._snackBarService.open(`Não foi possível buscar a lista de ocorrências`, 'error')
+        }
+      })
   }
 
   private _observeNotification(): void {

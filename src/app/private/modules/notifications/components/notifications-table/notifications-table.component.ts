@@ -21,8 +21,8 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
   protected displayedColumns: string[] = ['title_notification', 'subject', 'category', 'city', 'criticality']
   protected loadingList: boolean
   protected notificationsList: NotificationListModel
-  protected filter: FilterNotificationModel = { Pagina: 1, TamanhoDaPagina: 10, OrdenarPor: `Titulo`, ordem: `ASC` }
-  protected ordenacaoInicial = { filtro: this.filter['OrdenarPor'], ordem: this.filter['ordem'] }
+  protected filter: FilterNotificationModel = { Pagina: 1, TamanhoDaPagina: 10, OrdenarPor: `Titulo`, Ordem: `ASC` }
+  protected ordenacaoInicial = { filtro: this.filter['OrdenarPor'], ordem: this.filter['Ordem'] }
 
   private _destroy$ = new Subject()
   constructor(
@@ -76,10 +76,9 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
 
   public ordenarLista(ordenacao: { ordenarPor: string, ordem: string }): void {
     this.filter['OrdenarPor'] = ordenacao.ordenarPor
-    this.filter['ordem'] = ordenacao.ordem
-    this.ordenacaoInicial = { filtro: this.filter['OrdenarPor'], ordem: this.filter['ordem'] }
+    this.filter['Ordem'] = ordenacao.ordem
+    this.ordenacaoInicial = { filtro: this.filter['OrdenarPor'], ordem: this.filter['Ordem'] }
     this._getNotifications()
-
   }
 
   private _getNotifications(): void {

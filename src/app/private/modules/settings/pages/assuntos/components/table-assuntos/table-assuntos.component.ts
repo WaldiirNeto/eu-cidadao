@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material/dialog'
 import { ListCategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
 import { CategoriasService } from '@shared/services/categorias.service'
 import { NotifyComponentsService } from '@shared/services/notify-components.service'
-import { filter, Subject, takeUntil } from 'rxjs'
+import { timingSafeEqual } from 'crypto'
+import { filter, finalize, Subject, takeUntil } from 'rxjs'
 import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
 import { Assunto } from '../../model/assunto.model'
 import { ModalCreateAssuntoComponent } from '../modal-create-assunto/modal-create-assunto.component'
@@ -20,6 +21,7 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
   @Output() public tableEmit: EventEmitter<Array<number>> = new EventEmitter()
   protected displayedColumns: string[] = ['assunto', 'categorias', 'status', 'actions']
   protected listOcurrences: ListCategoriaModel
+  protected loadingList: boolean
   private selectedCategories: Array<any> = []
   protected filter = { Pagina: 1, TamanhoDaPagina: 10 }
   private _destroy$ = new Subject()
@@ -103,8 +105,10 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
   }
 
   private getListAssuntos(): void {
+    this.loadingList = true
     this._ocurrenceService.ListCategorias(this.filter)
-      .pipe(takeUntil(this._destroy$))
+      .pipe(takeUntil(this._destroy$),
+        finalize(() => { this.loadingList = false }))
       .subscribe((categorias: ListCategoriaModel) => {
         this.listOcurrences = categorias
       })

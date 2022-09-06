@@ -31,6 +31,7 @@ import { MatInputModule } from '@angular/material/input'
 import { RecusaOcorrenciaComponent } from './components/recusa-ocorrencia/recusa-ocorrencia.component'
 import { DespacharOcorrenciaComponent } from './components/despachar-ocorrencia/despachar-ocorrencia.component'
 import { MatPaginatorModule } from '@angular/material/paginator'
+import { SortTableComponent } from '@shared/components/sort-table/sort-table.component'
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { MatPaginatorModule } from '@angular/material/paginator'
     MatFormFieldModule,
     MatInputModule,
     CarouselModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    SortTableComponent
   ],
   providers: [SnackBarService]
 })
