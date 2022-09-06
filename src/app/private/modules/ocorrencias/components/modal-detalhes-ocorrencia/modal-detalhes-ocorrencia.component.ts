@@ -25,6 +25,7 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
   protected listSituacao: Array<SituacaoModel>
   protected loading: boolean
   private _destroy$ = new Subject()
+  // usuarioDespachanteId usuario logado
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { ocurrence: OcorrenciaModel, type: string },
     private readonly _categoriaService: CategoriasService,
@@ -63,6 +64,7 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
 
   public closeModalRecusaOcorrencia(): void {
     this.showRecusaOcorrencia = false
+    this._dialogRef.close(true)
   }
 
   public salvarOcorrencia(): void {

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialog } from '@angular/material/dialog'
-import { Subject } from 'rxjs'
+import { Subject, takeUntil } from 'rxjs'
 import { EmployeesModel } from '../../models/employees.model'
 import { EmployeesService } from '../../services/employees.service'
 import { ModalCreateEmployeesComponent } from '../modal-create-employees/modal-create-employees.component'
@@ -26,7 +26,7 @@ export class TableEmployeesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._employeesService.getEmployess()
-      .pipe()
+      .pipe(takeUntil(this._destroy$))
       .subscribe((list) => {
         this.dataSource = list
       })

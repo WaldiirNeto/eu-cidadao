@@ -22,6 +22,7 @@ $criticidade-urgente-color: #ED0C00;
 .table-notifications {
 
     table {
+
         .criticidade-1 {
             @include criticidade-base($criticidade-baixa-color)
         }

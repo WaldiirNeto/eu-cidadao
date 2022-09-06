@@ -1,3 +1,5 @@
+import { CategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
+import { CityModel } from '@shared/models/cidade.model'
 import { PaginacaoModel } from '@shared/models/paginacao.model'
 
 export interface NotificationListModel {
@@ -16,6 +18,9 @@ export interface NotificationModel {
     criticidade: string
     cidadeId: string
     link: string
+    categoriaOcorrencia: CategoriaModel,
+    subCategoriasOcorrencias: SubCategoriaOcorrenciaModel,
+    cidade: CityModel
 }
 
 export interface FilterNotificationModel extends PaginacaoModel {

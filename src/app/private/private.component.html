@@ -1,4 +1,4 @@
-<section class="private-modules">
+<main class="private-modules">
     <mat-drawer mode="side" opened>
         <div class="mat-drawer__content">
             <div class="sidenav-content">
@@ -6,7 +6,7 @@
                 <img class="sidenav-content__avatar" alt="logo" src="assets/images/avatar.svg">
                 <section class="sidenav-content__user">
                     <p> {{(this.user$ | async)?.primeiroNome }}</p>
-                    <p>Administrador</p>
+                    <p>{{(this.user$ | async)?.grupo}}</p>
                 </section>
                 <section class="sidenav-content__links">
                     <div class="sidenav-content__links__item link" [routerLink]="''">
@@ -95,4 +95,4 @@
             <router-outlet></router-outlet>
         </div>
     </div>
-</section>
+</main>

@@ -3,8 +3,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { NotifyComponentsService } from '@shared/services/notify-components.service'
 import { SnackBarService } from '@shared/services/snackbar.service'
+import { Console } from 'console'
 import { filter, finalize, Subject, takeUntil } from 'rxjs'
 import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
+import { SubCategoriaOcorrenciaModel } from '../../../ocorrencias/models/ocorrencia.model'
 import { FilterNotificationModel, NotificationListModel, NotificationModel } from '../../models/notification.model'
 import { NotificationsService } from '../../services/notifications.service'
 import { ModalDeleteNotificationComponent } from '../modal-delete-notification/modal-delete-notification.component'
@@ -19,7 +21,8 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
   protected displayedColumns: string[] = ['title_notification', 'subject', 'category', 'city', 'criticality']
   protected loadingList: boolean
   protected notificationsList: NotificationListModel
-  protected filter: FilterNotificationModel = { Pagina: 1, TamanhoDaPagina: 10 }
+  protected filter: FilterNotificationModel = { Pagina: 1, TamanhoDaPagina: 10, OrdenarPor: `Titulo`, ordem: `ASC` }
+  protected ordenacaoInicial = { filtro: this.filter['OrdenarPor'], ordem: this.filter['ordem'] }
 
   private _destroy$ = new Subject()
   constructor(
@@ -38,6 +41,45 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
     this.filter['Pagina'] = event.pageIndex + 1
     this.filter['TamanhoDaPagina'] = event.pageSize
     this._getNotifications()
+  }
+
+
+  public openModalDetails(notification: NotificationModel): void {
+    this._dialog.open(ModalNotificationsComponent, {
+      data: notification,
+      enterAnimationDuration: `1000ms`,
+      exitAnimationDuration: `500ms`,
+      panelClass: 'padding-modal',
+      width: `80%`
+    })
+  }
+
+
+  public openModalDelete(notification: NotificationModel): void {
+    this._dialog.open(ModalDeleteNotificationComponent, {
+      data: notification,
+      enterAnimationDuration: `1000ms`,
+      exitAnimationDuration: `500ms`,
+      panelClass: 'padding-modal'
+    }).afterClosed()
+      .pipe(takeUntil(this._destroy$),
+        filter((result) => result === true))
+      .subscribe((_) => {
+        this.filter = { Pagina: 1, TamanhoDaPagina: 10 }
+        this._getNotifications()
+      })
+  }
+
+  public listSubCategories(subCategoriasOcorrencias: SubCategoriaOcorrenciaModel[]): string {
+    return subCategoriasOcorrencias.map(subCategoria => subCategoria.nome).join(',')
+  }
+
+  public ordenarLista(ordenacao: { ordenarPor: string, ordem: string }): void {
+    this.filter['OrdenarPor'] = ordenacao.ordenarPor
+    this.filter['ordem'] = ordenacao.ordem
+    this.ordenacaoInicial = { filtro: this.filter['OrdenarPor'], ordem: this.filter['ordem'] }
+    this._getNotifications()
+
   }
 
   private _getNotifications(): void {
@@ -74,32 +116,6 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
         } else {
           this.filter = resultFilter.values
         }
-        this._getNotifications()
-      })
-  }
-
-  public openModalDetails(notification: NotificationModel): void {
-    this._dialog.open(ModalNotificationsComponent, {
-      data: notification,
-      enterAnimationDuration: `1000ms`,
-      exitAnimationDuration: `500ms`,
-      panelClass: 'padding-modal',
-      width: `80%`
-    })
-  }
-
-
-  public openModalDelete(notification: NotificationModel): void {
-    this._dialog.open(ModalDeleteNotificationComponent, {
-      data: notification,
-      enterAnimationDuration: `1000ms`,
-      exitAnimationDuration: `500ms`,
-      panelClass: 'padding-modal'
-    }).afterClosed()
-      .pipe(takeUntil(this._destroy$),
-        filter((result) => result === true))
-      .subscribe((_) => {
-        this.filter = { Pagina: 1, TamanhoDaPagina: 10 }
         this._getNotifications()
       })
   }

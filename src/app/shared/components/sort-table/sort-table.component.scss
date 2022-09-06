@@ -1,0 +1,15 @@
+.section-sort-table {
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+        cursor: pointer;
+        // font-size: 20px;
+        // padding-top: 6px;
+        // height: 25px;
+    }
+
+    .sort-table-asc {
+        font-size: 20px;
+    }
+}

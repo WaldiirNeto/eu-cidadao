@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialog } from '@angular/material/dialog'
 import { ListCategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
@@ -96,8 +96,9 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
     return subCategoriasOcorrencias.map(subCategoria => subCategoria.nome).join(',')
   }
 
-  public pageUpdate(event: number): void {
-    this.filter['Pagina'] = event
+  public pageUpdate(event: { pageIndex: number, pageSize: number }): void {
+    this.filter['Pagina'] = event.pageIndex + 1
+    this.filter['TamanhoDaPagina'] = event.pageSize
     this.getListAssuntos()
   }
 

@@ -5,6 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatSelectModule } from '@angular/material/select'
+import { MatTableModule } from '@angular/material/table'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 import { BoxComponent } from '@shared/components/box/box.component'
 import { SubmitButtonComponent } from '@shared/components/submit-button/submit-button.component'
@@ -14,14 +18,13 @@ import { NotificationsTableComponent } from './components/notifications-table/no
 import { ModalNotificationsComponent } from './components/modal-notifications/modal-notifications.component'
 import { FilterNotificationComponent } from './components/filter-notification/filter-notification.component'
 import { NotificationsRoutingModule } from './notifications-routing.module'
-import { MatTableModule } from '@angular/material/table'
 import { PaginationComponent } from '@shared/components/pagination/pagination.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { NotificationsService } from './services/notifications.service'
 import { SnackBarService } from '@shared/services/snackbar.service'
-import { MatSnackBarModule } from '@angular/material/snack-bar'
-import { MatDialogModule } from '@angular/material/dialog';
 import { CriticidadePipe } from './pipes/criticidade.pipe'
+import { ModalDeleteNotificationComponent } from './components/modal-delete-notification/modal-delete-notification.component'
+import { SortTableComponent } from '@shared/components/sort-table/sort-table.component'
 
 
 @NgModule({
@@ -30,7 +33,8 @@ import { CriticidadePipe } from './pipes/criticidade.pipe'
     NotificationsTableComponent,
     ModalNotificationsComponent,
     FilterNotificationComponent,
-    CriticidadePipe
+    CriticidadePipe,
+    ModalDeleteNotificationComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +51,9 @@ import { CriticidadePipe } from './pipes/criticidade.pipe'
     PaginationComponent,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    SortTableComponent
   ],
   providers: [NotificationsService, SnackBarService]
 })

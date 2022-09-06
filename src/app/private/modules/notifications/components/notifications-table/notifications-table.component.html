@@ -5,35 +5,42 @@
 
                 <ng-container matColumnDef="title_notification">
                     <th mat-header-cell *matHeaderCellDef>
-                        Título <mat-icon>filter_list</mat-icon>
+                        <app-sort-table thDescription="Título" coluna="Titulo"
+                            [ordenacaoInicial]="this.ordenacaoInicial" (ordenacao)="this.ordenarLista($event)">
+                        </app-sort-table>
                     </th>
                     <td mat-cell *matCellDef="let notification"> {{notification.titulo}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="subject">
                     <th mat-header-cell *matHeaderCellDef>
-                        Assunto <mat-icon>filter_list</mat-icon>
+                        <app-sort-table thDescription="Assunto" coluna="CategoriaId"
+                            [ordenacaoInicial]="this.ordenacaoInicial" (ordenacao)="this.ordenarLista($event)">
+                        </app-sort-table>
                     </th>
-                    <td mat-cell *matCellDef="let notification"> {{notification.categoriaId}} </td>
+                    <td mat-cell *matCellDef="let notification"> {{notification.categoriaOcorrencia.nome}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="category">
                     <th mat-header-cell *matHeaderCellDef>
-                        Categoria <mat-icon>filter_list</mat-icon>
+                        Categoria
                     </th>
-                    <td mat-cell *matCellDef="let notification"> {{notification.categoriaId}} </td>
+                    <td mat-cell *matCellDef="let notification"> {{
+                        this.listSubCategories(notification.categoriaOcorrencia.subCategoriasOcorrencias)}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="city">
                     <th mat-header-cell *matHeaderCellDef>
-                        cidade <mat-icon>filter_list</mat-icon>
+                        <app-sort-table thDescription="cidade" coluna="CidadeId"
+                            [ordenacaoInicial]="this.ordenacaoInicial" (ordenacao)="this.ordenarLista($event)">
+                        </app-sort-table>
                     </th>
-                    <td mat-cell *matCellDef="let notification"> {{notification.cidadeId}} </td>
+                    <td mat-cell *matCellDef="let notification"> {{notification.cidade.nome}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="criticality">
                     <th mat-header-cell *matHeaderCellDef>
-                        Criticidade <mat-icon>filter_list</mat-icon>
+                        Criticidade
                     </th>
                     <td mat-cell *matCellDef="let notification">
                         <div class="d-flex">

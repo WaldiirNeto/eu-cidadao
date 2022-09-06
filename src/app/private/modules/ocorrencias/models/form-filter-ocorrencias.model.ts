@@ -2,7 +2,7 @@ import { FormControl, FormGroup } from '@angular/forms'
 
 export interface FormFilterOcorrenciasInterface {
 
-    protocolo: FormControl<string | null>,
+    id: FormControl<string | null>,
     CategoriaId: FormControl<string | null>,
     SubCategoriaId: FormControl<string | null>,
     UsuarioDespachanteId: FormControl<string | null>,
@@ -18,7 +18,7 @@ export class FormFilterOcorrenciasModel {
 
     private formBuilder(): void {
         this.form = new FormGroup<FormFilterOcorrenciasInterface>({
-            protocolo: new FormControl(''),
+            id: new FormControl(''),
             SubCategoriaId: new FormControl(''),
             CategoriaId: new FormControl(''),
             UsuarioDespachanteId: new FormControl(''),

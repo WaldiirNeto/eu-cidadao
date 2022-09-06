@@ -19,6 +19,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
 import { PaginationComponent } from '@shared/components/pagination/pagination.component'
 import { SnackBarService } from '@shared/services/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatSelectModule } from '@angular/material/select'
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
     MatDialogModule,
     SubmitButtonComponent,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [SnackBarService]
 })

@@ -28,8 +28,9 @@ import { SnackBarService } from '@shared/services/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
-import { RecusaOcorrenciaComponent } from './components/recusa-ocorrencia/recusa-ocorrencia.component';
+import { RecusaOcorrenciaComponent } from './components/recusa-ocorrencia/recusa-ocorrencia.component'
 import { DespacharOcorrenciaComponent } from './components/despachar-ocorrencia/despachar-ocorrencia.component'
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { DespacharOcorrenciaComponent } from './components/despachar-ocorrencia/
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    CarouselModule
+    CarouselModule,
+    MatPaginatorModule
   ],
   providers: [SnackBarService]
 })

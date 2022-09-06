@@ -18,4 +18,9 @@ export class NotificationsService {
   public publishNotification(payload: NotificationModel): Observable<boolean> {
     return this._http.post<boolean>(API_URL.NOTIFICATIONS, payload)
   }
+
+  public deleteNotification(id: number): Observable<void> {
+    return this._http.delete<void>(API_URL.NOTIFICATION_ID(id))
+
+  }
 }

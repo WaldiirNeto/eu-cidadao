@@ -14,6 +14,6 @@ export class EmployeesService {
   }
 
   updateEmployee(payload: UpdateEmployeesModel): Observable<void> {
-    return this._http.put(API_URL.USER, payload)
+    return this._http.post(API_URL.EMPLOYEE, payload)
   }
 }

@@ -19,8 +19,9 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
 import { RelatoriosBarComponent } from './pages/relatorios-bar/relatorios-bar.component'
-import { NgChartsModule } from 'ng2-charts';
+import { NgChartsModule } from 'ng2-charts'
 import { RelatoriosMapaComponent } from './pages/relatorios-mapa/relatorios-mapa.component'
+import { GoogleMapsModule } from '@angular/google-maps'
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { RelatoriosMapaComponent } from './pages/relatorios-mapa/relatorios-mapa
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
-    NgChartsModule
+    NgChartsModule,
+    GoogleMapsModule
   ],
   providers: []
 })

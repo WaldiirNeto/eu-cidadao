@@ -41,8 +41,11 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <app-pagination [total]="this.listOcurrences.total" [paginaAtual]="this.filter.Pagina"
-            [totalPorPagina]="this.filter.TamanhoDaPagina" (changePage)="this.pageUpdate($event)"></app-pagination>
+
+        <mat-paginator [pageIndex]="this.filter.Pagina - 1" [length]="this.listOcurrences.total"
+            [pageSize]="this.filter.TamanhoDaPagina" [pageSizeOptions]="[5, 10, 25, 100]"
+            (page)="this.pageUpdate($event)" aria-label="Select page">
+        </mat-paginator>
     </ng-container>
     <ng-template #loading>
         <div class="loading">

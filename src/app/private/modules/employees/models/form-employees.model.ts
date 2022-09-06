@@ -2,15 +2,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { isValidCPF } from '@helpers/cpf-validator'
 
 interface FormEmployeesInterface {
-    cidadaoId: FormControl<string | null>
-    nome: FormControl<string | null>
-    data_nascimento: FormControl<string | null>
+    id?: FormControl<string | null>,
+    firstName: FormControl<string | null>,
+    lastName: FormControl<string | null>,
+    email: FormControl<string | null>,
     cpf: FormControl<string | null>,
-    email: FormControl<string | null>
-    telefone: FormControl<string | null>
-    endereco: FormControl<string | null>
-    senha: FormControl<string | null>
-    foto: FormControl<string | null>
+    dataDeNascimento: FormControl<string | null>,
+    cidadeId: FormControl<number | null>,
+    senha: FormControl<string | null>,
+    celular: FormControl<string | null>,
+
+    // cidadaoId: FormControl<string | null>
+    // nome: FormControl<string | null>
+    // data_nascimento: FormControl<string | null>
+    // cpf: FormControl<string | null>,
+    // email: FormControl<string | null>
+    // telefone: FormControl<string | null>
+    // endereco: FormControl<string | null>
+    // senha: FormControl<string | null>
+    // foto: FormControl<string | null>
 }
 
 export class FormEmployeesModel {
@@ -22,15 +32,15 @@ export class FormEmployeesModel {
 
     private formBuilder(): void {
         this.form = new FormGroup<FormEmployeesInterface>({
-            cidadaoId: new FormControl('', [Validators.required]),
-            nome: new FormControl('', [Validators.required]),
-            data_nascimento: new FormControl('', [Validators.required]),
-            cpf: new FormControl('', [Validators.required, isValidCPF]),
+            id: new FormControl(''),
+            firstName: new FormControl('', [Validators.required]),
+            lastName: new FormControl('', [Validators.required]),
             email: new FormControl('', [Validators.required, Validators.email]),
-            telefone: new FormControl('', [Validators.required]),
-            endereco: new FormControl('', [Validators.required]),
+            cpf: new FormControl('', [Validators.required, isValidCPF]),
+            dataDeNascimento: new FormControl('', [Validators.required]),
+            cidadeId: new FormControl(0, [Validators.required]),
             senha: new FormControl('', [Validators.required]),
-            foto: new FormControl('', [Validators.required]),
+            celular: new FormControl('', [Validators.required])
         })
     }
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { ThisReceiver } from '@angular/compiler'
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { GoogleMap } from '@angular/google-maps'
 import { ChartConfiguration } from 'chart.js'
 
 @Component({
@@ -7,6 +9,9 @@ import { ChartConfiguration } from 'chart.js'
   styleUrls: ['./relatorios-mapa.component.scss']
 })
 export class RelatoriosMapaComponent implements OnInit {
+  @ViewChild('gMap', { static: false }) gMap: GoogleMap
+  protected typeMap = 'satellite' as any
+  protected sanFrancisco = new google.maps.LatLng(37.774546, -122.433523);
 
   protected doughnutChartLabels: string[] =
     ['Ocorrências pendentes', 'Ocorrências em tratamento', 'Ocorrências recusadas', 'Ocorrências resolvidas'];
@@ -118,8 +123,34 @@ export class RelatoriosMapaComponent implements OnInit {
       dias_abertura: 10
     }
   ]
+
   constructor() { }
 
+  ngAfterViewInit() {
+    const heatMapData = [
+      { location: new google.maps.LatLng(37.782, -122.447), weight: 0.5 },
+      new google.maps.LatLng(37.782, -122.445),
+      { location: new google.maps.LatLng(37.782, -122.443), weight: 2 },
+      { location: new google.maps.LatLng(37.782, -122.441), weight: 3 },
+      { location: new google.maps.LatLng(37.782, -122.439), weight: 2 },
+      new google.maps.LatLng(37.782, -122.437),
+      { location: new google.maps.LatLng(37.782, -122.435), weight: 0.5 },
+
+      { location: new google.maps.LatLng(37.785, -122.447), weight: 3 },
+      { location: new google.maps.LatLng(37.785, -122.445), weight: 2 },
+      new google.maps.LatLng(37.785, -122.443),
+      { location: new google.maps.LatLng(37.785, -122.441), weight: 0.5 },
+      new google.maps.LatLng(37.785, -122.439),
+      { location: new google.maps.LatLng(37.785, -122.437), weight: 2 },
+      { location: new google.maps.LatLng(37.785, -122.435), weight: 3 }
+    ]
+    const heatmap = new google.maps.visualization.HeatmapLayer({
+      data: heatMapData,
+    })
+    // this.gMap.data.setMap(heatmap)
+
+
+  }
   ngOnInit(): void {
   }
 

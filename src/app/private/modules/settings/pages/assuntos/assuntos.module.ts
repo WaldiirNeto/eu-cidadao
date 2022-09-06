@@ -19,6 +19,7 @@ import { ModalDeleteAssuntoComponent } from './components/modal-delete-assunto/m
 import { PaginationComponent } from '@shared/components/pagination/pagination.component'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { SnackBarService } from '@shared/services/snackbar.service'
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SnackBarService } from '@shared/services/snackbar.service'
     DragDropModule,
     MatCheckboxModule,
     PaginationComponent,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatPaginatorModule
   ],
   providers: [SnackBarService]
 })

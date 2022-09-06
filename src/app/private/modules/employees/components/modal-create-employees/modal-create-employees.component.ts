@@ -1,11 +1,16 @@
 import { HttpErrorResponse } from '@angular/common/http'
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core'
+import { FormControl, FormGroup } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { ListCityModel } from '@shared/models/cidade.model'
+import { CityService } from '@shared/services/city.service'
+import { NotifyComponentsService } from '@shared/services/notify-components.service'
 import { SnackBarService } from '@shared/services/snackbar.service'
-import { finalize, Subject, takeUntil } from 'rxjs'
-import { EmployeesModel, UpdateEmployeesModel } from '../../models/employees.model'
+import { finalize, Observable, Subject, takeUntil } from 'rxjs'
+import { UpdateEmployeesModel } from '../../models/employees.model'
 import { FormEmployeesModel } from '../../models/form-employees.model'
 import { EmployeesService } from '../../services/employees.service'
+
 
 @Component({
   selector: 'app-modal-create-employees',
@@ -16,15 +21,26 @@ export class ModalCreateEmployeesComponent extends FormEmployeesModel implements
 
   protected loading: boolean
   private _destroy$ = new Subject()
-  constructor(@Inject(MAT_DIALOG_DATA) public employee: EmployeesModel,
-    private _employeesService: EmployeesService,
-    private _snackBarService: SnackBarService,
-    private _dialogRef: MatDialogRef<ModalCreateEmployeesComponent>) {
+  protected listSelects$: Observable<ListCityModel>
+
+  constructor(@Inject(MAT_DIALOG_DATA) public employee: UpdateEmployeesModel,
+    private readonly _employeesService: EmployeesService,
+    private readonly _snackBarService: SnackBarService,
+    private readonly _dialogRef: MatDialogRef<ModalCreateEmployeesComponent>,
+    private readonly _cityService: CityService,
+    private _notifyComponents: NotifyComponentsService) {
     super()
   }
 
   ngOnInit(): void {
-    this.form.patchValue(this.employee)
+
+    this.listSelects$ = this._cityService.getCitys()
+
+    if (this.employee) {
+      this.form.patchValue(this.employee)
+    } else {
+      this.form.removeControl('id')
+    }
   }
 
   public get getTextError(): string {
@@ -36,15 +52,15 @@ export class ModalCreateEmployeesComponent extends FormEmployeesModel implements
     }
   }
   public populateFileInForm(event: any): void {
-    const file = event.files[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
-      reader.onload = () => {
-        const base64 = reader.result as string
-        this.form.controls.foto.setValue(base64)
-      }
-    }
+    // const file = event.files[0]
+    // if (file) {
+    //   const reader = new FileReader()
+    //   reader.readAsDataURL(file)
+    //   reader.onload = () => {
+    //     const base64 = reader.result as string
+    //     this.form.controls.foto.setValue(base64)
+    //   }
+    // }
   }
 
   public onSubmit(): void {
@@ -58,13 +74,11 @@ export class ModalCreateEmployeesComponent extends FormEmployeesModel implements
       .subscribe({
         next: () => {
           this._snackBarService.open(`Usuário editado com sucesso`, 'success')
-          this._dialogRef.close()
+          this._dialogRef.close(true)
 
         },
         error: (error: HttpErrorResponse) => {
           this._snackBarService.open(`Não foi possível editar o usuário: motivo ${error.message}`, 'error')
-          this._dialogRef.close()
-
         }
       })
   }
