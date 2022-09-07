@@ -23,7 +23,8 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
   protected listOcurrences: ListCategoriaModel
   protected loadingList: boolean
   private selectedCategories: Array<any> = []
-  protected filter = { Pagina: 1, TamanhoDaPagina: 10 }
+  protected filter = { Pagina: 1, TamanhoDaPagina: 10, OrdenarPor: `Ativo`, Ordem: `DESC` }
+  protected ordenacaoInicial = { filtro: this.filter['OrdenarPor'], ordem: this.filter['Ordem'] }
   private _destroy$ = new Subject()
   constructor(
     private readonly _dialog: MatDialog,
@@ -41,7 +42,7 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
         takeUntil(this._destroy$),
         filter(checkFilter => checkFilter && checkFilter.type === NotificationEnum.updateTableAssunto))
       .subscribe((_) => {
-        this.filter = { Pagina: 1, TamanhoDaPagina: 10 }
+        this.filter = { Pagina: 1, TamanhoDaPagina: 10, OrdenarPor: `CategoriaOcorrenciaId`, Ordem: `DESC` }
         this.getListAssuntos()
       })
   }
@@ -101,6 +102,13 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
   public pageUpdate(event: { pageIndex: number, pageSize: number }): void {
     this.filter['Pagina'] = event.pageIndex + 1
     this.filter['TamanhoDaPagina'] = event.pageSize
+    this.getListAssuntos()
+  }
+
+  public ordenarLista(ordenacao: { ordenarPor: string, ordem: string }): void {
+    this.filter['OrdenarPor'] = ordenacao.ordenarPor
+    this.filter['Ordem'] = ordenacao.ordem
+    this.ordenacaoInicial = { filtro: this.filter['OrdenarPor'], ordem: this.filter['Ordem'] }
     this.getListAssuntos()
   }
 

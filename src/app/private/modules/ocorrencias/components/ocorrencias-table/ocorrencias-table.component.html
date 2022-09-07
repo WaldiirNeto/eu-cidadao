@@ -15,7 +15,7 @@
                 <ng-container matColumnDef="protocolo">
                     <th mat-header-cell *matHeaderCellDef>
                         <!-- <mat-checkbox (change)="this.populateFullArraySelected($event)"></mat-checkbox> -->
-                        <app-sort-table thDescription="Protocolo" coluna="id" [ordenacaoInicial]="this.ordenacaoInicial"
+                        <app-sort-table thDescription="Protocolo" coluna="Id" [ordenacaoInicial]="this.ordenacaoInicial"
                             (ordenacao)="this.ordenarLista($event)">
                         </app-sort-table>
                     </th>
@@ -30,16 +30,18 @@
 
                 <ng-container matColumnDef="assunto">
                     <th mat-header-cell *matHeaderCellDef>
-                        <app-sort-table thDescription="assunto" coluna="CategoriaId"
+                        Assunto
+                        <!-- <app-sort-table thDescription="Assunto" coluna="CategoriaId"
                             [ordenacaoInicial]="this.ordenacaoInicial" (ordenacao)="this.ordenarLista($event)">
-                        </app-sort-table>
+                        </app-sort-table> -->
                     </th>
                     <td mat-cell *matCellDef="let ocorrencia"> {{ocorrencia.categoriaOcorrencia.nome}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="categoria">
                     <th mat-header-cell *matHeaderCellDef>
-                        <app-sort-table thDescription="Categoria" coluna="SubCategoriaId"
+                        <!-- Categoria -->
+                        <app-sort-table thDescription="Categoria" coluna="SubCategoriaOcorrenciaId"
                             [ordenacaoInicial]="this.ordenacaoInicial" (ordenacao)="this.ordenarLista($event)">
                         </app-sort-table>
                     </th>

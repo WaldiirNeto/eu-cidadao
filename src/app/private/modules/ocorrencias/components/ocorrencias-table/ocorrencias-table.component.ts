@@ -22,7 +22,7 @@ export class OcorrenciasTableComponent implements OnInit {
   protected displayedColumns: string[] = ['protocolo', 'assunto', 'categoria', 'bairro', 'data_criacao', 'status']
   protected listOcurrences: OcorrenciaListModel
   protected loadingList: boolean
-  protected filter: FilterOcorrenciaModel = { Pagina: 1, TamanhoDaPagina: 10 }
+  protected filter: FilterOcorrenciaModel = { Pagina: 1, TamanhoDaPagina: 10, OrdenarPor: `Id`, Ordem: `ASC` }
   protected ordenacaoInicial = { filtro: this.filter['OrdenarPor'], ordem: this.filter['Ordem'] }
   private selectedCategories: Array<string> = []
   private _destroy$ = new Subject()
