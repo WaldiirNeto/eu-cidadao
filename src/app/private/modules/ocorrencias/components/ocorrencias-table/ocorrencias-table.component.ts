@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialog } from '@angular/material/dialog'
@@ -107,8 +108,8 @@ export class OcorrenciasTableComponent implements OnInit {
         next: (listOccurrences: OcorrenciaListModel) => {
           this.listOcurrences = listOccurrences
         },
-        error: (_) => {
-          this._snackBarService.open(`Não foi possível buscar a lista de ocorrências`, 'error')
+        error: (error: HttpErrorResponse) => {
+          this._snackBarService.open(`Não foi possível buscar a lista de ocorrências, motivo: ${error.message}`, `error`)
         }
       })
   }

@@ -18,7 +18,7 @@ export class UnauthorizeInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap(({
         error: (error: HttpErrorResponse) => {
-          if (error.status === 401 || error.status === 0) {
+          if (error.status === 401) {
             localStorage.removeItem('token')
             this._router.navigate(['login'])
           }

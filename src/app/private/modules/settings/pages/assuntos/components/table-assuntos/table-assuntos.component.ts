@@ -1,10 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http'
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialog } from '@angular/material/dialog'
 import { ListCategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
 import { CategoriasService } from '@shared/services/categorias.service'
 import { NotifyComponentsService } from '@shared/services/notify-components.service'
-import { timingSafeEqual } from 'crypto'
+import { SnackBarService } from '@shared/services/snackbar.service'
 import { filter, finalize, Subject, takeUntil } from 'rxjs'
 import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
 import { Assunto } from '../../model/assunto.model'
@@ -29,7 +30,8 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
   constructor(
     private readonly _dialog: MatDialog,
     private readonly _ocurrenceService: CategoriasService,
-    private readonly _notifyComponent: NotifyComponentsService) { }
+    private readonly _notifyComponent: NotifyComponentsService,
+    private readonly _snackBarService: SnackBarService) { }
 
   ngOnInit(): void {
     this.getListAssuntos()
@@ -117,8 +119,15 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
     this._ocurrenceService.ListCategorias(this.filter)
       .pipe(takeUntil(this._destroy$),
         finalize(() => { this.loadingList = false }))
-      .subscribe((categorias: ListCategoriaModel) => {
-        this.listOcurrences = categorias
+      .subscribe({
+        next:
+          (categorias: ListCategoriaModel) => {
+            this.listOcurrences = categorias
+          },
+        error: (error: HttpErrorResponse) => {
+          console.log(error)
+          this._snackBarService.open(`Erro ao listar assuntos, motivo: ${error.message}`, `error`)
+        }
       })
   }
   ngOnDestroy(): void {
