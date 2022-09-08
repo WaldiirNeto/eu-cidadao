@@ -191,6 +191,10 @@
         }
     }
 
+    ul {
+        inset: 100% auto auto -100px !important;
+        transform: translateY(0px)
+    }
 }
 
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
