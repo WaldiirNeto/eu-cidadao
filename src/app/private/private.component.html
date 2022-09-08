@@ -1,71 +1,82 @@
 <main class="private-modules">
     <mat-drawer mode="side" opened>
-        <div class="mat-drawer__content">
-            <div class="sidenav-content">
-                <img alt="logo" src="assets/images/logo-text.svg">
-                <img class="sidenav-content__avatar" alt="logo" src="assets/images/avatar.svg">
-                <section class="sidenav-content__user">
-                    <p> {{(this.user$ | async)?.primeiroNome }}</p>
-                    <p>{{(this.user$ | async)?.grupo}}</p>
-                </section>
-                <section class="sidenav-content__links">
-                    <div class="sidenav-content__links__item link" [routerLink]="''">
-                        <mat-icon>dashboard</mat-icon>
-                        <p>Dashboard</p>
-                    </div>
+        <ng-container *ngIf="user$ | async as user; else loading">
+
+            <div class="mat-drawer__content">
+                <div class="sidenav-content">
+                    <img alt="logo" src="assets/images/logo-text.svg">
+                    <img class="sidenav-content__avatar" alt="logo" src="assets/images/avatar.svg">
+                    <section class="sidenav-content__user">
+                        <p> {{user.primeiroNome }}</p>
+                        <p>{{user.grupo}}</p>
+                    </section>
+                    <section class="sidenav-content__links">
+                        <div class="sidenav-content__links__item link" [routerLink]="''">
+                            <mat-icon>dashboard</mat-icon>
+                            <p>Dashboard</p>
+                        </div>
+                        <hr>
+                        <mat-accordion>
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title class="sidenav-content__links__item">
+                                        <mat-icon>edit_document</mat-icon>Ocorrências
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="sidenav-content__links__item__sub-links" [routerLink]="'ocorrencias'">
+                                    Central de
+                                    ocorrências</div>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <hr>
+                        <div class="sidenav-content__links__item link" [routerLink]="'/relatorios'">
+                            <mat-icon>summarize</mat-icon>
+                            <p>Relatórios</p>
+                        </div>
+                        <hr>
+                        <mat-accordion>
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title class="sidenav-content__links__item">
+                                        <mat-icon>account_circle</mat-icon>Usuários
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="sidenav-content__links__item__sub-links" [routerLink]="['/users']"
+                                    routerLinkActive="router-link-active">Lista de Usuários</div>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <hr>
+                        <div class="sidenav-content__links__item link" [routerLink]="'/notifications'">
+                            <mat-icon>notifications_active</mat-icon>
+                            <p>Notificações</p>
+                        </div>
+                        <hr>
+
+                        <mat-accordion *ngIf="user.grupo === 'administrador'">
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title class="sidenav-content__links__item">
+                                        <mat-icon>settings</mat-icon>Configurações
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px"
+                                    [routerLink]="['/settings/assuntos']" routerLinkActive="router-link-active">
+                                    Gerenciar
+                                    Assunto
+                                </div>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <hr>
+                    </section>
                     <hr>
-                    <mat-accordion>
-                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title class="sidenav-content__links__item">
-                                    <mat-icon>edit_document</mat-icon>Ocorrências
-                                </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <div class="sidenav-content__links__item__sub-links" [routerLink]="'ocorrencias'">Central de
-                                ocorrências</div>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                    <hr>
-                    <div class="sidenav-content__links__item link" [routerLink]="'/relatorios'">
-                        <mat-icon>summarize</mat-icon>
-                        <p>Relatórios</p>
-                    </div>
-                    <hr>
-                    <mat-accordion>
-                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title class="sidenav-content__links__item">
-                                    <mat-icon>account_circle</mat-icon>Usuários
-                                </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <div class="sidenav-content__links__item__sub-links" [routerLink]="['/users']"
-                                routerLinkActive="router-link-active">Lista de Usuários</div>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                    <hr>
-                    <div class="sidenav-content__links__item link" [routerLink]="'/notifications'">
-                        <mat-icon>notifications_active</mat-icon>
-                        <p>Notificações</p>
-                    </div>
-                    <hr>
-                    <mat-accordion>
-                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title class="sidenav-content__links__item">
-                                    <mat-icon>settings</mat-icon>Configurações
-                                </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px"
-                                [routerLink]="['/settings/assuntos']" routerLinkActive="router-link-active">Gerenciar
-                                Assunto
-                            </div>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                    <hr>
-                </section>
-                <hr>
+                </div>
             </div>
-        </div>
+        </ng-container>
+        <ng-template #loading>
+            <div class="d-flex justify-content-center align-items-center" style="margin-top: 90%;">
+                <mat-spinner diameter="30"></mat-spinner>
+            </div>
+        </ng-template>
     </mat-drawer>
     <div class="private-modules__content">
         <mat-toolbar>
