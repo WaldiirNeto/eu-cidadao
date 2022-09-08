@@ -21,8 +21,6 @@ export class PaginationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.total)
-    console.log(this.totalPorPagina)
 
     if (this.total > this.totalPorPagina) {
       const qtdBotoes = (this.total - this.totalPorPagina) + 1
