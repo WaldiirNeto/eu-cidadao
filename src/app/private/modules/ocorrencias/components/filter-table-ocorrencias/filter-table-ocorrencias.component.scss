@@ -17,4 +17,8 @@
     mat-form-field {
         width: 100%;
     }
+
+    ::ng-deep button {
+        width: 100%;
+    }
 }
