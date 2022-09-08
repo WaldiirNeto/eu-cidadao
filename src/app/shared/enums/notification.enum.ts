@@ -7,6 +7,4 @@ export enum NotificationEnum {
     formFilterNotificacao = `formFilterNotificacao`,
     formFilterClearNotificacao = `formFilterClearNotificacao`,
     updateTableAssunto = `updateTableAssunto`
-
-
 }
