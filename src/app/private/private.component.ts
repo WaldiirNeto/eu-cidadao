@@ -26,7 +26,7 @@ export class PrivateComponent implements OnInit {
     if (redirectAfterRender && isPlatformBrowser(this._platformId)) {
       this._router.navigate([redirectAfterRender])
     }
-    this.user$ = this._userService.getUser().pipe(shareReplay())
+    this.user$ = this._userService.getUser().pipe(shareReplay(1))
   }
 
   public logOut(): void {

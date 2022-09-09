@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
+import { LoginGuard } from '@core/guards/login.guard'
 import { Shell } from '@core/shell/shell.service'
 import { PrivateComponent } from './private/private.component'
 

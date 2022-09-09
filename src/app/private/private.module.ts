@@ -9,7 +9,6 @@ import { PrivateRoutingModule } from './private-routing.module'
 import { PrivateComponent } from './private.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
-
 @NgModule({
   declarations: [
     PrivateComponent

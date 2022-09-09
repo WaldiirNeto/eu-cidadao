@@ -1,7 +1,6 @@
 <main class="private-modules">
     <mat-drawer mode="side" opened>
         <ng-container *ngIf="user$ | async as user; else loading">
-
             <div class="mat-drawer__content">
                 <div class="sidenav-content">
                     <img alt="logo" src="assets/images/logo-text.svg">
@@ -51,22 +50,23 @@
                             <p>Notificações</p>
                         </div>
                         <hr>
-
-                        <mat-accordion *ngIf="user.grupo === 'administrador'">
-                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title class="sidenav-content__links__item">
-                                        <mat-icon>settings</mat-icon>Configurações
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px"
-                                    [routerLink]="['/settings/assuntos']" routerLinkActive="router-link-active">
-                                    Gerenciar
-                                    Assunto
-                                </div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <hr>
+                        <ng-container *ngIf="user.grupo === 'administrador'">
+                            <mat-accordion>
+                                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title class="sidenav-content__links__item">
+                                            <mat-icon>settings</mat-icon>Configurações
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div class="sidenav-content__links__item__sub-links" style="margin-top: 5px"
+                                        [routerLink]="['/settings/assuntos']" routerLinkActive="router-link-active">
+                                        Gerenciar
+                                        Assunto
+                                    </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                            <hr>
+                        </ng-container>
                     </section>
                     <hr>
                 </div>
