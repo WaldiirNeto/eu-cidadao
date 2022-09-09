@@ -9,8 +9,6 @@ import { SnackBarService } from '@shared/services/snackbar.service'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 
-
-
 @NgModule({
   declarations: [AppComponent],
   imports: [

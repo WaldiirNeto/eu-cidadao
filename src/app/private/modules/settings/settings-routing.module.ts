@@ -26,6 +26,12 @@ const routes: Routes =
       title: `EU CIDADÃO | Assuntos`,
       canMatch: [CanMatchAdmin]
     },
+
+    {
+      path: 'assuntos',
+      loadComponent: () => import('@shared/components/without-permission/without-permission.component')
+        .then(component => component.WithoutPermissionComponent)
+    },
   ]
 
 @NgModule({

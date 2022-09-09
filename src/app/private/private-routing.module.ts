@@ -20,7 +20,10 @@ const routes: Routes = [
   },
   {
     path: 'ocorrencias', loadChildren: () => import('./modules/ocorrencias/ocorrencias.module').then(m => m.OcorrenciasModule),
-    title: 'EU CIDADÃO | Ocorrências'
+    title: 'EU CIDADÃO | Ocorrências',
+    data: {
+      preload: true
+    }
   },
   {
     path: 'notifications', loadChildren: () => import('./modules/notifications/notifications.module').then(m => m.NotificationsModule),
