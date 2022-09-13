@@ -32,6 +32,7 @@ import { RecusaOcorrenciaComponent } from './components/recusa-ocorrencia/recusa
 import { DespacharOcorrenciaComponent } from './components/despachar-ocorrencia/despachar-ocorrencia.component'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { SortTableComponent } from '@shared/components/sort-table/sort-table.component'
+import { CheckPermissionDirective } from '@shared/directives/check-permission.directive'
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { SortTableComponent } from '@shared/components/sort-table/sort-table.com
     MatInputModule,
     CarouselModule,
     MatPaginatorModule,
-    SortTableComponent
+    SortTableComponent,
+    CheckPermissionDirective
   ],
   providers: [SnackBarService]
 })

@@ -46,8 +46,10 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>Ações </th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-icon class="icon-edit" (click)="this.openModalEdit(element)">edit</mat-icon>
-                    <mat-icon class="icon-delete" (click)="this.openModalDelete(element)">delete_forever</mat-icon>
+                    <mat-icon *checkPermission="'editar_usuario'" class="icon-edit"
+                        (click)="this.openModalEdit(element)">edit</mat-icon>
+                    <mat-icon *checkPermission="'deletar_usuario'" class="icon-delete"
+                        (click)="this.openModalDelete(element)">delete_forever</mat-icon>
 
                 </td>
             </ng-container>

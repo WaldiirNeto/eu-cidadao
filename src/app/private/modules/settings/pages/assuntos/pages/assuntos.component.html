@@ -19,7 +19,7 @@
                     </app-input-form>
                     <mat-icon class="icon-delete" *ngIf="this.showIcon">delete_forever</mat-icon>
                 </form>
-                <button class="cadastrar-assunto" (click)="this.openDialog()">
+                <button *checkPermission="'adicionar_categoria'" class="cadastrar-assunto" (click)="this.openDialog()">
                     <mat-icon>add</mat-icon><span>Cadastrar Assunto</span>
                 </button>
             </div>

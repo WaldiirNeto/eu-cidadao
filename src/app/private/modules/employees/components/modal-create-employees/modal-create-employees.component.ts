@@ -4,7 +4,6 @@ import { FormControl, FormGroup } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { ListCityModel } from '@shared/models/cidade.model'
 import { CityService } from '@shared/services/city.service'
-import { NotifyComponentsService } from '@shared/services/notify-components.service'
 import { SnackBarService } from '@shared/services/snackbar.service'
 import { finalize, Observable, Subject, takeUntil } from 'rxjs'
 import { UpdateEmployeesModel } from '../../models/employees.model'
@@ -27,8 +26,7 @@ export class ModalCreateEmployeesComponent extends FormEmployeesModel implements
     private readonly _employeesService: EmployeesService,
     private readonly _snackBarService: SnackBarService,
     private readonly _dialogRef: MatDialogRef<ModalCreateEmployeesComponent>,
-    private readonly _cityService: CityService,
-    private _notifyComponents: NotifyComponentsService) {
+    private readonly _cityService: CityService) {
     super()
   }
 

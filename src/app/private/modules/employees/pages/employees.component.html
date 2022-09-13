@@ -21,7 +21,7 @@
                         delete_forever
                     </mat-icon>
                 </form>
-                <button class="button-primary" (click)="this.openDialog()">
+                <button *checkPermission="'criar_usuario'" class="button-primary" (click)="this.openDialog()">
                     <mat-icon>add</mat-icon><span>Cadastrar usuário</span>
                 </button>
             </div>

@@ -4,4 +4,5 @@ export * from './type-snackbar.model'
 export * from './user.model'
 export * from './cidade.model'
 export * from './paginacao.model'
+export * from './token.model'
 

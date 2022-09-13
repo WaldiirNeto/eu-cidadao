@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { SnackBarService } from '@shared/services/snackbar.service'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { SortTableComponent } from '@shared/components/sort-table/sort-table.component'
+import { CheckPermissionDirective } from '@shared/directives/check-permission.directive'
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SortTableComponent } from '@shared/components/sort-table/sort-table.com
     PaginationComponent,
     MatFormFieldModule,
     MatPaginatorModule,
-    SortTableComponent
+    SortTableComponent,
+    CheckPermissionDirective
   ],
   providers: [SnackBarService]
 })

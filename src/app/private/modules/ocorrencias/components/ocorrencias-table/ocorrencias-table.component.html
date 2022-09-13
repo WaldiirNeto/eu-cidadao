@@ -77,8 +77,11 @@
                         <div class="d-flex">
                             <div style="width: 100px;">{{ocorrencia.situacao.nome}}
                             </div>
-                            <mat-icon (click)="this.openModalDetails(ocorrencia, 'view')">search</mat-icon>
-                            <mat-icon (click)="this.openModalDetails(ocorrencia, 'edit')">edit</mat-icon>
+                            <mat-icon *checkPermission="'ver_ocorrencia'"
+                                (click)="this.openModalDetails(ocorrencia, 'view')">search</mat-icon>
+                            <mat-icon *checkPermission="'editar_ocorrencia'"
+                                (click)="this.openModalDetails(ocorrencia, 'edit')">
+                                edit</mat-icon>
                         </div>
                     </td>
                 </ng-container>

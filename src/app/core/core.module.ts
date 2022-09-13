@@ -9,7 +9,11 @@ import { UnauthorizeInterceptor } from './interception/interceptor.interceptor'
 @NgModule({
     imports: [HttpClientModule],
     exports: [HttpClientModule],
-    providers: [HttpPublicClientService, HttpPrivateClientService, TokenService, UserService,
+    providers: [
+        HttpPublicClientService,
+        HttpPrivateClientService,
+        TokenService,
+        UserService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: UnauthorizeInterceptor,

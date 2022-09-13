@@ -21,6 +21,7 @@ import { SnackBarService } from '@shared/services/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
+import { CheckPermissionDirective } from '@shared/directives/check-permission.directive'
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MatSelectModule } from '@angular/material/select'
     MatCheckboxModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    CheckPermissionDirective
   ],
   providers: [SnackBarService]
 })
