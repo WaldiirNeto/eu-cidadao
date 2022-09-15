@@ -50,6 +50,13 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
       }
       this.form.controls.localizacao.setValue(localizacao)
     }
+    if (this.data.type === `view`) {
+      this.form.controls.CategoriaId.disable()
+      this.form.controls.subCategoriaOcorrenciaId.disable()
+      this.form.controls.subCategoriaOcorrenciaId.disable()
+
+
+    }
     this._buscarCategorias()
     this._getUserLocal()
   }

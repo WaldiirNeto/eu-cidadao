@@ -3,13 +3,13 @@
         <div class="d-flex justify-content-between mb-4">
             <span></span>
             <p style="font-weight: 700;
-        font-size: 20px;">Selecionar motivo da recusa</p>
+        font-size: 20px;">Selecionar Motivo da Recusa</p>
             <mat-icon (click)="this.close()" class="cancel-dialog-intern">cancel
             </mat-icon>
         </div>
         <div style="width: 100%">
             <mat-form-field appearance="outline" floatLabel="always" style="width: 100%;" class="mb-4">
-                <mat-select placeholder="Selecione o motivo" (selectionChange)="this.checkMotivo($event)">
+                <mat-select placeholder="Selecione o Motivo" (selectionChange)="this.checkMotivo($event)">
                     <mat-option *ngFor="let situacao of this.listSituacao" [value]="situacao.id">
                         <span> {{situacao.nome}}</span>
                     </mat-option>

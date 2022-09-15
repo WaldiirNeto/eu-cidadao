@@ -1,4 +1,5 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { passwordValidator } from '@helpers/check-passwords'
 import { isValidCPF } from '@helpers/cpf-validator'
 
 interface FormProfileInterface {
@@ -14,6 +15,7 @@ interface FormProfileInterface {
     cidadaoId: FormControl<string | null>
     senhaAtual: FormControl<string | null>,
     novaSenha: FormControl<string | null>,
+    confirmarNovaSenha: FormControl<string | null>,
     foto: FormControl<string | null>
 }
 
@@ -38,6 +40,7 @@ export class FormProfileModel {
             cidadaoId: new FormControl('', [Validators.required]),
             senhaAtual: new FormControl(''),
             novaSenha: new FormControl(''),
+            confirmarNovaSenha: new FormControl('', [passwordValidator]),
             foto: new FormControl('')
         })
     }

@@ -44,7 +44,7 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
         takeUntil(this._destroy$),
         filter(checkFilter => checkFilter && checkFilter.type === NotificationEnum.updateTableAssunto))
       .subscribe((_) => {
-        this.filter = { Pagina: 1, TamanhoDaPagina: 10, OrdenarPor: `CategoriaOcorrenciaId`, Ordem: `DESC` }
+        this.filter = { Pagina: 1, TamanhoDaPagina: 10, OrdenarPor: `Ativo`, Ordem: `DESC` }
         this.getListAssuntos()
       })
   }
@@ -125,7 +125,6 @@ export class TableAssuntosComponent implements OnInit, OnDestroy {
             this.listOcurrences = categorias
           },
         error: (error: HttpErrorResponse) => {
-          console.log(error)
           this._snackBarService.open(`Erro ao listar assuntos, motivo: ${error.message}`, `error`)
         }
       })

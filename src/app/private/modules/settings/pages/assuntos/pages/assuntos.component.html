@@ -1,6 +1,6 @@
 <section class="container-fluid">
     <app-box>
-        <h1>Gerenciar assuntos</h1>
+        <h1>Gerenciar Categorias</h1>
 
         <div class="col-12">
             <div class="d-flex flex-row-reverse">
@@ -14,13 +14,13 @@
             </div>
             <div class="input-form">
                 <form [formGroup]="this.formFilter" class="form">
-                    <app-input-form controlName="assunto" placeholder="Pesquise por assunto" label="Pesquisar assunto"
-                        icon="search">
+                    <app-input-form controlName="assunto" placeholder="Pesquise por Categoria"
+                        label="Pesquisar Categoria" icon="search">
                     </app-input-form>
                     <mat-icon class="icon-delete" *ngIf="this.showIcon">delete_forever</mat-icon>
                 </form>
                 <button *checkPermission="'adicionar_categoria'" class="cadastrar-assunto" (click)="this.openDialog()">
-                    <mat-icon>add</mat-icon><span>Cadastrar Assunto</span>
+                    <mat-icon>add</mat-icon><span>Cadastrar Categoria</span>
                 </button>
             </div>
             <app-table-assuntos (tableEmit)="this.showIconDelete($event)"></app-table-assuntos>

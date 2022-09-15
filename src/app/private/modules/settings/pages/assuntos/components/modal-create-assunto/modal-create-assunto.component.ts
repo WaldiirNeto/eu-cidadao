@@ -19,6 +19,7 @@ export class ModalCreateAssuntoComponent extends FormAssuntoModel implements OnI
   protected loading: boolean
   private _destroy$ = new Subject()
   public listCategoria: Array<{ nome: string, descricao: string }> = [];
+  private _isEdit: boolean = false
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public assunto: CreateAssuntoFormModel,
@@ -31,6 +32,7 @@ export class ModalCreateAssuntoComponent extends FormAssuntoModel implements OnI
 
   ngOnInit(): void {
     if (this.assunto) {
+      this._isEdit = true
       this.form.patchValue(this.assunto)
       this.listCategoria = this.assunto.subCategoriasOcorrencias
     }
@@ -42,11 +44,14 @@ export class ModalCreateAssuntoComponent extends FormAssuntoModel implements OnI
 
   public populateListSubCategorias(): void {
     const categoria = this.form.controls.categorias.value as string
-    const checkIfRepeatCategoria = this.listCategoria.some((categoriaArray) => categoriaArray.nome === categoria)
 
-    if (!checkIfRepeatCategoria) {
-      this.listCategoria.push({ nome: categoria, descricao: categoria })
-      this.form.controls.subCategoriasOcorrencias.setValue(this.listCategoria)
+    if (categoria) {
+      const checkIfRepeatCategoria = this.listCategoria.some((categoriaArray) => categoriaArray.nome === categoria)
+
+      if (!checkIfRepeatCategoria) {
+        this.listCategoria.push({ nome: categoria, descricao: categoria })
+        this.form.controls.subCategoriasOcorrencias.setValue(this.listCategoria)
+      }
     }
   }
 
@@ -78,7 +83,15 @@ export class ModalCreateAssuntoComponent extends FormAssuntoModel implements OnI
     }
   }
 
-  createAssunto(): void {
+  public prepareRequest(): void {
+    if (this._isEdit) {
+      this.editarAssunto()
+    } else {
+      this.createAssunto()
+    }
+  }
+
+  private createAssunto(): void {
     this.loading = true
     const payload = this.form.value as CreateAssuntoFormModel
     this._assuntoService.cadastrarAssunto(payload)
@@ -94,6 +107,26 @@ export class ModalCreateAssuntoComponent extends FormAssuntoModel implements OnI
         },
         error: (error: HttpErrorResponse) => {
           this._snackBarService.open(`Não foi possível cadastrar o assunto, motivo: ${error.message}`, 'error')
+        }
+      }))
+  }
+
+  private editarAssunto(): void {
+    this.loading = true
+    const payload = this.form.value as CreateAssuntoFormModel
+    this._assuntoService.editarAssunto(payload)
+      .pipe(
+        takeUntil(this._destroy$),
+        finalize(() => this.loading = false)
+      )
+      .subscribe(({
+        next: (_) => {
+          this._snackBarService.open(`Categoria editada com sucesso`, 'success')
+          this._notifyComponent.setNotification(NotificationEnum.updateTableAssunto)
+          this._dialog.close()
+        },
+        error: (error: HttpErrorResponse) => {
+          this._snackBarService.open(`Não foi possível editar a categoria, motivo: ${error.message}`, 'error')
         }
       }))
   }

@@ -1,23 +1,23 @@
 <section class="filter-relatorios">
     <app-box>
         <h1>Relatórios</h1>
-        <p>Pesquisar por</p>
+        <p>Pesquisar Por</p>
         <form [formGroup]="this.form" class="col-12" (submit)="this.navigateToManager()">
             <div class="row col-8">
                 <div class="col-4">
-                    <app-input-form controlName="data_inicial" label="Período de" type="date"
-                        placeholder="Digite a data inicial"></app-input-form>
+                    <app-input-form controlName="data_inicial" label="Período De" type="date"
+                        placeholder="Digite a Data Inicial"></app-input-form>
                 </div>
                 <div class="col-4">
-                    <app-input-form controlName="data_final" label="Período até" type="date"
-                        placeholder="Digite a data final"></app-input-form>
+                    <app-input-form controlName="data_final" label="Período Até" type="date"
+                        placeholder="Digite a Data Final"></app-input-form>
                 </div>
             </div>
             <div class="row col-8">
                 <div class="col-4">
-                    <mat-label>Assunto</mat-label>
+                    <mat-label>Categoria</mat-label>
                     <mat-form-field appearance="outline" floatLabel="always">
-                        <mat-select formControlName="CategoriaId" placeholder="Selecione o assunto"
+                        <mat-select formControlName="CategoriaId" placeholder="Selecione a Categoria"
                             (selectionChange)="this.filtraSubCategoria($event)">
                             <mat-option *ngFor="let categoria of this.listCategorias" [value]="categoria.id">
                                 <img class="example-option-img" aria-hidden [src]="categoria.caminhoImagemMenu"
@@ -28,9 +28,9 @@
                     </mat-form-field>
                 </div>
                 <div class="col-4">
-                    <mat-label>Categoria</mat-label>
+                    <mat-label>Sub Categoria</mat-label>
                     <mat-form-field appearance="outline" floatLabel="always">
-                        <mat-select formControlName="SubCategoriaId" placeholder="Selecione a categoria">
+                        <mat-select formControlName="SubCategoriaId" placeholder="Selecione a Sub Categoria">
                             <mat-option *ngFor="let subCategoria of this.listSubCategorias" [value]="subCategoria.id">
                                 <span> {{subCategoria.nome}}</span>
                             </mat-option>
@@ -40,13 +40,13 @@
             </div>
             <div class="row col-8">
                 <div class="col-4">
-                    <app-input-form controlName="bairro" label="Bairro" placeholder="Filtrar por">
+                    <app-input-form controlName="bairro" label="Bairro" placeholder="Filtrar Por">
                     </app-input-form>
                 </div>
                 <div class="col-4">
                     <mat-label>Situação</mat-label>
                     <mat-form-field appearance="outline" floatLabel="always">
-                        <mat-select formControlName="SituacaoId" placeholder="Selecione a situação">
+                        <mat-select formControlName="SituacaoId" placeholder="Selecione a Situação">
                             <mat-option *ngFor="let situacao of this.listSituacao" [value]="situacao.id">
                                 <span> {{situacao.nome}}</span>
                             </mat-option>
@@ -66,9 +66,9 @@
                     </mat-form-field>
                 </div>
                 <div class="col-4">
-                    <mat-label>Tipo do relatório</mat-label>
+                    <mat-label>Tipo do Relatório</mat-label>
                     <mat-form-field appearance="outline" floatLabel="always">
-                        <mat-select formControlName="tipoRelatorio" placeholder="Selecione o tipo do relatório">
+                        <mat-select formControlName="tipoRelatorio" placeholder="Selecione o tipo do Relatório">
                             <mat-option *ngFor="let type of this.typeReport" [value]="type">
                                 {{type}}
                             </mat-option>

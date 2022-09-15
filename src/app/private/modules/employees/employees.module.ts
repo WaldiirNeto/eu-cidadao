@@ -22,6 +22,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
 import { CheckPermissionDirective } from '@shared/directives/check-permission.directive'
+import { SortTableComponent } from '@shared/components/sort-table/sort-table.component'
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CheckPermissionDirective } from '@shared/directives/check-permission.di
     MatSnackBarModule,
     MatFormFieldModule,
     MatSelectModule,
-    CheckPermissionDirective
+    CheckPermissionDirective,
+    SortTableComponent
   ],
   providers: [SnackBarService]
 })

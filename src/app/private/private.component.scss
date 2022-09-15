@@ -43,8 +43,16 @@
                 }
 
                 &__user {
-                    text-align: center;
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
                     margin-top: 20px;
+
+                    .margin {
+                        color: $primary;
+                        height: 50px;
+                        width: 50px;
+                    }
                 }
 
                 &__links {

@@ -8,6 +8,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { PrivateRoutingModule } from './private-routing.module'
 import { PrivateComponent } from './private.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatTooltipModule } from '@angular/material/tooltip'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
     MatSidenavModule,
     MatExpansionModule,
     BsDropdownModule.forRoot(),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTooltipModule
   ]
 })
 export class PrivateModule { }

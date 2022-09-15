@@ -2,7 +2,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 interface FormCreateNotificationInterface {
     titulo: FormControl<string | null>
-    categoriaId: FormControl<string | null>
+    categoriaId: FormControl<string | number | null>
     criticidade: FormControl<string | null>,
     cidadeId: FormControl<string | null>
     link: FormControl<string | null>,

@@ -3,6 +3,7 @@ import { SubCategoriaCreateModel } from './assunto.model'
 
 
 interface FormcreateAssuntoInterface {
+    id?: FormControl<number | null>
     nome: FormControl<string | null>,
     descricao: FormControl<string | null>,
     ativo: FormControl<boolean | null>,
@@ -20,6 +21,7 @@ export class FormAssuntoModel {
 
     private formBuilder(): void {
         this.form = new FormGroup<FormcreateAssuntoInterface>({
+            id: new FormControl(),
             nome: new FormControl('', [Validators.required]),
             descricao: new FormControl('', [Validators.required]),
             ativo: new FormControl(true, [Validators.required]),

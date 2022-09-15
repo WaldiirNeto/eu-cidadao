@@ -82,6 +82,17 @@ export class ProfileComponent extends FormProfileModel implements OnInit, OnDest
     }
   }
 
+  public get getPasswordTextError(): string {
+
+    const checkPassword = this.form.controls.confirmarNovaSenha.errors?.['passwordNotEqual']
+    if (checkPassword) {
+      return `Senhas não coincidem`
+    } else {
+      return `Campo obrigatório`
+    }
+  }
+
+
   public checkPasswordValid(): boolean {
     if (this.form.controls.novaSenha.value != '') {
       return [
@@ -110,12 +121,13 @@ export class ProfileComponent extends FormProfileModel implements OnInit, OnDest
 
   public updateUser(): void {
     this.loading = true
-    const payload = this.form.value as UserUpdateModel
+    let payload = this.form.value as UserUpdateModel
 
     if (this.form.controls.novaSenha.value === '') {
       delete payload['senha'] // backend precisa remover a obrigatoriedade do campo
     } else {
       this.form.controls.senha.setValue(this.form.controls.novaSenha.value)
+      payload = this.form.value as UserUpdateModel
     }
     this._userService.updateUser(payload)
       .pipe((takeUntil(this._destroy$)), finalize(() => this.loading = false))

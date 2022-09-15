@@ -76,7 +76,8 @@ export class ModalCreateEmployeesComponent extends FormEmployeesModel implements
 
         },
         error: (error: HttpErrorResponse) => {
-          this._snackBarService.open(`Não foi possível editar o usuário: motivo ${error.message}`, 'error')
+          console.log(error)
+          this._snackBarService.open(`Não foi possível editar o usuário, motivo: ${error.error.join(',')}`, 'error')
         }
       })
   }

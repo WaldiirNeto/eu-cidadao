@@ -15,6 +15,10 @@ export class AssuntoService {
     return this._http.post(API_URL.CATEGORIAS, payload)
   }
 
+  public editarAssunto(payload: CreateAssuntoFormModel): Observable<void> {
+    return this._http.put(API_URL.CATEGORIAS, payload)
+  }
+
   public deletarAssunto(id: number): Observable<void> {
     return this._http.delete(API_URL.CATEGORIA_ID(id))
   }

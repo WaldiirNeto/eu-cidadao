@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors } from '@angular/forms'
+import { AbstractControl } from '@angular/forms'
 
 export function isValidCPF(control: AbstractControl): { [key: string]: any } | null {
     const cpf: string = control.value.replace(/[^\d]+/g, '')

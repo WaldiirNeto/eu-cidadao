@@ -1,19 +1,19 @@
 <section class="modal-detalhes-notificacao">
     <div mat-dialog-title>
-        <h5>Cadastrar notificação</h5>
+        <h5>Cadastrar Notificação</h5>
 
     </div>
     <form [formGroup]="this.form" (submit)="this.publishNotification()">
         <mat-dialog-content class="mat-typography">
             <div class="row col-12">
                 <div class="col-md-4">
-                    <app-input-form label="Título" controlName="titulo" placeholder="digite o título" type="text">
+                    <app-input-form label="Título" controlName="titulo" placeholder="digite o Título" type="text">
                     </app-input-form>
                 </div>
                 <div class="col-md-4">
                     <mat-label>Categoria</mat-label>
                     <mat-form-field appearance="outline" floatLabel="always">
-                        <mat-select formControlName="categoriaId" placeholder="Selecione a categoria">
+                        <mat-select formControlName="categoriaId" placeholder="Selecione a Categoria">
                             <ng-container *ngIf="(this.listSelects$ | async) as listCategory">
                                 <mat-option *ngFor="let category of listCategory[1].lista" [value]="category.id">
                                     <img class="example-option-img" aria-hidden [src]="category.caminhoImagemMenu"
@@ -28,7 +28,7 @@
                 <div class="col-md-4">
                     <mat-label>Criticidade</mat-label>
                     <mat-form-field appearance="outline" floatLabel="always">
-                        <mat-select formControlName="criticidade" placeholder="Selecione a criticidade">
+                        <mat-select formControlName="criticidade" placeholder="Selecione a Criticidade">
 
                             <mat-option *ngFor="let criticidade of this.listCriticidade" [value]="criticidade.id">
                                 <span> {{criticidade.description}}</span>
@@ -39,7 +39,7 @@
                 <div class="col-md-4">
                     <mat-label>Cidade</mat-label>
                     <mat-form-field appearance="outline" floatLabel="always">
-                        <mat-select formControlName="cidadeId" placeholder="Selecione a cidade">
+                        <mat-select formControlName="cidadeId" placeholder="Selecione a Cidade">
                             <ng-container *ngIf="(this.listSelects$ | async) as listCity">
                                 <mat-option *ngFor="let city of listCity[0].lista" [value]="city.id">
                                     <span> {{city.nome}}</span>
@@ -49,31 +49,37 @@
                     </mat-form-field>
                 </div>
                 <div class="col-md-4">
-                    <app-input-form label="Link" controlName="link" placeholder="adicione um link válido" type="text">
+                    <app-input-form label="Link" controlName="link" placeholder="Adicione um link válido" type="text">
                     </app-input-form>
                 </div>
                 <div class="col-md-4">
-                    <app-input-form label="Cor de fundo" controlName="corBackground" placeholder="adicione uma cor"
+                    <app-input-form label="Cor de fundo" controlName="corBackground" placeholder="Adicione uma vor"
                         type="color">
                     </app-input-form>
                 </div>
                 <div class="col-md-4">
-                    <app-input-form label="Cor do texto" controlName="corTexto" placeholder="adicione uma cor"
+                    <app-input-form label="Cor do texto" controlName="corTexto" placeholder="Adicione uma cor"
                         type="color">
                     </app-input-form>
                 </div>
+
+                <div class="col-md-12">
+                    <textarea rows="5" class="form-control" id="textAreaDescription"
+                        aria-describedby="textAreaDescription" placeholder="Digite a Descrição"
+                        formControlName="descricao"></textarea>
+                </div>
             </div>
-            <div class="row">
-                <textarea class="form-control" id="textAreaDescription" aria-describedby="textAreaDescription"
-                    placeholder=" Digite a descrição" formControlName="descricao"></textarea>
-            </div>
+
         </mat-dialog-content>
-        <mat-dialog-actions align="end">
-            <div class="d-flex justify-content-end">
-                <button class="button-cancel" mat-button mat-dialog-close>Cancelar</button>
-                <app-submit-button [disabled]="this.form.invalid || this.loading" [loading]="this.loading">Publicar
-                    notificação</app-submit-button>
-            </div>
-        </mat-dialog-actions>
+        <div class="row col-12">
+            <mat-dialog-actions align="end">
+                <div class="d-flex justify-content-end">
+                    <button class="button-cancel" mat-button mat-dialog-close>Cancelar</button>
+                    <app-submit-button [disabled]="this.form.invalid || this.loading" [loading]="this.loading">Publicar
+                        Notificação</app-submit-button>
+                </div>
+            </mat-dialog-actions>
+
+        </div>
     </form>
 </section>

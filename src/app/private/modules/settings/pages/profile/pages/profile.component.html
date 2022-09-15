@@ -21,12 +21,12 @@
         <form [formGroup]="this.form" (submit)="this.updateUser()">
             <div class="d-flex col-12">
                 <div class="col-6" style="margin-right: 5px">
-                    <app-input-form controlName="firstName" placeholder="Digite o nome completo" label="Primeiro nome">
+                    <app-input-form controlName="firstName" placeholder="Digite o Nome Completo" label="Primeiro Nome">
                     </app-input-form>
                 </div>
 
                 <div class="col-6" style="margin-right: 5px">
-                    <app-input-form controlName="lastName" placeholder="Digite o nome completo" label="Último nome">
+                    <app-input-form controlName="lastName" placeholder="Digite o Último Nome" label="Último Nome">
                     </app-input-form>
                 </div>
             </div>
@@ -46,14 +46,14 @@
             <div class="d-flex col-12">
                 <div class="col-6" style="margin-right: 5px">
                     <app-input-form type="date" style="margin-right: 5px" controlName="dataDeNascimento"
-                        placeholder="Data de nascimento" label="Data de nascimento">
+                        placeholder="Data de nascimento" label="Data de Nascimento">
                     </app-input-form>
                 </div>
 
                 <div class="col-6">
                     <mat-label>Cidade</mat-label>
                     <mat-form-field appearance="outline" floatLabel="always">
-                        <mat-select formControlName="cidadeId" placeholder="Selecione a cidade">
+                        <mat-select formControlName="cidadeId" placeholder="Selecione a Cidade">
                             <ng-container *ngIf="(this.listSelects$ | async) as listCity">
                                 <mat-option *ngFor="let city of listCity.lista" [value]="city.id">
                                     <span> {{city.nome}}</span>
@@ -67,16 +67,21 @@
 
             <div class="col-6">
                 <app-input-form controlName="celular" mask="(00)00000-0000" placeholder="(00)00000-0000"
-                    label="Digite seu celular">
+                    label="Digite seu Celular">
                 </app-input-form>
             </div>
 
             <div class="col-6">
-                <h1>Configurações da senha</h1>
-                <app-input-form controlName="senhaAtual" placeholder="digite sua senha" label="Senha atual">
+                <h1>Configurações da Senha</h1>
+                <app-input-form controlName="senhaAtual" placeholder="digite sua Senha" label="Senha Atual"
+                    type="password">
                 </app-input-form>
-                <app-input-form type="password" controlName="novaSenha" placeholder="digite a nova senha"
+                <app-input-form type="password" controlName="novaSenha" placeholder="digite a Nova Senha"
                     label="Nova senha">
+                </app-input-form>
+
+                <app-input-form type="password" controlName="confirmarNovaSenha" placeholder="confirme a senha"
+                    label="Confirmar Senha" [textError]="this.getPasswordTextError">
                 </app-input-form>
             </div>
             <div class="info-senha">
@@ -84,27 +89,27 @@
                 <p [class]="'senha-erro-' + !this.invalidLengthPass">
                     <mat-icon *ngIf="!this.invalidLengthPass">close</mat-icon>
                     <mat-icon *ngIf="this.invalidLengthPass">check</mat-icon>
-                    <span>8 caracteres</span>
+                    <span>8 Caracteres</span>
                 </p>
                 <p [class]="'senha-erro-' + !this.invalidUppercasePass">
                     <mat-icon *ngIf="!this.invalidUppercasePass">close</mat-icon>
                     <mat-icon *ngIf="this.invalidUppercasePass">check</mat-icon>
-                    <span>1 maiúscula</span>
+                    <span>1 Maiúscula</span>
                 </p>
                 <p [class]="'senha-erro-' + !this.invalidLowercasePass">
                     <mat-icon *ngIf="!this.invalidLowercasePass">close</mat-icon>
                     <mat-icon *ngIf="this.invalidLowercasePass">check</mat-icon>
-                    <span>1 letra minúscula</span>
+                    <span>1 Letra minúscula</span>
                 </p>
                 <p [class]="'senha-erro-' + !this.invalidNumberPass">
                     <mat-icon *ngIf="!this.invalidNumberPass">close</mat-icon>
                     <mat-icon *ngIf="this.invalidNumberPass">check</mat-icon>
-                    <span>1 número</span>
+                    <span>1 Número</span>
                 </p>
                 <p [class]="'senha-erro-' + !this.invalidCharacterSpecialExist">
                     <mat-icon *ngIf="!this.invalidCharacterSpecialExist">close</mat-icon>
                     <mat-icon *ngIf="this.invalidCharacterSpecialExist">check</mat-icon>
-                    <span>1 caractere especial (ex:#!*_&)</span>
+                    <span>1 Caractere especial (ex:#!*_&)</span>
                 </p>
             </div>
             <div class="d-flex" style=" margin-top: 20px;">

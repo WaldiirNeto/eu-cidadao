@@ -34,14 +34,16 @@
     }
 
     .button-recusar-ocorrencia {
-        background: white;
+        background: $text-error;
+        ;
         border: 1px solid black;
         border-radius: 8px;
-        border: 1px solid $red-color;
+        border: 1px solid $text-error;
         border-radius: 8px;
-        width: 150px;
+        color: white;
         height: 48px;
         margin-right: 10px;
+        width: 190px;
     }
 
     .button-despachar-ocorrencia {
@@ -66,7 +68,6 @@
         &__container {
             background: rgba(224, 224, 224, 0.5);
             border-radius: 8px;
-            opacity: 0.7;
         }
     }
 
