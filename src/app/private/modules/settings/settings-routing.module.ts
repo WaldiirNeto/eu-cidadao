@@ -29,6 +29,7 @@ const routes: Routes =
 
     {
       path: 'assuntos',
+      title: `EU CIDADÃO | NÃO PERMITIDO`,
       loadComponent: () => import('@shared/components/without-permission/without-permission.component')
         .then(component => component.WithoutPermissionComponent)
     },
