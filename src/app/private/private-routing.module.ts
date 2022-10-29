@@ -28,6 +28,10 @@ const routes: Routes = [
   {
     path: 'notifications', loadChildren: () => import('./modules/notifications/notifications.module').then(m => m.NotificationsModule),
     title: 'EU CIDADÃO | Notificações'
+  },
+  {
+    path: 'plebiscito', loadChildren: () => import('./modules/plebiscito/plebiscito.module').then(m => m.PlebiscitoModule),
+    title: 'EU CIDADADÃO | Plebiscito'
   }
 ]
 @NgModule({
