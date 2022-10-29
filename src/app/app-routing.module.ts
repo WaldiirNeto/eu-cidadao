@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core'
-import { PreloadAllModules, PreloadingStrategy, RouterModule, Routes } from '@angular/router'
-import { LoginGuard } from '@core/guards/login.guard'
+import { RouterModule, Routes } from '@angular/router'
 import { CustomPreloadingStrategyService } from '@core/pre-loader-modules/preloading-strategy.service'
 import { Shell } from '@core/shell/shell.service'
 import { PrivateComponent } from './private/private.component'

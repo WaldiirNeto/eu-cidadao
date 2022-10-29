@@ -14,7 +14,4 @@ export default class API_URL {
   static readonly NOTIFICATIONS = `${environment.apiUrl}/Notificacao`
   static readonly NOTIFICATION_ID = (id: number) => `${environment.apiUrl}/Notificacao/${id}`
   static readonly EMPLOYEE = `${environment.apiUrl}/Autenticacao/Funcionario/Registrar`
-
-
-
 }

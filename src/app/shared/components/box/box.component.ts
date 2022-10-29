@@ -6,7 +6,4 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./box.component.scss'],
   standalone: true
 })
-export class BoxComponent {
-
-
-}
+export class BoxComponent { }

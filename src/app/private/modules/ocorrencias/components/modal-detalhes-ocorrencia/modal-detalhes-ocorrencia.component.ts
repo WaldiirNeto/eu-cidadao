@@ -3,7 +3,6 @@ import { Component, Inject, OnDestroy, OnInit } from '@angular/core'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { MatSelectChange } from '@angular/material/select'
-import { throwToolbarMixedModesError } from '@angular/material/toolbar'
 import { UserService } from '@core/user/user.service'
 import { CategoriaModel, ListCategoriaModel, SubCategoriaOcorrenciaModel } from '@shared/models/categoria.model'
 import { SituacaoModel } from '@shared/models/situacao.model'
@@ -11,7 +10,6 @@ import { CategoriasService } from '@shared/services/categorias.service'
 import { SnackBarService } from '@shared/services/snackbar.service'
 import { finalize, Subject, takeUntil } from 'rxjs'
 import { FormModalDetalhesModel } from '../../models/form-modal-detalhes-ocorrencia.model'
-import { OcorrenciaModel } from '../../models/ocorrencia.model'
 import { OcorrenciasService } from '../../services/ocorrencias.service'
 
 @Component({
@@ -54,13 +52,11 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
       this.form.controls.CategoriaId.disable()
       this.form.controls.subCategoriaOcorrenciaId.disable()
       this.form.controls.subCategoriaOcorrenciaId.disable()
-
-
     }
+
     this._buscarCategorias()
     this._getUserLocal()
   }
-
 
   public filtraSubCategoria(event: MatSelectChange): void {
     const categoriaId = event.value
@@ -106,7 +102,7 @@ export class ModalDetalhesOcorrenciaComponent extends FormModalDetalhesModel imp
 
   public mudarSituacaoOcorrencia(event: MatCheckboxChange): void {
     if (event.checked) {
-      // ID da ocorrencia tratada
+      // ID  status tratada
       this.form.controls.situacaoId.setValue(4)
     } else {
       this.form.controls.situacaoId.setValue(this.data.ocurrence.situacaoId)

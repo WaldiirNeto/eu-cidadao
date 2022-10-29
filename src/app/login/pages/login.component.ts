@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnDestroy } from '@angular/core'
 import { SnackBarService } from '@shared/services/snackbar.service'
 import { SnackBarTypeModel } from '@shared/models/type-snackbar.model'
 
@@ -14,7 +14,7 @@ import { Router } from '@angular/router'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent extends FormLoginModel {
+export class LoginComponent extends FormLoginModel implements OnDestroy {
   protected loading: boolean
   protected hiddenForm: boolean = false
   protected destroy$ = new Subject()
@@ -45,5 +45,10 @@ export class LoginComponent extends FormLoginModel {
 
   protected closeForm(isShow: boolean): void {
     this.hiddenForm = isShow
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(null)
+    this.destroy$.complete()
   }
 }

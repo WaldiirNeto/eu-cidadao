@@ -3,7 +3,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { NotifyComponentsService } from '@shared/services/notify-components.service'
 import { SnackBarService } from '@shared/services/snackbar.service'
-import { Console } from 'console'
 import { filter, finalize, Subject, takeUntil } from 'rxjs'
 import { NotificationEnum } from 'src/app/shared/enums/notification.enum'
 import { SubCategoriaOcorrenciaModel } from '../../../ocorrencias/models/ocorrencia.model'
@@ -53,7 +52,6 @@ export class NotificationsTableComponent implements OnInit, OnDestroy {
       width: `80%`
     })
   }
-
 
   public openModalDelete(notification: NotificationModel): void {
     this._dialog.open(ModalDeleteNotificationComponent, {

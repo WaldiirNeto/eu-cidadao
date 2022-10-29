@@ -33,7 +33,7 @@
       "@core/*": ["src/app/core/*"]
 
   },
-  "types": ["node"],
+  "types": ["node", "jest"],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

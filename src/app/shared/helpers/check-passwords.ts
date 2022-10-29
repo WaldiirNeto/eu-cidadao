@@ -1,14 +1,10 @@
-import { AbstractControl, Validators } from '@angular/forms'
+import { AbstractControl } from '@angular/forms'
 
-export function passwordValidator(control: AbstractControl): { [key: string]: any } | null {
-
+export function passwordValidator(control: AbstractControl): { [key: string]: unknown } | null {
     const novaSenha = control.parent?.get(`novaSenha`)?.value
-    console.log(novaSenha)
     if (novaSenha) {
-        console.log(`existe senha`)
         if (novaSenha === control.value) {
             console.log(`senhas são iguais`)
-
             return null
         }
         else {
@@ -18,7 +14,6 @@ export function passwordValidator(control: AbstractControl): { [key: string]: an
             }
         }
     } else {
-        console.log(`nova senha sem valores`)
         return null
     }
 }
