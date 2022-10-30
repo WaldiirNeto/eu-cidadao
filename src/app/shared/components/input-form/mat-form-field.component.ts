@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { MatIconModule } from '@angular/material/icon'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import {
@@ -11,7 +11,9 @@ import {
 import { MatInputModule } from '@angular/material/input'
 import { DateAdapter, MatNativeDateModule } from '@angular/material/core'
 import { SharedModule } from '../../module/shared.module'
-import { MatSelectModule } from '@angular/material/select'
+import { MatSelectChange, MatSelectModule } from '@angular/material/select'
+import { Observable } from 'rxjs'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 @Component({
   selector: 'app-input-form',
@@ -26,7 +28,8 @@ import { MatSelectModule } from '@angular/material/select'
     MatDatepickerModule,
     MatNativeDateModule,
     SharedModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [MatDatepickerModule],
   styleUrls: ['mat-form-field.component.scss'],
@@ -39,7 +42,8 @@ export class MatFormFieldComponent implements OnInit {
   @Input() controlName: string
   @Input() mask: string
   @Input() textError: string
-  @Input() listSelect: Array<{ id: any, value: any }>
+  @Input() listSelect$: Observable<Array<{ id: unknown, value: unknown, icon?: string }>>
+  @Output() selectionChange: EventEmitter<MatSelectChange> = new EventEmitter<MatSelectChange>()
 
   protected form: FormGroup
 
@@ -47,7 +51,11 @@ export class MatFormFieldComponent implements OnInit {
     _dateAdapter.setLocale('pt-BR')
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = this._controlContainer.control as FormGroup
+  }
+
+  protected selectItem(matSelectChange: MatSelectChange): void {
+    this.selectionChange.emit(matSelectChange)
   }
 }

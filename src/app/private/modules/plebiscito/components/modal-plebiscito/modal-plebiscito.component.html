@@ -1,0 +1,37 @@
+<section class="modal-plebiscito">
+    <div mat-dialog-title>
+        <h5>Cadastrar Plebiscito</h5>
+
+    </div>
+    <form [formGroup]="this.form">
+        <div class="row col-12">
+            <div class="col">
+                <app-input-form label="Título" controlName="nome" placeholder="digite o Título" type="text">
+                </app-input-form>
+            </div>
+            <div class="col-md-12">
+                <textarea rows="5" class="form-control" id="textAreaDescription" aria-describedby="textAreaDescription"
+                    placeholder="Digite a Descrição" formControlName="descricao"></textarea>
+            </div>
+
+            <div class="col-md-12">
+                <app-input-form label="Data de Encerramento" controlName="dataEncerramento"
+                    placeholder="Adicione uma vor" type="date">
+                </app-input-form>
+            </div>
+
+            <div class="col-md-6">
+                <app-input-form (selectionChange)="this.filtraSubCategoria($event)" [listSelect$]="this.categorias$"
+                    label="Assunto do Plebiscito" controlName="categoriaId" placeholder="Selecione" type="select">
+                </app-input-form>
+            </div>
+            <div class="col-md-6">
+                <app-input-form [listSelect$]="this.subCategorias$" label="Categoria" controlName="subCategoriaId"
+                    placeholder="Selecione" type="select">
+                </app-input-form>
+            </div>
+
+        </div>
+    </form>
+
+</section>

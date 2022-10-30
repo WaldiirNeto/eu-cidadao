@@ -5,4 +5,5 @@ export * from './user.model'
 export * from './cidade.model'
 export * from './paginacao.model'
 export * from './token.model'
+export * from './list-select-model'
 

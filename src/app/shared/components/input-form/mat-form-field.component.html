@@ -15,12 +15,25 @@
 
         <ng-container *ngIf="this.type === 'select'">
             <mat-form-field appearance="outline" floatLabel="always">
-                <mat-select [formControlName]="this.controlName" [placeholder]="this.placeholder">
-                    <mat-option *ngFor="let item of this.listSelect" [value]="item.id">
-                        {{item.value}}
-                    </mat-option>
+                <mat-select (selectionChange)="this.selectItem($event)" [formControlName]="this.controlName"
+                    [placeholder]="this.placeholder">
+                    <ng-container *ngIf="listSelect$ | async as list; else loading">
+                        <mat-option *ngFor="let item of list" [value]="item.id">
+                            <img class="example-option-img" aria-hidden [src]="item.icon" height="25">
+                            <span>{{item.value}}</span>
+                        </mat-option>
+                    </ng-container>
+                    <ng-template #loading>
+                        <mat-option>
+                            <span class="d-flex justify-content-center align-items-center">
+                                <p style="margin: 0;">Buscando Categorias... </p>
+                                <mat-spinner diameter="25"></mat-spinner>
+                            </span>
+                        </mat-option>
+                    </ng-template>
                 </mat-select>
             </mat-form-field>
+
         </ng-container>
 
 
