@@ -9,6 +9,6 @@ export class CanMatchAdmin implements CanMatch {
   constructor(private readonly _userService: UserService) { }
 
   canMatch() {
-    return this._userService.getUser().pipe(map((user) => user.grupo === PerfilEnum.ADMINISTRADOR ? true : false))
+    return this._userService.getUser().pipe(map((user) => user.grupo.some(grupo => grupo === PerfilEnum.ADMINISTRADOR)))
   }
 }

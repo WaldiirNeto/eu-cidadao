@@ -9,7 +9,7 @@ export interface UserModel {
     cidadeId: number,
     dataNascimento: string,
     roles: Array<any>,
-    grupo: string,
+    grupo: Array<string>,
     celular: string | null,
     nomeCidade: string
 }

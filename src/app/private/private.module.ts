@@ -9,12 +9,14 @@ import { PrivateRoutingModule } from './private-routing.module'
 import { PrivateComponent } from './private.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatTooltipModule } from '@angular/material/tooltip'
+import { SidenavComponent } from '@shared/components/sidenav/sidenav.component'
 
 @NgModule({
   declarations: [
-    PrivateComponent
+    PrivateComponent,
   ],
   imports: [
+    SidenavComponent,
     CommonModule,
     MatIconModule,
     MatToolbarModule,

@@ -13,7 +13,6 @@ import { Observable, shareReplay } from 'rxjs'
 export class PrivateComponent implements OnInit {
 
   protected user$: Observable<UserModel>
-  protected panelOpenState = false
 
   constructor(
     private readonly _userService: UserService,

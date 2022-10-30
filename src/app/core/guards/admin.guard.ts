@@ -14,6 +14,6 @@ export class AdminGuard implements CanLoad {
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    return this._userService.getUser().pipe(map((user) => user.grupo === PerfilEnum.ADMINISTRADOR ? true : false))
+    return this._userService.getUser().pipe(map((user) => user.grupo.some(grupo => grupo === PerfilEnum.ADMINISTRADOR)))
   }
 }
