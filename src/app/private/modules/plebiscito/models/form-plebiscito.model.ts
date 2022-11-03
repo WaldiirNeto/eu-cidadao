@@ -9,7 +9,9 @@ interface FormPlebiscitoInterface {
     ativo: FormControl<boolean | null>,
     dataEncerramento: FormControl<string | null>,
     categoriaId: FormControl<number | null>,
-    subCategoriaId: FormControl<number | null>
+    subCategoriaId: FormControl<number | null>,
+    responsavel: FormControl<string | null>,
+    tipo_blebiscito: FormControl<number | null>,
     questoesPlebiscito: FormControl<QuestoesPlebiscitoModel[] | null>
 }
 
@@ -30,6 +32,8 @@ export class FormPlebiscitoModel {
             dataEncerramento: new FormControl('', [Validators.required]),
             categoriaId: new FormControl(null, [Validators.required]),
             subCategoriaId: new FormControl(null, [Validators.required]),
+            responsavel: new FormControl('', [Validators.required]),
+            tipo_blebiscito: new FormControl(null, [Validators.required]),
             questoesPlebiscito: new FormControl(null, [Validators.required])
         })
     }

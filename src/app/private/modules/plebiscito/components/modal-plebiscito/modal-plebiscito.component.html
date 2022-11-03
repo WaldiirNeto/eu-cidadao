@@ -1,8 +1,8 @@
 <section class="modal-plebiscito">
     <div mat-dialog-title>
         <h5>Cadastrar Plebiscito</h5>
-
     </div>
+
     <form [formGroup]="this.form">
         <div class="row col-12">
             <div class="col">
@@ -22,15 +22,25 @@
 
             <div class="col-md-6">
                 <app-input-form (selectionChange)="this.filtraSubCategoria($event)" [listSelect$]="this.categorias$"
-                    label="Assunto do Plebiscito" controlName="categoriaId" placeholder="Selecione" type="select">
-                </app-input-form>
-            </div>
-            <div class="col-md-6">
-                <app-input-form [listSelect$]="this.subCategorias$" label="Categoria" controlName="subCategoriaId"
+                    messageWaitList="Buscando categorias..." label="Assunto do Plebiscito" controlName="categoriaId"
                     placeholder="Selecione" type="select">
                 </app-input-form>
             </div>
-
+            <div class="col-md-6">
+                <app-input-form messageWaitList="Aguardando selecionar o assunto..." [listSelect$]="this.subCategorias$"
+                    label="Categoria" controlName="subCategoriaId" placeholder="Selecione" type="select">
+                </app-input-form>
+            </div>
+            <div class="col-md-6">
+                <app-input-form messageWaitList="Buscando responsáveis..." [listSelect$]="this.responsaveis$"
+                    label="Responsável pela abertura" controlName="responsavel" placeholder="Selecione" type="select">
+                </app-input-form>
+            </div>
+            <div class="col-md-6">
+                <app-input-form label="Tipo do Plebiscito" controlName="tipo_blebiscito" placeholder="Selecione"
+                    type="text">
+                </app-input-form>
+            </div>
         </div>
     </form>
 

@@ -43,6 +43,7 @@ export class MatFormFieldComponent implements OnInit {
   @Input() mask: string
   @Input() textError: string
   @Input() listSelect$: Observable<Array<{ id: unknown, value: unknown, icon?: string }>>
+  @Input() messageWaitList: string
   @Output() selectionChange: EventEmitter<MatSelectChange> = new EventEmitter<MatSelectChange>()
 
   protected form: FormGroup

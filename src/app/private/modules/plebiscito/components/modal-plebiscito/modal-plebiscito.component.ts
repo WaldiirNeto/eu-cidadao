@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import { MatSelectChange } from '@angular/material/select'
-import { CategoriaModel, ListSelectModel, SubCategoriaOcorrenciaModel } from '@shared/models/index'
+import { ListSelectModel, SubCategoriaOcorrenciaModel } from '@shared/models/index'
 import { CategoriasService } from '@shared/services/categorias.service'
-import { filter, map, Observable, shareReplay } from 'rxjs'
+import { map, Observable, shareReplay } from 'rxjs'
+import { EmployeesModel } from '../../../employees/models/employees.model'
+import { EmployeesService } from '../../../employees/services/employees.service'
 import { FormPlebiscitoModel } from '../../models'
 
 @Component({
@@ -14,7 +16,10 @@ export class ModalPlebiscitoComponent extends FormPlebiscitoModel implements OnI
 
   protected categorias$: Observable<ListSelectModel[]>
   protected subCategorias$: Observable<ListSelectModel[]>
-  constructor(private readonly _categoriaService: CategoriasService) {
+  protected responsaveis$: Observable<ListSelectModel[]>
+  constructor(
+    private readonly _categoriaService: CategoriasService,
+    private readonly _employeesService: EmployeesService) {
     super()
   }
 
@@ -31,8 +36,17 @@ export class ModalPlebiscitoComponent extends FormPlebiscitoModel implements OnI
           return listToInput
         })
       }))
+    this.responsaveis$ = this._employeesService.getEmployess()
+      .pipe(shareReplay(1), map((list) => {
+        return list.map(responsavel => {
+          const listToInput: ListSelectModel = {
+            id: responsavel.id,
+            value: responsavel.nome
+          }
+          return listToInput
+        })
+      }))
   }
-
 
   public filtraSubCategoria(event: MatSelectChange): void {
     const categoriaId = event.value
