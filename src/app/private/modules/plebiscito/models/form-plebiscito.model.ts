@@ -11,8 +11,11 @@ interface FormPlebiscitoInterface {
     categoriaId: FormControl<number | null>,
     subCategoriaId: FormControl<number | null>,
     responsavel: FormControl<string | null>,
-    tipo_blebiscito: FormControl<number | null>,
-    questoesPlebiscito: FormControl<QuestoesPlebiscitoModel[] | null>
+    tipo_blebiscito: FormControl<boolean | null>,
+    questoesPlebiscito: FormControl<QuestoesPlebiscitoModel[] | null>,
+    titulo: FormControl<string | null>
+    descricao_referendo: FormControl<string | null>
+
 }
 
 export class FormPlebiscitoModel {
@@ -34,7 +37,9 @@ export class FormPlebiscitoModel {
             subCategoriaId: new FormControl(null, [Validators.required]),
             responsavel: new FormControl('', [Validators.required]),
             tipo_blebiscito: new FormControl(null, [Validators.required]),
-            questoesPlebiscito: new FormControl(null, [Validators.required])
+            questoesPlebiscito: new FormControl(null, []),
+            titulo: new FormControl('', [Validators.required]),
+            descricao_referendo: new FormControl('', [Validators.required])
         })
     }
 }

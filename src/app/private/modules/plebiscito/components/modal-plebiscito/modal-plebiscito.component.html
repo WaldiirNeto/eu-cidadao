@@ -6,17 +6,18 @@
     <form [formGroup]="this.form">
         <div class="row col-12">
             <div class="col">
-                <app-input-form label="Título" controlName="nome" placeholder="digite o Título" type="text">
+                <app-input-form label="Título" controlName="nome" placeholder="Digite o Título" type="text">
                 </app-input-form>
             </div>
             <div class="col-md-12">
-                <textarea rows="5" class="form-control" id="textAreaDescription" aria-describedby="textAreaDescription"
+                <label>Descrição</label>
+                <textarea rows="3" class="form-control" id="textAreaDescription" aria-describedby="textAreaDescription"
                     placeholder="Digite a Descrição" formControlName="descricao"></textarea>
             </div>
 
             <div class="col-md-12">
                 <app-input-form label="Data de Encerramento" controlName="dataEncerramento"
-                    placeholder="Adicione uma vor" type="date">
+                    placeholder="Selecione a Data" type="date">
                 </app-input-form>
             </div>
 
@@ -33,15 +34,38 @@
             </div>
             <div class="col-md-6">
                 <app-input-form messageWaitList="Buscando responsáveis..." [listSelect$]="this.responsaveis$"
-                    label="Responsável pela abertura" controlName="responsavel" placeholder="Selecione" type="select">
+                    label="Responsável pela Abertura" controlName="responsavel" placeholder="Selecione" type="select">
                 </app-input-form>
             </div>
             <div class="col-md-6">
-                <app-input-form label="Tipo do Plebiscito" controlName="tipo_blebiscito" placeholder="Selecione"
-                    type="text">
+                <app-input-form messageWaitList="Buscando tipo do plebiscito..."
+                    [listSelect$]="this.tipoPlebiscitoList$" label="Selecione o tipo do Plebiscito"
+                    controlName="tipo_blebiscito" placeholder="Selecione o tipo do Plebiscito" type="select">
                 </app-input-form>
+            </div>
+            <div class="col-md-12">
+                <label>Resposta</label>
+                <div style="background: #FFFFFF;
+                /* Neutral colors/Low Medium */
+                
+                border: 1px solid #666666;
+                box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 8px; padding: 10px">
+                    <div class="row col-md-6">
+                        <div class="col-md-12">
+                            <app-input-form label="Título do Plebiscito" controlName="titulo"
+                                placeholder="Digite o Título" type="text">
+                            </app-input-form>
+                        </div>
+                        <div class="col-md-12">
+                            <label>Descrição</label>
+                            <textarea rows="3" class="form-control" id="textAreaDescription"
+                                aria-describedby="textAreaDescription" placeholder="Digite a Descrição"
+                                formControlName="descricao_referendo"></textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
-
 </section>

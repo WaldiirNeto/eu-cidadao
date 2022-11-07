@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { MatSelectChange } from '@angular/material/select'
 import { ListSelectModel, SubCategoriaOcorrenciaModel } from '@shared/models/index'
 import { CategoriasService } from '@shared/services/categorias.service'
-import { map, Observable, shareReplay } from 'rxjs'
-import { EmployeesModel } from '../../../employees/models/employees.model'
+import { map, Observable, of, shareReplay } from 'rxjs'
 import { EmployeesService } from '../../../employees/services/employees.service'
 import { FormPlebiscitoModel } from '../../models'
 
@@ -17,6 +16,7 @@ export class ModalPlebiscitoComponent extends FormPlebiscitoModel implements OnI
   protected categorias$: Observable<ListSelectModel[]>
   protected subCategorias$: Observable<ListSelectModel[]>
   protected responsaveis$: Observable<ListSelectModel[]>
+  protected tipoPlebiscitoList$: Observable<ListSelectModel[]>
   constructor(
     private readonly _categoriaService: CategoriasService,
     private readonly _employeesService: EmployeesService) {
@@ -36,6 +36,7 @@ export class ModalPlebiscitoComponent extends FormPlebiscitoModel implements OnI
           return listToInput
         })
       }))
+
     this.responsaveis$ = this._employeesService.getEmployess()
       .pipe(shareReplay(1), map((list) => {
         return list.map(responsavel => {
@@ -46,6 +47,19 @@ export class ModalPlebiscitoComponent extends FormPlebiscitoModel implements OnI
           return listToInput
         })
       }))
+
+    const list: ListSelectModel[] = [
+      {
+        id: false,
+        value: `Resposta Sim ou Não`
+      },
+      {
+        id: true,
+        value: `Resposta  Múltipla escolha`
+      }
+    ]
+
+    this.tipoPlebiscitoList$ = of(list)
   }
 
   public filtraSubCategoria(event: MatSelectChange): void {
